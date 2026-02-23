@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajith Alphonse | UX Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Warning Overlay -->
+    <div class="mobile-warning" id="mobileWarning">
+        <div class="mobile-warning-content">
+            <div class="mobile-icon">💻</div>
+            <h2>Desktop Experience Only</h2>
+            <p>This portfolio is optimized for desktop viewing. Please access it on a laptop or desktop computer for the best experience.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="desktop-content">
+        <!-- Navigation -->
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <img src="assets/profile.jpg" alt="Ajith Alphonse" class="nav-avatar" onerror="this.style.background='#ddd'">
+                </div>
+                <div class="nav-links">
+                    <a href="#work" class="nav-link active">Work</a>
+                    <a href="#about" class="nav-link">Know Me</a>
+                    <a href="resume.pdf" class="nav-link" target="_blank">Resume</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="main">
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="hero-info">
+                        <h1 class="hero-name">Ajith Alphonse</h1>
+                        <div class="hero-details">
+                            <div class="hero-detail">
+                                <span class="detail-icon role-icon">💼</span>
+                                <span>UX Designer at University of Utah</span>
+                            </div>
+                            <div class="hero-detail">
+                                <span class="detail-icon location-icon">📍</span>
+                                <span>Salt Lake City, Utah</span>
+                            </div>
+                        </div>
+                        <div class="hero-badge">5+ Years of Experience</div>
+                    </div>
+                    <div class="hero-embed">
+                        <span class="embed-hint">Look at the pupil</span>
+                        <iframe 
+                            src="https://my.spline.design/untitled-8VMQdhjX8qCgaSGKUwTq2Jlm-WZZ/" 
+                            frameborder="0" 
+                            width="100%" 
+                            height="100%"
+                            loading="lazy">
+                        </iframe>
+                        <div class="embed-cover"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="projects" id="work">
+                <div class="projects-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="b2c">B2C</button>
+                    <button class="filter-btn" data-filter="b2b">B2B SaaS</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 0 - Practo Search Experience (Featured) -->
+                    <a href="projects/search.html" class="project-card" data-category="b2c">
+                        <div class="project-thumbnail search-theme">
+                            <div class="project-header">
+                                <div class="project-logo-text">Practo</div>
+                                <div class="project-tags">
+                                    <span class="tag">Competitive Design Bid</span>
+                                    <span class="tag">Healthcare</span>
+                                    <span class="tag">Search UX</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Revitalizing the Search Experience</h3>
+                            <p class="project-subtitle">Reducing drop-off for first-time users — A competitive design bid with 50+ user tests</p>
+                            <div class="project-preview">
+                                <img src="assets/practo-tumbnail.jpg" alt="Practo Search Redesign" onerror="this.parentElement.classList.add('no-image')">
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 1 - Oracle NetSuite -->
+                    <a href="projects/netsuite.html" class="project-card" data-category="b2b">
+                        <div class="project-thumbnail netsuite-theme">
+                            <div class="project-header">
+                                <div class="project-logo-text">NetSuite</div>
+                                <div class="project-tags">
+                                    <span class="tag tag-university"><img src="assets/u logo.png" alt="U" class="tag-logo"> University of Utah</span>
+                                    <span class="tag">Self-Initiated</span>
+                                    <span class="tag">Enterprise UX</span>
+                                    <span class="tag">Workflow Optimization</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Oracle NetSuite — AI-Assisted PDP Workflow Redesign</h3>
+                            <p class="project-subtitle">Self-initiated UX research to reduce friction in enterprise e-commerce workflows</p>
+                            <div class="project-preview">
+                                <video src="assets/netsuite-preview.mp4" autoplay muted loop playsinline onerror="this.parentElement.classList.add('no-image')"></video>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 2 - VYN -->
+                    <a href="projects/vyn.html" class="project-card" data-category="b2b">
+                        <div class="project-thumbnail vyn-theme">
+                            <div class="project-header">
+                                <div class="project-logo-text">VYN</div>
+                                <div class="project-tags">
+                                    <span class="tag tag-university"><img src="assets/u logo.png" alt="U" class="tag-logo"> University of Utah</span>
+                                    <span class="tag">B2B SaaS</span>
+                                    <span class="tag">Campus Logistics</span>
+                                    <span class="tag">AI-Assisted</span>
+                                    <span class="tag">Robotics</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">VYN — Rethinking Campus Delivery with Autonomous Robots</h3>
+                            <p class="project-subtitle">Designing a mobile-first experience for university campus logistics</p>
+                            <div class="project-preview">
+                                <video src="assets/thumbnail one.mp4" autoplay muted loop playsinline></video>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 3 - Practo Care AI -->
+                    <a href="projects/practo.html" class="project-card" data-category="b2c">
+                        <div class="project-thumbnail practo-theme">
+                            <div class="project-header">
+                                <div class="project-logo-text practo">Practo</div>
+                                <div class="project-tags">
+                                    <span class="tag">Healthcare UX</span>
+                                    <span class="tag">AI Design</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Practo Care AI — Redesigning Telehealth in India</h3>
+                            <p class="project-subtitle">Smart intake, health history, and real-time multilingual translation</p>
+                            <div class="project-preview">
+                                <video src="assets/practo-preview.mp4" autoplay muted loop playsinline onerror="this.parentElement.classList.add('no-image')"></video>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 4 - Codebell -->
+                    <a href="projects/codebell.html" class="project-card" data-category="b2b">
+                        <div class="project-thumbnail codebell-theme">
+                            <div class="project-header">
+                                <div class="project-logo-text">Codebell</div>
+                                <div class="project-tags">
+                                    <span class="tag">Startup Product</span>
+                                    <span class="tag">Zero to One</span>
+                                    <span class="tag">iOS + Web</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Codebell — Digital Ordering System for Small Restaurants</h3>
+                            <p class="project-subtitle">Designing a zero-to-one mobile ordering experience and operational dashboard</p>
+                            <div class="project-preview">
+                                <video src="assets/codebell-preview.mp4" autoplay muted loop playsinline onerror="this.parentElement.classList.add('no-image')"></video>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Let's connect</p>
+                <div class="footer-links">
+                    <a href="mailto:ajithalphonse300@gmail.com" class="footer-link">Email</a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="footer-link">LinkedIn</a>
+                    <a href="https://dribbble.com/yourprofile" target="_blank" class="footer-link">Dribbble</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

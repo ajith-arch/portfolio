@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practo Care AI — Healthcare UX Case Study | Ajith Alphonse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="practo.css">
+</head>
+<body>
+
+  <!-- Floating Side Navigation -->
+  <aside class="side-nav" id="sideNav">
+    <div class="side-nav-inner">
+      <a href="#hero" class="side-nav-item active" data-section="hero">Overview</a>
+      <a href="#context" class="side-nav-item" data-section="context">Context</a>
+      <a href="#problem" class="side-nav-item" data-section="problem">Problem</a>
+      <a href="#research" class="side-nav-item" data-section="research">Research</a>
+      <a href="#solution" class="side-nav-item" data-section="solution">Solution</a>
+      <a href="#pillars" class="side-nav-item" data-section="pillars">4 Pillars</a>
+      <a href="#screens" class="side-nav-item" data-section="screens">Key Screens</a>
+      <a href="#motion" class="side-nav-item" data-section="motion">Motion</a>
+      <a href="#safety" class="side-nav-item" data-section="safety">Safety & AI</a>
+      <a href="#metrics" class="side-nav-item" data-section="metrics">Metrics</a>
+      <a href="#learnings" class="side-nav-item" data-section="learnings">Learnings</a>
+    </div>
+  </aside>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="inner">
+      <div class="nav-brand">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+      </div>
+      <div class="nav-links">
+        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#solution" class="nav-link">Solution</a>
+        <a href="#contact" class="nav-link primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-badge animate-in">
+        <span class="badge-icon">🏥</span>
+        <span>Healthcare UX • AI-Powered • Research-Led</span>
+      </div>
+      
+      <h1 class="animate-in delay-1">
+        Practo Care AI<br>
+        <em>Redesigning Telehealth</em>
+      </h1>
+      
+      <p class="hero-subtitle animate-in delay-2">
+        I redesigned Practo's Care AI to reduce telehealth friction by turning chats into structured Health Cases, requesting relevant reports contextually, generating a patient-approved Doctor Summary Pack, and enabling real-time multilingual translation during video consults.
+      </p>
+      
+      <div class="hero-meta animate-in delay-3">
+        <div class="meta-card">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UIUX Designer (End-to-End)</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">Mobile App (iOS & Android)</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Scope</span>
+          <span class="meta-value">Research → Design → Handoff</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Focus</span>
+          <span class="meta-value">AI, Accessibility, Multilingual</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual animate-in delay-4">
+        <div class="media-box hero-media">
+          <div class="media-content">
+            <div class="media-icon">🎬</div>
+            <div class="media-tag">Hero Video / Motion</div>
+            <h4>Product Overview Animation</h4>
+            <p>Add: 15-20 second video showing the complete flow — patient describing symptoms in native language, AI generating structured case, doctor receiving summary pack, video consult with live translation.</p>
+            <div class="media-specs">
+              <span>Recommended: 1920×1080 MP4</span>
+              <span>Duration: 15-20s loop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <div class="stat-icon">⏱️</div>
+        <div class="stat-content">
+          <span class="stat-value">&lt;3 min</span>
+          <span class="stat-label">Smart Intake Time</span>
+        </div>
+      </div>
+      <div class="impact-stat">
+        <div class="stat-icon">📋</div>
+        <div class="stat-content">
+          <span class="stat-value">30 sec</span>
+          <span class="stat-label">Doctor Brief Scan</span>
+        </div>
+      </div>
+      <div class="impact-stat">
+        <div class="stat-icon">🌐</div>
+        <div class="stat-content">
+          <span class="stat-value">22+</span>
+          <span class="stat-label">Languages Supported</span>
+        </div>
+      </div>
+      <div class="impact-stat">
+        <div class="stat-icon">🔒</div>
+        <div class="stat-content">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Patient Consent Control</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Context Section -->
+    <section id="context">
+      <span class="section-tag">Context</span>
+      <h2 class="section-title">Healthcare in India is complex</h2>
+      <p class="section-intro">
+        Practo is an India-based healthcare platform offering doctor discovery, appointments, and video consultations. In India, healthcare conversations happen across multiple languages and fragmented channels.
+      </p>
+
+      <div class="context-grid">
+        <div class="context-card highlight">
+          <div class="context-icon">🇮🇳</div>
+          <h3>The Indian Reality</h3>
+          <p>Patients may not know how to describe symptoms clearly, reports are scattered across photos and chats, and video consults can break down when patient and doctor do not share a common language.</p>
+        </div>
+        <div class="context-card">
+          <div class="context-icon">💼</div>
+          <h3>My Involvement</h3>
+          <p>Volunteer project done remotely. I worked end-to-end as the UIUX designer — from research and IA to prototypes, motion concepts, and handoff-ready specs.</p>
+        </div>
+      </div>
+
+      <!-- Media Placeholder: Context -->
+      <div class="media-box">
+        <div class="media-content">
+          <div class="media-icon">📊</div>
+          <div class="media-tag">Infographic</div>
+          <h4>India Healthcare Landscape</h4>
+          <p>Add: Visual showing key statistics — number of languages, telehealth adoption rates, common patient pain points, doctor distribution across India.</p>
+          <div class="media-specs">
+            <span>Format: PNG or SVG</span>
+            <span>Size: 1200×600</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+      <span class="section-tag">The Problem</span>
+      <h2 class="section-title">Why telehealth fails — repeatedly</h2>
+      <p class="section-intro">
+        Through research, I identified three systemic problems that cause telehealth experiences to fail:
+      </p>
+
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="problem-number">01</div>
+          <div class="problem-icon">🧠</div>
+          <h3>Missing or Unstructured Context</h3>
+          <p>Patients forget timelines, medications, or key history. Doctors spend the first minutes extracting basics instead of providing care.</p>
+          <div class="problem-impact">
+            <span class="impact-label">Impact:</span>
+            <span>Longer consults, repeated questions, patient frustration</span>
+          </div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-number">02</div>
+          <div class="problem-icon">📁</div>
+          <h3>Fragmented Health Memory</h3>
+          <p>Chat-based help is not reusable. Older issues and reports are hard to retrieve and share during a consult. Every visit starts from scratch.</p>
+          <div class="problem-impact">
+            <span class="impact-label">Impact:</span>
+            <span>Lost context, redundant tests, poor continuity of care</span>
+          </div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-number">03</div>
+          <div class="problem-icon">🗣️</div>
+          <h3>Language Mismatch in Consults</h3>
+          <p>Many doctors prefer English while many patients prefer regional languages. This creates confusion, longer consults, and poor adherence to care instructions.</p>
+          <div class="problem-impact">
+            <span class="impact-label">Impact:</span>
+            <span>Miscommunication, missed instructions, lower trust</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Placeholder: Problem Visualization -->
+      <div class="media-box">
+        <div class="media-content">
+          <div class="media-icon">🎥</div>
+          <div class="media-tag">Video / Animation</div>
+          <h4>Problem Scenario Walkthrough</h4>
+          <p>Add: Short video showing a frustrated patient struggling to explain symptoms in English, searching through gallery for old reports, and a confused video call where neither party understands clearly.</p>
+          <div class="media-specs">
+            <span>Duration: 30-45 seconds</span>
+            <span>Style: Motion graphics or screen recording</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+      <span class="section-tag">Research & Discovery</span>
+      <h2 class="section-title">Understanding the friction points</h2>
+      <p class="section-intro">
+        I conducted competitive analysis, user interviews, and workflow mapping to uncover where experiences break down.
+      </p>
+
+      <!-- Key Insights -->
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-icon">💬</div>
+          <h4>Users want help describing symptoms</h4>
+          <p>But they don't want long forms. Quick, guided input with smart suggestions works best.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">📷</div>
+          <h4>Reports live as photos</h4>
+          <p>People keep reports as photos and rarely label them. Retrieval is painful.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">📝</div>
+          <h4>Chat ≠ Health History</h4>
+          <p>Raw conversation history is not the same as structured, reusable health records.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">⚡</div>
+          <h4>Doctors want brevity</h4>
+          <p>A short brief, not a long narrative. Scannable in 30 seconds or less.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🔄</div>
+          <h4>Repeated clarifications</h4>
+          <p>Language mismatch causes the same question to be asked multiple times.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🤝</div>
+          <h4>Transparency builds trust</h4>
+          <p>Trust improves when the system explains why it's asking questions and what will be shared.</p>
+        </div>
+      </div>
+
+      <!-- Research Artifacts -->
+      <div class="research-artifacts">
+        <h3>Research Artifacts</h3>
+        
+        <!-- Persona -->
+        <div class="media-box">
+          <div class="media-content">
+            <div class="media-icon">👤</div>
+            <div class="media-tag">User Persona</div>
+            <h4>Primary Persona: The Anxious Patient</h4>
+            <p>Add: Detailed persona card showing demographics, goals, frustrations, tech comfort level, language preferences, and a quote capturing their mindset.</p>
+            <div class="media-specs">
+              <span>Include: Photo, demographics, pain points</span>
+              <span>Format: 1200×800 PNG</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey Map -->
+        <div class="media-box wide">
+          <div class="media-content">
+            <div class="media-icon">🗺️</div>
+            <div class="media-tag">Journey Map</div>
+            <h4>Current vs. Improved Patient Journey</h4>
+            <p>Add: Side-by-side journey map showing the current fragmented experience (high friction) vs. the redesigned Care AI flow (streamlined). Include emotional states, pain points, and opportunities at each stage.</p>
+            <div class="media-specs">
+              <span>Stages: Discovery → Symptoms → Booking → Intake → Consult → Follow-up</span>
+              <span>Format: Wide infographic 2400×900</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Competitive Analysis -->
+        <div class="media-box">
+          <div class="media-content">
+            <div class="media-icon">📊</div>
+            <div class="media-tag">Competitive Analysis</div>
+            <h4>Telehealth App Comparison</h4>
+            <p>Add: Matrix comparing Practo vs competitors (Tata Health, MFine, Apollo 24|7) across key features: AI triage, multilingual support, health history, report handling, doctor briefs.</p>
+            <div class="media-specs">
+              <span>Format: Comparison table or matrix</span>
+              <span>Highlight: Gaps and opportunities</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Target Users -->
+      <div class="users-section">
+        <h3>Target Users</h3>
+        <div class="users-grid">
+          <div class="user-card primary">
+            <div class="user-badge">Primary</div>
+            <h4>Patients</h4>
+            <p>Booking video consults who struggle to explain symptoms, organize reports, or speak English fluently.</p>
+          </div>
+          <div class="user-card primary">
+            <div class="user-badge">Primary</div>
+            <h4>Caregivers</h4>
+            <p>Booking appointments for elderly parents or family members who aren't tech-savvy.</p>
+          </div>
+          <div class="user-card secondary">
+            <div class="user-badge">Secondary</div>
+            <h4>Doctors</h4>
+            <p>Need fast, accurate context before and during consults to provide better care.</p>
+          </div>
+          <div class="user-card secondary">
+            <div class="user-badge">Secondary</div>
+            <h4>Support Staff</h4>
+            <p>Handling follow-ups, refunds, and escalations with complete context.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Overview -->
+    <section id="solution">
+      <span class="section-tag">The Solution</span>
+      <h2 class="section-title">Care AI: A connected system</h2>
+      <p class="section-intro">
+        I redesigned Care AI into a longitudinal care system with four interconnected pillars that address each problem systematically.
+      </p>
+
+      <!-- Solution Diagram -->
+      <div class="media-box wide">
+        <div class="media-content">
+          <div class="media-icon">🔄</div>
+          <div class="media-tag">System Architecture</div>
+          <h4>Care AI System Overview</h4>
+          <p>Add: Visual diagram showing how the 4 pillars connect — Health History feeds into Smart Reports, which feeds into Doctor Summary, which connects to Live Translation. Show the circular, connected nature of the system.</p>
+          <div class="media-specs">
+            <span>Style: Clean system diagram</span>
+            <span>Format: SVG or PNG 1600×800</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goal Statement -->
+      <div class="goal-banner">
+        <h3>Design Goal</h3>
+        <p>Create an AI-powered care flow that helps patients communicate faster, converts chats into reusable health records, generates doctor-ready briefs, and supports India's multilingual reality — all while prioritizing safety, consent, and trust.</p>
+      </div>
+    </section>
+
+    <!-- Four Pillars -->
+    <section id="pillars">
+      <span class="section-tag">Core Innovation</span>
+      <h2 class="section-title">The Four Pillars of Care AI</h2>
+      
+      <!-- Pillar 1 -->
+      <div class="pillar-block">
+        <div class="pillar-header">
+          <div class="pillar-number">Pillar 1</div>
+          <div class="pillar-title">
+            <h3>Health History as Cases</h3>
+            <p>Not chat logs — structured, reusable health records</p>
+          </div>
+        </div>
+        
+        <div class="pillar-content">
+          <div class="pillar-text">
+            <p>Instead of raw conversation history, each interaction becomes a structured "Case" that users can return to anytime. This turns Care AI from a one-off chatbot into a <strong>longitudinal care layer</strong>.</p>
+            
+            <div class="feature-list">
+              <div class="feature-item">
+                <span class="feature-icon">📌</span>
+                <div>
+                  <h5>Title & Status</h5>
+                  <p>Auto-generated from symptom topic (e.g., "Sore throat", "Migraine")</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">📅</span>
+                <div>
+                  <h5>Timeline</h5>
+                  <p>Onset, progression, triggers — all captured and organized</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">📎</span>
+                <div>
+                  <h5>Attachments</h5>
+                  <p>Reports, prescriptions, scans with labels and extracted values</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">⚡</span>
+                <div>
+                  <h5>Quick Actions</h5>
+                  <p>Continue issue, Share with doctor, Export summary, Delete</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pillar-visual">
+            <div class="media-box">
+              <div class="media-content">
+                <div class="media-icon">📱</div>
+                <div class="media-tag">UI Screen</div>
+                <h4>Health History — Case Cards</h4>
+                <p>Add: Screenshot showing the History screen with multiple case cards. Each card shows: title, date, status badge (ongoing/resolved), key tags, and quick action buttons.</p>
+                <div class="media-specs">
+                  <span>Format: iPhone mockup</span>
+                  <span>Show: 3-4 case cards</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="pillar-block">
+        <div class="pillar-header">
+          <div class="pillar-number">Pillar 2</div>
+          <div class="pillar-title">
+            <h3>Smart Report Request</h3>
+            <p>Context-aware, optional, and never intrusive</p>
+          </div>
+        </div>
+        
+        <div class="pillar-content reverse">
+          <div class="pillar-visual">
+            <div class="media-box">
+              <div class="media-content">
+                <div class="media-icon">📄</div>
+                <div class="media-tag">UI Flow</div>
+                <h4>Report Upload Experience</h4>
+                <p>Add: Multi-screen flow showing: gentle prompt → upload options (camera/gallery) → auto-crop → label selection → extracted values with "tap to edit".</p>
+                <div class="media-specs">
+                  <span>Format: Flow of 4-5 screens</span>
+                  <span>Show: The complete micro-interaction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pillar-text">
+            <p>When users describe symptoms, Care AI detects when evidence would improve clarity and asks <strong>gently</strong> — never forcing uploads.</p>
+            
+            <div class="prompt-example">
+              <span class="prompt-label">AI Prompt Example:</span>
+              <p>"If you have a recent report or prescription, you can add it now. It helps me prepare a better summary for your doctor."</p>
+            </div>
+            
+            <div class="report-types">
+              <h5>Supported Report Types</h5>
+              <div class="report-tags">
+                <span class="report-tag">Lab Report</span>
+                <span class="report-tag">Prescription</span>
+                <span class="report-tag">X-ray / MRI / Scan</span>
+                <span class="report-tag">Discharge Summary</span>
+                <span class="report-tag">Other</span>
+              </div>
+            </div>
+            
+            <div class="design-note">
+              <span class="note-icon">💡</span>
+              <p>The system keeps the experience lightweight, avoids over-asking, and only prompts when user input suggests a report would be helpful.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-block">
+        <div class="pillar-header">
+          <div class="pillar-number">Pillar 3</div>
+          <div class="pillar-title">
+            <h3>Doctor Summary Pack</h3>
+            <p>Patient-approved, scannable in 30 seconds</p>
+          </div>
+        </div>
+        
+        <div class="pillar-content">
+          <div class="pillar-text">
+            <p>Before booking or joining a consult, Care AI generates a <strong>one-page doctor-ready brief</strong>. The user must review, edit, and approve before sharing — nothing is auto-shared.</p>
+            
+            <div class="summary-structure">
+              <h5>Summary Pack Contents</h5>
+              <div class="summary-items">
+                <div class="summary-item">
+                  <span class="item-num">1</span>
+                  <span>Chief complaint</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-num">2</span>
+                  <span>Symptom timeline</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-num">3</span>
+                  <span>Relevant history (conditions, allergies)</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-num">4</span>
+                  <span>Current medications</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-num">5</span>
+                  <span>Attachments with extracted highlights</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-num">6</span>
+                  <span>Patient's top 3 questions</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-num">7</span>
+                  <span>Red-flag screening outcomes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pillar-visual">
+            <div class="media-box">
+              <div class="media-content">
+                <div class="media-icon">📋</div>
+                <div class="media-tag">UI Screen</div>
+                <h4>Summary Pack Preview</h4>
+                <p>Add: Screenshot showing the summary preview screen with all sections visible, edit buttons, and the "Approve & Share" CTA at bottom. Show consent messaging clearly.</p>
+                <div class="media-specs">
+                  <span>Format: Full-screen mockup</span>
+                  <span>Highlight: Edit & Consent controls</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="pillar-block highlight">
+        <div class="pillar-header">
+          <div class="pillar-number">Pillar 4</div>
+          <div class="pillar-title">
+            <h3>Real-time Translation</h3>
+            <p>Live subtitles + transcripts for video consults</p>
+          </div>
+        </div>
+        
+        <div class="pillar-content reverse">
+          <div class="pillar-visual">
+            <div class="media-box">
+              <div class="media-content">
+                <div class="media-icon">🎥</div>
+                <div class="media-tag">Video / Prototype</div>
+                <h4>Live Translation in Action</h4>
+                <p>Add: Video showing the translation UI during a call — patient speaks Hindi, doctor sees English subtitles, doctor responds in English, patient sees Hindi subtitles. Show language toggle and confidence indicator.</p>
+                <div class="media-specs">
+                  <span>Duration: 20-30 seconds</span>
+                  <span>Show: Both perspectives</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pillar-text">
+            <p>To reduce friction in India's multilingual reality, I designed a real-time translation layer for video consultations.</p>
+            
+            <div class="translation-features">
+              <div class="translation-col">
+                <h5>Patient Experience</h5>
+                <ul>
+                  <li>Speak in native language</li>
+                  <li>See doctor's speech as translated subtitles</li>
+                  <li>"Simplify terms" option for medical jargon</li>
+                </ul>
+              </div>
+              <div class="translation-col">
+                <h5>Doctor Experience</h5>
+                <ul>
+                  <li>Real-time translated captions in English</li>
+                  <li>"Uncertain translation" markers for safety</li>
+                  <li>One-tap clarification prompts</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="after-call">
+              <h5>After the Call</h5>
+              <div class="after-call-items">
+                <span>📝 Transcript saved to correct Case</span>
+                <span>📌 Important instructions auto-pinned</span>
+                <span>🔔 Follow-up reminders created</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Information Architecture -->
+    <section id="ia">
+      <span class="section-tag">Information Architecture</span>
+      <h2 class="section-title">End-to-end user journey</h2>
+      
+      <div class="ia-flow">
+        <div class="ia-step">
+          <span class="ia-num">1</span>
+          <span class="ia-label">Home</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">2</span>
+          <span class="ia-label">Care AI Entry</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">3</span>
+          <span class="ia-label">Triage Intake</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">4</span>
+          <span class="ia-label">Result + Specialty</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">5</span>
+          <span class="ia-label">Doctor List</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">6</span>
+          <span class="ia-label">Book Consult</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">7</span>
+          <span class="ia-label">Smart Intake</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">8</span>
+          <span class="ia-label">Summary Preview</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step highlight">
+          <span class="ia-num">9</span>
+          <span class="ia-label">Video Consult</span>
+        </div>
+        <div class="ia-arrow">→</div>
+        <div class="ia-step">
+          <span class="ia-num">10</span>
+          <span class="ia-label">Post-Consult Plan</span>
+        </div>
+      </div>
+
+      <!-- IA Diagram -->
+      <div class="media-box wide">
+        <div class="media-content">
+          <div class="media-icon">🔀</div>
+          <div class="media-tag">Flow Diagram</div>
+          <h4>Complete User Flow Diagram</h4>
+          <p>Add: Detailed flow diagram showing all screens, decision points, and paths. Include: happy path, error states, alternative flows (return user, caregiver booking, urgent symptoms redirect).</p>
+          <div class="media-specs">
+            <span>Format: FigJam or Miro export</span>
+            <span>Size: Wide format for scrolling</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Screens -->
+    <section id="screens">
+      <span class="section-tag">Screen Design</span>
+      <h2 class="section-title">Key screens I designed</h2>
+      <p class="section-intro">
+        Each screen serves a specific job. Here are the major touchpoints across the patient and doctor experience.
+      </p>
+
+      <!-- Patient Screens -->
+      <h3 class="screens-category">Patient-Facing Screens</h3>
+      
+      <div class="screens-grid">
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Updated Home</h4>
+              <p>Care AI entry modes + trust cues</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">01</span>
+            <h5>Home Screen</h5>
+            <p>"Ask Care AI" card with three entry modes: Check symptoms, Explain report, Understand prescription.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Care AI Start</h4>
+              <p>Patient type, language, voice input</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">02</span>
+            <h5>Care AI Entry</h5>
+            <p>Select who you're booking for, preferred language, and voice/text input preference.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Symptom Input</h4>
+              <p>Chips + free text + duration</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">03</span>
+            <h5>Symptom Capture</h5>
+            <p>Quick chip selection for common symptoms with free-text option and duration picker.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Follow-up Questions</h4>
+              <p>Dynamic with "Why asking" chips</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">04</span>
+            <h5>AI Follow-ups</h5>
+            <p>Dynamic questions based on symptoms with transparency chips explaining why each question matters.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Triage Results</h4>
+              <p>Urgency + specialty + next steps</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">05</span>
+            <h5>Results Screen</h5>
+            <p>Clear urgency indicator, recommended specialty, and actionable next steps.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Doctor List</h4>
+              <p>AI filtered + "Why recommended"</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">06</span>
+            <h5>Doctor Selection</h5>
+            <p>AI-filtered list with "Why recommended" labels and preference filters.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Smart Intake</h4>
+              <p>Timeline, history, meds, attachments</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">07</span>
+            <h5>Smart Intake Flow</h5>
+            <p>Guided 2-3 minute intake with progress steps covering timeline, history, medications, and attachments.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Video Consult</h4>
+              <p>Live translation + language toggle</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">08</span>
+            <h5>Video Consultation</h5>
+            <p>Real-time translated captions, language toggle, and confidence indicators.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Screens -->
+      <h3 class="screens-category">Doctor-Facing Screens</h3>
+      
+      <div class="screens-grid cols-3">
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Pre-Consult Brief</h4>
+              <p>Scannable summary pack</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">09</span>
+            <h5>Doctor's Brief View</h5>
+            <p>Summary pack with highlighted attachments, scannable in 30 seconds.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>In-Call View</h4>
+              <p>Translated captions + uncertainty</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">10</span>
+            <h5>Doctor's Call Interface</h5>
+            <p>Real-time translation with uncertainty indicators and one-tap clarification prompts.</p>
+          </div>
+        </div>
+
+        <div class="screen-card">
+          <div class="media-box screen-media">
+            <div class="media-content compact">
+              <div class="media-tag small">Screen</div>
+              <h4>Post-Consult Notes</h4>
+              <p>Quick templates + follow-up</p>
+            </div>
+          </div>
+          <div class="screen-info">
+            <span class="screen-num">11</span>
+            <h5>Note Support</h5>
+            <p>Quick templates for common prescriptions and easy follow-up scheduling.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Screen Showcase -->
+      <div class="media-box wide">
+        <div class="media-content">
+          <div class="media-icon">📱</div>
+          <div class="media-tag">High-Fidelity Screens</div>
+          <h4>Complete Screen Gallery</h4>
+          <p>Add: Grid of all high-fidelity screen designs — show the complete patient journey from home to post-consult, plus doctor screens. Use iPhone frames for consistency.</p>
+          <div class="media-specs">
+            <span>Include: All 11+ screens in grid layout</span>
+            <span>Format: 2400×1600 or larger</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motion Design -->
+    <section id="motion">
+      <span class="section-tag">Motion Design</span>
+      <h2 class="section-title">Purposeful micro-interactions</h2>
+      <p class="section-intro">
+        Motion is used to communicate progress, trust, and "system intelligence" without flashiness. Every animation serves a purpose.
+      </p>
+
+      <div class="motion-grid">
+        <div class="motion-card">
+          <div class="media-box motion-media">
+            <div class="media-content compact">
+              <div class="media-icon">✨</div>
+              <div class="media-tag small">Motion</div>
+              <h4>Case Creation</h4>
+            </div>
+          </div>
+          <div class="motion-info">
+            <h5>Chat → Case Transformation</h5>
+            <p>The chat interaction morphs into a structured "Case card" after completion. Teaches users that Care AI remembers and organizes.</p>
+          </div>
+        </div>
+
+        <div class="motion-card">
+          <div class="media-box motion-media">
+            <div class="media-content compact">
+              <div class="media-icon">📄</div>
+              <div class="media-tag small">Motion</div>
+              <h4>Report Scan</h4>
+            </div>
+          </div>
+          <div class="motion-info">
+            <h5>Auto-Crop & Extract</h5>
+            <p>Auto-crop animation with extracted values highlighting smoothly. Builds confidence that extraction is working and editable.</p>
+          </div>
+        </div>
+
+        <div class="motion-card">
+          <div class="media-box motion-media">
+            <div class="media-content compact">
+              <div class="media-icon">📋</div>
+              <div class="media-tag small">Motion</div>
+              <h4>Summary Generation</h4>
+            </div>
+          </div>
+          <div class="motion-info">
+            <h5>Structure Forming</h5>
+            <p>Loading state shows the summary structure forming: timeline → meds → attachments → questions. Makes AI feel transparent.</p>
+          </div>
+        </div>
+
+        <div class="motion-card">
+          <div class="media-box motion-media">
+            <div class="media-content compact">
+              <div class="media-icon">🌐</div>
+              <div class="media-tag small">Motion</div>
+              <h4>Translation Pulse</h4>
+            </div>
+          </div>
+          <div class="motion-info">
+            <h5>Live Caption Indicators</h5>
+            <p>Subtle caption pulse while translating. Confidence badge fades in only when needed. Language switch transitions smoothly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motion Showcase -->
+      <div class="media-box wide">
+        <div class="media-content">
+          <div class="media-icon">🎬</div>
+          <div class="media-tag">Motion Reel</div>
+          <h4>Micro-Interactions Compilation</h4>
+          <p>Add: Video compilation of all key micro-interactions — case creation morph, report scan animation, summary generation, translation indicators, timeline updates. Show each with context.</p>
+          <div class="media-specs">
+            <span>Duration: 45-60 seconds</span>
+            <span>Format: MP4 with labels for each interaction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety & AI Section -->
+    <section id="safety">
+      <span class="section-tag">Safety, Trust & AI</span>
+      <h2 class="section-title">Responsible AI design</h2>
+      <p class="section-intro">
+        Healthcare AI requires careful boundaries. I designed clear guardrails for what AI can and cannot do, with privacy and consent at the core.
+      </p>
+
+      <div class="safety-grid">
+        <!-- AI Can -->
+        <div class="ai-boundary can">
+          <h3>✓ AI Can</h3>
+          <ul>
+            <li>Ask structured questions to understand symptoms</li>
+            <li>Summarize user input into a scannable brief</li>
+            <li>Recommend specialty and suggest next steps</li>
+            <li>Highlight urgency signals and red flags</li>
+            <li>Translate speech and generate transcripts</li>
+          </ul>
+        </div>
+
+        <!-- AI Cannot -->
+        <div class="ai-boundary cannot">
+          <h3>✗ AI Cannot</h3>
+          <ul>
+            <li>Confirm a diagnosis</li>
+            <li>Replace emergency services</li>
+            <li>Modify medications without clinician review</li>
+            <li>Guarantee translation accuracy in low-confidence situations</li>
+            <li>Auto-share information without patient consent</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Trust Features -->
+      <div class="trust-features">
+        <h3>Trust & Privacy Design</h3>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <span class="trust-icon">⚠️</span>
+            <h5>"Not a diagnosis" Messaging</h5>
+            <p>Placed contextually where needed, not everywhere</p>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🚨</span>
+            <h5>Red-flag Screening</h5>
+            <p>Urgent symptoms redirected to emergency guidance</p>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">✅</span>
+            <h5>Review Before Share</h5>
+            <p>Patient approval required before sharing summary</p>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🚫</span>
+            <h5">"Don't Save" Option</h5>
+            <p>Available at entry for sensitive conversations</p>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🗑️</span>
+            <h5>Data Control</h5>
+            <p>Delete case, delete attachments, export summary</p>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">⚡</span>
+            <h5>Translation Uncertainty</h5>
+            <p>Indicator shown to avoid silent misinformation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="metrics">
+      <span class="section-tag">Metrics & Outcomes</span>
+      <h2 class="section-title">Measuring success</h2>
+      <p class="section-intro">
+        These are the metrics I would track to validate the design's impact on patient experience and clinical efficiency.
+      </p>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">📈</div>
+          <h4>Booking Conversion</h4>
+          <p>Uplift from Care AI — more patients completing bookings after triage</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">⏱️</div>
+          <h4>Time to Book</h4>
+          <p>Reduced time from home to confirmed appointment</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">✅</div>
+          <h4>Intake Completion</h4>
+          <p>Percentage completing Smart Intake under 3 minutes</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">👨‍⚕️</div>
+          <h4>Consult Efficiency</h4>
+          <p>Reduced time spent collecting basics during call</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">🔄</div>
+          <h4>Repeat Consults</h4>
+          <p>Reduction in follow-ups due to missing context</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">🌐</div>
+          <h4>Language Satisfaction</h4>
+          <p>Reduced cancellations due to communication issues</p>
+        </div>
+      </div>
+
+      <!-- Success Criteria -->
+      <div class="success-criteria">
+        <h3>Success Criteria</h3>
+        <div class="criteria-list">
+          <div class="criteria-item">
+            <span class="criteria-check">✓</span>
+            <p>Users complete intake quickly without feeling burdened</p>
+          </div>
+          <div class="criteria-item">
+            <span class="criteria-check">✓</span>
+            <p>Users understand consent and control what gets shared</p>
+          </div>
+          <div class="criteria-item">
+            <span class="criteria-check">✓</span>
+            <p>Doctors can read the brief in under 30 seconds</p>
+          </div>
+          <div class="criteria-item">
+            <span class="criteria-check">✓</span>
+            <p>Translation UI reduces repeated clarifications</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learnings Section -->
+    <section id="learnings">
+      <span class="section-tag">Reflection</span>
+      <h2 class="section-title">What I learned</h2>
+      <p class="section-intro">
+        Designing for healthcare AI taught me about balancing automation with trust, and complexity with clarity.
+      </p>
+
+      <div class="learnings-grid">
+        <div class="learning-card">
+          <span class="learning-num">01</span>
+          <h4>Longitudinal > Transactional</h4>
+          <p>Converting chats into reusable "Cases" changes the relationship from one-off help to ongoing care partnership.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-num">02</span>
+          <h4>Context is Clinical Value</h4>
+          <p>Structured patient context saves doctors time and improves care quality. Design should capture, not just display.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-num">03</span>
+          <h4>Multilingual ≠ Translation</h4>
+          <p>True multilingual support means designing for language switching, uncertainty, and cultural context — not just word replacement.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-num">04</span>
+          <h4>Transparency Builds Trust</h4>
+          <p>Explaining "why" the AI asks questions and showing confidence levels makes users more comfortable sharing sensitive information.</p>
+        </div>
+      </div>
+
+      <!-- Deliverables -->
+      <div class="deliverables">
+        <h3>Deliverables</h3>
+        <div class="deliverables-grid">
+          <span class="deliverable">Problem framing</span>
+          <span class="deliverable">Research insights</span>
+          <span class="deliverable">User personas</span>
+          <span class="deliverable">Journey maps</span>
+          <span class="deliverable">Information architecture</span>
+          <span class="deliverable">Wireframes</span>
+          <span class="deliverable">High-fidelity UI</span>
+          <span class="deliverable">Motion studies</span>
+          <span class="deliverable">Clickable prototypes</span>
+          <span class="deliverable">Usability findings</span>
+          <span class="deliverable">Component library</span>
+          <span class="deliverable">Handoff specs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prototype Section -->
+    <section id="prototype">
+      <span class="section-tag">Interactive Prototype</span>
+      <h2 class="section-title">Try the experience</h2>
+      
+      <div class="media-box wide prototype-embed">
+        <div class="media-content">
+          <div class="media-icon">▶️</div>
+          <div class="media-tag">Figma Prototype</div>
+          <h4>Complete Patient Flow</h4>
+          <p>Add: Embedded Figma prototype showing the primary flow — Home → Care AI triage → Doctor list → Booking → Smart Intake → Summary preview → Share. Include video consult simulation with translation UI.</p>
+          <div class="media-specs">
+            <span>Embed: Figma prototype iframe</span>
+            <span>Interaction time: 2-3 minutes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-text">
+          <h4>Interested in this project?</h4>
+          <p>I'd love to walk through the research process, design decisions, and how I approached AI boundaries in healthcare.</p>
+        </div>
+        <div class="footer-cta">
+          <a href="../index.html" class="footer-btn">Back to Portfolio</a>
+          <a href="mailto:ajithalphonse300@gmail.com" class="footer-btn primary">Get in touch</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Side nav active state
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.side-nav-item');
+
+    const observerOptions = {
+      rootMargin: '-20% 0px -80% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(item => item.classList.remove('active'));
+          const activeItem = document.querySelector(`.side-nav-item[href="#${entry.target.id}"]`);
+          if (activeItem) activeItem.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Animate on scroll
+    const animateObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.problem-card, .insight-card, .pillar-block, .screen-card, .motion-card, .metric-card, .learning-card, .trust-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      animateObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
+

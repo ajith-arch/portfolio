@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codebell — Digital Ordering System | Ajith Alphonse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="codebell.css">
+</head>
+<body>
+  <!-- Floating Side Navigation -->
+  <aside class="side-nav" id="sideNav">
+    <div class="side-nav-inner">
+      <a href="#hero" class="side-nav-item active" data-section="hero">Overview</a>
+      <a href="#problem" class="side-nav-item" data-section="problem">Problem</a>
+      <a href="#research" class="side-nav-item" data-section="research">Research</a>
+      <a href="#strategy" class="side-nav-item" data-section="strategy">Strategy</a>
+      <a href="#customer-ux" class="side-nav-item" data-section="customer-ux">Customer UX</a>
+      <a href="#admin" class="side-nav-item" data-section="admin">Admin Dashboard</a>
+      <a href="#decisions" class="side-nav-item" data-section="decisions">Decisions</a>
+      <a href="#system" class="side-nav-item" data-section="system">System Design</a>
+      <a href="#impact" class="side-nav-item" data-section="impact">Impact</a>
+      <a href="#reflection" class="side-nav-item" data-section="reflection">Reflection</a>
+    </div>
+  </aside>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="inner">
+      <div class="nav-brand">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+      </div>
+      <div class="nav-links">
+        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#customer-ux" class="nav-link">Solution</a>
+        <a href="#contact" class="nav-link primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-eyebrow animate-in">
+        <span class="dot"></span>
+        <span>Case Study • Startup Product • Zero to One</span>
+      </div>
+      
+      <h1 class="animate-in delay-1">
+        Codebell — Building a<br>
+        <em>Digital Ordering System</em>
+      </h1>
+      
+      <p class="hero-subtitle animate-in delay-2">
+        Designing a zero-to-one mobile ordering experience and operational dashboard for independent restaurants to reduce manual order errors and improve checkout clarity.
+      </p>
+      
+      <div class="hero-meta animate-in delay-3">
+        <div class="meta-item">
+          <span class="label">Role</span>
+          <span class="value">Product Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Platform</span>
+          <span class="value">iOS + Web Admin</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Duration</span>
+          <span class="value">8 Weeks</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Scope</span>
+          <span class="value">Product Strategy, UX Research, UI Design</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual animate-in delay-4">
+        <div class="media-placeholder">
+          <div class="icon">📱</div>
+          <span class="tag">Hero Mockup</span>
+          <span class="title">Mobile App + Admin Dashboard</span>
+          <span class="desc">
+            Add: Side-by-side view of mobile ordering app and admin dashboard. Keep it clean and impactful.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <div class="overview-card">
+      <h3>Project Overview</h3>
+      <p>
+        Codebell is a startup focused on helping small restaurants digitize their ordering systems without the complexity of enterprise platforms. Independent restaurants often rely on fragmented systems — phone orders, paper menus, third-party apps with high commission fees, or manual reconciliation.
+      </p>
+      <p>
+        <strong>The goal:</strong> Design a lightweight, intuitive ordering system that works for both customers and restaurant staff — without overwhelming either side.
+      </p>
+    </div>
+
+    <!-- Problem Section -->
+    <section id="problem">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-title">Two critical challenges</h2>
+      <p class="section-desc">
+        Small restaurants face friction on both ends — customers struggle with confusing interfaces, while staff battle operational inefficiencies.
+      </p>
+
+      <div class="problem-split">
+        <!-- Customer Side -->
+        <div class="problem-column">
+          <div class="problem-header customer">
+            <span class="problem-icon">👤</span>
+            <h3>Customer-Side Friction</h3>
+          </div>
+          <ul class="problem-list">
+            <li>
+              <span class="bullet">✗</span>
+              <span>Overloaded menus with too many choices</span>
+            </li>
+            <li>
+              <span class="bullet">✗</span>
+              <span>Unclear customization steps</span>
+            </li>
+            <li>
+              <span class="bullet">✗</span>
+              <span>Confusing checkout flow</span>
+            </li>
+            <li>
+              <span class="bullet">✗</span>
+              <span>High hesitation before payment</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Operational Side -->
+        <div class="problem-column">
+          <div class="problem-header operational">
+            <span class="problem-icon">⚙️</span>
+            <h3>Operational Inefficiency</h3>
+          </div>
+          <ul class="problem-list">
+            <li>
+              <span class="bullet">✗</span>
+              <span>Manual order correction errors</span>
+            </li>
+            <li>
+              <span class="bullet">✗</span>
+              <span>Menu updates require technical support</span>
+            </li>
+            <li>
+              <span class="bullet">✗</span>
+              <span>Difficulty tracking order status</span>
+            </li>
+            <li>
+              <span class="bullet">✗</span>
+              <span>Errors spike during peak hours</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="insight-banner">
+        <span class="tag">Core Challenge</span>
+        <p>
+          <strong>The startup needed a system that felt simple enough for customers but powerful enough for restaurant operations.</strong>
+        </p>
+      </div>
+
+      <!-- Problem Visual -->
+      <div class="visual-placeholder">
+        <div class="icon">🔄</div>
+        <span class="tag">System Diagram</span>
+        <span class="title">Customer Journey → Kitchen → Admin Dashboard</span>
+        <span class="desc">Add: Simple flow diagram showing the order lifecycle from customer to kitchen to admin.</span>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+      <span class="section-label">Research</span>
+      <h2 class="section-title">Understanding the users</h2>
+      <p class="section-desc">
+        I conducted interviews and workflow discussions with restaurant owners, front-desk staff, and repeat customers to uncover real pain points.
+      </p>
+
+      <div class="research-participants">
+        <div class="participant">
+          <span class="participant-icon">🏪</span>
+          <span class="participant-label">Restaurant Owners</span>
+        </div>
+        <div class="participant">
+          <span class="participant-icon">👨‍💼</span>
+          <span class="participant-label">Front-Desk Staff</span>
+        </div>
+        <div class="participant">
+          <span class="participant-icon">🍽️</span>
+          <span class="participant-label">Repeat Customers</span>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Key Insights</h3>
+      
+      <div class="insights-grid">
+        <div class="insight-card">
+          <span class="insight-number">01</span>
+          <p><strong>Customers want fewer decisions per screen.</strong> Choice overload leads to abandonment.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">02</span>
+          <p><strong>Menu organization matters more than visual decoration.</strong> Clarity beats aesthetics.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">03</span>
+          <p><strong>Checkout confidence is tied to clarity of order summary.</strong> Transparent pricing reduces hesitation.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">04</span>
+          <p><strong>Restaurant staff prioritize speed over aesthetics.</strong> Efficiency is everything during rush hours.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">05</span>
+          <p><strong>Bulk actions are more important than detailed micro-editing.</strong> Time is the scarcest resource.</p>
+        </div>
+      </div>
+
+      <div class="insight-banner">
+        <span class="tag">Design Direction</span>
+        <p>
+          <strong>The product must balance clarity for customers and efficiency for staff.</strong> Neither side should feel overwhelmed.
+        </p>
+      </div>
+
+      <!-- Research Visual -->
+      <div class="visual-placeholder">
+        <div class="icon">📋</div>
+        <span class="tag">Research Artifact</span>
+        <span class="title">Affinity Mapping / Insight Board</span>
+        <span class="desc">Add: Snapshot of affinity mapping or simple insight board visualization from user research.</span>
+      </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="strategy">
+      <span class="section-label">Product Strategy</span>
+      <h2 class="section-title">Three strategic pillars</h2>
+      <p class="section-desc">
+        Instead of building a feature-heavy ordering app, I focused on three core pillars that align with startup constraints and real user needs.
+      </p>
+
+      <div class="strategy-pillars">
+        <div class="pillar-card">
+          <div class="pillar-number">1</div>
+          <h3>Reduce Cognitive Load</h3>
+          <p>Fewer visible options. Clear grouping. Predictable navigation. Every screen should have a single clear purpose.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-number">2</div>
+          <h3>Structured Customization</h3>
+          <p>Step-based flow that ensures required selections are completed before checkout. No missed options, no order errors.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-number">3</div>
+          <h3>Operational Simplicity</h3>
+          <p>Admin tools that reduce repetitive tasks and manual corrections. Built for speed under pressure.</p>
+        </div>
+      </div>
+
+      <div class="strategy-note">
+        <span class="note-icon">💡</span>
+        <p>The system had to feel <strong>lightweight, not enterprise-heavy.</strong> Simplicity was a feature, not a limitation.</p>
+      </div>
+    </section>
+
+    <!-- Customer Experience Section -->
+    <section id="customer-ux">
+      <span class="section-label">Customer Experience</span>
+      <h2 class="section-title">Designing the ordering flow</h2>
+      <p class="section-desc">
+        The customer-facing app was designed around three key moments: browsing, customizing, and checking out.
+      </p>
+
+      <!-- Menu Browsing -->
+      <div class="ux-block">
+        <div class="ux-header">
+          <span class="ux-number">01</span>
+          <h3>Menu Browsing</h3>
+        </div>
+        <p class="ux-desc">
+          Menus were structured into clean categories with strong visual separation. The focus was clarity over decoration.
+        </p>
+        
+        <div class="feature-tags">
+          <span class="feature-tag">Card-based layout</span>
+          <span class="feature-tag">Clear pricing visibility</span>
+          <span class="feature-tag">Prominent "Add to Cart"</span>
+          <span class="feature-tag">Reduced clutter</span>
+        </div>
+
+        <div class="screens-placeholder">
+          <div class="screen-slot">
+            <div class="icon">📱</div>
+            <span class="tag">Screen</span>
+            <span class="title">Menu Categories</span>
+            <span class="desc">Annotate: "Reduced visual noise"</span>
+          </div>
+          <div class="screen-slot">
+            <div class="icon">📱</div>
+            <span class="tag">Screen</span>
+            <span class="title">Item List View</span>
+            <span class="desc">Annotate: "Clear hierarchy"</span>
+          </div>
+          <div class="screen-slot">
+            <div class="icon">📱</div>
+            <span class="tag">Screen</span>
+            <span class="title">Item Detail</span>
+            <span class="desc">Annotate: "Category separation"</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customization Flow -->
+      <div class="ux-block">
+        <div class="ux-header">
+          <span class="ux-number">02</span>
+          <h3>Customization Flow</h3>
+        </div>
+        <p class="ux-desc">
+          Customization was redesigned as a guided step-based interaction. This eliminated missed selections and reduced checkout errors.
+        </p>
+        
+        <div class="feature-tags">
+          <span class="feature-tag">Required options labeled</span>
+          <span class="feature-tag">Optional add-ons separated</span>
+          <span class="feature-tag">Live price updates</span>
+          <span class="feature-tag">Progress visibility</span>
+        </div>
+
+        <div class="screens-placeholder two-col">
+          <div class="screen-slot">
+            <div class="icon">📱</div>
+            <span class="tag">Screen</span>
+            <span class="title">Required Selection</span>
+            <span class="desc">Step 1: Size, base options</span>
+          </div>
+          <div class="screen-slot">
+            <div class="icon">📱</div>
+            <span class="tag">Screen</span>
+            <span class="title">Live Total Update</span>
+            <span class="desc">Price updates in real-time</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Experience -->
+      <div class="ux-block">
+        <div class="ux-header">
+          <span class="ux-number">03</span>
+          <h3>Checkout Experience</h3>
+        </div>
+        <p class="ux-desc">
+          The checkout flow was designed to feel predictable and fast. The goal was to remove hesitation and confusion before payment.
+        </p>
+        
+        <div class="feature-tags">
+          <span class="feature-tag">Persistent order summary</span>
+          <span class="feature-tag">Editable cart items</span>
+          <span class="feature-tag">Transparent tax & total</span>
+          <span class="feature-tag">Single primary CTA</span>
+        </div>
+
+        <div class="screens-placeholder two-col">
+          <div class="screen-slot">
+            <div class="icon">📱</div>
+            <span class="tag">Screen</span>
+            <span class="title">Checkout Screen</span>
+            <span class="desc">Full order summary with edit options</span>
+          </div>
+          <div class="screen-slot">
+            <div class="icon">🎬</div>
+            <span class="tag">Micro-interaction</span>
+            <span class="title">Add to Cart Animation</span>
+            <span class="desc">Optional: GIF showing cart interaction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Dashboard Section -->
+    <section id="admin">
+      <span class="section-label">Admin Dashboard</span>
+      <h2 class="section-title">Empowering restaurant operations</h2>
+      <p class="section-desc">
+        The admin side was equally important. Instead of building a complex enterprise dashboard, I focused on what restaurants actually need under time pressure.
+      </p>
+
+      <div class="admin-needs">
+        <div class="need-item">
+          <span class="need-icon">📊</span>
+          <span>Real-time order visibility</span>
+        </div>
+        <div class="need-item">
+          <span class="need-icon">🔄</span>
+          <span>Status management</span>
+        </div>
+        <div class="need-item">
+          <span class="need-icon">📝</span>
+          <span>Bulk menu editing</span>
+        </div>
+        <div class="need-item">
+          <span class="need-icon">📋</span>
+          <span>Order modification tracking</span>
+        </div>
+      </div>
+
+      <div class="admin-principles">
+        <h3>Design Principles</h3>
+        <div class="principles-grid">
+          <div class="principle">
+            <span class="check">✓</span>
+            <span>Clean table layout</span>
+          </div>
+          <div class="principle">
+            <span class="check">✓</span>
+            <span>Simple status updates</span>
+          </div>
+          <div class="principle">
+            <span class="check">✓</span>
+            <span>Minimal training required</span>
+          </div>
+          <div class="principle">
+            <span class="check">✓</span>
+            <span>Clear order breakdown</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="screens-placeholder three-col">
+        <div class="screen-slot dashboard">
+          <div class="icon">💻</div>
+          <span class="tag">Dashboard</span>
+          <span class="title">Order Overview</span>
+          <span class="desc">Caption: "Reduced manual correction effort"</span>
+        </div>
+        <div class="screen-slot dashboard">
+          <div class="icon">💻</div>
+          <span class="tag">Dashboard</span>
+          <span class="title">Order Detail View</span>
+          <span class="desc">Caption: "Improved order tracking clarity"</span>
+        </div>
+        <div class="screen-slot dashboard">
+          <div class="icon">💻</div>
+          <span class="tag">Dashboard</span>
+          <span class="title">Menu Editor</span>
+          <span class="desc">Caption: "Bulk editing capabilities"</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Decisions Section -->
+    <section id="decisions">
+      <span class="section-label">Key Decisions</span>
+      <h2 class="section-title">Product decisions that shaped the outcome</h2>
+      <p class="section-desc">
+        These decisions ensured the product aligned with startup constraints and real-world restaurant operations.
+      </p>
+
+      <div class="decisions-grid">
+        <div class="decision-card">
+          <div class="decision-number">01</div>
+          <h4>Fewer Items Per Screen</h4>
+          <p>To reduce overwhelm and increase decision confidence. Every screen has a clear purpose.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">02</div>
+          <h4>Step-Based Customization</h4>
+          <p>To prevent missed required selections and reduce order errors at checkout.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">03</div>
+          <h4>Bulk Admin Controls</h4>
+          <p>Because restaurants operate under time pressure. Speed over micro-editing.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">04</div>
+          <h4>Minimal Visual Decoration</h4>
+          <p>To prioritize usability over aesthetic noise. Clarity is the feature.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Design Section -->
+    <section id="system">
+      <span class="section-label">System Thinking</span>
+      <h2 class="section-title">Designing the ecosystem</h2>
+      <p class="section-desc">
+        The platform connects customer orders to kitchen workflow through a reliable, transparent system.
+      </p>
+
+      <div class="system-flow">
+        <div class="flow-step">
+          <span class="flow-icon">👤</span>
+          <span class="flow-label">Customer</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <span class="flow-icon">⚡</span>
+          <span class="flow-label">Order Engine</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <span class="flow-icon">💻</span>
+          <span class="flow-label">Admin Dashboard</span>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <span class="flow-icon">👨‍🍳</span>
+          <span class="flow-label">Kitchen</span>
+        </div>
+      </div>
+
+      <div class="system-guarantees">
+        <h3>System Guarantees</h3>
+        <div class="guarantees-list">
+          <div class="guarantee">
+            <span class="check">✓</span>
+            <span>Orders are structured before reaching staff</span>
+          </div>
+          <div class="guarantee">
+            <span class="check">✓</span>
+            <span>Customizations are clearly logged</span>
+          </div>
+          <div class="guarantee">
+            <span class="check">✓</span>
+            <span>Status updates reflect instantly</span>
+          </div>
+          <div class="guarantee">
+            <span class="check">✓</span>
+            <span>Menu edits propagate without disruption</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-placeholder">
+        <div class="icon">📊</div>
+        <span class="tag">Architecture Diagram</span>
+        <span class="title">System Architecture Flow</span>
+        <span class="desc">Add: Simple system architecture diagram showing data flow between components.</span>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact">
+      <span class="section-label">Projected Impact</span>
+      <h2 class="section-title">Expected outcomes</h2>
+      <p class="section-desc">
+        If implemented across multiple restaurants, the system would deliver measurable improvements.
+      </p>
+
+      <div class="impact-grid">
+        <div class="impact-card">
+          <span class="impact-icon">⬇️</span>
+          <h4>Reduced Checkout Hesitation</h4>
+          <p>Clear pricing and order summary increase payment confidence</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-icon">📞</span>
+          <h4>Fewer Modification Calls</h4>
+          <p>Structured customization prevents order errors upfront</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-icon">⏱️</span>
+          <h4>Reduced Training Time</h4>
+          <p>Intuitive admin interface requires minimal onboarding</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-icon">🚀</span>
+          <h4>Faster Peak Processing</h4>
+          <p>Bulk actions and clear status improve rush hour efficiency</p>
+        </div>
+      </div>
+
+      <div class="insight-banner">
+        <span class="tag">Value Proposition</span>
+        <p>
+          <strong>By simplifying decision-making for customers and operations for staff, Codebell positions itself as a practical digital solution for small restaurants.</strong>
+        </p>
+      </div>
+
+      <div class="future-section">
+        <h3>What I'd Test Next</h3>
+        <div class="future-grid">
+          <div class="future-item">
+            <span class="future-icon">🔬</span>
+            <span>A/B testing simplified vs expanded menu layout</span>
+          </div>
+          <div class="future-item">
+            <span class="future-icon">🤖</span>
+            <span>AI-based upsell suggestions</span>
+          </div>
+          <div class="future-item">
+            <span class="future-icon">📍</span>
+            <span>Real-time kitchen status visibility</span>
+          </div>
+          <div class="future-item">
+            <span class="future-icon">⏰</span>
+            <span>Order preparation time estimation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section id="reflection">
+      <span class="section-label">Reflection</span>
+      <h2 class="section-title">What I learned</h2>
+      <p class="section-desc">
+        This project strengthened my ability to design zero-to-one products under real startup constraints.
+      </p>
+
+      <div class="learnings-grid">
+        <div class="learning-card">
+          <span class="learning-number">01</span>
+          <h4>Zero-to-One Product Design</h4>
+          <p>Building from scratch requires different thinking than redesigning existing products.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-number">02</span>
+          <h4>Balancing Clarity & Efficiency</h4>
+          <p>Customer simplicity and operational power must coexist in the same system.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-number">03</span>
+          <h4>System Design Thinking</h4>
+          <p>Good product design extends beyond screens into how components connect.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-number">04</span>
+          <h4>Constraints Drive Innovation</h4>
+          <p>Startup limitations forced focused, intentional design decisions.</p>
+        </div>
+      </div>
+
+      <div class="final-insight">
+        <blockquote>
+          "Good product design is not about adding features — it's about removing friction."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-text">
+          <h4>Want to discuss this project?</h4>
+          <p>I'd love to walk through the product decisions and system thinking behind Codebell.</p>
+        </div>
+        <div class="footer-cta">
+          <a href="#" class="footer-btn">Download PDF</a>
+          <a href="mailto:ajithalphonse300@gmail.com" class="footer-btn primary">Get in touch</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Side navigation active state
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.side-nav-item');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-section') === id) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Animate on scroll
+    const animateObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.problem-column, .insight-card, .pillar-card, .decision-card, .learning-card, .impact-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      animateObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oracle NetSuite PDP Optimization | Ajith Alphonse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="netsuite.css">
+</head>
+<body>
+  <!-- Floating Side Navigation -->
+  <aside class="side-nav" id="sideNav">
+    <div class="side-nav-inner">
+      <a href="#hero" class="side-nav-item active" data-section="hero">Overview</a>
+      <a href="#context" class="side-nav-item" data-section="context">Context</a>
+      <a href="#problem" class="side-nav-item" data-section="problem">Problem</a>
+      <a href="#research" class="side-nav-item" data-section="research">Research</a>
+      <a href="#opportunity" class="side-nav-item" data-section="opportunity">Opportunity</a>
+      <a href="#solution" class="side-nav-item" data-section="solution">Solution</a>
+      <a href="#features" class="side-nav-item" data-section="features">Features</a>
+      <a href="#comparison" class="side-nav-item" data-section="comparison">Before/After</a>
+      <a href="#impact" class="side-nav-item" data-section="impact">Impact</a>
+      <a href="#feasibility" class="side-nav-item" data-section="feasibility">Feasibility</a>
+      <a href="#reflection" class="side-nav-item" data-section="reflection">Reflection</a>
+    </div>
+  </aside>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="inner">
+      <div class="nav-brand">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+      </div>
+      <div class="nav-links">
+        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#solution" class="nav-link">Solution</a>
+        <a href="#contact" class="nav-link primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-badge animate-in">
+        <span class="badge-icon">🔍</span>
+        <span>Self-Initiated Project • Enterprise UX • Workflow Optimization</span>
+      </div>
+      
+      <h1 class="animate-in delay-1">
+        AI-Assisted PDP Workflow Redesign<br>
+        <em>for Enterprise E-commerce</em>
+      </h1>
+      
+      <p class="hero-subtitle animate-in delay-2">
+        While working at the University of Utah Campus Store, I observed daily friction in the Oracle NetSuite PDP workflow. As a self-initiated UX project, I conducted stakeholder interviews with NetSuite admins, developers, PDP content creators, and content uploaders to identify pain points and propose design solutions that could reduce manual effort and improve content quality.
+      </p>
+
+      <div class="hero-client-info animate-in delay-2">
+        <div class="client-badge">
+          <span class="client-label">Organization</span>
+          <span class="client-value">University of Utah Campus Store</span>
+        </div>
+        <div class="client-badge">
+          <span class="client-label">Platform</span>
+          <span class="client-value">Oracle NetSuite ERP</span>
+        </div>
+        <div class="client-badge">
+          <span class="client-label">Project Type</span>
+          <span class="client-value">Self-Initiated UX Research</span>
+        </div>
+      </div>
+      
+      <div class="hero-meta animate-in delay-3">
+        <div class="meta-card">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UX Designer (Self-Initiated)</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Duration</span>
+          <span class="meta-value">12 Weeks</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Stakeholders</span>
+          <span class="meta-value">NetSuite Admin, Developers, Content Creators</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Methods</span>
+          <span class="meta-value">Interviews, Workflow Analysis, Prototyping</span>
+        </div>
+      </div>
+
+      <div class="hero-visual animate-in delay-4">
+        <div class="media-placeholder">
+          <div class="icon">💻</div>
+          <span class="tag">Hero Mockup</span>
+          <span class="title">Guided Product Builder</span>
+          <span class="desc">Add: High-fidelity mockup of redesigned Guided Builder screen with subtle fade-in animation.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context Section -->
+    <section id="context">
+      <span class="section-label">Context</span>
+      <h2 class="section-title">About the environment</h2>
+      
+      <div class="context-content">
+        <div class="context-text">
+          <p>
+            The <strong>University of Utah Campus Store</strong> manages product listings through Oracle NetSuite's PDP system. Each SKU requires manual input across multiple tabs, including content, media, pricing, and web configuration.
+          </p>
+          <p>
+            The merchandising team, admins, and developers all interact with this system daily to maintain revenue-generating product listings for the university's e-commerce platform.
+          </p>
+        </div>
+
+        <div class="context-details">
+          <div class="context-item">
+            <span class="context-label">Organization</span>
+            <span class="context-value">University of Utah Campus Store</span>
+          </div>
+          <div class="context-item">
+            <span class="context-label">Platform</span>
+            <span class="context-value">Oracle NetSuite (ERP + E-commerce)</span>
+          </div>
+          <div class="context-item">
+            <span class="context-label">Users</span>
+            <span class="context-value">Merchandising team, Admins, Developers</span>
+          </div>
+          <div class="context-item">
+            <span class="context-label">Business Relevance</span>
+            <span class="context-value">Revenue-generating product listings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="system-diagram">
+        <div class="diagram-flow">
+          <div class="diagram-node">
+            <span class="node-icon">👤</span>
+            <span class="node-label">User</span>
+          </div>
+          <span class="diagram-arrow">→</span>
+          <div class="diagram-node active">
+            <span class="node-icon">⚙️</span>
+            <span class="node-label">NetSuite</span>
+          </div>
+          <span class="diagram-arrow">→</span>
+          <div class="diagram-node">
+            <span class="node-icon">🌐</span>
+            <span class="node-label">Web Store</span>
+          </div>
+          <span class="diagram-arrow">→</span>
+          <div class="diagram-node">
+            <span class="node-icon">🛒</span>
+            <span class="node-label">Customer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-title">A system built for data, not users</h2>
+      
+      <div class="problem-split">
+        <div class="problem-visual">
+          <div class="screenshot-placeholder">
+            <div class="icon">🖼️</div>
+            <span class="tag">Screenshot</span>
+            <span class="title">Current NetSuite PDP Interface</span>
+            <span class="desc">Add: Annotated screenshot of current interface with red highlight boxes showing friction areas. Blur sensitive data.</span>
+          </div>
+        </div>
+
+        <div class="problem-callouts">
+          <h3>Identified Friction Points</h3>
+          <div class="callout-list">
+            <div class="callout-item">
+              <span class="callout-icon">📑</span>
+              <div class="callout-content">
+                <strong>6+ tab navigation per listing</strong>
+                <p>Users must context-switch across disconnected interface sections</p>
+              </div>
+            </div>
+            <div class="callout-item">
+              <span class="callout-icon">⏱️</span>
+              <div class="callout-content">
+                <strong>30–40 minutes per SKU</strong>
+                <p>Excessive time spent on repetitive manual data entry</p>
+              </div>
+            </div>
+            <div class="callout-item">
+              <span class="callout-icon">👁️</span>
+              <div class="callout-content">
+                <strong>No real-time preview</strong>
+                <p>Users publish blind without seeing the final customer view</p>
+              </div>
+            </div>
+            <div class="callout-item">
+              <span class="callout-icon">✍️</span>
+              <div class="callout-content">
+                <strong>Manual description writing</strong>
+                <p>Time-consuming content creation with no assistance</p>
+              </div>
+            </div>
+            <div class="callout-item">
+              <span class="callout-icon">📷</span>
+              <div class="callout-content">
+                <strong>Inconsistent image standards</strong>
+                <p>No visual guidance for media quality or format</p>
+              </div>
+            </div>
+            <div class="callout-item">
+              <span class="callout-icon">❌</span>
+              <div class="callout-content">
+                <strong>No quality validation</strong>
+                <p>Incomplete listings reach production without warning</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-statement">
+        <blockquote>
+          "The system optimizes for database structure, not user cognition."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+      <span class="section-label">Research & Validation</span>
+      <h2 class="section-title">Understanding the workflow</h2>
+      
+      <div class="research-methods">
+        <h3>Research Methods</h3>
+        <div class="methods-grid">
+          <div class="method-item">
+            <span class="method-icon">👀</span>
+            <span class="method-label">Workflow Observation</span>
+          </div>
+          <div class="method-item">
+            <span class="method-icon">🎙️</span>
+            <span class="method-label">Stakeholder Interviews</span>
+          </div>
+          <div class="method-item">
+            <span class="method-icon">📊</span>
+            <span class="method-label">Competitive Benchmarking</span>
+          </div>
+        </div>
+        <p class="methods-note">Interviews conducted with admins, developers, and merchandising team members.</p>
+      </div>
+
+      <h3 class="subsection-title">Key Insights</h3>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <span class="insight-number">01</span>
+          <h4>Publishing Anxiety</h4>
+          <p>Team members experience stress due to missing preview functionality before publishing live.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">02</span>
+          <h4>Platform Frustration</h4>
+          <p>Repeated internal discussions about migrating to Shopify due to workflow friction.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">03</span>
+          <h4>Cognitive Overload</h4>
+          <p>High mental load from constant tab switching and context changes.</p>
+        </div>
+        <div class="insight-card">
+          <span class="insight-number">04</span>
+          <h4>Content Inconsistency</h4>
+          <p>No standards enforcement leads to variable quality across SKUs.</p>
+        </div>
+      </div>
+
+      <div class="visual-placeholder">
+        <div class="icon">📋</div>
+        <span class="tag">Research Artifact</span>
+        <span class="title">Insight Cards / Affinity Map</span>
+        <span class="desc">Add: Simple 3-column insight cards visualization from research synthesis.</span>
+      </div>
+    </section>
+
+    <!-- Opportunity Section -->
+    <section id="opportunity">
+      <span class="section-label">The Opportunity</span>
+      
+      <div class="opportunity-statement">
+        <h2>
+          How might we reduce PDP publishing time while improving content consistency and conversion readiness within enterprise constraints?
+        </h2>
+      </div>
+    </section>
+
+    <!-- Solution Overview Section -->
+    <section id="solution">
+      <span class="section-label">Solution Overview</span>
+      <h2 class="section-title">AI-Assisted Product Publishing Studio</h2>
+      <p class="section-desc">
+        A redesigned workflow that transforms the tab-heavy interface into an intelligent, guided publishing experience.
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">📋</div>
+          <h3>Guided Workflow</h3>
+          <p>Step-based flow replacing fragmented tab navigation</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🤖</div>
+          <h3>AI Content Generator</h3>
+          <p>Intelligent content assistance for descriptions and SEO</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🖼️</div>
+          <h3>Smart Image Studio</h3>
+          <p>Visual-first media management with enhancement tools</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">📊</div>
+          <h3>PDP Quality Score</h3>
+          <p>Dynamic validation ensuring listing completeness</p>
+        </div>
+      </div>
+
+      <div class="visual-placeholder">
+        <div class="icon">🔄</div>
+        <span class="tag">Architecture Diagram</span>
+        <span class="title">4 Pillars System Overview</span>
+        <span class="desc">Add: Clean diagram showing the 4 pillars connected around the workflow. Optional subtle connecting line animation.</span>
+      </div>
+    </section>
+
+    <!-- Feature Deep Dive Section -->
+    <section id="features">
+      <span class="section-label">Feature Deep Dive</span>
+      <h2 class="section-title">Design solutions in detail</h2>
+      <p class="section-desc">
+        Each feature was designed to address specific friction points discovered during research.
+      </p>
+
+      <!-- Feature 1: Guided Product Builder -->
+      <div class="feature-block">
+        <div class="feature-header">
+          <span class="feature-number">01</span>
+          <h3>Guided Product Builder</h3>
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-text">
+            <p>
+              Converted tab-based navigation into a structured step flow. Users progress through a clear sequence, reducing cognitive load and preventing missed fields.
+            </p>
+            
+            <div class="steps-visual">
+              <div class="step">
+                <span class="step-num">1</span>
+                <span class="step-label">Basics</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step">
+                <span class="step-num">2</span>
+                <span class="step-label">Media</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step">
+                <span class="step-num">3</span>
+                <span class="step-label">Content</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step">
+                <span class="step-num">4</span>
+                <span class="step-label">Pricing</span>
+              </div>
+              <div class="step-connector"></div>
+              <div class="step active">
+                <span class="step-num">5</span>
+                <span class="step-label">Preview</span>
+              </div>
+            </div>
+
+            <div class="feature-benefits">
+              <span class="benefit">✓ Clear progression</span>
+              <span class="benefit">✓ Reduced tab switching</span>
+              <span class="benefit">✓ No missed fields</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual">
+          <div class="screen-placeholder">
+            <div class="icon">💻</div>
+            <span class="tag">Full Mockup</span>
+            <span class="title">Guided Builder Screen</span>
+            <span class="desc">Add: Full mockup showing step progress. Optional: Progress bar animation sliding between steps.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: AI Content Generator -->
+      <div class="feature-block">
+        <div class="feature-header">
+          <span class="feature-number">02</span>
+          <h3>AI Content Generator</h3>
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-text">
+            <p>
+              Integrated AI panel that generates product content with a single click. The AI is assistive—users maintain full control over edits and final approval.
+            </p>
+            
+            <div class="ai-capabilities">
+              <div class="ai-cap">
+                <span class="cap-icon">📝</span>
+                <span class="cap-label">Short Description</span>
+              </div>
+              <div class="ai-cap">
+                <span class="cap-icon">📄</span>
+                <span class="cap-label">Long Description</span>
+              </div>
+              <div class="ai-cap">
+                <span class="cap-icon">•</span>
+                <span class="cap-label">Bullet Highlights</span>
+              </div>
+              <div class="ai-cap">
+                <span class="cap-icon">🔍</span>
+                <span class="cap-label">SEO Metadata</span>
+              </div>
+            </div>
+
+            <div class="feature-benefits">
+              <span class="benefit">✓ Assistive, not autonomous</span>
+              <span class="benefit">✓ User-controlled editing</span>
+              <span class="benefit">✓ Consistent tone</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual">
+          <div class="screen-placeholder">
+            <div class="icon">🤖</div>
+            <span class="tag">AI Panel</span>
+            <span class="title">Content Generator Interface</span>
+            <span class="desc">Add: AI panel open with generated content. Optional: Simulated "Generate" loading state animation.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Smart Image Studio -->
+      <div class="feature-block">
+        <div class="feature-header">
+          <span class="feature-number">03</span>
+          <h3>Smart Image Studio</h3>
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-text">
+            <p>
+              Visual-first media management replacing traditional file lists. Users can see, organize, and enhance images without leaving the publishing flow.
+            </p>
+            
+            <div class="studio-features">
+              <span class="studio-feat">Drag-and-drop upload</span>
+              <span class="studio-feat">Background removal</span>
+              <span class="studio-feat">Auto-enhance</span>
+              <span class="studio-feat">Reorder images</span>
+              <span class="studio-feat">Desktop/mobile preview</span>
+            </div>
+
+            <div class="feature-benefits">
+              <span class="benefit">✓ Visual organization</span>
+              <span class="benefit">✓ Built-in editing</span>
+              <span class="benefit">✓ Device preview</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual">
+          <div class="screen-placeholder">
+            <div class="icon">🖼️</div>
+            <span class="tag">Image Studio</span>
+            <span class="title">Media Gallery Grid</span>
+            <span class="desc">Add: Image gallery grid UI mockup. Optional: Drag interaction preview animation.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: Template Selector + Live Preview -->
+      <div class="feature-block">
+        <div class="feature-header">
+          <span class="feature-number">04</span>
+          <h3>Template Selector + Live Preview</h3>
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-text">
+            <p>
+              Layout templates improve visual consistency across the catalog. Users select a template and see a real-time preview of how the PDP will appear to customers.
+            </p>
+            
+            <div class="template-options">
+              <div class="template-opt">
+                <span class="template-icon">📐</span>
+                <span class="template-label">Classic</span>
+              </div>
+              <div class="template-opt">
+                <span class="template-icon">🎨</span>
+                <span class="template-label">Visual-first</span>
+              </div>
+              <div class="template-opt">
+                <span class="template-icon">📦</span>
+                <span class="template-label">Bundle-ready</span>
+              </div>
+            </div>
+
+            <div class="feature-benefits">
+              <span class="benefit">✓ Visual consistency</span>
+              <span class="benefit">✓ No more blind publishing</span>
+              <span class="benefit">✓ Reduced errors</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual">
+          <div class="screen-placeholder split">
+            <div class="icon">🔀</div>
+            <span class="tag">Split View</span>
+            <span class="title">Template Selector + PDP Preview</span>
+            <span class="desc">Add: Split screen showing template selector and live PDP preview side by side.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 5: PDP Quality Score -->
+      <div class="feature-block">
+        <div class="feature-header">
+          <span class="feature-number">05</span>
+          <h3>PDP Quality Score</h3>
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-text">
+            <p>
+              Dynamic scoring system that encourages complete, high-quality listings. The score updates in real-time as users fill in fields, gamifying the publishing process.
+            </p>
+            
+            <div class="score-preview">
+              <div class="score-circle">
+                <span class="score-value">85</span>
+                <span class="score-label">Quality Score</span>
+              </div>
+              <div class="score-checklist">
+                <div class="check-item done">✓ Title optimized</div>
+                <div class="check-item done">✓ Description complete</div>
+                <div class="check-item done">✓ 4+ images added</div>
+                <div class="check-item pending">○ SEO metadata</div>
+                <div class="check-item pending">○ Mobile preview checked</div>
+              </div>
+            </div>
+
+            <div class="feature-benefits">
+              <span class="benefit">✓ Quality enforcement</span>
+              <span class="benefit">✓ Clear guidance</span>
+              <span class="benefit">✓ Gamified completion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-visual">
+          <div class="screen-placeholder">
+            <div class="icon">📊</div>
+            <span class="tag">Sidebar Panel</span>
+            <span class="title">Quality Score Breakdown</span>
+            <span class="desc">Add: Sidebar panel showing score breakdown with checklist items and completion percentage.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before vs After Section -->
+    <section id="comparison">
+      <span class="section-label">Before vs After</span>
+      <h2 class="section-title">The transformation</h2>
+      
+      <div class="comparison-split">
+        <div class="comparison-side before">
+          <h3>Before</h3>
+          <div class="comparison-visual">
+            <div class="icon">🖼️</div>
+            <span class="tag">Screenshot</span>
+            <span class="title">Old System Interface</span>
+          </div>
+          <ul class="comparison-list">
+            <li>30–40 min publish time</li>
+            <li>No preview capability</li>
+            <li>Manual content writing</li>
+            <li>Tab-based fragmentation</li>
+            <li>No quality validation</li>
+          </ul>
+        </div>
+
+        <div class="comparison-divider">
+          <span class="divider-icon">→</span>
+        </div>
+
+        <div class="comparison-side after">
+          <h3>After</h3>
+          <div class="comparison-visual">
+            <div class="icon">💻</div>
+            <span class="tag">Mockup</span>
+            <span class="title">Redesigned System</span>
+          </div>
+          <ul class="comparison-list">
+            <li>Structured guided flow</li>
+            <li>AI-assisted content</li>
+            <li>Live preview before publish</li>
+            <li>Smart image management</li>
+            <li>Quality score validation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="comparison-impact">
+        <div class="impact-stat">
+          <span class="stat-value">~40%</span>
+          <span class="stat-label">Estimated faster publishing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section id="impact">
+      <span class="section-label">Business Impact</span>
+      <h2 class="section-title">Projected outcomes</h2>
+      
+      <div class="impact-grid">
+        <div class="impact-card large">
+          <span class="impact-value">40%</span>
+          <span class="impact-label">Faster publishing time</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-value">25%</span>
+          <span class="impact-label">Improved content consistency</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-value">↓</span>
+          <span class="impact-label">Reduced publishing errors</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-value">↑</span>
+          <span class="impact-label">Improved mobile visual clarity</span>
+        </div>
+      </div>
+
+      <p class="impact-note">
+        * Projected impact based on workflow analysis and stakeholder feedback.
+      </p>
+    </section>
+
+    <!-- Feasibility Section -->
+    <section id="feasibility">
+      <span class="section-label">Feasibility & Constraints</span>
+      <h2 class="section-title">Working within enterprise reality</h2>
+      <p class="section-desc">
+        Designing for enterprise means respecting existing architecture while delivering meaningful improvements.
+      </p>
+
+      <div class="feasibility-grid">
+        <div class="feasibility-item">
+          <span class="feas-icon">🔌</span>
+          <h4>Overlay Integration Model</h4>
+          <p>Solution operates as a layer on top of existing NetSuite, not a replacement.</p>
+        </div>
+        <div class="feasibility-item">
+          <span class="feas-icon">🔗</span>
+          <h4>API-Based AI Integration</h4>
+          <p>AI features connect via API, keeping core ERP data separate and secure.</p>
+        </div>
+        <div class="feasibility-item">
+          <span class="feas-icon">🔐</span>
+          <h4>Role-Based Permissions</h4>
+          <p>Existing permission structures maintained for compliance and security.</p>
+        </div>
+        <div class="feasibility-item">
+          <span class="feas-icon">🏗️</span>
+          <h4>Non-Disruptive Architecture</h4>
+          <p>No changes to core ERP data architecture or existing workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section id="reflection">
+      <span class="section-label">Reflection</span>
+      <h2 class="section-title">What I learned</h2>
+      
+      <div class="reflection-content">
+        <blockquote>
+          "This project shifted my focus from visual redesign to workflow optimization within enterprise systems. I learned that reducing cognitive friction can have greater business impact than visual refresh alone."
+        </blockquote>
+      </div>
+
+      <div class="learnings-grid">
+        <div class="learning-card">
+          <span class="learning-num">01</span>
+          <h4>Enterprise Constraints</h4>
+          <p>Working within existing systems requires creative solutions that respect technical boundaries.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-num">02</span>
+          <h4>Workflow Over Visuals</h4>
+          <p>The biggest impact came from restructuring the flow, not redesigning the interface.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-num">03</span>
+          <h4>AI as Assistant</h4>
+          <p>AI should augment human decision-making, not replace it. User control is essential.</p>
+        </div>
+        <div class="learning-card">
+          <span class="learning-num">04</span>
+          <h4>Business Awareness</h4>
+          <p>Understanding revenue impact and stakeholder priorities shapes design decisions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-text">
+          <h4>Want to discuss this project?</h4>
+          <p>I'd love to walk through the enterprise constraints and AI integration strategy.</p>
+        </div>
+        <div class="footer-cta">
+          <a href="#" class="footer-btn">Download PDF</a>
+          <a href="mailto:ajithalphonse300@gmail.com" class="footer-btn primary">Get in touch</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Side navigation active state
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.side-nav-item');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-section') === id) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Animate on scroll
+    const animateObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.insight-card, .pillar-card, .feature-block, .learning-card, .feasibility-item, .impact-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      animateObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
+

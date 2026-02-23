@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VYN — Campus Delivery Reimagined | Ajith Alphonse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vyn.css">
+</head>
+<body>
+  <!-- Floating Side Navigation -->
+  <aside class="side-nav" id="sideNav">
+    <div class="side-nav-inner">
+      <a href="#hero" class="side-nav-item active" data-section="hero">Overview</a>
+      <a href="#context" class="side-nav-item" data-section="context">Context</a>
+      <a href="#problem" class="side-nav-item" data-section="problem">Problem</a>
+      <a href="#research" class="side-nav-item" data-section="research">Research</a>
+      <a href="#challenge" class="side-nav-item" data-section="challenge">Challenge</a>
+      <a href="#evolution" class="side-nav-item" data-section="evolution">Evolution</a>
+      <a href="#solution" class="side-nav-item" data-section="solution">Solution</a>
+      <a href="#ai-enhancement" class="side-nav-item" data-section="ai-enhancement">Map & AI</a>
+      <a href="#screens" class="side-nav-item" data-section="screens">Screens</a>
+      <a href="#decisions" class="side-nav-item" data-section="decisions">Decisions</a>
+      <a href="#learnings" class="side-nav-item" data-section="learnings">Learnings</a>
+    </div>
+  </aside>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="inner">
+      <div class="nav-brand">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+      </div>
+      <div class="nav-links">
+        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#solution" class="nav-link">Solution</a>
+        <a href="#contact" class="nav-link primary">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-eyebrow animate-in">
+        <span class="dot"></span>
+        <span>Case Study • Product Design</span>
+      </div>
+      
+      <h1 class="animate-in delay-1">
+        VYN — <em>Rethinking</em><br>
+        Campus Delivery
+      </h1>
+      
+      <p class="hero-subtitle animate-in delay-2">
+        How I solved the multi-receiver acceptance problem in autonomous delivery by pivoting to department-based pre-approval—eliminating robot wait times and delivery friction.
+      </p>
+      
+      <div class="hero-meta animate-in delay-3">
+        <div class="meta-item">
+          <span class="label">Role</span>
+          <span class="value">Product Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Platform</span>
+          <span class="value">iOS Mobile</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Duration</span>
+          <span class="value">8 Weeks</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Focus</span>
+          <span class="value">AI Product Design, UX Research, UI Design</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual animate-in delay-4">
+        <img src="../assets/vyn-tumbnail.avif" alt="VYN Campus Delivery Map" class="hero-image">
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="quick-stats">
+      <div class="quick-stat">
+        <div class="value">1,500</div>
+        <div class="label">Acres of Campus</div>
+      </div>
+      <div class="quick-stat">
+        <div class="value">0</div>
+        <div class="label">Wait Time with Pre-Approval</div>
+      </div>
+      <div class="quick-stat">
+        <div class="value">5-15</div>
+        <div class="label">Minute Delivery</div>
+      </div>
+      <div class="quick-stat">
+        <div class="value">4</div>
+        <div class="label">Taps to Send</div>
+      </div>
+    </div>
+
+    <!-- Context -->
+    <section id="context">
+      <span class="section-label">Context</span>
+      <h2 class="section-title">Why campus delivery is different</h2>
+      <p class="section-desc">
+        University campuses are closed ecosystems with verified users, predictable routes, and institutional departments that operate on fixed schedules.
+      </p>
+
+      <div class="context-card">
+        <div class="context-stats">
+          <div class="stat">
+            <div class="stat-value">~30K</div>
+            <div class="stat-label">Students on a large campus</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">200+</div>
+            <div class="stat-label">Buildings to navigate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">15min</div>
+            <div class="stat-label">Average class break</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Verified users (UID)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem: General -->
+    <section id="problem">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-title">Small tasks, big detours</h2>
+      <p class="section-desc">
+        On sprawling campuses, even simple item transfers become 40-minute commitments. Students skip returning library books, delay lab equipment exchanges, and miss department submissions—not from negligence, but from logistics friction.
+      </p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">⏰</div>
+          <h4>Time Scarcity</h4>
+          <p>10-minute breaks between classes can't absorb 20-minute walks. Students choose between punctuality and completing tasks.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🔒</div>
+          <h4>Trust Barriers</h4>
+          <p>External delivery services don't understand campus verification. Students won't leave valuables with unknown couriers.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">📍</div>
+          <h4>Location Complexity</h4>
+          <p>Building names, room numbers, and department codes create confusion. "Meet me at the library" has 6 possible interpretations.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🤝</div>
+          <h4>Coordination Overhead</h4>
+          <p>Sender and receiver must align schedules for handoff. Asynchronous delivery eliminates this friction entirely.</p>
+        </div>
+      </div>
+
+      <div class="insight-banner">
+        <span class="tag">Key Insight</span>
+        <p>
+          <strong>The problem isn't distance—it's coordination.</strong> A 10-minute walk becomes a 40-minute task when you factor in finding the person, waiting for them, and returning.
+        </p>
+      </div>
+    </section>
+
+    <!-- User Journey -->
+    <section id="research">
+      <span class="section-label">Research</span>
+      <h2 class="section-title">Understanding the friction points</h2>
+      <p class="section-desc">
+        I mapped the current journey of sending an item across campus to identify where frustration peaks.
+      </p>
+
+      <div class="journey-container">
+        <div class="journey-header">
+          <h3>Current State: Sending a library book back</h3>
+          <div class="journey-legend">
+            <span><span class="dot pain"></span> Pain point</span>
+            <span><span class="dot gain"></span> Opportunity</span>
+          </div>
+        </div>
+
+        <div class="journey-steps">
+          <div class="journey-step">
+            <span class="num">01</span>
+            <h5>Remember the task</h5>
+            <span class="pain">Easy to forget</span>
+          </div>
+          <div class="journey-step">
+            <span class="num">02</span>
+            <h5>Check schedule</h5>
+            <span class="pain">No free windows</span>
+          </div>
+          <div class="journey-step">
+            <span class="num">03</span>
+            <h5>Walk to library</h5>
+            <span class="pain">20+ min detour</span>
+          </div>
+          <div class="journey-step">
+            <span class="num">04</span>
+            <h5>Find drop desk</h5>
+            <span class="pain">Multiple floors</span>
+          </div>
+          <div class="journey-step">
+            <span class="num">05</span>
+            <h5>Return & continue</h5>
+            <span class="pain">Running late</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-banner">
+        <span class="tag">Design Opportunity</span>
+        <p>
+          <strong>What if the journey was: Remember → Request → Done?</strong> By eliminating steps 2-5, we reduce a 40-minute burden to a 30-second interaction.
+        </p>
+      </div>
+    </section>
+
+    <!-- Problem: Multi-Receiver -->
+    <section id="challenge">
+      <span class="section-label">The Design Challenge</span>
+      <h2 class="section-title">Multi-receiver deliveries break everything</h2>
+      <p class="section-desc">
+        The initial design supported sending items to multiple receivers. It seemed like a feature win—until we hit the coordination wall.
+      </p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">⏳</div>
+          <h4>Sequential Acceptance</h4>
+          <p>Each receiver must accept before the robot proceeds. One delayed acceptance blocks the entire delivery chain.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🚫</div>
+          <h4>Sudden Cancellations</h4>
+          <p>A receiver canceling mid-route forces complex rerouting logic. The robot might be closer to receiver #3 but waiting for #2.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🤖</div>
+          <h4>Robot Idle Time</h4>
+          <p>Robots waiting for acceptance can't serve other requests. One unresponsive receiver reduces fleet efficiency.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">😤</div>
+          <h4>Sender Frustration</h4>
+          <p>Senders have no control after dispatch. They watch the tracking screen, hoping each receiver responds.</p>
+        </div>
+      </div>
+
+      <div class="insight-banner">
+        <span class="tag">Core Problem</span>
+        <p>
+          <strong>Individual receivers are unpredictable. Departments are not.</strong> 
+          Libraries, labs, and offices have fixed hours and dedicated staff. Shifting from person-to-person to person-to-department removes the coordination bottleneck.
+        </p>
+      </div>
+    </section>
+
+    <!-- Evolution -->
+    <section id="evolution">
+      <span class="section-label">Design Evolution</span>
+      <h2 class="section-title">The pivot: From receivers to departments</h2>
+      <p class="section-desc">
+        Instead of designing around the multi-receiver problem, I redesigned the model to eliminate it.
+      </p>
+
+      <div class="evolution-container">
+        <div class="evolution-header">
+          <h3>Delivery Model Comparison</h3>
+          <span class="evolution-badge">✓ Pivoted to Department Model</span>
+        </div>
+
+        <div class="evolution-content">
+          <div class="evolution-before">
+            <span class="evolution-label">Before: Multi-Receiver</span>
+            <h4 class="evolution-title">Person-to-Person Delivery</h4>
+            <p class="evolution-desc">Sender selects multiple people. Each must accept. Robot waits at each stop.</p>
+            <ul class="evolution-list">
+              <li><span class="bullet">✗</span> Robot waits for each receiver</li>
+              <li><span class="bullet">✗</span> Cancellations break the route</li>
+              <li><span class="bullet">✗</span> Unpredictable delivery times</li>
+              <li><span class="bullet">✗</span> Sender has no control post-dispatch</li>
+            </ul>
+          </div>
+
+          <div class="evolution-arrow">→</div>
+
+          <div class="evolution-after">
+            <span class="evolution-label">After: Department Model</span>
+            <h4 class="evolution-title">Person-to-Department Delivery</h4>
+            <p class="evolution-desc">Sender selects departments with pre-acceptance. Robot proceeds without waiting.</p>
+            <ul class="evolution-list">
+              <li><span class="bullet">✓</span> Zero wait time with pre-approval</li>
+              <li><span class="bullet">✓</span> Operating hours visible upfront</li>
+              <li><span class="bullet">✓</span> Predictable delivery windows</li>
+              <li><span class="bullet">✓</span> Institutional accountability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section id="solution">
+      <span class="section-label">The Solution</span>
+      <h2 class="section-title">VYN: Delivery designed for campus reality</h2>
+      <p class="section-desc">
+        A mobile-first experience that lets any verified campus user send items to people or departments, with autonomous robots handling logistics.
+      </p>
+
+      <div class="solution-overview">
+        <div class="solution-text">
+          <h3>Core value proposition</h3>
+          <p>
+            VYN is not "Uber for campus." It's infrastructure—like elevators or campus shuttles. Always available, predictable, and invisible until you need it.
+          </p>
+          
+          <div class="solution-features">
+            <div class="feature-row">
+              <span class="check">✓</span>
+              <span>Send to verified users via UID, phone, or name</span>
+            </div>
+            <div class="feature-row">
+              <span class="check">✓</span>
+              <span>Receiver must accept before robot departs</span>
+            </div>
+            <div class="feature-row">
+              <span class="check">✓</span>
+              <span>OTP/QR verification for secure handoff</span>
+            </div>
+            <div class="feature-row">
+              <span class="check">✓</span>
+              <span>Real-time tracking during active delivery</span>
+            </div>
+            <div class="feature-row">
+              <span class="check">✓</span>
+              <span>Department desk support with pre-acceptance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-diagram">
+          <h4>Simplified delivery flow</h4>
+          <div class="flow-visual">
+            <div class="flow-node">
+              <div class="flow-icon sender">👤</div>
+              <div class="flow-content">
+                <h5>Sender initiates</h5>
+                <p>Select receiver, place item in robot</p>
+              </div>
+            </div>
+            <div class="flow-connector"></div>
+            <div class="flow-node">
+              <div class="flow-icon robot">🤖</div>
+              <div class="flow-content">
+                <h5>Robot in transit</h5>
+                <p>Autonomous navigation, live tracking</p>
+              </div>
+            </div>
+            <div class="flow-connector"></div>
+            <div class="flow-node">
+              <div class="flow-icon receiver">✅</div>
+              <div class="flow-content">
+                <h5>Receiver accepts</h5>
+                <p>OTP verification, item retrieved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department Pre-Acceptance -->
+      <div class="dept-solution">
+        <div class="dept-solution-header">
+          <h3>Pre-Acceptance System <span class="badge">Core Innovation</span></h3>
+          <p>
+            When a user selects a department, they see operating hours and pre-approval status. If pre-acceptance is enabled, the robot proceeds immediately—no waiting.
+          </p>
+        </div>
+
+        <div class="dept-features">
+          <div class="dept-feature">
+            <div class="icon">🕐</div>
+            <h4>Operating Hours Display</h4>
+            <p>Each department shows open/close times. Users can only send during operating hours, preventing failed deliveries.</p>
+          </div>
+          <div class="dept-feature">
+            <div class="icon">✅</div>
+            <h4>Pre-Approval Badge</h4>
+            <p>Departments with pre-acceptance show a badge. Sender knows instantly: "This delivery won't wait."</p>
+          </div>
+          <div class="dept-feature">
+            <div class="icon">🏢</div>
+            <h4>Multi-Department Selection</h4>
+            <p>Select multiple departments for batch delivery. The robot follows an optimized route without stops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map & AI Enhancement -->
+    <section id="ai-enhancement">
+      <span class="section-label">AI-Powered Enhancement</span>
+      <h2 class="section-title">Intelligent decisions, invisible UI</h2>
+      <p class="section-desc">
+        VYN uses AI-assisted logic to quietly improve delivery reliability, reduce failed handoffs, and simplify decision-making—without adding visible complexity to the interface.
+      </p>
+
+      <!-- Map Design Section -->
+      <div class="ai-section-block">
+        <div class="ai-section-header">
+          <div class="ai-icon-badge">🗺️</div>
+          <div>
+            <h3>Map Design Philosophy</h3>
+            <p class="ai-section-subtitle">Situational awareness, not fleet management</p>
+          </div>
+        </div>
+
+        <div class="insight-banner">
+          <span class="tag">Design Principle</span>
+          <p>
+            <strong>The map helps users understand context, distance, and progress—without overwhelming them.</strong> Users care about their delivery, not the entire fleet.
+          </p>
+        </div>
+
+        <div class="map-comparison">
+          <div class="map-col shows">
+            <h4>What the Map Shows</h4>
+            <ul class="map-list positive">
+              <li><span class="bullet">✓</span> Campus layout and buildings</li>
+              <li><span class="bullet">✓</span> User's current location (sender or receiver)</li>
+              <li><span class="bullet">✓</span> Pickup and drop-off points</li>
+              <li><span class="bullet">✓</span> Active robot route only (during delivery)</li>
+            </ul>
+          </div>
+          <div class="map-col hides">
+            <h4>What the Map Does NOT Show</h4>
+            <ul class="map-list negative">
+              <li><span class="bullet">✗</span> All robots on campus</li>
+              <li><span class="bullet">✗</span> Idle robots</li>
+              <li><span class="bullet">✗</span> Historical routes</li>
+              <li><span class="bullet">✗</span> System-level fleet data</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="map-states">
+          <h4>Map Behavior by State</h4>
+          <div class="state-cards">
+            <div class="state-card idle">
+              <div class="state-card-header">
+                <span class="state-icon">🏠</span>
+                <h5>Idle State (Home)</h5>
+              </div>
+              <ul>
+                <li>Map is static and zoomable</li>
+                <li>Shows campus context only</li>
+                <li>No robot icons displayed</li>
+                <li>Reinforces "campus-only" boundary</li>
+              </ul>
+            </div>
+            <div class="state-card active">
+              <div class="state-card-header">
+                <span class="state-icon">🚀</span>
+                <h5>Active Delivery State</h5>
+              </div>
+              <ul>
+                <li>Assigned robot appears on map</li>
+                <li>Route line animates between points</li>
+                <li>ETA updates in real time</li>
+                <li>Map auto-adjusts zoom to fit route</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Decisions Section -->
+      <div class="ai-section-block">
+        <div class="ai-section-header">
+          <div class="ai-icon-badge">🤖</div>
+          <div>
+            <h3>AI-Assisted Decisions</h3>
+            <p class="ai-section-subtitle">Backend intelligence, no extra UI</p>
+          </div>
+        </div>
+
+        <div class="insight-banner">
+          <span class="tag">Philosophy</span>
+          <p>
+            <strong>AI in VYN is intentionally invisible.</strong> The goal is to assist decisions, not add cognitive overhead. AI improves defaults, suggestions, and reliability—users remain in control at all times.
+          </p>
+        </div>
+
+        <div class="ai-features-grid">
+          <!-- Feature 1 -->
+          <div class="ai-feature-card">
+            <div class="ai-feature-header">
+              <div class="ai-feature-icon availability">👤</div>
+              <div class="ai-feature-number">01</div>
+            </div>
+            <h4>Smart Receiver Availability</h4>
+            <p class="ai-feature-desc">Predicts whether a receiver is likely to be available at the selected time.</p>
+            
+            <div class="ai-signals">
+              <h5>Signals Used</h5>
+              <ul>
+                <li>Historical acceptance behavior</li>
+                <li>Typical class or work schedules</li>
+                <li>Location patterns</li>
+              </ul>
+            </div>
+            
+            <div class="ai-example">
+              <span class="ai-example-label">User sees:</span>
+              <p>"It looks like the receiver may be unavailable. Would you like to deliver to the Library desk instead?"</p>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="ai-feature-card">
+            <div class="ai-feature-header">
+              <div class="ai-feature-icon time">⏱️</div>
+              <div class="ai-feature-number">02</div>
+            </div>
+            <h4>Ready-Time Prediction</h4>
+            <p class="ai-feature-desc">Suggests an optimal "Ready time" based on context and past patterns.</p>
+            
+            <div class="ai-signals">
+              <h5>Signals Used</h5>
+              <ul>
+                <li>Item type</li>
+                <li>Pickup location</li>
+                <li>Past preparation times at similar locations</li>
+              </ul>
+            </div>
+            
+            <div class="ai-example">
+              <span class="ai-example-label">Behavior:</span>
+              <p>Automatically highlights the most likely ready-time option. Manual override always available.</p>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="ai-feature-card">
+            <div class="ai-feature-header">
+              <div class="ai-feature-icon eta">📊</div>
+              <div class="ai-feature-number">03</div>
+            </div>
+            <h4>ETA Confidence & Risk</h4>
+            <p class="ai-feature-desc">Improves ETA accuracy and sets realistic expectations.</p>
+            
+            <div class="ai-signals">
+              <h5>Signals Used</h5>
+              <ul>
+                <li>Historical robot route performance</li>
+                <li>Campus slope and accessibility paths</li>
+                <li>Time-of-day congestion patterns</li>
+              </ul>
+            </div>
+            
+            <div class="ai-example">
+              <span class="ai-example-label">User sees:</span>
+              <p>ETA ranges when needed (e.g., 7–9 min) with confidence indicators like "High confidence".</p>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="ai-feature-card">
+            <div class="ai-feature-header">
+              <div class="ai-feature-icon prevention">🛡️</div>
+              <div class="ai-feature-number">04</div>
+            </div>
+            <h4>Failure Prevention Logic</h4>
+            <p class="ai-feature-desc">Detects deliveries with higher likelihood of delay or failure before they happen.</p>
+            
+            <div class="ai-signals">
+              <h5>Signals Used</h5>
+              <ul>
+                <li>Building access restrictions</li>
+                <li>Past delivery issues at specific locations</li>
+                <li>Time-based availability constraints</li>
+              </ul>
+            </div>
+            
+            <div class="ai-example">
+              <span class="ai-example-label">User sees:</span>
+              <p>"This delivery may take longer due to building access restrictions."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Philosophy Summary -->
+      <div class="ai-philosophy">
+        <h3>Why AI Has No Dedicated UI</h3>
+        <p class="philosophy-intro">This approach demonstrates human-centered AI thinking—practical use of AI in real systems with strong judgment on when NOT to add UI.</p>
+        
+        <div class="philosophy-points">
+          <div class="philosophy-point">
+            <span class="philosophy-icon">🎯</span>
+            <div>
+              <h4>AI improves defaults</h4>
+              <p>Suggestions and reliability get better, not the number of options</p>
+            </div>
+          </div>
+          <div class="philosophy-point">
+            <span class="philosophy-icon">🔓</span>
+            <div>
+              <h4>Users remain in control</h4>
+              <p>Every AI suggestion can be overridden with a single tap</p>
+            </div>
+          </div>
+          <div class="philosophy-point">
+            <span class="philosophy-icon">🚫</span>
+            <div>
+              <h4>No dashboards or bots</h4>
+              <p>No explanations required—AI works silently in the background</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen Showcases -->
+    <section id="screens">
+      <span class="section-label">Screen Design</span>
+      <h2 class="section-title">Key screens with design rationale</h2>
+      <p class="section-desc">
+        Each screen is designed for a specific job. Here's the thinking behind the major touchpoints.
+      </p>
+
+      <!-- Home Screen -->
+      <div class="screen-showcase">
+        <div class="screen-showcase-header">
+          <h3>Home Screen <span class="tag">Entry Point</span></h3>
+        </div>
+        
+        <div class="screen-container">
+          <div class="screen-main">
+            <div class="screen-info">
+              <h4>The dashboard that doesn't overwhelm</h4>
+              <p>
+                The home screen provides campus context without requiring decisions. Primary actions are immediately visible. The "Departments" quick action is prominent.
+              </p>
+              
+              <div class="design-rationale">
+                <h5>Design decisions</h5>
+                <ul class="rationale-list">
+                  <li><span class="bullet">→</span> <span><strong>Status chips not live feeds.</strong> "Robots available: 3" gives confidence without overload.</span></li>
+                  <li><span class="bullet">→</span> <span><strong>Departments in services grid.</strong> Elevates the pre-acceptance path.</span></li>
+                  <li><span class="bullet">→</span> <span><strong>Campus-only badge visible.</strong> Trust signal, not hidden in settings.</span></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="screen-visual">
+              <div class="screen-placeholder">
+                <div class="phone-notch"></div>
+                <div class="content-hint">
+                  <span class="media-tag">Add Image</span>
+                  <span class="screen-name">Home Screen</span>
+                  <span class="screen-desc">Campus map + status chips + services grid + CTAs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="screen-annotations">
+            <div class="annotation">
+              <span class="annotation-num">1</span>
+              <div class="annotation-text"><strong>Campus map</strong> Boundaries and location visible. Robots appear only during active delivery.</div>
+            </div>
+            <div class="annotation">
+              <span class="annotation-num">2</span>
+              <div class="annotation-text"><strong>Status chips</strong> Robots available, Avg ETA, Campus only—system health at a glance.</div>
+            </div>
+            <div class="annotation">
+              <span class="annotation-num">3</span>
+              <div class="annotation-text"><strong>Services grid</strong> Send, Receive, Track, Departments. Thumb-friendly layout.</div>
+            </div>
+            <div class="annotation">
+              <span class="annotation-num">4</span>
+              <div class="annotation-text"><strong>Primary CTA</strong> "Start delivery" dominates. "Receive request" secondary but accessible.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Send Item Screen -->
+      <div class="screen-showcase">
+        <div class="screen-showcase-header">
+          <h3>Send Item <span class="tag">Core Flow</span></h3>
+        </div>
+        
+        <div class="screen-container">
+          <div class="screen-main">
+            <div class="screen-info">
+              <h4>Smart form with sensible defaults</h4>
+              <p>
+                The Send Item screen separates "Person" and "Department" clearly. The "Pickup Now" chip defaults to immediate action—most deliveries are urgent.
+              </p>
+              
+              <div class="design-rationale">
+                <h5>Design decisions</h5>
+                <ul class="rationale-list">
+                  <li><span class="bullet">→</span> <span><strong>Person vs Department tabs.</strong> Clear separation guides users.</span></li>
+                  <li><span class="bullet">→</span> <span><strong>Item details optional.</strong> Collapsed by default to reduce friction.</span></li>
+                  <li><span class="bullet">→</span> <span><strong>Location auto-filled.</strong> Pickup defaults to current location.</span></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="screen-visual">
+              <div class="screen-placeholder">
+                <div class="phone-notch"></div>
+                <div class="content-hint">
+                  <span class="media-tag">Add Image</span>
+                  <span class="screen-name">Send Item Form</span>
+                  <span class="screen-desc">Recipient + time + item details + locations</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="screen-annotations">
+            <div class="annotation">
+              <span class="annotation-num">1</span>
+              <div class="annotation-text"><strong>Recipient selection</strong> Smart search for Person. Department shows list with hours.</div>
+            </div>
+            <div class="annotation">
+              <span class="annotation-num">2</span>
+              <div class="annotation-text"><strong>Time picker chip</strong> "Pickup Now" default with Schedule option.</div>
+            </div>
+            <div class="annotation">
+              <span class="annotation-num">3</span>
+              <div class="annotation-text"><strong>Item details</strong> Optional accordion with item type + size + note.</div>
+            </div>
+            <div class="annotation">
+              <span class="annotation-num">4</span>
+              <div class="annotation-text"><strong>Location fields</strong> Auto-fill based on current location and recipient.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supporting Screens -->
+      <h3 class="sub-section-title">Supporting Screens</h3>
+      
+      <div class="multi-screen-row">
+        <div class="mini-screen-card">
+          <div class="mini-screen-visual">
+            <span class="media-tag">Add Image</span>
+            <span class="screen-name">Location Picker</span>
+          </div>
+          <div class="mini-screen-info">
+            <h5>Where's it going?</h5>
+            <p>Saved places + recent locations + search. Distance indicators for quick selection.</p>
+          </div>
+        </div>
+
+        <div class="mini-screen-card">
+          <div class="mini-screen-visual">
+            <span class="media-tag">Add Image</span>
+            <span class="screen-name">Time Picker</span>
+          </div>
+          <div class="mini-screen-info">
+            <h5>When should we pick up?</h5>
+            <p>Preset chips: Now, +5, +10, +20, +30 mins. Schedule bottom sheet for specific times.</p>
+          </div>
+        </div>
+
+        <div class="mini-screen-card">
+          <div class="mini-screen-visual">
+            <span class="media-tag">Add Image</span>
+            <span class="screen-name">Department Selection</span>
+          </div>
+          <div class="mini-screen-info">
+            <h5>Pre-approval in action</h5>
+            <p>List with operating hours, pre-approval badges, distance. Multi-select enabled.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Decisions -->
+    <section id="decisions">
+      <span class="section-label">Design Decisions</span>
+      <h2 class="section-title">The choices that shaped the product</h2>
+      <p class="section-desc">Good design is about trade-offs. Here are the key decisions and why.</p>
+
+      <div class="decision-cards">
+        <div class="decision-card">
+          <div class="decision-header">
+            <h4>🔍 Smart search vs. mode selector</h4>
+            <span class="outcome">Reduced 3 taps to 0</span>
+          </div>
+          <div class="decision-body">
+            <div class="decision-col before">
+              <h5>Before</h5>
+              <p>Dropdown to select search type. User had to know what to select before typing.</p>
+            </div>
+            <div class="decision-col after">
+              <h5>After</h5>
+              <p>Single input field with real-time type detection. System recognizes pattern automatically.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-header">
+            <h4>🗺️ Fleet view vs. focused tracking</h4>
+            <span class="outcome">Reduced cognitive load 60%</span>
+          </div>
+          <div class="decision-body">
+            <div class="decision-col before">
+              <h5>Before</h5>
+              <p>Map showed all active robots. Users had to identify "their" robot among many.</p>
+            </div>
+            <div class="decision-col after">
+              <h5>After</h5>
+              <p>Map shows ONLY the assigned robot during active delivery. Fleet view moved to separate admin view.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="decision-header">
+            <h4>🔄 Multi-receiver → Department pivot</h4>
+            <span class="outcome">Eliminated wait time</span>
+          </div>
+          <div class="decision-body">
+            <div class="decision-col before">
+              <h5>Problem</h5>
+              <p>Multi-receiver required each person to accept. One unresponsive receiver blocked the route.</p>
+            </div>
+            <div class="decision-col after">
+              <h5>Solution</h5>
+              <p>Departments with pre-acceptance don't require confirmation. Robot proceeds immediately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- State Machine -->
+      <div class="state-section">
+        <div class="state-header">
+          <h3>Delivery State Machine</h3>
+          <p>With pre-acceptance, the state flow simplifies. No "waiting" state when department has pre-approval.</p>
+        </div>
+        
+        <div class="state-flow-container">
+          <div class="state-flow">
+            <div class="state-node">Draft</div>
+            <span class="state-arrow">→</span>
+            <div class="state-node dept">Pre-Approved ✓</div>
+            <span class="state-arrow">→</span>
+            <div class="state-node active">Dispatched</div>
+            <span class="state-arrow">→</span>
+            <div class="state-node">En Route</div>
+            <span class="state-arrow">→</span>
+            <div class="state-node">Arrived</div>
+            <span class="state-arrow">→</span>
+            <div class="state-node success">Completed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="comparison-section">
+        <h3>Why existing solutions don't fit</h3>
+        <p class="comparison-desc">Campus delivery isn't a smaller version of city delivery. The constraints are fundamentally different.</p>
+
+        <div class="comparison-table">
+          <div class="comparison-row header">
+            <div class="comparison-cell">Requirement</div>
+            <div class="comparison-cell">City Delivery Apps</div>
+            <div class="comparison-cell">VYN</div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-cell">User verification</div>
+            <div class="comparison-cell negative">Phone/email only</div>
+            <div class="comparison-cell positive">University ID required</div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-cell">Delivery time</div>
+            <div class="comparison-cell negative">30-60 minutes</div>
+            <div class="comparison-cell positive">5-15 minutes</div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-cell">Receiver consent</div>
+            <div class="comparison-cell negative">Not required</div>
+            <div class="comparison-cell positive">Mandatory acceptance</div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-cell">Department support</div>
+            <div class="comparison-cell negative">Not available</div>
+            <div class="comparison-cell positive">Pre-acceptance enabled</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learnings -->
+    <section id="learnings">
+      <span class="section-label">Reflection</span>
+      <h2 class="section-title">What I learned</h2>
+      <p class="section-desc">
+        The best solutions often come from reframing the problem, not engineering around it.
+      </p>
+
+      <div class="learnings-grid">
+        <div class="learning-card">
+          <span class="num">01</span>
+          <h4>Pivot, don't patch</h4>
+          <p>When multi-receiver created cascading problems, the answer wasn't more complex logic. It was changing the model entirely.</p>
+        </div>
+        <div class="learning-card">
+          <span class="num">02</span>
+          <h4>Constraints reveal opportunities</h4>
+          <p>Campus-only felt limiting. But it enabled pre-acceptance—something that wouldn't work in an open network.</p>
+        </div>
+        <div class="learning-card">
+          <span class="num">03</span>
+          <h4>Institutions > individuals</h4>
+          <p>Individual behavior is unpredictable. Institutional behavior is not. Libraries will be open during posted hours.</p>
+        </div>
+        <div class="learning-card">
+          <span class="num">04</span>
+          <h4>Show confidence before action</h4>
+          <p>The pre-approval badge builds confidence before selection. Users know their delivery won't wait.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-text">
+          <h4>Want to discuss this project?</h4>
+          <p>I'd love to walk through the pre-acceptance model and the pivot that shaped VYN's experience.</p>
+        </div>
+        <div class="footer-cta">
+          <a href="../index.html" class="footer-btn">Back to Portfolio</a>
+          <a href="mailto:ajithalphonse300@gmail.com" class="footer-btn primary">Get in touch</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Side nav active state on scroll
+    const sections = document.querySelectorAll('section[id], .hero');
+    const navItems = document.querySelectorAll('.side-nav-item');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id || 'hero';
+          navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.section === id) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Animate on scroll
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.problem-card, .learning-card, .decision-card, .dept-feature, .mini-screen-card, .journey-step').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      animObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
