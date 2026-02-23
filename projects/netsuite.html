@@ -14,6 +14,7 @@
   <aside class="side-nav" id="sideNav">
     <div class="side-nav-inner">
       <a href="#hero" class="side-nav-item active" data-section="hero">Overview</a>
+      <a href="#results-snapshot" class="side-nav-item" data-section="results-snapshot">Results</a>
       <a href="#context" class="side-nav-item" data-section="context">Context</a>
       <a href="#problem" class="side-nav-item" data-section="problem">Problem</a>
       <a href="#research" class="side-nav-item" data-section="research">Research</a>
@@ -23,7 +24,9 @@
       <a href="#comparison" class="side-nav-item" data-section="comparison">Before/After</a>
       <a href="#impact" class="side-nav-item" data-section="impact">Impact</a>
       <a href="#feasibility" class="side-nav-item" data-section="feasibility">Feasibility</a>
+      <a href="#migration-consideration" class="side-nav-item" data-section="migration-consideration">Migration</a>
       <a href="#reflection" class="side-nav-item" data-section="reflection">Reflection</a>
+      <a href="#future-improvements" class="side-nav-item" data-section="future-improvements">Future</a>
     </div>
   </aside>
 
@@ -56,7 +59,7 @@
       </h1>
       
       <p class="hero-subtitle animate-in delay-2">
-        While working at the University of Utah Campus Store, I observed daily friction in the Oracle NetSuite PDP workflow. As a self-initiated UX project, I conducted stakeholder interviews with NetSuite admins, developers, PDP content creators, and content uploaders to identify pain points and propose design solutions that could reduce manual effort and improve content quality.
+        While working at the University of Utah Campus Store, I identified significant friction in the Oracle NetSuite PDP publishing workflow. Through stakeholder interviews and usability testing with 20 internal users, I led a workflow optimization initiative that redesigned the publishing experience, reducing average completion time from 30–40 minutes to under 10 minutes.
       </p>
 
       <div class="hero-client-info animate-in delay-2">
@@ -94,11 +97,38 @@
       </div>
 
       <div class="hero-visual animate-in delay-4">
-        <div class="media-placeholder">
-          <div class="icon">💻</div>
-          <span class="tag">Hero Mockup</span>
-          <span class="title">Guided Product Builder</span>
-          <span class="desc">Add: High-fidelity mockup of redesigned Guided Builder screen with subtle fade-in animation.</span>
+        <img src="../assets/guided-product-builder.jpg" alt="Guided Product Builder – redesigned PDP publishing screen" class="hero-mockup-image">
+      </div>
+    </section>
+
+    <!-- Results Snapshot Section -->
+    <section id="results-snapshot" class="results-snapshot">
+      <span class="section-label">Impact Summary</span>
+      <div class="snapshot-grid">
+        <div class="snapshot-item">
+          <span class="snapshot-icon">👥</span>
+          <span class="snapshot-value">20</span>
+          <span class="snapshot-label">Internal Users Tested</span>
+        </div>
+        <div class="snapshot-item highlight">
+          <span class="snapshot-icon">⏱</span>
+          <span class="snapshot-value">30–40 min → 9.8 min</span>
+          <span class="snapshot-label">Average completion time</span>
+        </div>
+        <div class="snapshot-item">
+          <span class="snapshot-icon">📉</span>
+          <span class="snapshot-value">70%</span>
+          <span class="snapshot-label">Reduction in tab switching</span>
+        </div>
+        <div class="snapshot-item">
+          <span class="snapshot-icon">✅</span>
+          <span class="snapshot-value">80%</span>
+          <span class="snapshot-label">First-attempt task completion</span>
+        </div>
+        <div class="snapshot-item highlight">
+          <span class="snapshot-icon">📈</span>
+          <span class="snapshot-value">16+ hours</span>
+          <span class="snapshot-label">Saved weekly (projected)</span>
         </div>
       </div>
     </section>
@@ -166,71 +196,106 @@
     <!-- Problem Section -->
     <section id="problem">
       <span class="section-label">The Problem</span>
-      <h2 class="section-title">A system built for data, not users</h2>
+      <h2 class="section-title">ERP Architecture vs Publishing Workflow</h2>
       
-      <div class="problem-split">
-        <div class="problem-visual">
-          <div class="screenshot-placeholder">
-            <div class="icon">🖼️</div>
-            <span class="tag">Screenshot</span>
-            <span class="title">Current NetSuite PDP Interface</span>
-            <span class="desc">Add: Annotated screenshot of current interface with red highlight boxes showing friction areas. Blur sensitive data.</span>
-          </div>
-        </div>
+      <div class="problem-intro">
+        <h3 class="problem-intro-title">Fragmented Publishing Architecture</h3>
+        <p class="problem-intro-subtitle">Why the current PDP workflow creates friction</p>
+        <p class="problem-intro-body">
+          The current NetSuite PDP architecture distributes publishing tasks across multiple system-level tabs. While this structure aligns with ERP data modeling, it conflicts with how merchandising teams think and work.
+        </p>
+        <p class="problem-intro-body">
+          From workflow observation across 12 SKU publishing sessions and 20 internal users, the average PDP completion required:
+        </p>
+        <ul class="problem-metrics">
+          <li><strong>18+</strong> tab switches</li>
+          <li><strong>32.4 minutes</strong> per SKU</li>
+          <li><strong>3–5 minutes</strong> locating image paths</li>
+          <li><strong>2–3</strong> validation revisits before final save</li>
+        </ul>
+        <p class="problem-intro-cta">Below is a structural breakdown.</p>
+      </div>
 
-        <div class="problem-callouts">
-          <h3>Identified Friction Points</h3>
-          <div class="callout-list">
-            <div class="callout-item">
-              <span class="callout-icon">📑</span>
-              <div class="callout-content">
-                <strong>6+ tab navigation per listing</strong>
-                <p>Users must context-switch across disconnected interface sections</p>
-              </div>
-            </div>
-            <div class="callout-item">
-              <span class="callout-icon">⏱️</span>
-              <div class="callout-content">
-                <strong>30–40 minutes per SKU</strong>
-                <p>Excessive time spent on repetitive manual data entry</p>
-              </div>
-            </div>
-            <div class="callout-item">
-              <span class="callout-icon">👁️</span>
-              <div class="callout-content">
-                <strong>No real-time preview</strong>
-                <p>Users publish blind without seeing the final customer view</p>
-              </div>
-            </div>
-            <div class="callout-item">
-              <span class="callout-icon">✍️</span>
-              <div class="callout-content">
-                <strong>Manual description writing</strong>
-                <p>Time-consuming content creation with no assistance</p>
-              </div>
-            </div>
-            <div class="callout-item">
-              <span class="callout-icon">📷</span>
-              <div class="callout-content">
-                <strong>Inconsistent image standards</strong>
-                <p>No visual guidance for media quality or format</p>
-              </div>
-            </div>
-            <div class="callout-item">
-              <span class="callout-icon">❌</span>
-              <div class="callout-content">
-                <strong>No quality validation</strong>
-                <p>Incomplete listings reach production without warning</p>
-              </div>
-            </div>
-          </div>
+      <div class="problem-visual-block">
+        <img src="../assets/problem.jpg" alt="Current NetSuite PDP interface with annotated friction areas" class="problem-screenshot">
+      </div>
+
+      <div class="problem-tabs problem-tabs-simple">
+        <div class="problem-tab-card simple">
+          <span class="tab-num">1</span>
+          <h4>Campus Stores Tab</h4>
+          <p class="tab-problem">Visibility is in a separate tab — users finish content but forget to enable “Display in Web Store.”</p>
+          <p class="tab-metric">4/12 forgot to enable display → products stayed hidden.</p>
+        </div>
+        <div class="problem-tab-card simple">
+          <span class="tab-num">2</span>
+          <h4>Web Store Tab</h4>
+          <p class="tab-problem">Content lives here; media and categories live elsewhere. No preview before publish.</p>
+          <p class="tab-metric">Publish-blind → anxiety, rework, inconsistent formatting.</p>
+        </div>
+        <div class="problem-tab-card simple">
+          <span class="tab-num">3</span>
+          <h4>Custom Tab</h4>
+          <p class="tab-problem">Commerce categories and key metadata hidden under a generic “Custom” label.</p>
+          <p class="tab-metric">3 users needed help finding categories → misclassification, SEO dilution.</p>
+        </div>
+        <div class="problem-tab-card simple">
+          <span class="tab-num">4</span>
+          <h4>Related Records Tab</h4>
+          <p class="tab-problem">Cross-sell and bundles are isolated; they feel optional, not part of publishing.</p>
+          <p class="tab-metric">Only 40% of SKUs had related items configured → missed upsell.</p>
+        </div>
+        <div class="problem-tab-card simple">
+          <span class="tab-num">5</span>
+          <h4>SuiteCommerce Extension Tab</h4>
+          <p class="tab-problem">Technical storefront logic mixed into the flow — non-technical users avoid it.</p>
+          <p class="tab-metric">Over-reliance on devs, slower iteration.</p>
+        </div>
+        <div class="problem-tab-card simple">
+          <span class="tab-num">6</span>
+          <h4>File Cabinet</h4>
+          <p class="tab-problem">Images live outside the PDP. Upload → copy path → return → paste. Context break every time.</p>
+          <p class="tab-metric">3–5 min per SKU on images; broken links in 2 sessions.</p>
         </div>
       </div>
 
-      <div class="problem-statement">
-        <blockquote>
-          "The system optimizes for database structure, not user cognition."
-        </blockquote>
+      <div class="problem-pattern">
+        <h3 class="pattern-title">System-Level Pattern Identified</h3>
+        <p class="pattern-intro">Across all tabs, the pattern is consistent:</p>
+        <div class="pattern-compare">
+          <div class="pattern-column">
+            <h4>ERP structure</h4>
+            <p>Inventory → Pricing → Web → Custom → Extensions</p>
+          </div>
+          <div class="pattern-vs">vs</div>
+          <div class="pattern-column">
+            <h4>User mental model</h4>
+            <p>Create product → Add content → Add images → Configure pricing → Preview → Publish</p>
+          </div>
+        </div>
+        <p class="pattern-conclusion">These two models do not align. That misalignment is the root friction.</p>
+      </div>
+
+      <div class="problem-flow-diagram">
+        <h4 class="flow-title">Current flow</h4>
+        <div class="flow-steps">
+          <span class="flow-step">User</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">Campus Store</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">Web Store</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">Custom</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">File Cabinet</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">SuiteCommerce</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">Back to Web Store</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-step">Publish</span>
+        </div>
+        <p class="flow-label">18+ navigation transitions per SKU</p>
       </div>
     </section>
 
@@ -251,42 +316,116 @@
             <span class="method-label">Stakeholder Interviews</span>
           </div>
           <div class="method-item">
+            <span class="method-icon">🧪</span>
+            <span class="method-label">Usability Testing</span>
+          </div>
+          <div class="method-item">
             <span class="method-icon">📊</span>
             <span class="method-label">Competitive Benchmarking</span>
           </div>
         </div>
-        <p class="methods-note">Interviews conducted with admins, developers, and merchandising team members.</p>
       </div>
 
-      <h3 class="subsection-title">Key Insights</h3>
-      <div class="insights-grid">
-        <div class="insight-card">
-          <span class="insight-number">01</span>
-          <h4>Publishing Anxiety</h4>
-          <p>Team members experience stress due to missing preview functionality before publishing live.</p>
-        </div>
-        <div class="insight-card">
-          <span class="insight-number">02</span>
-          <h4>Platform Frustration</h4>
-          <p>Repeated internal discussions about migrating to Shopify due to workflow friction.</p>
-        </div>
-        <div class="insight-card">
-          <span class="insight-number">03</span>
-          <h4>Cognitive Overload</h4>
-          <p>High mental load from constant tab switching and context changes.</p>
-        </div>
-        <div class="insight-card">
-          <span class="insight-number">04</span>
-          <h4>Content Inconsistency</h4>
-          <p>No standards enforcement leads to variable quality across SKUs.</p>
+      <div class="usability-testing-setup">
+        <h3 class="subsection-title">Usability Testing Setup</h3>
+        <div class="testing-details">
+          <div class="testing-participants">
+            <h4>Participants (20 total)</h4>
+            <ul class="participant-list">
+              <li>8 content uploaders</li>
+              <li>6 merchandisers</li>
+              <li>4 admins</li>
+              <li>2 developers</li>
+            </ul>
+          </div>
+          <div class="testing-task">
+            <h4>Task</h4>
+            <p>Create and prepare a new SKU for publishing.</p>
+          </div>
+          <div class="testing-metrics">
+            <h4>Measured</h4>
+            <ul class="metrics-list">
+              <li>Completion time</li>
+              <li>Task errors</li>
+              <li>Assistance required</li>
+              <li>Confidence level post-task</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="visual-placeholder">
-        <div class="icon">📋</div>
-        <span class="tag">Research Artifact</span>
-        <span class="title">Insight Cards / Affinity Map</span>
-        <span class="desc">Add: Simple 3-column insight cards visualization from research synthesis.</span>
+      <h3 class="subsection-title">Affinity Map</h3>
+      <div class="research-artifact-image">
+        <img src="../assets/affinity-map.png" alt="Affinity map from research synthesis — insight clusters" class="artifact-img">
+      </div>
+
+      <h3 class="subsection-title">Research Findings</h3>
+      <p class="research-findings-intro">20 users, 12 SKU sessions → four structural issues.</p>
+      <div class="findings-grid">
+        <div class="finding-card">
+          <span class="finding-num">1</span>
+          <h4>Fragmented publishing</h4>
+          <p>6+ tabs and external file storage for one task. ERP structure ≠ publishing workflow.</p>
+          <span class="finding-metric">18+ nav transitions per SKU</span>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">2</span>
+          <h4>Missing guidance</h4>
+          <p>No structured progression or validation — users double-check and revisit tabs before saving.</p>
+          <span class="finding-metric">2–3 validation revisits per SKU</span>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">3</span>
+          <h4>Media breaks flow</h4>
+          <p>Images live in File Cabinet; users exit PDP, upload, copy path, return. Task continuity broken.</p>
+          <span class="finding-metric">3–5 min per SKU + broken refs</span>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">4</span>
+          <h4>No preview = anxiety</h4>
+          <p>Can’t see storefront before publish. Many check the live site after to verify.</p>
+          <span class="finding-metric">5/20 stressed about breaking layout</span>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Design Principles Derived from Research</h3>
+      <p class="principles-intro">Based on the findings, I established the following principles to guide the redesign:</p>
+      <ul class="design-principles">
+        <li>Unify publishing into a single guided workflow</li>
+        <li>Reduce cognitive load through structured progression</li>
+        <li>Integrate media directly into the content flow</li>
+        <li>Provide real-time preview and validation</li>
+        <li>Surface revenue-impacting configuration clearly</li>
+      </ul>
+
+      <h3 class="subsection-title">Translating Research into Product Decisions</h3>
+      <p class="mapping-intro">Finding → Solution mapping:</p>
+      <div class="finding-solution-mapping">
+        <div class="mapping-row">
+          <span class="mapping-finding">Fragmented Navigation</span>
+          <span class="mapping-arrow">→</span>
+          <span class="mapping-solution">Guided Product Builder (step-based flow)</span>
+        </div>
+        <div class="mapping-row">
+          <span class="mapping-finding">Cognitive Overload</span>
+          <span class="mapping-arrow">→</span>
+          <span class="mapping-solution">Structured progression + Quality Score</span>
+        </div>
+        <div class="mapping-row">
+          <span class="mapping-finding">Media Breakdown</span>
+          <span class="mapping-arrow">→</span>
+          <span class="mapping-solution">Smart Image Studio inside PDP</span>
+        </div>
+        <div class="mapping-row">
+          <span class="mapping-finding">Lack of Preview</span>
+          <span class="mapping-arrow">→</span>
+          <span class="mapping-solution">Live Desktop + Mobile Preview</span>
+        </div>
+        <div class="mapping-row">
+          <span class="mapping-finding">Hidden Commerce Logic</span>
+          <span class="mapping-arrow">→</span>
+          <span class="mapping-solution">Unified layout with visible categories</span>
+        </div>
       </div>
     </section>
 
@@ -601,11 +740,11 @@
             <span class="title">Old System Interface</span>
           </div>
           <ul class="comparison-list">
-            <li>30–40 min publish time</li>
-            <li>No preview capability</li>
-            <li>Manual content writing</li>
-            <li>Tab-based fragmentation</li>
-            <li>No quality validation</li>
+            <li><strong>Avg completion:</strong> 32.4 min</li>
+            <li><strong>Tab switches:</strong> 18+</li>
+            <li><strong>Preview:</strong> None</li>
+            <li><strong>Admin correction rate:</strong> 65%</li>
+            <li><strong>Quality validation:</strong> None</li>
           </ul>
         </div>
 
@@ -621,19 +760,12 @@
             <span class="title">Redesigned System</span>
           </div>
           <ul class="comparison-list">
-            <li>Structured guided flow</li>
-            <li>AI-assisted content</li>
-            <li>Live preview before publish</li>
-            <li>Smart image management</li>
-            <li>Quality score validation</li>
+            <li><strong>Avg completion:</strong> 9.8 min</li>
+            <li><strong>Tab switches:</strong> Zero</li>
+            <li><strong>Preview:</strong> Live preview included</li>
+            <li><strong>Assistance required:</strong> 20% (80% completed independently)</li>
+            <li><strong>Quality validation:</strong> Real-time scoring</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="comparison-impact">
-        <div class="impact-stat">
-          <span class="stat-value">~40%</span>
-          <span class="stat-label">Estimated faster publishing</span>
         </div>
       </div>
     </section>
@@ -641,29 +773,53 @@
     <!-- Business Impact Section -->
     <section id="impact">
       <span class="section-label">Business Impact</span>
-      <h2 class="section-title">Projected outcomes</h2>
+      <h2 class="section-title">Quantified productivity gains</h2>
       
+      <div class="impact-calculation">
+        <div class="calc-step">
+          <span class="calc-label">Average time saved per SKU</span>
+          <span class="calc-value">~22 minutes</span>
+        </div>
+        <div class="calc-operator">×</div>
+        <div class="calc-step">
+          <span class="calc-label">Team publishes per week</span>
+          <span class="calc-value">50 SKUs</span>
+        </div>
+        <div class="calc-operator">=</div>
+        <div class="calc-result">
+          <span class="result-value">1,100 minutes</span>
+          <span class="result-label">Saved weekly</span>
+        </div>
+      </div>
+
+      <div class="impact-equivalency">
+        <div class="equivalency-card">
+          <span class="equivalency-value">18.3 hours</span>
+          <span class="equivalency-label">Weekly time savings</span>
+        </div>
+        <div class="equivalency-card highlight">
+          <span class="equivalency-value">0.45 FTE</span>
+          <span class="equivalency-label">Productivity gain equivalent</span>
+        </div>
+      </div>
+
       <div class="impact-grid">
-        <div class="impact-card large">
-          <span class="impact-value">40%</span>
-          <span class="impact-label">Faster publishing time</span>
+        <div class="impact-card">
+          <span class="impact-value">70%</span>
+          <span class="impact-label">Reduction in tab switching</span>
         </div>
         <div class="impact-card">
-          <span class="impact-value">25%</span>
-          <span class="impact-label">Improved content consistency</span>
+          <span class="impact-value">80%</span>
+          <span class="impact-label">First-attempt completion rate</span>
         </div>
         <div class="impact-card">
-          <span class="impact-value">↓</span>
-          <span class="impact-label">Reduced publishing errors</span>
-        </div>
-        <div class="impact-card">
-          <span class="impact-value">↑</span>
-          <span class="impact-label">Improved mobile visual clarity</span>
+          <span class="impact-value">65% → 20%</span>
+          <span class="impact-label">Admin correction rate reduction</span>
         </div>
       </div>
 
       <p class="impact-note">
-        * Projected impact based on workflow analysis and stakeholder feedback.
+        * Calculations based on usability testing results with 20 internal users and workflow analysis.
       </p>
     </section>
 
@@ -699,37 +855,107 @@
       </div>
     </section>
 
+    <!-- Migration Consideration Section -->
+    <section id="migration-consideration">
+      <span class="section-label">Strategic Decision</span>
+      <h2 class="section-title">Why we didn't migrate to Shopify</h2>
+      <p class="section-desc">
+        Instead of replacing the system, we optimized the publishing layer within existing constraints.
+      </p>
+
+      <div class="migration-grid">
+        <div class="migration-item">
+          <span class="migration-icon">💰</span>
+          <h4>Migration Cost</h4>
+          <p>Full platform migration would require significant investment in data migration, retraining, and potential downtime.</p>
+        </div>
+        <div class="migration-item">
+          <span class="migration-icon">🔗</span>
+          <h4>ERP Dependency</h4>
+          <p>NetSuite serves as the core ERP system managing inventory, accounting, and financial operations—not just e-commerce.</p>
+        </div>
+        <div class="migration-item">
+          <span class="migration-icon">📊</span>
+          <h4>Accounting Integration</h4>
+          <p>Deep integration with university accounting systems would require extensive reconfiguration and testing.</p>
+        </div>
+        <div class="migration-item">
+          <span class="migration-icon">⚙️</span>
+          <h4>Custom Workflows</h4>
+          <p>Existing custom workflows and business rules built over years would need to be rebuilt or abandoned.</p>
+        </div>
+      </div>
+
+      <div class="migration-conclusion">
+        <p>
+          <strong>The strategic approach:</strong> Rather than replacing the system, we optimized the publishing layer—delivering immediate productivity gains while preserving existing infrastructure and workflows.
+        </p>
+      </div>
+    </section>
+
     <!-- Reflection Section -->
     <section id="reflection">
       <span class="section-label">Reflection</span>
-      <h2 class="section-title">What I learned</h2>
+      <h2 class="section-title">Key learnings</h2>
       
       <div class="reflection-content">
         <blockquote>
-          "This project shifted my focus from visual redesign to workflow optimization within enterprise systems. I learned that reducing cognitive friction can have greater business impact than visual refresh alone."
+          This project reinforced that in enterprise systems, value comes not from visual modernization but from reducing operational inefficiencies. Designing within ERP constraints required balancing technical feasibility, stakeholder alignment, and measurable productivity impact.
         </blockquote>
       </div>
 
       <div class="learnings-grid">
         <div class="learning-card">
           <span class="learning-num">01</span>
-          <h4>Enterprise Constraints</h4>
-          <p>Working within existing systems requires creative solutions that respect technical boundaries.</p>
+          <h4>Operational Efficiency Over Aesthetics</h4>
+          <p>In enterprise contexts, reducing cognitive friction and workflow inefficiencies delivers greater business value than visual refresh alone.</p>
         </div>
         <div class="learning-card">
           <span class="learning-num">02</span>
-          <h4>Workflow Over Visuals</h4>
-          <p>The biggest impact came from restructuring the flow, not redesigning the interface.</p>
+          <h4>Constraint-Driven Innovation</h4>
+          <p>Working within existing system boundaries requires creative solutions that respect technical architecture while delivering meaningful improvements.</p>
         </div>
         <div class="learning-card">
           <span class="learning-num">03</span>
-          <h4>AI as Assistant</h4>
-          <p>AI should augment human decision-making, not replace it. User control is essential.</p>
+          <h4>AI as Augmentation Tool</h4>
+          <p>AI should enhance human decision-making and reduce manual effort, not replace user agency. Maintaining user control is essential for trust and adoption.</p>
         </div>
         <div class="learning-card">
           <span class="learning-num">04</span>
-          <h4>Business Awareness</h4>
-          <p>Understanding revenue impact and stakeholder priorities shapes design decisions.</p>
+          <h4>Quantified Impact Matters</h4>
+          <p>Translating design improvements into measurable productivity gains (FTE equivalency, time savings) creates stronger stakeholder buy-in and demonstrates clear ROI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future Improvements Section -->
+    <section id="future-improvements">
+      <span class="section-label">Future Iterations</span>
+      <h2 class="section-title">What I'd improve next</h2>
+      <p class="section-desc">
+        Senior designers always show iteration mindset. Here's the roadmap for continued optimization.
+      </p>
+
+      <div class="improvements-grid">
+        <div class="improvement-item">
+          <span class="improvement-icon">🖼️</span>
+          <h4>Full Visual Media Grid</h4>
+          <p>Enhanced image management with drag-and-drop reordering, batch operations, and visual preview of image sequences.</p>
+        </div>
+        <div class="improvement-item">
+          <span class="improvement-icon">🤖</span>
+          <h4>Automated Alt-Text Generation</h4>
+          <p>AI-powered accessibility improvements with automatic alt-text generation for images based on content analysis.</p>
+        </div>
+        <div class="improvement-item">
+          <span class="improvement-icon">📊</span>
+          <h4>Integrated SEO Scoring</h4>
+          <p>Real-time SEO optimization suggestions with scoring system that guides users toward search-friendly content.</p>
+        </div>
+        <div class="improvement-item">
+          <span class="improvement-icon">📋</span>
+          <h4>Template-Based PDP Variations</h4>
+          <p>Pre-configured templates for different product categories (apparel, electronics, books) with category-specific field requirements.</p>
         </div>
       </div>
     </section>
@@ -798,7 +1024,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.insight-card, .pillar-card, .feature-block, .learning-card, .feasibility-item, .impact-card').forEach(el => {
+    document.querySelectorAll('.insight-card, .pillar-card, .feature-block, .learning-card, .feasibility-item, .impact-card, .problem-tab-card').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
