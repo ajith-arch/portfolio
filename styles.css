@@ -554,6 +554,17 @@ button {
     max-height: 36px;
 }
 
+/* "Coming soon" announcement tag */
+.tag-coming-soon {
+    background: #ECFDF3;
+    color: #15803D;
+    border-color: rgba(22, 163, 74, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    padding: 6px 12px;
+}
+
 /* University of Utah Tag */
 .tag-university {
     display: inline-flex;
