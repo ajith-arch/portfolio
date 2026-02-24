@@ -218,6 +218,7 @@
 
       <div class="problem-visual-block">
         <img src="../assets/problem.jpg" alt="Current NetSuite PDP interface with annotated friction areas" class="problem-screenshot">
+        <p class="problem-screenshot-caption">Existing NetSuite PDP screen — publishing spread across tabs and external media workflow.</p>
       </div>
 
       <div class="problem-tabs problem-tabs-simple">
@@ -256,6 +257,49 @@
           <h4>File Cabinet</h4>
           <p class="tab-problem">Images live outside the PDP. Upload → copy path → return → paste. Context break every time.</p>
           <p class="tab-metric">3–5 min per SKU on images; broken links in 2 sessions.</p>
+        </div>
+      </div>
+
+      <div class="media-workflow-before">
+        <h3 class="subsection-title">Media Workflow — Before</h3>
+        <p class="media-subtitle">How image uploading created friction in the publishing flow.</p>
+
+        <div class="media-before-grid">
+          <figure class="media-figure">
+            <img src="../assets/file-cabinet.jpg" alt="NetSuite File Cabinet — folder list view" class="media-img">
+            <figcaption class="media-caption">NetSuite File Cabinet (folder list view)</figcaption>
+          </figure>
+          <figure class="media-figure">
+            <img src="../assets/associated-images.jpg" alt="Associated Images tab — no visual preview state" class="media-img">
+            <figcaption class="media-caption">Associated Images tab (no visual preview)</figcaption>
+          </figure>
+        </div>
+
+        <div class="media-before-details">
+          <div class="media-card">
+            <h4>Existing process</h4>
+            <ol class="media-steps">
+              <li>Leave PDP</li>
+              <li>Navigate to File Cabinet</li>
+              <li>Search by SKU</li>
+              <li>Upload file</li>
+              <li>Copy reference</li>
+              <li>Return to PDP</li>
+              <li>Paste image link</li>
+              <li>Save</li>
+              <li>Re-check</li>
+            </ol>
+          </div>
+          <div class="media-card">
+            <h4>Observed friction</h4>
+            <ul class="media-friction">
+              <li>3–5 minutes per SKU</li>
+              <li>No visual confirmation</li>
+              <li>Broken image references</li>
+              <li>Constant context switching</li>
+              <li>No image placement preview</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -471,12 +515,49 @@
         </div>
       </div>
 
-      <div class="visual-placeholder">
-        <div class="icon">🔄</div>
-        <span class="tag">Architecture Diagram</span>
-        <span class="title">4 Pillars System Overview</span>
-        <span class="desc">Add: Clean diagram showing the 4 pillars connected around the workflow. Optional subtle connecting line animation.</span>
+      <div class="solution-visual">
+        <video src="../assets/pdp_1.mp4"
+               class="solution-architecture-video"
+               autoplay
+               muted
+               loop
+               playsinline
+               controls></video>
       </div>
+
+      <div class="media-workflow-after">
+        <h3 class="subsection-title">Smart Image Studio — Integrated Media Flow</h3>
+        <p class="media-subtitle">
+          Instead of treating media as file storage, the system treats media as part of publishing.
+        </p>
+
+        <div class="media-key-changes">
+          <h4>Key changes</h4>
+          <ul class="media-friction">
+            <li>Drag-and-drop upload directly inside PDP</li>
+            <li>Auto-save to File Cabinet in the background</li>
+            <li>Visual grid preview</li>
+            <li>Reorder via drag interaction</li>
+            <li>Primary image selection</li>
+            <li>Desktop & mobile preview simulation</li>
+          </ul>
+          <p class="media-senior-line">
+            Images are uploaded contextually and stored programmatically — without interrupting the publishing workflow.
+          </p>
+        </div>
+
+        <div class="media-compare">
+          <h4 class="media-compare-title">From File Management → To Visual Storytelling</h4>
+          <div class="media-compare-grid">
+            <div class="media-compare-before">
+              <img src="../assets/file-cabinet.jpg" alt="Before: File Cabinet workflow" class="media-img small">
+              <img src="../assets/associated-images.jpg" alt="Before: Associated Images tab" class="media-img small">
+            </div>
+            <div class="media-compare-after">
+              <img src="../assets/smart-image-studio-grid.avif" alt="After: Smart Image Studio grid" class="media-img">
+            </div>
+          </div>
+        </div>
     </section>
 
     <!-- Feature Deep Dive Section -->
@@ -484,244 +565,80 @@
       <span class="section-label">Feature Deep Dive</span>
       <h2 class="section-title">Design solutions in detail</h2>
       <p class="section-desc">
-        Each feature was designed to address specific friction points discovered during research.
+        Each feature directly responds to a specific structural problem uncovered in research.
       </p>
 
       <!-- Feature 1: Guided Product Builder -->
-      <div class="feature-block">
+      <div class="feature-block simple">
         <div class="feature-header">
           <span class="feature-number">01</span>
           <h3>Guided Product Builder</h3>
         </div>
-        
         <div class="feature-content">
-          <div class="feature-text">
-            <p>
-              Converted tab-based navigation into a structured step flow. Users progress through a clear sequence, reducing cognitive load and preventing missed fields.
-            </p>
-            
-            <div class="steps-visual">
-              <div class="step">
-                <span class="step-num">1</span>
-                <span class="step-label">Basics</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step">
-                <span class="step-num">2</span>
-                <span class="step-label">Media</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step">
-                <span class="step-num">3</span>
-                <span class="step-label">Content</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step">
-                <span class="step-num">4</span>
-                <span class="step-label">Pricing</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step active">
-                <span class="step-num">5</span>
-                <span class="step-label">Preview</span>
-              </div>
-            </div>
-
-            <div class="feature-benefits">
-              <span class="benefit">✓ Clear progression</span>
-              <span class="benefit">✓ Reduced tab switching</span>
-              <span class="benefit">✓ No missed fields</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-visual">
-          <div class="screen-placeholder">
-            <div class="icon">💻</div>
-            <span class="tag">Full Mockup</span>
-            <span class="title">Guided Builder Screen</span>
-            <span class="desc">Add: Full mockup showing step progress. Optional: Progress bar animation sliding between steps.</span>
-          </div>
+          <p class="feature-addresses">Addresses: fragmented navigation & cognitive overload.</p>
+          <p><strong>Problem:</strong> 6+ tabs and 18+ transitions required to publish a single SKU.</p>
+          <p><strong>Design decision:</strong> Step-based PDP Studio aligned to user flow: <em>Create → Media → Content → Pricing → Preview → Publish</em>.</p>
+          <p><strong>Why this matters:</strong> Makes publishing linear, predictable, and removes hidden configuration steps.</p>
+          <p class="feature-metric"><strong>Measured outcome:</strong> 70% fewer tab switches, 80% first-attempt completion.</p>
         </div>
       </div>
 
       <!-- Feature 2: AI Content Generator -->
-      <div class="feature-block">
+      <div class="feature-block simple">
         <div class="feature-header">
           <span class="feature-number">02</span>
           <h3>AI Content Generator</h3>
         </div>
-        
         <div class="feature-content">
-          <div class="feature-text">
-            <p>
-              Integrated AI panel that generates product content with a single click. The AI is assistive—users maintain full control over edits and final approval.
-            </p>
-            
-            <div class="ai-capabilities">
-              <div class="ai-cap">
-                <span class="cap-icon">📝</span>
-                <span class="cap-label">Short Description</span>
-              </div>
-              <div class="ai-cap">
-                <span class="cap-icon">📄</span>
-                <span class="cap-label">Long Description</span>
-              </div>
-              <div class="ai-cap">
-                <span class="cap-icon">•</span>
-                <span class="cap-label">Bullet Highlights</span>
-              </div>
-              <div class="ai-cap">
-                <span class="cap-icon">🔍</span>
-                <span class="cap-label">SEO Metadata</span>
-              </div>
-            </div>
-
-            <div class="feature-benefits">
-              <span class="benefit">✓ Assistive, not autonomous</span>
-              <span class="benefit">✓ User-controlled editing</span>
-              <span class="benefit">✓ Consistent tone</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-visual">
-          <div class="screen-placeholder">
-            <div class="icon">🤖</div>
-            <span class="tag">AI Panel</span>
-            <span class="title">Content Generator Interface</span>
-            <span class="desc">Add: AI panel open with generated content. Optional: Simulated "Generate" loading state animation.</span>
-          </div>
+          <p class="feature-addresses">Addresses: manual writing & content inconsistency.</p>
+          <p><strong>Problem:</strong> Descriptions were manually written with no structure or guidance.</p>
+          <p><strong>Design decision:</strong> Embedded a contextual AI panel directly inside the description area.</p>
+          <p><strong>Why this matters:</strong> Speeds up writing while keeping editors fully in control of tone and accuracy.</p>
+          <p class="feature-metric"><strong>Measured outcome:</strong> Noticeably lower content-writing time across usability sessions.</p>
         </div>
       </div>
 
       <!-- Feature 3: Smart Image Studio -->
-      <div class="feature-block">
+      <div class="feature-block simple">
         <div class="feature-header">
           <span class="feature-number">03</span>
           <h3>Smart Image Studio</h3>
         </div>
-        
         <div class="feature-content">
-          <div class="feature-text">
-            <p>
-              Visual-first media management replacing traditional file lists. Users can see, organize, and enhance images without leaving the publishing flow.
-            </p>
-            
-            <div class="studio-features">
-              <span class="studio-feat">Drag-and-drop upload</span>
-              <span class="studio-feat">Background removal</span>
-              <span class="studio-feat">Auto-enhance</span>
-              <span class="studio-feat">Reorder images</span>
-              <span class="studio-feat">Desktop/mobile preview</span>
-            </div>
-
-            <div class="feature-benefits">
-              <span class="benefit">✓ Visual organization</span>
-              <span class="benefit">✓ Built-in editing</span>
-              <span class="benefit">✓ Device preview</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-visual">
-          <div class="screen-placeholder">
-            <div class="icon">🖼️</div>
-            <span class="tag">Image Studio</span>
-            <span class="title">Media Gallery Grid</span>
-            <span class="desc">Add: Image gallery grid UI mockup. Optional: Drag interaction preview animation.</span>
-          </div>
+          <p class="feature-addresses">Addresses: media workflow breakdown.</p>
+          <p><strong>Problem:</strong> Image upload lived in File Cabinet, forcing users to leave the PDP mid-flow.</p>
+          <p><strong>Design decision:</strong> Drag-and-drop image manager integrated directly into PDP Studio.</p>
+          <p><strong>Why this matters:</strong> Keeps users in one place, reduces context switching, and centralizes media quality.</p>
+          <p class="feature-metric"><strong>Measured outcome:</strong> 3–5 minutes saved per SKU on image handling.</p>
         </div>
       </div>
 
-      <!-- Feature 4: Template Selector + Live Preview -->
-      <div class="feature-block">
+      <!-- Feature 4: Template + Live Preview -->
+      <div class="feature-block simple">
         <div class="feature-header">
           <span class="feature-number">04</span>
-          <h3>Template Selector + Live Preview</h3>
+          <h3>Template + Live Preview</h3>
         </div>
-        
         <div class="feature-content">
-          <div class="feature-text">
-            <p>
-              Layout templates improve visual consistency across the catalog. Users select a template and see a real-time preview of how the PDP will appear to customers.
-            </p>
-            
-            <div class="template-options">
-              <div class="template-opt">
-                <span class="template-icon">📐</span>
-                <span class="template-label">Classic</span>
-              </div>
-              <div class="template-opt">
-                <span class="template-icon">🎨</span>
-                <span class="template-label">Visual-first</span>
-              </div>
-              <div class="template-opt">
-                <span class="template-icon">📦</span>
-                <span class="template-label">Bundle-ready</span>
-              </div>
-            </div>
-
-            <div class="feature-benefits">
-              <span class="benefit">✓ Visual consistency</span>
-              <span class="benefit">✓ No more blind publishing</span>
-              <span class="benefit">✓ Reduced errors</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-visual">
-          <div class="screen-placeholder split">
-            <div class="icon">🔀</div>
-            <span class="tag">Split View</span>
-            <span class="title">Template Selector + PDP Preview</span>
-            <span class="desc">Add: Split screen showing template selector and live PDP preview side by side.</span>
-          </div>
+          <p class="feature-addresses">Addresses: publishing anxiety.</p>
+          <p><strong>Problem:</strong> Users published blind, then checked the live site to see if layout broke.</p>
+          <p><strong>Design decision:</strong> Split-view PDP + storefront preview that updates in real time.</p>
+          <p><strong>Why this matters:</strong> Turns publishing into a validated step instead of a risky push to production.</p>
         </div>
       </div>
 
       <!-- Feature 5: PDP Quality Score -->
-      <div class="feature-block">
+      <div class="feature-block simple">
         <div class="feature-header">
           <span class="feature-number">05</span>
           <h3>PDP Quality Score</h3>
         </div>
-        
         <div class="feature-content">
-          <div class="feature-text">
-            <p>
-              Dynamic scoring system that encourages complete, high-quality listings. The score updates in real-time as users fill in fields, gamifying the publishing process.
-            </p>
-            
-            <div class="score-preview">
-              <div class="score-circle">
-                <span class="score-value">85</span>
-                <span class="score-label">Quality Score</span>
-              </div>
-              <div class="score-checklist">
-                <div class="check-item done">✓ Title optimized</div>
-                <div class="check-item done">✓ Description complete</div>
-                <div class="check-item done">✓ 4+ images added</div>
-                <div class="check-item pending">○ SEO metadata</div>
-                <div class="check-item pending">○ Mobile preview checked</div>
-              </div>
-            </div>
-
-            <div class="feature-benefits">
-              <span class="benefit">✓ Quality enforcement</span>
-              <span class="benefit">✓ Clear guidance</span>
-              <span class="benefit">✓ Gamified completion</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-visual">
-          <div class="screen-placeholder">
-            <div class="icon">📊</div>
-            <span class="tag">Sidebar Panel</span>
-            <span class="title">Quality Score Breakdown</span>
-            <span class="desc">Add: Sidebar panel showing score breakdown with checklist items and completion percentage.</span>
-          </div>
+          <p class="feature-addresses">Addresses: lack of validation.</p>
+          <p><strong>Problem:</strong> No enforcement of completeness or quality before publishing.</p>
+          <p><strong>Design decision:</strong> Real-time score plus checklist tied to must-have content and media.</p>
+          <p><strong>Why this matters:</strong> Moves validation from “remember everything” to a clear, system-guided finish line.</p>
+          <p class="feature-metric"><strong>Measured outcome:</strong> 80% first-attempt task completion.</p>
         </div>
       </div>
     </section>
