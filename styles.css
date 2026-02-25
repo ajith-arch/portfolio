@@ -495,7 +495,10 @@ button {
 }
 
 .projects-side-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
   padding: 8px 4px;
   border-radius: 8px;
   font-size: 13px;
@@ -506,6 +509,31 @@ button {
     transition: var(--transition-fast);
     white-space: nowrap;
   text-align: right;
+}
+
+.project-status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.project-status-indicator.completed {
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 1);
+    animation: blink-green 2s ease-in-out infinite;
+}
+
+@keyframes blink-green {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    50% {
+        opacity: 0.6;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0);
+    }
 }
 
 .projects-side-link:hover {
@@ -735,7 +763,7 @@ button {
 }
 
 .project-thumbnail.codebell-theme {
-    background: linear-gradient(135deg, #9A3412 0%, #EA580C 50%, #F97316 100%);
+    background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
 }
 
 .project-logo-text.practo {
@@ -743,17 +771,8 @@ button {
     color: white;
 }
 
-.project-card:nth-child(3) .project-thumbnail {
-    background: linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%);
-}
-
-.project-card:nth-child(3) .project-thumbnail {
-    background: linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%);
-}
-
-.project-card:nth-child(4) .project-thumbnail {
-    background: linear-gradient(135deg, #581C87 0%, #7C3AED 50%, #8B5CF6 100%);
-}
+/* Override older nth-child background hacks to avoid forcing colors
+   so each project uses its explicit theme class instead. */
 
 /* Text logo for projects without image logo */
 .project-logo-text {
