@@ -296,6 +296,28 @@ button {
     padding-bottom: var(--spacing-3xl);
 }
 
+.about-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-back-link {
+    margin-bottom: 0;
+}
+
+.about-back-link a {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+}
+
+.about-back-link a:hover {
+    color: var(--color-text-primary);
+}
+
 .about-hero {
     margin-bottom: var(--spacing-2xl);
 }
@@ -456,8 +478,9 @@ button {
 
 .projects-side-nav {
     position: fixed;
-    top: 140px;
+    top: 50%;
     right: 24px;
+    transform: translateY(-50%);
     z-index: 50;
     display: flex;
     flex-direction: column;
