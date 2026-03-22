@@ -1370,6 +1370,12 @@ Project card color variations
 
     .project-hero-text {
         gap: 12px;
+        /* Lets z-index from mobile last-card merge script stack text above media */
+        position: relative;
+    }
+
+    .project-hero-media {
+        position: relative;
     }
 
     .project-tags {
