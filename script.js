@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initProjectHeroVideos();
     /* EXPERIMENTAL — safe to remove: see initExpScrollHero() below */
     initExpScrollHero();
-    /* Mobile: last project card text/media merge timing — see initMobileLastHeroMerge() */
-    initMobileLastHeroMerge();
+    /* Mobile: unified whole-card reveal (no split text/thumbnail animation) */
+    initMobileProjectHeroReveal();
 });
 
 // ===== Project Filtering =====
@@ -45,8 +45,10 @@ function initFilterButtons() {
                     card.style.display = 'none';
                 }
             });
-            if (typeof window.__refreshMobileLastHeroMerge === 'function') {
-                requestAnimationFrame(window.__refreshMobileLastHeroMerge);
+            if (typeof window.__refreshMobileProjectHeroReveal === 'function') {
+                requestAnimationFrame(function () {
+                    window.__refreshMobileProjectHeroReveal();
+                });
             }
         });
     });
@@ -321,117 +323,68 @@ function initLandingReveal() {
 
 /*
  * =========================================================================
- * MOBILE: last project card — faster text / media merge (no extra footer scroll)
+ * MOBILE: unified project card reveal (no separate text / thumbnail motion)
  * ----------------------------------------------------------------------------
- * Only runs at max-width 768px. Applies staggered translate to the last *visible*
- * .project-hero card so text and thumbnail settle together sooner before the
- * footer. Other cards are untouched. Disable: remove initMobileLastHeroMerge()
- * from DOMContentLoaded and delete this function + __refreshMobileLastHeroMerge.
+ * ≤768px only: whole .project-hero-inner fades + slides as one block via IO.
+ * Desktop unchanged. Remove initMobileProjectHeroReveal from DOMContentLoaded
+ * and delete this + CSS block body.home-mobile-reveal … to disable.
  * =========================================================================
  */
-function initMobileLastHeroMerge() {
+function initMobileProjectHeroReveal() {
     var mq = window.matchMedia('(max-width: 768px)');
     var listSel = '#work .project-hero-list > .project-card.project-hero';
-    var rafId = null;
+    var observer = null;
 
-    function smoothstep(t) {
-        var x = Math.max(0, Math.min(1, t));
-        return x * x * (3 - 2 * x);
+    function clearRevealMode() {
+        document.querySelectorAll(listSel).forEach(function (card) {
+            var inner = card.querySelector('.project-hero-inner');
+            if (inner) inner.classList.remove('mobile-hero-in-view');
+        });
+        document.body.classList.remove('home-mobile-reveal');
     }
 
-    function clearMerge(card) {
-        var text = card.querySelector('.project-hero-text');
-        var media = card.querySelector('.project-hero-media');
-        if (text) {
-            text.style.removeProperty('transform');
-            text.style.removeProperty('transition');
-            text.style.removeProperty('z-index');
+    function wire() {
+        if (observer) {
+            observer.disconnect();
+            observer = null;
         }
-        if (media) {
-            media.style.removeProperty('transform');
-            media.style.removeProperty('transition');
-            media.style.removeProperty('z-index');
-        }
-    }
-
-    function getVisibleHeroCards() {
-        return Array.prototype.filter.call(
-            document.querySelectorAll(listSel),
-            function (c) {
-                return window.getComputedStyle(c).display !== 'none';
-            }
-        );
-    }
-
-    function apply() {
-        var cardsAll = document.querySelectorAll(listSel);
+        document.querySelectorAll(listSel).forEach(function (card) {
+            var inner = card.querySelector('.project-hero-inner');
+            if (inner) inner.classList.remove('mobile-hero-in-view');
+        });
+        document.body.classList.remove('home-mobile-reveal');
 
         if (!mq.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            cardsAll.forEach(function (c) {
-                clearMerge(c);
-            });
+            clearRevealMode();
             return;
         }
 
-        var visible = getVisibleHeroCards();
-        var last = visible[visible.length - 1];
+        document.body.classList.add('home-mobile-reveal');
 
-        cardsAll.forEach(function (card) {
-            if (card !== last) clearMerge(card);
-        });
+        observer = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var card = entry.target;
+                    if (window.getComputedStyle(card).display === 'none') return;
+                    var inner = card.querySelector('.project-hero-inner');
+                    if (inner) inner.classList.add('mobile-hero-in-view');
+                    observer.unobserve(card);
+                });
+            },
+            { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0.06 }
+        );
 
-        if (!last) return;
-
-        var text = last.querySelector('.project-hero-text');
-        var media = last.querySelector('.project-hero-media');
-        if (!text || !media) return;
-
-        var h = window.innerHeight || 0;
-        if (h < 1) return;
-
-        /*
-         * Compressed timeline vs a typical card: higher anchor + shorter revealZone
-         * so progress reaches 1 while more of the card is still below mid-viewport,
-         * avoiding an extra scroll past the footer to finish the motion.
-         */
-        var anchor = h * 0.93;
-        var revealZone = Math.max(h * 0.26, 160);
-        var top = last.getBoundingClientRect().top;
-        var raw = (anchor - top) / revealZone;
-        raw = Math.max(0, Math.min(1, raw));
-        var eased = smoothstep(raw);
-
-        /* Text moves down, media moves up — converge into final stacked layout */
-        var textDown = (1 - eased) * 42;
-        var mediaUp = (1 - eased) * -28;
-
-        text.style.transition = 'none';
-        media.style.transition = 'none';
-        text.style.transform = 'translate3d(0,' + textDown.toFixed(2) + 'px,0)';
-        media.style.transform = 'translate3d(0,' + mediaUp.toFixed(2) + 'px,0)';
-        if (eased < 0.98) {
-            text.style.zIndex = '2';
-            media.style.zIndex = '1';
-        } else {
-            text.style.removeProperty('z-index');
-            media.style.removeProperty('z-index');
-        }
-    }
-
-    function onScroll() {
-        if (rafId != null) return;
-        rafId = requestAnimationFrame(function () {
-            rafId = null;
-            apply();
+        document.querySelectorAll(listSel).forEach(function (card) {
+            if (window.getComputedStyle(card).display !== 'none') {
+                observer.observe(card);
+            }
         });
     }
 
-    window.__refreshMobileLastHeroMerge = apply;
-
-    mq.addEventListener('change', apply);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    apply();
+    window.__refreshMobileProjectHeroReveal = wire;
+    mq.addEventListener('change', wire);
+    wire();
 }
 
 /*

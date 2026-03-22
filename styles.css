@@ -1370,12 +1370,21 @@ Project card color variations
 
     .project-hero-text {
         gap: 12px;
-        /* Lets z-index from mobile last-card merge script stack text above media */
-        position: relative;
     }
 
-    .project-hero-media {
-        position: relative;
+    /*
+     * Whole-card reveal: JS sets body.home-mobile-reveal + IO toggles .mobile-hero-in-view
+     * on .project-hero-inner so text + thumbnail move as one unit (no split merge).
+     */
+    body.home-mobile-reveal .project-hero-list > .project-card.project-hero .project-hero-inner {
+        opacity: 0;
+        transform: translate3d(0, 14px, 0);
+        transition: opacity 0.42s ease, transform 0.42s ease;
+    }
+
+    body.home-mobile-reveal .project-hero-list > .project-card.project-hero .project-hero-inner.mobile-hero-in-view {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
     }
 
     .project-tags {
