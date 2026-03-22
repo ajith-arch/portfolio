@@ -786,6 +786,13 @@ body.exp-scroll-hero .footer {
     }
 }
 
+/* Know Me page: extra space below fixed nav on small screens only */
+@media (max-width: 768px) {
+    .about-body .about-main {
+        padding-top: calc(96px + var(--spacing-3xl) + var(--spacing-xl));
+    }
+}
+
 /* ===== Projects Section ===== */
 .projects {
     padding-bottom: var(--spacing-3xl);
