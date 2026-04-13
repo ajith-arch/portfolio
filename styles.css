@@ -963,6 +963,26 @@ body.exp-scroll-hero .footer {
     padding: 6px 12px;
 }
 
+/* Coming soon chip (used outside .project-tags as well) */
+.coming-soon-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    background: #E9FFF2;
+    color: #1E7A3A;
+    border: 1px solid rgba(30, 122, 58, 0.22);
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+    box-shadow:
+        0 6px 14px rgba(16, 185, 129, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
 /* University of Utah Tag */
 .tag-university {
     display: inline-flex;
@@ -1184,6 +1204,29 @@ Project card color variations
     text-decoration: underline;
 }
 
+.project-hero-link--soon {
+    color: var(--color-text-secondary);
+    pointer-events: none;
+    cursor: url('assets/cursor-default.png') 2 2, default;
+}
+
+.project-hero-link--soon:hover {
+    text-decoration: none;
+}
+
+.project-hero-media-link--static {
+    cursor: url('assets/cursor-default.png') 2 2, default;
+}
+
+article.project-hero--coming-soon {
+    cursor: url('assets/cursor-default.png') 2 2, default;
+}
+
+article.project-hero--coming-soon .project-hero-inner,
+article.project-hero--coming-soon .project-hero-media-link--static {
+    cursor: inherit;
+}
+
 /* Hero-specific gradients */
 .project-hero-media--search {
     background: linear-gradient(135deg, #37ff73 0%, #007d2c 40%, #009947 100%);
@@ -1203,6 +1246,19 @@ Project card color variations
 
 .project-hero-media--practo-ai {
     background: linear-gradient(135deg, #0D9488 0%, #14B8A6 40%, #2DD4BF 100%);
+}
+
+/* Flipkart — looping MP4 thumbnail (same treatment as Campus Store video) */
+.project-hero-media--flipkart {
+    background: transparent;
+}
+
+.project-hero-media--flipkart::before {
+    display: none;
+}
+
+#project-flipkart-onboarding .project-hero-video {
+    opacity: 1;
 }
 
 .project-hero-media--campus {

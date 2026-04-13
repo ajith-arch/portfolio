@@ -114,7 +114,7 @@ function initProjectHeroVideos() {
     var video = frame.querySelector('.project-hero-video');
     if (!video) return;
 
-    if (frame.classList.contains('project-hero-media--campus')) {
+    if (frame.classList.contains('project-hero-media--campus') || frame.classList.contains('project-hero-media--flipkart')) {
       var p = video.play();
       if (p && typeof p.catch === 'function') p.catch(function(){});
       return;

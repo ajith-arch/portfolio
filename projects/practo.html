@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="practo.css">
 </head>
-<body>
+<body class="practo-case">
 
   <!-- Floating Side Navigation -->
   <aside class="side-nav" id="sideNav">
@@ -47,8 +47,8 @@
     <!-- Hero -->
     <section class="hero" id="hero">
       <div class="hero-badge animate-in">
-        <span class="badge-icon">🏥</span>
-        <span>Healthcare UX • AI-Powered • Research-Led</span>
+        <span class="hero-badge-rule" aria-hidden="true"></span>
+        <span>Healthcare UX · AI-powered · Research-led</span>
       </div>
       
       <h1 class="animate-in delay-1">
@@ -83,7 +83,7 @@
       <div class="hero-visual animate-in delay-4">
         <div class="media-box hero-media">
           <div class="media-content">
-            <div class="media-icon">🎬</div>
+            <div class="media-placeholder-mark" aria-hidden="true"></div>
             <div class="media-tag">Hero Video / Motion</div>
             <h4>Product Overview Animation</h4>
             <p>Add: 15-20 second video showing the complete flow — patient describing symptoms in native language, AI generating structured case, doctor receiving summary pack, video consult with live translation.</p>
@@ -97,30 +97,30 @@
     </section>
 
     <!-- Impact Stats -->
-    <div class="impact-stats">
+    <div class="impact-stats pr-reveal">
       <div class="impact-stat">
-        <div class="stat-icon">⏱️</div>
+        <div class="stat-ordinal" aria-hidden="true">01</div>
         <div class="stat-content">
           <span class="stat-value">&lt;3 min</span>
           <span class="stat-label">Smart Intake Time</span>
         </div>
       </div>
       <div class="impact-stat">
-        <div class="stat-icon">📋</div>
+        <div class="stat-ordinal" aria-hidden="true">02</div>
         <div class="stat-content">
           <span class="stat-value">30 sec</span>
           <span class="stat-label">Doctor Brief Scan</span>
         </div>
       </div>
       <div class="impact-stat">
-        <div class="stat-icon">🌐</div>
+        <div class="stat-ordinal" aria-hidden="true">03</div>
         <div class="stat-content">
           <span class="stat-value">22+</span>
           <span class="stat-label">Languages Supported</span>
         </div>
       </div>
       <div class="impact-stat">
-        <div class="stat-icon">🔒</div>
+        <div class="stat-ordinal" aria-hidden="true">04</div>
         <div class="stat-content">
           <span class="stat-value">100%</span>
           <span class="stat-label">Patient Consent Control</span>
@@ -129,21 +129,21 @@
     </div>
 
     <!-- Context Section -->
-    <section id="context">
+    <section class="pr-section pr-section--muted pr-reveal" id="context">
       <span class="section-tag">Context</span>
       <h2 class="section-title">Healthcare in India is complex</h2>
       <p class="section-intro">
         Practo is an India-based healthcare platform offering doctor discovery, appointments, and video consultations. In India, healthcare conversations happen across multiple languages and fragmented channels.
       </p>
 
-      <div class="context-grid">
+      <div class="context-grid pr-stagger">
         <div class="context-card highlight">
-          <div class="context-icon">🇮🇳</div>
+          <p class="context-kicker">Market context</p>
           <h3>The Indian Reality</h3>
           <p>Patients may not know how to describe symptoms clearly, reports are scattered across photos and chats, and video consults can break down when patient and doctor do not share a common language.</p>
         </div>
         <div class="context-card">
-          <div class="context-icon">💼</div>
+          <p class="context-kicker">Contribution</p>
           <h3>My Involvement</h3>
           <p>Volunteer project done remotely. I worked end-to-end as the UIUX designer — from research and IA to prototypes, motion concepts, and handoff-ready specs.</p>
         </div>
@@ -152,7 +152,7 @@
       <!-- Media Placeholder: Context -->
       <div class="media-box">
         <div class="media-content">
-          <div class="media-icon">📊</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">Infographic</div>
           <h4>India Healthcare Landscape</h4>
           <p>Add: Visual showing key statistics — number of languages, telehealth adoption rates, common patient pain points, doctor distribution across India.</p>
@@ -165,17 +165,16 @@
     </section>
 
     <!-- Problem Section -->
-    <section id="problem">
+    <section class="pr-section pr-reveal" id="problem">
       <span class="section-tag">The Problem</span>
       <h2 class="section-title">Why telehealth fails — repeatedly</h2>
       <p class="section-intro">
         Through research, I identified three systemic problems that cause telehealth experiences to fail:
       </p>
 
-      <div class="problem-cards">
+      <div class="problem-cards pr-stagger">
         <div class="problem-card">
           <div class="problem-number">01</div>
-          <div class="problem-icon">🧠</div>
           <h3>Missing or Unstructured Context</h3>
           <p>Patients forget timelines, medications, or key history. Doctors spend the first minutes extracting basics instead of providing care.</p>
           <div class="problem-impact">
@@ -186,7 +185,6 @@
 
         <div class="problem-card">
           <div class="problem-number">02</div>
-          <div class="problem-icon">📁</div>
           <h3>Fragmented Health Memory</h3>
           <p>Chat-based help is not reusable. Older issues and reports are hard to retrieve and share during a consult. Every visit starts from scratch.</p>
           <div class="problem-impact">
@@ -197,7 +195,6 @@
 
         <div class="problem-card">
           <div class="problem-number">03</div>
-          <div class="problem-icon">🗣️</div>
           <h3>Language Mismatch in Consults</h3>
           <p>Many doctors prefer English while many patients prefer regional languages. This creates confusion, longer consults, and poor adherence to care instructions.</p>
           <div class="problem-impact">
@@ -210,7 +207,7 @@
       <!-- Media Placeholder: Problem Visualization -->
       <div class="media-box">
         <div class="media-content">
-          <div class="media-icon">🎥</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">Video / Animation</div>
           <h4>Problem Scenario Walkthrough</h4>
           <p>Add: Short video showing a frustrated patient struggling to explain symptoms in English, searching through gallery for old reports, and a confused video call where neither party understands clearly.</p>
@@ -223,7 +220,7 @@
     </section>
 
     <!-- Research Section -->
-    <section id="research">
+    <section class="pr-section pr-section--muted pr-reveal" id="research">
       <span class="section-tag">Research & Discovery</span>
       <h2 class="section-title">Understanding the friction points</h2>
       <p class="section-intro">
@@ -231,34 +228,34 @@
       </p>
 
       <!-- Key Insights -->
-      <div class="insights-grid">
+      <div class="insights-grid pr-stagger">
         <div class="insight-card">
-          <div class="insight-icon">💬</div>
+          <span class="insight-index">01</span>
           <h4>Users want help describing symptoms</h4>
           <p>But they don't want long forms. Quick, guided input with smart suggestions works best.</p>
         </div>
         <div class="insight-card">
-          <div class="insight-icon">📷</div>
+          <span class="insight-index">02</span>
           <h4>Reports live as photos</h4>
           <p>People keep reports as photos and rarely label them. Retrieval is painful.</p>
         </div>
         <div class="insight-card">
-          <div class="insight-icon">📝</div>
+          <span class="insight-index">03</span>
           <h4>Chat ≠ Health History</h4>
           <p>Raw conversation history is not the same as structured, reusable health records.</p>
         </div>
         <div class="insight-card">
-          <div class="insight-icon">⚡</div>
+          <span class="insight-index">04</span>
           <h4>Doctors want brevity</h4>
           <p>A short brief, not a long narrative. Scannable in 30 seconds or less.</p>
         </div>
         <div class="insight-card">
-          <div class="insight-icon">🔄</div>
+          <span class="insight-index">05</span>
           <h4>Repeated clarifications</h4>
           <p>Language mismatch causes the same question to be asked multiple times.</p>
         </div>
         <div class="insight-card">
-          <div class="insight-icon">🤝</div>
+          <span class="insight-index">06</span>
           <h4>Transparency builds trust</h4>
           <p>Trust improves when the system explains why it's asking questions and what will be shared.</p>
         </div>
@@ -271,7 +268,7 @@
         <!-- Persona -->
         <div class="media-box">
           <div class="media-content">
-            <div class="media-icon">👤</div>
+            <div class="media-placeholder-mark" aria-hidden="true"></div>
             <div class="media-tag">User Persona</div>
             <h4>Primary Persona: The Anxious Patient</h4>
             <p>Add: Detailed persona card showing demographics, goals, frustrations, tech comfort level, language preferences, and a quote capturing their mindset.</p>
@@ -285,7 +282,7 @@
         <!-- Journey Map -->
         <div class="media-box wide">
           <div class="media-content">
-            <div class="media-icon">🗺️</div>
+            <div class="media-placeholder-mark" aria-hidden="true"></div>
             <div class="media-tag">Journey Map</div>
             <h4>Current vs. Improved Patient Journey</h4>
             <p>Add: Side-by-side journey map showing the current fragmented experience (high friction) vs. the redesigned Care AI flow (streamlined). Include emotional states, pain points, and opportunities at each stage.</p>
@@ -299,7 +296,7 @@
         <!-- Competitive Analysis -->
         <div class="media-box">
           <div class="media-content">
-            <div class="media-icon">📊</div>
+            <div class="media-placeholder-mark" aria-hidden="true"></div>
             <div class="media-tag">Competitive Analysis</div>
             <h4>Telehealth App Comparison</h4>
             <p>Add: Matrix comparing Practo vs competitors (Tata Health, MFine, Apollo 24|7) across key features: AI triage, multilingual support, health history, report handling, doctor briefs.</p>
@@ -314,7 +311,7 @@
       <!-- Target Users -->
       <div class="users-section">
         <h3>Target Users</h3>
-        <div class="users-grid">
+        <div class="users-grid pr-stagger">
           <div class="user-card primary">
             <div class="user-badge">Primary</div>
             <h4>Patients</h4>
@@ -340,7 +337,7 @@
     </section>
 
     <!-- Solution Overview -->
-    <section id="solution">
+    <section class="pr-section pr-reveal" id="solution">
       <span class="section-tag">The Solution</span>
       <h2 class="section-title">Care AI: A connected system</h2>
       <p class="section-intro">
@@ -350,7 +347,7 @@
       <!-- Solution Diagram -->
       <div class="media-box wide">
         <div class="media-content">
-          <div class="media-icon">🔄</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">System Architecture</div>
           <h4>Care AI System Overview</h4>
           <p>Add: Visual diagram showing how the 4 pillars connect — Health History feeds into Smart Reports, which feeds into Doctor Summary, which connects to Live Translation. Show the circular, connected nature of the system.</p>
@@ -369,10 +366,12 @@
     </section>
 
     <!-- Four Pillars -->
-    <section id="pillars">
+    <section class="pr-section pr-section--muted pr-reveal" id="pillars">
       <span class="section-tag">Core Innovation</span>
       <h2 class="section-title">The Four Pillars of Care AI</h2>
-      
+
+      <div class="pillars-wrap pr-stagger">
+
       <!-- Pillar 1 -->
       <div class="pillar-block">
         <div class="pillar-header">
@@ -387,30 +386,26 @@
           <div class="pillar-text">
             <p>Instead of raw conversation history, each interaction becomes a structured "Case" that users can return to anytime. This turns Care AI from a one-off chatbot into a <strong>longitudinal care layer</strong>.</p>
             
-            <div class="feature-list">
+            <div class="feature-list feature-list--numbered">
               <div class="feature-item">
-                <span class="feature-icon">📌</span>
                 <div>
                   <h5>Title & Status</h5>
                   <p>Auto-generated from symptom topic (e.g., "Sore throat", "Migraine")</p>
                 </div>
               </div>
               <div class="feature-item">
-                <span class="feature-icon">📅</span>
                 <div>
                   <h5>Timeline</h5>
                   <p>Onset, progression, triggers — all captured and organized</p>
                 </div>
               </div>
               <div class="feature-item">
-                <span class="feature-icon">📎</span>
                 <div>
                   <h5>Attachments</h5>
                   <p>Reports, prescriptions, scans with labels and extracted values</p>
                 </div>
               </div>
               <div class="feature-item">
-                <span class="feature-icon">⚡</span>
                 <div>
                   <h5>Quick Actions</h5>
                   <p>Continue issue, Share with doctor, Export summary, Delete</p>
@@ -422,7 +417,7 @@
           <div class="pillar-visual">
             <div class="media-box">
               <div class="media-content">
-                <div class="media-icon">📱</div>
+                <div class="media-placeholder-mark" aria-hidden="true"></div>
                 <div class="media-tag">UI Screen</div>
                 <h4>Health History — Case Cards</h4>
                 <p>Add: Screenshot showing the History screen with multiple case cards. Each card shows: title, date, status badge (ongoing/resolved), key tags, and quick action buttons.</p>
@@ -450,7 +445,7 @@
           <div class="pillar-visual">
             <div class="media-box">
               <div class="media-content">
-                <div class="media-icon">📄</div>
+                <div class="media-placeholder-mark" aria-hidden="true"></div>
                 <div class="media-tag">UI Flow</div>
                 <h4>Report Upload Experience</h4>
                 <p>Add: Multi-screen flow showing: gentle prompt → upload options (camera/gallery) → auto-crop → label selection → extracted values with "tap to edit".</p>
@@ -482,7 +477,6 @@
             </div>
             
             <div class="design-note">
-              <span class="note-icon">💡</span>
               <p>The system keeps the experience lightweight, avoids over-asking, and only prompts when user input suggests a report would be helpful.</p>
             </div>
           </div>
@@ -541,7 +535,7 @@
           <div class="pillar-visual">
             <div class="media-box">
               <div class="media-content">
-                <div class="media-icon">📋</div>
+                <div class="media-placeholder-mark" aria-hidden="true"></div>
                 <div class="media-tag">UI Screen</div>
                 <h4>Summary Pack Preview</h4>
                 <p>Add: Screenshot showing the summary preview screen with all sections visible, edit buttons, and the "Approve & Share" CTA at bottom. Show consent messaging clearly.</p>
@@ -569,7 +563,7 @@
           <div class="pillar-visual">
             <div class="media-box">
               <div class="media-content">
-                <div class="media-icon">🎥</div>
+                <div class="media-placeholder-mark" aria-hidden="true"></div>
                 <div class="media-tag">Video / Prototype</div>
                 <h4>Live Translation in Action</h4>
                 <p>Add: Video showing the translation UI during a call — patient speaks Hindi, doctor sees English subtitles, doctor responds in English, patient sees Hindi subtitles. Show language toggle and confidence indicator.</p>
@@ -606,18 +600,20 @@
             <div class="after-call">
               <h5>After the Call</h5>
               <div class="after-call-items">
-                <span>📝 Transcript saved to correct Case</span>
-                <span>📌 Important instructions auto-pinned</span>
-                <span>🔔 Follow-up reminders created</span>
+                <span class="after-call-item">Transcript saved to correct Case</span>
+                <span class="after-call-item">Important instructions auto-pinned</span>
+                <span class="after-call-item">Follow-up reminders created</span>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      </div>
     </section>
 
     <!-- Information Architecture -->
-    <section id="ia">
+    <section class="pr-section pr-reveal" id="ia">
       <span class="section-tag">Information Architecture</span>
       <h2 class="section-title">End-to-end user journey</h2>
       
@@ -676,7 +672,7 @@
       <!-- IA Diagram -->
       <div class="media-box wide">
         <div class="media-content">
-          <div class="media-icon">🔀</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">Flow Diagram</div>
           <h4>Complete User Flow Diagram</h4>
           <p>Add: Detailed flow diagram showing all screens, decision points, and paths. Include: happy path, error states, alternative flows (return user, caregiver booking, urgent symptoms redirect).</p>
@@ -689,7 +685,7 @@
     </section>
 
     <!-- Key Screens -->
-    <section id="screens">
+    <section class="pr-section pr-section--muted pr-reveal" id="screens">
       <span class="section-tag">Screen Design</span>
       <h2 class="section-title">Key screens I designed</h2>
       <p class="section-intro">
@@ -699,7 +695,7 @@
       <!-- Patient Screens -->
       <h3 class="screens-category">Patient-Facing Screens</h3>
       
-      <div class="screens-grid">
+      <div class="screens-grid pr-stagger">
         <div class="screen-card">
           <div class="media-box screen-media">
             <div class="media-content compact">
@@ -824,7 +820,7 @@
       <!-- Doctor Screens -->
       <h3 class="screens-category">Doctor-Facing Screens</h3>
       
-      <div class="screens-grid cols-3">
+      <div class="screens-grid cols-3 pr-stagger">
         <div class="screen-card">
           <div class="media-box screen-media">
             <div class="media-content compact">
@@ -874,7 +870,7 @@
       <!-- Full Screen Showcase -->
       <div class="media-box wide">
         <div class="media-content">
-          <div class="media-icon">📱</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">High-Fidelity Screens</div>
           <h4>Complete Screen Gallery</h4>
           <p>Add: Grid of all high-fidelity screen designs — show the complete patient journey from home to post-consult, plus doctor screens. Use iPhone frames for consistency.</p>
@@ -887,18 +883,18 @@
     </section>
 
     <!-- Motion Design -->
-    <section id="motion">
+    <section class="pr-section pr-reveal" id="motion">
       <span class="section-tag">Motion Design</span>
       <h2 class="section-title">Purposeful micro-interactions</h2>
       <p class="section-intro">
         Motion is used to communicate progress, trust, and "system intelligence" without flashiness. Every animation serves a purpose.
       </p>
 
-      <div class="motion-grid">
+      <div class="motion-grid pr-stagger">
         <div class="motion-card">
           <div class="media-box motion-media">
             <div class="media-content compact">
-              <div class="media-icon">✨</div>
+              <div class="media-placeholder-mark" aria-hidden="true"></div>
               <div class="media-tag small">Motion</div>
               <h4>Case Creation</h4>
             </div>
@@ -912,7 +908,7 @@
         <div class="motion-card">
           <div class="media-box motion-media">
             <div class="media-content compact">
-              <div class="media-icon">📄</div>
+              <div class="media-placeholder-mark" aria-hidden="true"></div>
               <div class="media-tag small">Motion</div>
               <h4>Report Scan</h4>
             </div>
@@ -926,7 +922,7 @@
         <div class="motion-card">
           <div class="media-box motion-media">
             <div class="media-content compact">
-              <div class="media-icon">📋</div>
+              <div class="media-placeholder-mark" aria-hidden="true"></div>
               <div class="media-tag small">Motion</div>
               <h4>Summary Generation</h4>
             </div>
@@ -940,7 +936,7 @@
         <div class="motion-card">
           <div class="media-box motion-media">
             <div class="media-content compact">
-              <div class="media-icon">🌐</div>
+              <div class="media-placeholder-mark" aria-hidden="true"></div>
               <div class="media-tag small">Motion</div>
               <h4>Translation Pulse</h4>
             </div>
@@ -955,7 +951,7 @@
       <!-- Motion Showcase -->
       <div class="media-box wide">
         <div class="media-content">
-          <div class="media-icon">🎬</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">Motion Reel</div>
           <h4>Micro-Interactions Compilation</h4>
           <p>Add: Video compilation of all key micro-interactions — case creation morph, report scan animation, summary generation, translation indicators, timeline updates. Show each with context.</p>
@@ -968,7 +964,7 @@
     </section>
 
     <!-- Safety & AI Section -->
-    <section id="safety">
+    <section class="pr-section pr-section--muted pr-reveal" id="safety">
       <span class="section-tag">Safety, Trust & AI</span>
       <h2 class="section-title">Responsible AI design</h2>
       <p class="section-intro">
@@ -978,7 +974,7 @@
       <div class="safety-grid">
         <!-- AI Can -->
         <div class="ai-boundary can">
-          <h3>✓ AI Can</h3>
+          <h3>In scope for the AI layer</h3>
           <ul>
             <li>Ask structured questions to understand symptoms</li>
             <li>Summarize user input into a scannable brief</li>
@@ -990,7 +986,7 @@
 
         <!-- AI Cannot -->
         <div class="ai-boundary cannot">
-          <h3>✗ AI Cannot</h3>
+          <h3>Explicitly out of scope</h3>
           <ul>
             <li>Confirm a diagnosis</li>
             <li>Replace emergency services</li>
@@ -1004,34 +1000,34 @@
       <!-- Trust Features -->
       <div class="trust-features">
         <h3>Trust & Privacy Design</h3>
-        <div class="trust-grid">
+        <div class="trust-grid pr-stagger">
           <div class="trust-item">
-            <span class="trust-icon">⚠️</span>
+            <span class="trust-key" aria-hidden="true">A</span>
             <h5>"Not a diagnosis" Messaging</h5>
             <p>Placed contextually where needed, not everywhere</p>
           </div>
           <div class="trust-item">
-            <span class="trust-icon">🚨</span>
+            <span class="trust-key" aria-hidden="true">B</span>
             <h5>Red-flag Screening</h5>
             <p>Urgent symptoms redirected to emergency guidance</p>
           </div>
           <div class="trust-item">
-            <span class="trust-icon">✅</span>
+            <span class="trust-key" aria-hidden="true">C</span>
             <h5>Review Before Share</h5>
             <p>Patient approval required before sharing summary</p>
           </div>
           <div class="trust-item">
-            <span class="trust-icon">🚫</span>
-            <h5">"Don't Save" Option</h5>
+            <span class="trust-key" aria-hidden="true">D</span>
+            <h5>"Don't Save" Option</h5>
             <p>Available at entry for sensitive conversations</p>
           </div>
           <div class="trust-item">
-            <span class="trust-icon">🗑️</span>
+            <span class="trust-key" aria-hidden="true">E</span>
             <h5>Data Control</h5>
             <p>Delete case, delete attachments, export summary</p>
           </div>
           <div class="trust-item">
-            <span class="trust-icon">⚡</span>
+            <span class="trust-key" aria-hidden="true">F</span>
             <h5>Translation Uncertainty</h5>
             <p>Indicator shown to avoid silent misinformation</p>
           </div>
@@ -1040,41 +1036,41 @@
     </section>
 
     <!-- Metrics Section -->
-    <section id="metrics">
+    <section class="pr-section pr-reveal" id="metrics">
       <span class="section-tag">Metrics & Outcomes</span>
       <h2 class="section-title">Measuring success</h2>
       <p class="section-intro">
         These are the metrics I would track to validate the design's impact on patient experience and clinical efficiency.
       </p>
 
-      <div class="metrics-grid">
+      <div class="metrics-grid pr-stagger">
         <div class="metric-card">
-          <div class="metric-icon">📈</div>
+          <div class="metric-index" aria-hidden="true">01</div>
           <h4>Booking Conversion</h4>
           <p>Uplift from Care AI — more patients completing bookings after triage</p>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">⏱️</div>
+          <div class="metric-index" aria-hidden="true">02</div>
           <h4>Time to Book</h4>
           <p>Reduced time from home to confirmed appointment</p>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">✅</div>
+          <div class="metric-index" aria-hidden="true">03</div>
           <h4>Intake Completion</h4>
           <p>Percentage completing Smart Intake under 3 minutes</p>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">👨‍⚕️</div>
+          <div class="metric-index" aria-hidden="true">04</div>
           <h4>Consult Efficiency</h4>
           <p>Reduced time spent collecting basics during call</p>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">🔄</div>
+          <div class="metric-index" aria-hidden="true">05</div>
           <h4>Repeat Consults</h4>
           <p>Reduction in follow-ups due to missing context</p>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">🌐</div>
+          <div class="metric-index" aria-hidden="true">06</div>
           <h4>Language Satisfaction</h4>
           <p>Reduced cancellations due to communication issues</p>
         </div>
@@ -1085,19 +1081,19 @@
         <h3>Success Criteria</h3>
         <div class="criteria-list">
           <div class="criteria-item">
-            <span class="criteria-check">✓</span>
+            <span class="criteria-check" aria-hidden="true"></span>
             <p>Users complete intake quickly without feeling burdened</p>
           </div>
           <div class="criteria-item">
-            <span class="criteria-check">✓</span>
+            <span class="criteria-check" aria-hidden="true"></span>
             <p>Users understand consent and control what gets shared</p>
           </div>
           <div class="criteria-item">
-            <span class="criteria-check">✓</span>
+            <span class="criteria-check" aria-hidden="true"></span>
             <p>Doctors can read the brief in under 30 seconds</p>
           </div>
           <div class="criteria-item">
-            <span class="criteria-check">✓</span>
+            <span class="criteria-check" aria-hidden="true"></span>
             <p>Translation UI reduces repeated clarifications</p>
           </div>
         </div>
@@ -1105,14 +1101,14 @@
     </section>
 
     <!-- Learnings Section -->
-    <section id="learnings">
+    <section class="pr-section pr-section--muted pr-reveal" id="learnings">
       <span class="section-tag">Reflection</span>
       <h2 class="section-title">What I learned</h2>
       <p class="section-intro">
         Designing for healthcare AI taught me about balancing automation with trust, and complexity with clarity.
       </p>
 
-      <div class="learnings-grid">
+      <div class="learnings-grid pr-stagger">
         <div class="learning-card">
           <span class="learning-num">01</span>
           <h4>Longitudinal > Transactional</h4>
@@ -1156,13 +1152,13 @@
     </section>
 
     <!-- Prototype Section -->
-    <section id="prototype">
+    <section class="pr-section pr-reveal" id="prototype">
       <span class="section-tag">Interactive Prototype</span>
       <h2 class="section-title">Try the experience</h2>
       
       <div class="media-box wide prototype-embed">
         <div class="media-content">
-          <div class="media-icon">▶️</div>
+          <div class="media-placeholder-mark" aria-hidden="true"></div>
           <div class="media-tag">Figma Prototype</div>
           <h4>Complete Patient Flow</h4>
           <p>Add: Embedded Figma prototype showing the primary flow — Home → Care AI triage → Doctor list → Booking → Smart Intake → Summary preview → Share. Include video consult simulation with translation UI.</p>
@@ -1191,51 +1187,71 @@
   </div>
 
   <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    /* Practo case study: smooth scroll, sticky nav active state, scroll reveal (.pr-reveal), staggered grids (.pr-stagger), prefers-reduced-motion */
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var href = anchor.getAttribute('href');
+          if (!href || href.length < 2) return;
+          var target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        });
       });
-    });
 
-    // Side nav active state
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.side-nav-item');
+      var navItems = document.querySelectorAll('.side-nav-item');
+      var sections = document.querySelectorAll('section[id]');
+      var navObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var id = entry.target.id;
+          navItems.forEach(function (item) {
+            item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+          });
+        });
+      }, { rootMargin: '-10% 0px -72% 0px', threshold: 0 });
 
-    const observerOptions = {
-      rootMargin: '-20% 0px -80% 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navItems.forEach(item => item.classList.remove('active'));
-          const activeItem = document.querySelector(`.side-nav-item[href="#${entry.target.id}"]`);
-          if (activeItem) activeItem.classList.add('active');
-        }
+      sections.forEach(function (sec) {
+        navObserver.observe(sec);
       });
-    }, observerOptions);
 
-    sections.forEach(section => observer.observe(section));
+      if (reduceMotion) {
+        document.querySelectorAll('.pr-reveal').forEach(function (el) {
+          el.classList.add('pr-reveal--visible');
+        });
+        document.querySelectorAll('.pr-stagger').forEach(function (el) {
+          el.classList.add('pr-stagger--visible');
+        });
+        return;
+      }
 
-    // Animate on scroll
-    const animateObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('pr-reveal--visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.06, rootMargin: '0px 0px -6% 0px' });
+
+      document.querySelectorAll('.pr-reveal').forEach(function (el) {
+        revealObserver.observe(el);
       });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.problem-card, .insight-card, .pillar-block, .screen-card, .motion-card, .metric-card, .learning-card, .trust-item').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      animateObserver.observe(el);
-    });
+      var staggerObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('pr-stagger--visible');
+          staggerObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+
+      document.querySelectorAll('.pr-stagger').forEach(function (el) {
+        staggerObserver.observe(el);
+      });
+    })();
   </script>
 </body>
 </html>

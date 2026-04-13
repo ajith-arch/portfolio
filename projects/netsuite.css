@@ -241,8 +241,13 @@ nav .inner {
   margin-bottom: 24px;
 }
 
-.badge-icon {
-  font-size: 16px;
+.hero-badge-rule {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--accent-light);
 }
 
 .hero h1 {
@@ -604,8 +609,21 @@ section {
   border-color: var(--accent);
 }
 
-.node-icon {
-  font-size: 24px;
+.node-ordinal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-light);
+  border-radius: 6px;
 }
 
 .node-label {
@@ -1249,8 +1267,19 @@ section {
   border-radius: 8px;
 }
 
-.method-icon {
-  font-size: 20px;
+.method-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 4px;
 }
 
 .method-label {
@@ -1513,9 +1542,14 @@ section {
   text-align: center;
 }
 
-.pillar-icon {
-  font-size: 32px;
-  margin-bottom: 14px;
+.pillar-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 12px;
 }
 
 .pillar-card h3 {
@@ -2051,10 +2085,14 @@ section {
   padding: 24px;
 }
 
-.feas-icon {
-  font-size: 24px;
+.feas-index {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
   margin-bottom: 12px;
-  display: block;
 }
 
 .feasibility-item h4 {
@@ -2268,8 +2306,13 @@ a.footer-btn-back {
   border-color: var(--accent);
 }
 
-.snapshot-icon {
-  font-size: 20px;
+.snapshot-ordinal {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
@@ -2467,10 +2510,14 @@ a.footer-btn-back {
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
 }
 
-.migration-icon {
-  font-size: 32px;
-  display: block;
-  margin-bottom: 16px;
+.migration-index {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 14px;
 }
 
 .migration-item h4 {
@@ -2524,10 +2571,14 @@ a.footer-btn-back {
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
 }
 
-.improvement-icon {
-  font-size: 28px;
-  display: block;
-  margin-bottom: 16px;
+.improvement-index {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 14px;
 }
 
 .improvement-item h4 {

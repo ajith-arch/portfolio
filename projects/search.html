@@ -47,7 +47,7 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="hero-badge animate-in">
-        <span class="badge-icon">🔍</span>
+        <span class="hero-badge-rule" aria-hidden="true"></span>
         <span>Healthcare • Search UX • Conversion Optimization</span>
       </div>
 
@@ -139,11 +139,11 @@
       <!-- Quick Scan Section -->
       <div class="quick-scan-section animate-in delay-4">
         <div class="quick-scan-header">
-          <span class="quick-scan-icon">👀</span>
+          <span class="quick-scan-rule" aria-hidden="true"></span>
           <h3>Planning to quickly scan the case study?</h3>
         </div>
         <div class="quick-scan-content">
-          <p>👇 Just click on the below link and read the summarized version of the case study in just <strong>5 minutes</strong></p>
+          <p>Below, open the link and read the summarized version of the case study in just <strong>5 minutes</strong></p>
         </div>
         <div class="quick-scan-label">Summarized Case Study</div>
         <div class="quick-scan-prototype">
@@ -161,28 +161,28 @@
     <!-- Impact Stats -->
     <div class="impact-stats">
       <div class="impact-stat">
-        <div class="stat-icon">👥</div>
+        <div class="stat-ordinal" aria-hidden="true">01</div>
         <div class="stat-content">
           <span class="stat-value">50</span>
           <span class="stat-label">Participants Tested</span>
         </div>
       </div>
       <div class="impact-stat">
-        <div class="stat-icon">👨‍💼</div>
+        <div class="stat-ordinal" aria-hidden="true">02</div>
         <div class="stat-content">
           <span class="stat-value">4</span>
           <span class="stat-label">Team Members</span>
         </div>
       </div>
       <div class="impact-stat">
-        <div class="stat-icon">📊</div>
+        <div class="stat-ordinal" aria-hidden="true">03</div>
         <div class="stat-content">
           <span class="stat-value">4</span>
           <span class="stat-label">Months Duration</span>
         </div>
       </div>
       <div class="impact-stat">
-        <div class="stat-icon">🏆</div>
+        <div class="stat-ordinal" aria-hidden="true">04</div>
         <div class="stat-content">
           <span class="stat-value">Bid</span>
           <span class="stat-label">Competitive Design</span>
@@ -201,25 +201,25 @@
       <div class="context-visual">
         <div class="funnel-diagram">
           <div class="funnel-step active problem">
-            <span class="step-icon">🔍</span>
+            <span class="step-index" aria-hidden="true">1</span>
             <span class="step-label">Search</span>
             <span class="step-desc">High Exit Rate</span>
           </div>
           <div class="funnel-arrow">→</div>
           <div class="funnel-step problem">
-            <span class="step-icon">👨‍⚕️</span>
+            <span class="step-index" aria-hidden="true">2</span>
             <span class="step-label">Doctor Profile</span>
             <span class="step-desc">Low Engagement</span>
           </div>
           <div class="funnel-arrow">→</div>
           <div class="funnel-step problem">
-            <span class="step-icon">⚙️</span>
+            <span class="step-index" aria-hidden="true">3</span>
             <span class="step-label">Filters</span>
             <span class="step-desc">Minimal Usage</span>
           </div>
           <div class="funnel-arrow">→</div>
           <div class="funnel-step problem">
-            <span class="step-icon">📉</span>
+            <span class="step-index" aria-hidden="true">4</span>
             <span class="step-label">Return Rate</span>
             <span class="step-desc">Low for New Users</span>
           </div>
@@ -229,12 +229,12 @@
 
       <div class="context-grid">
         <div class="context-card highlight">
-          <div class="context-icon">📊</div>
+          <p class="context-kicker">Provided data</p>
           <h3>Data from Practo</h3>
           <p>We received funnel drop-off analysis, heatmaps of search result interactions, and click distribution reports that revealed where first-time users were abandoning the flow.</p>
         </div>
         <div class="context-card">
-          <div class="context-icon">🎯</div>
+          <p class="context-kicker">Bid constraints</p>
           <h3>The Bid Challenge</h3>
           <p>As a competitive design bid, our agency had limited access to internal systems. We combined provided metrics with our own usability testing to build a compelling redesign proposal.</p>
         </div>
@@ -265,28 +265,24 @@
       <div class="problem-cards">
         <div class="problem-card">
           <div class="problem-number">01</div>
-          <div class="problem-icon">🚫</div>
           <h3>Restrictive Search Behavior</h3>
           <p>Users couldn't search freely for their symptoms. They were forced to select from fixed categories, increasing clicks and cognitive load.</p>
         </div>
 
         <div class="problem-card">
           <div class="problem-number">02</div>
-          <div class="problem-icon">🏥</div>
           <h3>Medical Jargon Confusion</h3>
           <p>Specialty terms like "Pediatrics" and "Dermatology" confused users who didn't know which one treats their specific symptoms.</p>
         </div>
 
         <div class="problem-card">
           <div class="problem-number">03</div>
-          <div class="problem-icon">🔗</div>
           <h3>Missing Context Cues</h3>
           <p>No information to justify whether the searched symptom matches the selected specialty. Users picked wrong doctors, wasting time and money.</p>
         </div>
 
         <div class="problem-card">
           <div class="problem-number">04</div>
-          <div class="problem-icon">👁️</div>
           <h3>Poor Quick Actions Visibility</h3>
           <p>Important actions like "Instant Video Consultation" were buried and not easily discoverable by first-time users.</p>
         </div>
@@ -356,10 +352,10 @@
               <p class="analysis-intro">The Home screen was intuitively exploratory in nature and the search bar had changing animated text showcasing options like:</p>
               
               <ul class="search-options-list">
-                <li><span class="option-icon">👨‍⚕️</span> Search for doctors</li>
-                <li><span class="option-icon">🩺</span> Search for symptoms / specialities</li>
-                <li><span class="option-icon">🏥</span> Search for clinics and hospitals</li>
-                <li><span class="option-icon">💊</span> Search for medicines and tests</li>
+                <li><span class="option-key" aria-hidden="true">A</span> Search for doctors</li>
+                <li><span class="option-key" aria-hidden="true">B</span> Search for symptoms / specialities</li>
+                <li><span class="option-key" aria-hidden="true">C</span> Search for clinics and hospitals</li>
+                <li><span class="option-key" aria-hidden="true">D</span> Search for medicines and tests</li>
               </ul>
               
               <div class="analysis-problem">
@@ -392,7 +388,7 @@
         <div class="analysis-block">
           <div class="analysis-header">
             <span class="analysis-number">2</span>
-            <h3>Exploring the Symptoms and Search Bar Again 🙄</h3>
+            <h3>Exploring the Symptoms and Search Bar Again</h3>
           </div>
           
           <div class="analysis-content">
@@ -415,7 +411,6 @@
               </div>
 
               <div class="analysis-realization">
-                <span class="realization-icon">💡</span>
                 <p>At this point is when I realised this was a potential problem and decided to work on the problem statement.</p>
               </div>
             </div>
@@ -482,7 +477,7 @@
       <div class="research-methods">
         <div class="method-card">
           <div class="method-header">
-            <span class="method-icon">📊</span>
+            <span class="method-index" aria-hidden="true">01</span>
             <h4>Provided Metrics from Practo</h4>
           </div>
           <ul class="method-list">
@@ -494,7 +489,7 @@
         </div>
         <div class="method-card">
           <div class="method-header">
-            <span class="method-icon">🧪</span>
+            <span class="method-index" aria-hidden="true">02</span>
             <h4>Internal Usability Testing (50 Participants)</h4>
           </div>
           <ul class="method-list">
@@ -515,27 +510,27 @@
         <h3>Target User Criteria</h3>
         <div class="criteria-grid">
           <div class="criteria-item">
-            <span class="criteria-icon">🆕</span>
+            <span class="criteria-key" aria-hidden="true">01</span>
             <span>First-time Practo users</span>
           </div>
           <div class="criteria-item">
-            <span class="criteria-icon">🏥</span>
+            <span class="criteria-key" aria-hidden="true">02</span>
             <span>Have/had history of illness</span>
           </div>
           <div class="criteria-item">
-            <span class="criteria-icon">📱</span>
+            <span class="criteria-key" aria-hidden="true">03</span>
             <span>Aware of telemedicine</span>
           </div>
           <div class="criteria-item">
-            <span class="criteria-icon">🔍</span>
+            <span class="criteria-key" aria-hidden="true">04</span>
             <span>Know how to search symptoms online</span>
           </div>
           <div class="criteria-item">
-            <span class="criteria-icon">👤</span>
+            <span class="criteria-key" aria-hidden="true">05</span>
             <span>Age 20-70 years</span>
           </div>
           <div class="criteria-item">
-            <span class="criteria-icon">⏰</span>
+            <span class="criteria-key" aria-hidden="true">06</span>
             <span>Readily available for testing</span>
           </div>
         </div>
@@ -547,9 +542,7 @@
         <div class="personas-grid">
           <div class="persona-card">
             <div class="persona-header">
-              <div class="persona-avatar">
-                <span>👨‍💻</span>
-              </div>
+              <div class="persona-avatar"><span class="persona-initials" aria-hidden="true">A</span></div>
               <div class="persona-info">
                 <h4>User A</h4>
                 <span class="persona-role">Software Engineer, 29</span>
@@ -576,9 +569,7 @@
 
           <div class="persona-card">
             <div class="persona-header">
-              <div class="persona-avatar">
-                <span>👩‍💻</span>
-              </div>
+              <div class="persona-avatar"><span class="persona-initials" aria-hidden="true">B</span></div>
               <div class="persona-info">
                 <h4>User B</h4>
                 <span class="persona-role">Frontend Developer, 23</span>
@@ -605,7 +596,7 @@
         </div>
         
         <div class="key-insight-box">
-          <span class="insight-icon">💡</span>
+          <span class="insight-box-index" aria-hidden="true">01</span>
           <div class="insight-content">
             <h4>Common Insight</h4>
             <p>Both users searched by symptoms, not medical taxonomy. The disconnect between user mental models and system structure was causing friction.</p>
@@ -656,22 +647,22 @@
         <h3>Key Findings</h3>
         <div class="findings-grid">
           <div class="finding-card">
-            <div class="finding-icon">🔥</div>
+            <div class="finding-index" aria-hidden="true">01</div>
             <h4>Trending Searches Distracted Users</h4>
             <p>Users clicked on trending searches expecting them to be relevant, leading to confusion when results didn't match their needs.</p>
           </div>
           <div class="finding-card">
-            <div class="finding-icon">👁️</div>
+            <div class="finding-index" aria-hidden="true">02</div>
             <h4>Quick Actions Lacked Visibility</h4>
             <p>Users couldn't easily find the "instant consultation" option, often scrolling past it multiple times.</p>
           </div>
           <div class="finding-card">
-            <div class="finding-icon">🏥</div>
+            <div class="finding-index" aria-hidden="true">03</div>
             <h4>Specialty Terms Caused Confusion</h4>
             <p>One user thought "Pediatrics" could treat viral fever for adults. Another was confused why "Orthopedic" appeared for "Acne."</p>
           </div>
           <div class="finding-card">
-            <div class="finding-icon">🗣️</div>
+            <div class="finding-index" aria-hidden="true">04</div>
             <h4>Language Influenced Decisions</h4>
             <p>Users were keen on noticing what languages doctors speak, but this information was not prominent in the interface.</p>
           </div>
@@ -721,19 +712,19 @@
       
       <div class="hmw-grid">
         <div class="hmw-card">
-          <span class="hmw-icon">🧠</span>
+          <span class="hmw-index" aria-hidden="true">01</span>
           <p>How might we <strong>simplify medical terminology</strong> so users understand specialty recommendations?</p>
         </div>
         <div class="hmw-card">
-          <span class="hmw-icon">👁️</span>
+          <span class="hmw-index" aria-hidden="true">02</span>
           <p>How might we improve <strong>recognition instead of recall</strong> for symptom-specialty matching?</p>
         </div>
         <div class="hmw-card">
-          <span class="hmw-icon">⚡</span>
+          <span class="hmw-index" aria-hidden="true">03</span>
           <p>How might we <strong>enhance quick action visibility</strong> for first-time users?</p>
         </div>
         <div class="hmw-card">
-          <span class="hmw-icon">📋</span>
+          <span class="hmw-index" aria-hidden="true">04</span>
           <p>How might we provide <strong>contextual specialty information</strong> to support decision-making?</p>
         </div>
       </div>
@@ -783,22 +774,22 @@
         <h3>Design Approach</h3>
         <div class="principles-grid">
           <div class="principle-card">
-            <span class="principle-icon">🎯</span>
+            <span class="principle-index" aria-hidden="true">01</span>
             <h4>Predictable Interactions</h4>
             <p>Reduced cognitive load through familiar search patterns</p>
           </div>
           <div class="principle-card">
-            <span class="principle-icon">📊</span>
+            <span class="principle-index" aria-hidden="true">02</span>
             <h4>Structured Grouping</h4>
             <p>Organized information to support quick scanning</p>
           </div>
           <div class="principle-card">
-            <span class="principle-icon">✅</span>
+            <span class="principle-index" aria-hidden="true">03</span>
             <h4>Visual Confirmation</h4>
             <p>Clear feedback connecting symptoms to specialties</p>
           </div>
           <div class="principle-card">
-            <span class="principle-icon">⚡</span>
+            <span class="principle-index" aria-hidden="true">04</span>
             <h4>Prominent Quick Actions</h4>
             <p>Key actions visible and easily accessible</p>
           </div>
@@ -993,22 +984,22 @@
       
       <div class="impact-grid">
         <div class="impact-card">
-          <div class="impact-icon-large">📉</div>
+          <div class="impact-index" aria-hidden="true">01</div>
           <h4>Reduced Exploratory Behavior</h4>
           <p>Users find relevant doctors faster without navigating through multiple irrelevant categories.</p>
         </div>
         <div class="impact-card">
-          <div class="impact-icon-large">✅</div>
+          <div class="impact-index" aria-hidden="true">02</div>
           <h4>Increased Booking Confidence</h4>
           <p>Clear symptom-specialty matching helps users feel confident in their doctor selection.</p>
         </div>
         <div class="impact-card">
-          <div class="impact-icon-large">📊</div>
+          <div class="impact-index" aria-hidden="true">03</div>
           <h4>Lower Drop-off Rate</h4>
           <p>Simplified flow with reduced friction keeps users engaged through booking completion.</p>
         </div>
         <div class="impact-card">
-          <div class="impact-icon-large">⚡</div>
+          <div class="impact-index" aria-hidden="true">04</div>
           <h4>Faster Conversion</h4>
           <p>Streamlined path from symptom search to consultation booking.</p>
         </div>
@@ -1048,19 +1039,19 @@
         <h3>Future Scope</h3>
         <div class="future-items">
           <div class="future-item">
-            <span class="future-icon">🧭</span>
+            <span class="future-index" aria-hidden="true">01</span>
             <p>Improve navigation to help users quickly return to home screen</p>
           </div>
           <div class="future-item">
-            <span class="future-icon">📹</span>
+            <span class="future-index" aria-hidden="true">02</span>
             <p>Redesign instant video consultation for faster conversion</p>
           </div>
           <div class="future-item">
-            <span class="future-icon">🔄</span>
+            <span class="future-index" aria-hidden="true">03</span>
             <p>Create UI variations for all use cases and error states</p>
           </div>
           <div class="future-item">
-            <span class="future-icon">📱</span>
+            <span class="future-index" aria-hidden="true">04</span>
             <p>Build device-realistic prototype for real-world testing</p>
           </div>
         </div>
@@ -1071,23 +1062,23 @@
         <h3>My Contributions to the Team</h3>
         <div class="contributions-grid">
           <div class="contribution-item">
-            <span class="contribution-icon">🔬</span>
+            <span class="contribution-index" aria-hidden="true">01</span>
             <span>Participated in research synthesis</span>
           </div>
           <div class="contribution-item">
-            <span class="contribution-icon">🧪</span>
+            <span class="contribution-index" aria-hidden="true">02</span>
             <span>Contributed to usability testing with 50 participants</span>
           </div>
           <div class="contribution-item">
-            <span class="contribution-icon">🔥</span>
+            <span class="contribution-index" aria-hidden="true">03</span>
             <span>Analyzed heatmaps and funnel drop-offs</span>
           </div>
           <div class="contribution-item">
-            <span class="contribution-icon">🎨</span>
+            <span class="contribution-index" aria-hidden="true">04</span>
             <span>Co-designed search experience redesign</span>
           </div>
           <div class="contribution-item">
-            <span class="contribution-icon">📊</span>
+            <span class="contribution-index" aria-hidden="true">05</span>
             <span>Contributed to A/B validation concepts</span>
           </div>
         </div>
