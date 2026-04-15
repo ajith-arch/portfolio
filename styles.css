@@ -10,8 +10,8 @@
     --color-border: #E5E5E5;
     --color-border-light: #F0F0F0;
     
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
     
     --spacing-xs: 4px;
     --spacing-sm: 8px;
@@ -926,6 +926,12 @@ body.exp-scroll-hero .footer {
     color: var(--color-text-primary);
 }
 
+.project-hero-title--flipkart {
+    font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+}
+
 .project-hero-desc {
     font-size: 16px;
     line-height: 1.7;
@@ -1123,7 +1129,7 @@ Project card color variations
 
 /* Text logo for projects without image logo */
 .project-logo-text {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-display);
     font-size: 28px;
     font-weight: 600;
     color: var(--color-white);

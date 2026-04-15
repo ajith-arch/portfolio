@@ -13,8 +13,8 @@
   --fk-blue-dark: #1a56c9;
   --fk-yellow: #f4c327;
   --fk-yellow-soft: rgba(244, 195, 39, 0.12);
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --max: 1080px;
   --nav-h: 56px;

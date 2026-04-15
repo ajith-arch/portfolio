@@ -25,9 +25,9 @@
   --error: #DC2626;
   --error-soft: rgba(220, 38, 38, 0.08);
   
-  /* Typography - Matching Other Projects */
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography - Matching portfolio sans-serif system */
+  --font-display: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   
   /* Animation */
