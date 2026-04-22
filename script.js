@@ -1,6 +1,7 @@
 // ===== Portfolio Homepage JavaScript =====
 
 document.addEventListener('DOMContentLoaded', function() {
+    initThemeToggle();
     // Initialize components
     initLandingReveal();
     initFilterButtons();
@@ -11,6 +12,120 @@ document.addEventListener('DOMContentLoaded', function() {
     /* Mobile: unified whole-card reveal (no split text/thumbnail animation) */
     initMobileProjectHeroReveal();
 });
+
+// ===== Theme Toggle + Background Video Source Switching =====
+function initThemeToggle() {
+    var STORAGE_KEY = 'portfolio-theme';
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Preload both videos once for smoother source swaps.
+    preloadThemeVideos();
+
+    function getSavedTheme() {
+        return localStorage.getItem(STORAGE_KEY);
+    }
+
+    function getSystemTheme() {
+        return mediaQuery.matches ? 'dark' : 'light';
+    }
+
+    function resolveTheme() {
+        return getSavedTheme() || window.__initialTheme || getSystemTheme();
+    }
+
+    function updateToggleState(theme) {
+        if (!toggle) return;
+        var isDark = theme === 'dark';
+        toggle.setAttribute('aria-pressed', String(isDark));
+        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    function applyTheme(theme, options) {
+        options = options || {};
+        var shouldSwapVideo = options.swapVideo !== false;
+        // data-theme drives both palette + CSS cursor variable immediately.
+        root.setAttribute('data-theme', theme);
+        updateToggleState(theme);
+        if (shouldSwapVideo) {
+            swapBackgroundVideo(theme);
+        }
+    }
+
+    function persistTheme(theme) {
+        localStorage.setItem(STORAGE_KEY, theme);
+    }
+
+    function clearSavedTheme() {
+        localStorage.removeItem(STORAGE_KEY);
+    }
+
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            persistTheme(next);
+            applyTheme(next, { swapVideo: true });
+        });
+    }
+
+    // Respect system changes only when user has not explicitly selected a theme.
+    mediaQuery.addEventListener('change', function () {
+        if (getSavedTheme()) return;
+        clearSavedTheme();
+        applyTheme(getSystemTheme(), { swapVideo: true });
+    });
+
+    applyTheme(resolveTheme(), { swapVideo: true });
+}
+
+function preloadThemeVideos() {
+    var light = 'assets/image/background.webm';
+    var dark = 'assets/image/background dark.webm';
+    [light, dark].forEach(function (src) {
+        var preloadVideo = document.createElement('video');
+        preloadVideo.preload = 'metadata';
+        preloadVideo.muted = true;
+        preloadVideo.playsInline = true;
+        preloadVideo.src = src;
+        preloadVideo.load();
+    });
+}
+
+function swapBackgroundVideo(theme) {
+    var video = document.getElementById('homeBgVideo');
+    if (!video) return;
+
+    var lightSrc = video.dataset.lightSrc || './assets/image/background.webm';
+    var darkSrc = video.dataset.darkSrc || './assets/image/background dark.webm';
+    var targetSrc = theme === 'dark' ? darkSrc : lightSrc;
+    var currentSrc = video.getAttribute('src') || '';
+
+    // Avoid unnecessary reload if source is already active.
+    if (currentSrc === targetSrc || currentSrc.endsWith(targetSrc.replace('./', ''))) {
+        return;
+    }
+
+    var previousTime = video.currentTime || 0;
+    var wasPaused = video.paused;
+
+    video.setAttribute('src', targetSrc);
+    video.load();
+
+    // Keep transition smooth: restore approximate playback position when metadata arrives.
+    video.addEventListener('loadedmetadata', function onLoadedMeta() {
+        video.removeEventListener('loadedmetadata', onLoadedMeta);
+        if (Number.isFinite(previousTime) && video.duration) {
+            video.currentTime = Math.min(previousTime, Math.max(0, video.duration - 0.1));
+        }
+        if (!wasPaused) {
+            var playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(function () {});
+            }
+        }
+    });
+}
 
 // ===== Project Filtering =====
 function initFilterButtons() {

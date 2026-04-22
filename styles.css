@@ -33,6 +33,25 @@
     
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
+    /* Theme-aware default cursor asset (light by default). */
+    --cursor-default-asset: url('assets/cursor-default.png');
+}
+
+html[data-theme="dark"] {
+    --color-bg: #0f1218;
+    --color-white: #151a22;
+    --color-text-primary: #edf1f8;
+    --color-text-secondary: #b0b9c9;
+    --color-text-muted: #8a93a3;
+    --color-accent: #8ea8ff;
+    --color-accent-light: rgba(142, 168, 255, 0.16);
+    --color-border: #2a3140;
+    --color-border-light: #202633;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.22);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.26);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+    /* In dark mode, switch the default cursor to white. */
+    --cursor-default-asset: url('assets/cursor-white.png');
 }
 
 /* ===== Reset & Base ===== */
@@ -77,7 +96,8 @@ button {
 
 /* Custom cursor – default (black) and hover (yellow) */
 html, body {
-    cursor: url('assets/cursor-default.png') 2 2, auto;
+    /* Uses theme variable; hotspot coordinates preserved. */
+    cursor: var(--cursor-default-asset) 2 2, auto;
 }
 a, button, .nav-link, .filter-btn, .project-card, .project-hero-media-link,
 .project-hero-link, .back-link, .footer-link, .nav-avatar {
@@ -169,6 +189,7 @@ a, button, .nav-link, .filter-btn, .project-card, .project-hero-media-link,
     align-items: center;
     justify-content: center;
     gap: var(--spacing-md);
+    position: relative;
 }
 
 .nav-avatar {
@@ -207,6 +228,71 @@ a, button, .nav-link, .filter-btn, .project-card, .project-hero-media-link,
     color: var(--color-text-primary);
     background: var(--color-white);
     box-shadow: var(--shadow-sm);
+}
+
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+    position: absolute;
+    right: var(--spacing-xl);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    background: rgba(255, 255, 255, 0.98);
+    padding: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    z-index: 2;
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.theme-toggle__track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 9px;
+    position: relative;
+}
+
+.theme-toggle__icon {
+    font-size: 13px;
+    line-height: 1;
+    color: var(--color-text-muted);
+    user-select: none;
+}
+
+.theme-toggle__thumb {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-light);
+    transition: transform var(--transition-base), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+html[data-theme="dark"] .theme-toggle__thumb {
+    transform: translateX(28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .theme-toggle__thumb {
+        transition: none;
+    }
 }
 
 /* ===== Hero Section ===== */
@@ -309,6 +395,13 @@ a, button, .nav-link, .filter-btn, .project-card, .project-hero-media-link,
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(229, 229, 229, 0.9);
     box-shadow: var(--shadow-sm);
+}
+
+/* Dark theme contrast fix for hero experience chip */
+html[data-theme="dark"] .hero-identity-chip {
+    color: var(--color-text-primary);
+    background: rgba(21, 26, 34, 0.88);
+    border-color: rgba(255, 255, 255, 0.16);
 }
 
 @media (min-width: 769px) and (max-width: 900px) {
@@ -578,6 +671,11 @@ body.exp-scroll-hero:not(.exp-past-hero-stage) .projects-filters {
     -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-full);
     border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+html[data-theme="dark"] body.exp-scroll-hero:not(.exp-past-hero-stage) .projects-filters {
+    background: rgba(15, 18, 24, 0.56);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 body.exp-scroll-hero.exp-past-hero-stage .projects-filters {
     margin-top: 30px;
@@ -1370,6 +1468,25 @@ article.project-hero--coming-soon .project-hero-media-link--static {
     .nav {
         padding: var(--spacing-md) var(--spacing-md);
         gap: var(--spacing-sm);
+    }
+
+    .theme-toggle {
+        right: var(--spacing-md);
+        width: 58px;
+        height: 34px;
+    }
+
+    .theme-toggle__track {
+        padding: 0 8px;
+    }
+
+    .theme-toggle__thumb {
+        width: 26px;
+        height: 26px;
+    }
+
+    html[data-theme="dark"] .theme-toggle__thumb {
+        transform: translateX(24px);
     }
 
     .nav-avatar {

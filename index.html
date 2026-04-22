@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajith Alphonse | UX Designer</title>
+    <script>
+        // Apply persisted/system theme early to reduce first-paint mismatch.
+        (function () {
+            var key = 'portfolio-theme';
+            var saved = localStorage.getItem(key);
+            var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            window.__initialTheme = theme;
+        })();
+    </script>
     <link rel="icon" type="image/jpeg" href="assets/profile.jpg">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +35,18 @@
         <!-- Navigation -->
         <header class="header">
             <nav class="nav">
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Switch to dark mode"
+                    aria-pressed="false">
+                    <span class="theme-toggle__track" aria-hidden="true">
+                        <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+                        <span class="theme-toggle__thumb"></span>
+                        <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
+                    </span>
+                </button>
                 <div class="nav-left">
                     <img src="assets/profile.jpg" alt="Ajith Alphonse" class="nav-avatar" onerror="this.style.background='#ddd'">
                 </div>
@@ -40,8 +62,11 @@
             <!-- EXPERIMENTAL: .hero-pinned-stage + .hero-scroll-tail — when body.exp-scroll-hero is off, wrappers use display:contents (no layout change) -->
             <div class="hero-pinned-stage">
                 <video
+                    id="homeBgVideo"
                     class="hero-bg-video"
                     src="./assets/image/background.webm"
+                    data-light-src="./assets/image/background.webm"
+                    data-dark-src="./assets/image/background dark.webm"
                     autoplay
                     muted
                     loop
