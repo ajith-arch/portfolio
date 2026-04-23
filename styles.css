@@ -558,12 +558,12 @@ html[data-theme="dark"] .hero-identity-chip {
 
 /*
  * =========================================================================
- * EXPERIMENTAL: persistent video stage + hero fade + per-card viewport reveal
+ * EXPERIMENTAL: fixed background video + sticky hero stage + hero fade
  * -------------------------------------------------------------------------
- * Architecture: JS moves <video> to <body> as a fixed z-index:0 layer.
- * .desktop-content sits above at z-index:1. Hero + projects are transparent
- * so the video shows through. Negative margin on .main overlaps it with
- * the hero tail so cards enter the viewport as the hero foreground fades.
+ * JS moves <video> to <body> as a fixed z-index:0 layer. .desktop-content
+ * sits above at z-index:1. Sticky .hero-pinned-stage + tail height; negative
+ * margin on .main overlaps the tail. Scroll JS only fades the hero
+ * foreground — project cards are not scroll-driven (no inner transforms).
  * -------------------------------------------------------------------------
  * TO DISABLE: Remove class "exp-scroll-hero" from <body> in index.html.
  * =========================================================================
@@ -687,11 +687,6 @@ body.exp-scroll-hero.exp-past-hero-stage .projects-filters {
     -webkit-backdrop-filter: none;
     border: none;
     border-radius: 0;
-}
-
-/* Scroll-driven animation target on inner (see script.js) */
-body.exp-scroll-hero .project-hero-list > .project-card.project-hero .project-hero-inner {
-    will-change: transform, opacity;
 }
 
 /* Footer: solid bg above video so page ending is clean */
@@ -1113,6 +1108,31 @@ body.exp-scroll-hero .footer {
     max-width: 16px !important;
     max-height: 16px !important;
     object-fit: contain;
+}
+
+/* Dark mode: project tags — dark glass chip + light text (same language as .hero-identity-chip) */
+html[data-theme="dark"] .tag:not(.tag-coming-soon):not(.tag-university) {
+    color: var(--color-text-primary);
+    background: rgba(21, 26, 34, 0.78);
+    border-color: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+html[data-theme="dark"] .tag-university {
+    color: var(--color-text-primary);
+    background: rgba(21, 26, 34, 0.82);
+    border-color: rgba(204, 0, 0, 0.35);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+html[data-theme="dark"] .tag.tag-coming-soon {
+    background: rgba(22, 163, 74, 0.2);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.35);
 }
 
 .project-title {

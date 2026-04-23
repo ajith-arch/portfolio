@@ -148,7 +148,6 @@ function initFilterButtons() {
                 
                 if (filter === 'all' || category === filter) {
                     card.style.display = visibleDisplay;
-                    if (document.body.classList.contains('exp-scroll-hero') && isHero) return;
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(10px)';
                     requestAnimationFrame(() => {
@@ -568,14 +567,15 @@ function initMobileProjectHeroReveal() {
 
 /*
  * =========================================================================
- * EXPERIMENTAL: persistent video stage + hero fade + per-card viewport reveal
+ * EXPERIMENTAL: fixed background video + sticky hero stage + foreground fade
  * -------------------------------------------------------------------------
- * Architecture: video is reparented to <body> as a fixed z-index:0 layer.
- * .desktop-content sits above (z-index:1). Hero + projects are transparent
- * so the video shows through. Negative margin on .main overlaps it with
- * the hero tail so cards enter the viewport as the hero foreground fades.
+ * Video reparents to <body> as z-index:0; .desktop-content is z-index:1.
+ * Sticky .hero-pinned-stage + scroll tail drive overlap with .main. Scroll
+ * updates only the hero foreground (.hero-foreground-scroll) and
+ * body.exp-past-hero-stage — project cards are normal flow (no inner
+ * transform/opacity driven by scroll).
  * -------------------------------------------------------------------------
- * Disable: remove class "exp-scroll-hero" from <body> in index.html.
+ * Full opt-out: remove class "exp-scroll-hero" from <body> in index.html.
  * =========================================================================
  */
 function initExpScrollHero() {
@@ -602,15 +602,15 @@ function initExpScrollHero() {
         document.body.insertBefore(video, document.body.firstChild);
     }
 
-    const cards = document.querySelectorAll('#work .project-hero-list > .project-card.project-hero');
+    document.querySelectorAll('#work .project-hero-list > .project-card.project-hero .project-hero-inner').forEach(function (inner) {
+        inner.style.transition = '';
+        inner.style.opacity = '';
+        inner.style.transform = '';
+    });
+
     const rootStyle = document.documentElement.style;
 
     function getVH() { return window.innerHeight || 0; }
-
-    function smoothstep(t) {
-        var x = Math.max(0, Math.min(1, t));
-        return x * x * (3 - 2 * x);
-    }
 
     function layout() {
         if (!tail) return;
@@ -640,38 +640,6 @@ function initExpScrollHero() {
         var heroBottom = heroTop + hero.offsetHeight;
         var pastStage = scrollY > heroBottom - h * 0.3;
         document.body.classList.toggle('exp-past-hero-stage', pastStage);
-
-        var revealZone = h * 0.72;
-        var travel = Math.min(h * 0.3, 250);
-
-        var visible = Array.from(cards).filter(function(c) {
-            return window.getComputedStyle(c).display !== 'none';
-        });
-
-        visible.forEach(function(card) {
-            var inner = card.querySelector('.project-hero-inner');
-            if (!inner) return;
-            var top = card.getBoundingClientRect().top;
-            var p = Math.min(1, Math.max(0, (h - top) / revealZone));
-            var eased = smoothstep(p);
-            var rise = (1 - eased) * travel;
-            var opacity = smoothstep(Math.min(1, Math.max(0, (p - 0.04) / 0.22)));
-
-            inner.style.transition = 'none';
-            inner.style.opacity = String(opacity);
-            inner.style.transform = 'translate3d(0,' + rise + 'px,0)';
-        });
-
-        cards.forEach(function(c) {
-            if (window.getComputedStyle(c).display === 'none') {
-                var inner = c.querySelector('.project-hero-inner');
-                if (inner) {
-                    inner.style.transition = '';
-                    inner.style.opacity = '';
-                    inner.style.transform = '';
-                }
-            }
-        });
 
         ticking = false;
     }
