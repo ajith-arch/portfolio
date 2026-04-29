@@ -875,6 +875,58 @@ body.exp-scroll-hero .footer {
     color: var(--color-text-secondary);
 }
 
+.about-side-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.about-side-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.about-side-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.about-side-key {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+}
+
+.about-side-data {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+}
+
+.about-focus-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.about-focus-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
 .about-quote {
     position: relative;
     margin-top: var(--spacing-lg);
