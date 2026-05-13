@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "base": "../assets/solar/",
+  "generated": "2026-05-11T21:30:33.184Z",
+  "items": [
+    {
+      "file": "one.webp"
+    },
+    {
+      "file": "two.webp"
+    },
+    {
+      "file": "three.webp"
+    },
+    {
+      "file": "four.webp"
+    },
+    {
+      "file": "five.webp"
+    },
+    {
+      "file": "six.gif"
+    },
+    {
+      "file": "seven.webp"
+    },
+    {
+      "file": "eight.webp"
+    },
+    {
+      "file": "nine.webp"
+    },
+    {
+      "file": "ten.mov"
+    },
+    {
+      "file": "eleven.webp"
+    },
+    {
+      "file": "twelve.webp"
+    },
+    {
+      "file": "thirteen.webp"
+    },
+    {
+      "file": "fourteen.webp"
+    },
+    {
+      "file": "fourteen.mov"
+    },
+    {
+      "file": "fifteen.webp"
+    },
+    {
+      "file": "sixteen.webp"
+    },
+    {
+      "file": "seventeen.webp"
+    },
+    {
+      "file": "eighteen.mov"
+    },
+    {
+      "file": "ninteen.webp"
+    },
+    {
+      "file": "twenty.webp"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirPods PDP Design | Ajith Alphonse</title>
+  <link rel="icon" type="image/jpeg" href="../assets/profile.jpg">
+  <link rel="stylesheet" href="airpods-pdp.css">
+</head>
+<body class="airpods-case">
+  <header class="airpods-top">
+    <a class="airpods-back" href="../index.html#work">← Work</a>
+    <span class="airpods-title">Apple · AirPods PDP</span>
+  </header>
+
+  <div class="airpods-stage">
+    <main class="airpods-column" aria-label="AirPods product detail page design">
+      <section class="airpods-intro" aria-labelledby="airpods-intro-title">
+        <div class="airpods-intro__layout">
+          <div class="airpods-intro__copy">
+            <p class="airpods-intro__eyebrow">University of Utah Campus Store</p>
+            <h1 id="airpods-intro-title" class="airpods-intro__title">
+              Apple AirPods Product Detail Page &amp; Visual Design
+            </h1>
+            <p class="airpods-intro__lead">
+              A premium product storytelling and visual design project for Apple AirPods, created to support Campus Store eCommerce merchandising, promotional presentation, and PDP engagement.
+            </p>
+            <p class="airpods-intro__role">
+              Graphic Design · Visual Design · PDP Design · Product Storytelling
+            </p>
+            <dl class="airpods-intro__meta">
+              <div class="airpods-intro__meta-item">
+                <dt>Tools</dt>
+                <dd>Figma, Photoshop, Adobe Creative Suite</dd>
+              </div>
+              <div class="airpods-intro__meta-item">
+                <dt>Project type</dt>
+                <dd>eCommerce PDP / Promotional Visual Design</dd>
+              </div>
+            </dl>
+            <a
+              class="airpods-intro__cta"
+              href="https://www.store.utah.edu/Apple-Airpods-Pro-3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Live Product Page&nbsp;→
+            </a>
+          </div>
+          <div class="airpods-intro__visual" aria-hidden="true">
+            <div class="airpods-intro__apple-wrap">
+              <img
+                class="airpods-intro__apple"
+                src="../assets/university%20of%20utah%20campus%20store-apple/apple.svg"
+                width="814"
+                height="1000"
+                alt=""
+                decoding="async"
+                draggable="false"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div id="airpodsGallery" class="airpods-gallery-stack">
+        <div id="airpodsGalleryBefore" class="airpods-gallery-segment"></div>
+        <div id="airpodsFeatureCarousel" class="airpods-feature-carousel-mount"></div>
+        <div id="airpodsGalleryAfter" class="airpods-gallery-segment"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/adaptive-orientation-gallery.js"></script>
+  <script src="../js/feature-showcase-carousel.js"></script>
+  <script src="../js/airpods-pdp-stack.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof initAirpodsPdpGalleryStack !== 'function') return;
+      var params = new URLSearchParams(window.location.search);
+      var manifest =
+        params.get('manifest') ||
+        '../assets/university%20of%20utah%20campus%20store-apple/manifest.json';
+      initAirpodsPdpGalleryStack({ manifestUrl: manifest });
+    });
+  </script>
+</body>
+</html>
