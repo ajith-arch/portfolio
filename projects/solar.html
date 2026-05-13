@@ -18,16 +18,13 @@
       <div class="solar-column solar-column--strip">
         <div id="solarStripBefore" class="sequential-media"></div>
       </div>
-      <section id="solarCarouselWrap" class="solar-carousel-wrap" aria-label="Solar frames eight through fourteen">
-        <div class="editorial-carousel editorial-carousel--solar" id="solarEditorialCarousel">
-          <div
-            class="editorial-carousel__track"
-            tabindex="0"
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="Horizontal gallery, frames eight through fourteen"></div>
-        </div>
-      </section>
+      <div class="solar-column solar-column--strip">
+        <div
+          id="solarStripMid"
+          class="sequential-media"
+          aria-label="Solar frames eight through fourteen"
+        ></div>
+      </div>
       <div class="solar-column solar-column--strip">
         <div id="solarStripAfter" class="sequential-media"></div>
       </div>
@@ -36,7 +33,6 @@
 
   <!-- Manifest: `node scripts/generate-solar-manifest.mjs` — optional ?manifest=../assets/assest/manifest.json -->
   <script src="../js/sequential-media-gallery.js"></script>
-  <script src="../js/editorial-carousel.js"></script>
   <script src="solar-init.js"></script>
 </body>
 </html>

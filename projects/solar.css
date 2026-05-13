@@ -63,7 +63,7 @@ body.solar-case .solar-stage {
 }
 
 /*
- * Work column: vertical strips (before / after carousel) — same inset as before.
+ * Work area: three vertical strips (1–7, 8–14, 15+) — same centered column width.
  */
 body.solar-case main#solarGallery.solar-work {
     display: flex;
@@ -127,97 +127,6 @@ body.solar-case main#solarGallery .sequential-media {
     }
 }
 
-/* Full-bleed editorial carousel (frames 8–14) */
-body.solar-case .solar-carousel-wrap {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #000000;
-}
-
-body.solar-case .editorial-carousel--solar {
-    margin: 0;
-    padding: 0;
-}
-
-body.solar-case .editorial-carousel__track {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: clamp(16px, 2.2vw, 32px);
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    padding: clamp(40px, 6vh, 64px) clamp(7vw, 9vw, 11vw) clamp(48px, 7vh, 80px);
-    scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
-    cursor: grab;
-}
-
-body.solar-case .editorial-carousel__track.editorial-carousel__track--dragging {
-    cursor: grabbing;
-}
-
-body.solar-case .editorial-carousel__slide {
-    flex: 0 0 min(82vw, 1040px);
-    width: min(82vw, 1040px);
-    max-width: 100%;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    body.solar-case .editorial-carousel__slide:hover {
-        transform: scale(1.012);
-    }
-}
-
-body.solar-case .editorial-carousel__slide .sequential-media__slot {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000000;
-}
-
-body.solar-case .editorial-carousel__slide .sequential-media__media,
-body.solar-case .editorial-carousel__slide .sequential-media__media--video {
-    width: auto;
-    max-width: 100%;
-    max-height: min(72vh, 900px);
-    height: auto;
-    object-fit: contain;
-}
-
-@media (max-width: 1024px) {
-    body.solar-case .editorial-carousel__slide {
-        flex: 0 0 min(88vw, 720px);
-        width: min(88vw, 720px);
-    }
-
-    body.solar-case .editorial-carousel__slide .sequential-media__media,
-    body.solar-case .editorial-carousel__slide .sequential-media__media--video {
-        max-height: min(68vh, 820px);
-    }
-}
-
-@media (max-width: 640px) {
-    body.solar-case .editorial-carousel__slide {
-        flex: 0 0 92vw;
-        width: 92vw;
-    }
-
-    body.solar-case .editorial-carousel__track {
-        padding-left: 4vw;
-        padding-right: 4vw;
-        gap: 12px;
-    }
-}
-
 body.solar-case .sequential-media__slot {
     margin: 0;
     padding: 0;
@@ -252,17 +161,5 @@ body.solar-case .sequential-media__media--video[data-video-error] {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
-    }
-
-    body.solar-case .editorial-carousel__track {
-        scroll-behavior: auto;
-    }
-
-    body.solar-case .editorial-carousel__slide {
-        transition: none;
-    }
-
-    body.solar-case .editorial-carousel__slide:hover {
-        transform: none;
     }
 }
