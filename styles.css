@@ -1372,6 +1372,41 @@ article.project-hero--coming-soon .project-hero-media-link--static {
     background: linear-gradient(135deg, #0D9488 0%, #14B8A6 40%, #2DD4BF 100%);
 }
 
+/* Adobe Creative Flow — dark frame to match the black thumbnail */
+.project-hero-media--adobe-flow {
+    background: linear-gradient(135deg, #050505 0%, #0d0d0f 45%, #1a1a1e 100%);
+}
+
+/* Flipkart AI Discovery — white card placeholder thumbnail */
+.project-hero-media--flipkart-ai-discovery {
+    background: #ffffff;
+    padding: 6px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 44px rgba(15, 23, 42, 0.1);
+}
+
+.project-hero-media--flipkart-ai-discovery::before {
+    display: none;
+}
+
+.fk-ai-discovery-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    background: linear-gradient(165deg, #fffdf8 0%, #ffffff 48%, #f8fafc 100%);
+}
+
+.fk-ai-discovery-thumb__icon {
+    width: clamp(64px, 18vw, 88px);
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(244, 195, 39, 0.25));
+}
+
 /* Flipkart — looping MP4 thumbnail (same treatment as Campus Store video) */
 .project-hero-media--flipkart {
     background: transparent;

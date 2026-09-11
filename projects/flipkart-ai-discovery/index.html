@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Product Discovery — Flipkart Case Study | Ajith Alphonse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../flipkart-ai-discovery.css?v=2">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNSPYP46HC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TNSPYP46HC');
+  </script>
+</head>
+<body class="case-flipkart-ai">
+  <!--
+    ASSET MAP — drop files into assets/flipkart-ai-discovery/
+    hero-desktop.png, hero-mobile.png
+    problem-before.png, research-board.png, system-diagram.png
+    compare-before.png, compare-after.png
+    gallery-*.png (search home, typing, suggestions, results, clusters, filters, card, visual search, comparison)
+    prototype-demo.mp4
+  -->
+  <aside class="side-nav" id="sideNav" aria-label="Section navigation">
+    <div class="side-nav-inner">
+      <a href="#hero" class="side-nav-item active" data-section="hero">Overview</a>
+      <a href="#insight" class="side-nav-item" data-section="insight">Insight</a>
+      <a href="#snapshot" class="side-nav-item" data-section="snapshot">Snapshot</a>
+      <a href="#problem" class="side-nav-item" data-section="problem">Problem</a>
+      <a href="#research" class="side-nav-item" data-section="research">Research</a>
+      <a href="#system" class="side-nav-item" data-section="system">System</a>
+      <a href="#exploration" class="side-nav-item" data-section="exploration">Exploration</a>
+      <a href="#solution" class="side-nav-item" data-section="solution">Solution</a>
+      <a href="#compare" class="side-nav-item" data-section="compare">Before/After</a>
+      <a href="#impact" class="side-nav-item" data-section="impact">Impact</a>
+      <a href="#reflection" class="side-nav-item" data-section="reflection">Reflection</a>
+    </div>
+  </aside>
+
+  <!-- 1. Full-width hero artwork + insight intro -->
+  <header class="hero-banner" id="hero">
+    <nav class="case-hero-nav" aria-label="Case study navigation">
+      <div class="case-hero-nav__inner">
+        <div class="case-nav-group case-nav-group--left">
+          <a href="../../index.html" class="case-nav-pill case-nav-pill--back" aria-label="Back to portfolio">
+            <span aria-hidden="true">←</span> Back to Portfolio
+          </a>
+        </div>
+
+        <div class="case-nav-group case-nav-group--center">
+          <img src="../../assets/profile.jpg" alt="Ajith Alphonse" class="case-nav-avatar" width="44" height="44">
+          <div class="case-nav-links">
+            <a href="../../index.html#work" class="case-nav-link">Work</a>
+            <a href="../../know-me.html" class="case-nav-link">Know Me</a>
+          </div>
+        </div>
+
+        <div class="case-nav-group case-nav-group--right">
+          <div class="case-nav-links">
+            <a href="#problem" class="case-nav-link">Problem</a>
+            <a href="#solution" class="case-nav-link">Solution</a>
+            <a href="#contact" class="case-nav-link case-nav-link--primary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- TRIAL: Hero AI orb — set showAiOrb = false in script to remove instantly -->
+    <div class="hero-ai-orb" id="heroAiOrb" aria-hidden="true" hidden>
+      <img
+        src="../../assets/ai.gif"
+        alt=""
+        class="hero-ai-orb__gif"
+        width="150"
+        height="150"
+        loading="eager"
+        decoding="async">
+    </div>
+
+    <img
+      src="../../assets/flip-home.png?v=2"
+      alt="AI-Powered Product Discovery System for Flipkart — full hero artwork"
+      class="hero-banner__img"
+      width="1920"
+      height="1200"
+      loading="eager"
+      decoding="async">
+  </header>
+
+  <div class="flipkart-case-study-body">
+    <section class="hero-follow insight-section insight-reveal" id="insight">
+      <div class="insight-outer">
+        <div class="hero-follow__inner">
+          <div class="project-info-card insight-card-reveal insight-card-reveal--left">
+            <div class="project-info-row">
+              <span class="project-info-label">Role</span>
+              <span class="project-info-value">Product Design &amp; Research</span>
+            </div>
+            <div class="project-info-row">
+              <span class="project-info-label">Duration</span>
+              <span class="project-info-value">8 Months</span>
+            </div>
+            <div class="project-info-row">
+              <span class="project-info-label">Collaboration</span>
+              <span class="project-info-value">PMs, Software Developers, Designers, Researchers</span>
+            </div>
+            <div class="project-info-row">
+              <span class="project-info-label">Scope</span>
+              <span class="project-info-value">Product Discovery, AI Search, UX Research</span>
+            </div>
+          </div>
+
+          <div class="insight-content-card insight-card-reveal insight-card-reveal--right">
+            <div class="insight-headline-wrap">
+              <img
+                src="../../assets/human.gif"
+                alt=""
+                class="insight-headline-gif"
+                width="64"
+                height="64"
+                loading="eager"
+                decoding="async"
+              >
+              <p class="insight-headline">People don&rsquo;t search for products.<br>They search for <em>outcomes.</em></p>
+            </div>
+            <div class="query-list" id="insightQueryList">
+              <p class="query-item">
+                <span class="query-item__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="query-item__content">
+                  <span class="query-item__text"></span><span class="query-item__cursor" aria-hidden="true"></span>
+                </span>
+              </p>
+              <p class="query-item">
+                <span class="query-item__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="query-item__content">
+                  <span class="query-item__text"></span><span class="query-item__cursor" aria-hidden="true"></span>
+                </span>
+              </p>
+              <p class="query-item">
+                <span class="query-item__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                    <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="query-item__content">
+                  <span class="query-item__text"></span><span class="query-item__cursor" aria-hidden="true"></span>
+                </span>
+              </p>
+            </div>
+            <p class="insight-bottomline">We redesigned search to understand intent, not keywords.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- 3. Project Snapshot -->
+  <section id="snapshot" class="snapshot-section snapshot-reveal">
+    <div class="snapshot-outer">
+      <div class="snapshot-wrapper">
+        <header class="snapshot-copy-block">
+          <p class="snapshot-eyebrow">Project Snapshot</p>
+          <h2 class="snapshot-title">Redesigning discovery around intent, trust, and speed</h2>
+          <p class="snapshot-copy">
+            We explored how users search when they do not know the exact product name,
+            then shaped an AI-backed discovery system that translates needs, budget,
+            and preferences into clearer product decisions.
+          </p>
+        </header>
+
+        <div class="snapshot-metrics" aria-label="Project snapshot metrics">
+          <div class="snapshot-metric snapshot-metric--wide">
+            <strong class="snapshot-metric__value">
+              <span class="snapshot-metric__num" data-count-end="100" data-count-suffix="+" data-count-duration="1500">0</span>
+            </strong>
+            <span class="snapshot-metric__label">User behavior interviews</span>
+            <small class="snapshot-metric__note">Search intent patterns &amp; pain points</small>
+          </div>
+
+          <div class="snapshot-metric snapshot-metric--tall">
+            <strong class="snapshot-metric__value snapshot-metric__value--ai">
+              <span class="snapshot-metric__num">AI</span>
+            </strong>
+            <span class="snapshot-metric__label">Discovery system</span>
+            <small class="snapshot-metric__note">Intent search, visual search, smart clustering</small>
+          </div>
+
+          <div class="snapshot-metric">
+            <strong class="snapshot-metric__value">
+              <span class="snapshot-metric__num" data-count-end="3" data-count-duration="700">0</span>
+            </strong>
+            <span class="snapshot-metric__label">Core product problems</span>
+            <small class="snapshot-metric__note">Intent mismatch, filtering overload, decision friction</small>
+          </div>
+
+          <div class="snapshot-metric">
+            <strong class="snapshot-metric__value">
+              <span class="snapshot-metric__num" data-count-end="8" data-count-duration="900">0</span>
+            </strong>
+            <span class="snapshot-metric__label">Months of collaboration</span>
+            <small class="snapshot-metric__note">PMs, designers, researchers, developers</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Problem -->
+  <section id="problem" class="problem-section problem-reveal">
+    <div class="problem-outer">
+      <div class="problem-layout">
+        <div class="problem-bento" aria-label="Problem overview">
+          <header class="problem-panel problem-panel--title">
+            <p class="problem-panel__eyebrow">The Problem</p>
+            <h2 class="problem-panel__title">Users approached search with intent, not product names</h2>
+          </header>
+
+          <div class="problem-panel problem-panel--body">
+            <p class="problem-panel__text problem-panel__text--body">
+              Queries were often based on budget, use-case, and preferences. However, the existing system primarily relied on keyword matching, making it difficult for users to find the most relevant products quickly.
+            </p>
+          </div>
+
+          <article class="problem-panel problem-panel--item problem-panel--1">
+            <span class="problem-panel__icon" aria-hidden="true">
+              <img src="../../assets/intent.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+            </span>
+            <span class="problem-panel__tag">Intent</span>
+            <p class="problem-panel__text">Search results lacked intent awareness</p>
+          </article>
+
+          <article class="problem-panel problem-panel--item problem-panel--2">
+            <span class="problem-panel__icon" aria-hidden="true">
+              <img src="../../assets/comparison.png" alt="" width="48" height="48" loading="lazy" decoding="async">
+            </span>
+            <span class="problem-panel__tag">Comparison</span>
+            <p class="problem-panel__text">Users had to manually filter and compare products</p>
+          </article>
+
+          <article class="problem-panel problem-panel--item problem-panel--3">
+            <span class="problem-panel__icon" aria-hidden="true">
+              <img src="../../assets/Discovery.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+            </span>
+            <span class="problem-panel__tag">Discovery</span>
+            <p class="problem-panel__text">Product cards did not explain why results were relevant</p>
+          </article>
+
+          <article class="problem-panel problem-panel--item problem-panel--4">
+            <span class="problem-panel__icon" aria-hidden="true">
+              <img src="../../assets/Decision.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+            </span>
+            <span class="problem-panel__tag">Decision</span>
+            <p class="problem-panel__text">Decision-making required too much effort on mobile</p>
+          </article>
+        </div>
+
+        <div class="problem-media">
+          <div class="problem-phone-clay" aria-label="Problem illustration">
+            <video
+              id="problemVideo"
+              class="problem-video"
+              src="../../assets/manja.webm"
+              muted
+              loop
+              playsinline
+              autoplay
+              preload="metadata"
+              aria-label="Animated illustration of search friction on mobile"></video>
+            <button
+              type="button"
+              id="problemVideoBtn"
+              class="problem-video-btn"
+              aria-label="Pause video"
+              aria-pressed="true">
+              <svg class="problem-video-btn__play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7L8 5z"/>
+              </svg>
+              <svg class="problem-video-btn__pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6 5h4v14H6V5zm8 0h4v14h-4V5z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <figure class="problem-analysis">
+      <img
+        class="problem-analysis__img"
+        src="../../assets/Problempage.png"
+        alt="Problem analysis: current experience mapped to observed user journey, with takeaways on poor search relevance and users creating their own comparison workflow"
+        width="3446"
+        height="2334"
+        loading="lazy"
+        decoding="async">
+    </figure>
+  </section>
+
+  <!-- 5. Research & Insights -->
+  <section id="research" class="fk-research research-reveal">
+    <div class="fk-research-outer">
+      <div class="fk-research-platform">
+        <header class="fk-research__intro fk-research-tile fk-research-tile--intro">
+          <p class="fk-research__eyebrow">Research &amp; Insights</p>
+          <h2 class="fk-research__heading">Users searched through needs, not names</h2>
+          <p class="fk-research__lead">
+            Through user interviews, behavioral observation, search-query analysis, and journey review, we found that many users did not begin with an exact product in mind. They described a budget, purpose, audience, or expected outcome and relied on the platform to help narrow the decision.
+          </p>
+        </header>
+
+        <div class="fk-research__block fk-research__block--approach fk-research-reveal">
+          <p class="fk-research__label">Research approach</p>
+          <div class="fk-research-methods">
+            <article class="fk-research-method fk-research-tile">
+              <span class="fk-research-method__icon" aria-hidden="true">
+                <img src="../../assets/Users.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+              </span>
+              <h3 class="fk-research-method__title">100+ User conversations</h3>
+              <p class="fk-research-method__copy">Interviewed and observed users across different levels of shopping experience, with a focus on electronics and mobile discovery.</p>
+            </article>
+            <article class="fk-research-method fk-research-tile">
+              <span class="fk-research-method__icon" aria-hidden="true">
+                <img src="../../assets/search.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+              </span>
+              <h3 class="fk-research-method__title">Search-query analysis</h3>
+              <p class="fk-research-method__copy">Reviewed how users phrased searches, including budget-led, use-case-led, feature-led, and exact-product queries.</p>
+            </article>
+            <article class="fk-research-method fk-research-tile">
+              <span class="fk-research-method__icon" aria-hidden="true">
+                <img src="../../assets/icons8-eye.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+              </span>
+              <h3 class="fk-research-method__title">Behavioral observation</h3>
+              <p class="fk-research-method__copy">Observed how users moved between search results, product pages, filters, reviews, and the cart while evaluating options.</p>
+            </article>
+            <article class="fk-research-method fk-research-tile">
+              <span class="fk-research-method__icon" aria-hidden="true">
+                <img src="../../assets/icons8-roadmap.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+              </span>
+              <h3 class="fk-research-method__title">Journey analysis</h3>
+              <p class="fk-research-method__copy">Mapped the steps users created for themselves when search results did not provide enough decision support.</p>
+            </article>
+            <article class="fk-research-method fk-research-tile">
+              <span class="fk-research-method__icon" aria-hidden="true">
+                <img src="../../assets/bar-chart.gif" alt="" width="48" height="48" loading="lazy" decoding="async">
+              </span>
+              <h3 class="fk-research-method__title">Competitor review</h3>
+              <p class="fk-research-method__copy">Compared search and recommendation patterns across leading e-commerce and product-discovery platforms.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="fk-research-platform fk-research-platform--block fk-research-reveal">
+        <p class="fk-research__label">Key research metrics</p>
+        <!-- Metrics rendered from RESEARCH_METRICS in script — update only with verified research values -->
+        <div class="fk-research-metrics" id="researchMetrics" aria-label="Key research metrics"></div>
+        <figure class="fk-research-visual">
+          <img
+            class="fk-research-visual__img"
+            src="../../assets/piechart-and-cards.png"
+            alt="Search query cards showing intent-led queries beside a query distribution pie chart: Budget-based 42%, Use-case-based 31%, Feature-based 18%, Exact model 9%"
+            width="2878"
+            height="880"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+      </div>
+
+      <div class="fk-research-platform fk-research-platform--block fk-research-reveal">
+        <p class="fk-research__label">What the query revealed</p>
+        <div class="fk-research-query">
+          <p class="fk-research-query__prompt">
+            <span class="fk-research-query__prompt-label">User query</span>
+            <span class="fk-research-query__prompt-text">&ldquo;Best gaming phone under ₹30,000&rdquo;</span>
+          </p>
+          <div class="fk-research-query__split">
+            <div class="fk-research-query__col fk-research-tile">
+              <h3 class="fk-research-query__col-title">The system recognized</h3>
+              <ul class="fk-research-query__list">
+                <li>Mobile phone</li>
+                <li>Budget below ₹30,000</li>
+                <li>Matching keywords</li>
+              </ul>
+            </div>
+            <div class="fk-research-query__col fk-research-query__col--expect fk-research-tile">
+              <h3 class="fk-research-query__col-title">The user expected</h3>
+              <ul class="fk-research-query__list">
+                <li>Strong gaming performance</li>
+                <li>Reliable processor and GPU</li>
+                <li>Good thermal management</li>
+                <li>Long battery life</li>
+                <li>High-refresh-rate display</li>
+                <li>Positive gaming reviews</li>
+                <li>A clear recommendation</li>
+              </ul>
+            </div>
+          </div>
+          <p class="fk-research-query__takeaway fk-research-tile">
+            The system could retrieve products, but it did not explain which products best satisfied the user&rsquo;s actual goal.
+          </p>
+        </div>
+      </div>
+
+      <div class="fk-research-platform fk-research-platform--block fk-research-reveal">
+        <p class="fk-research__label">Search behavior patterns</p>
+        <figure class="fk-research-patterns-visual">
+          <img
+            class="fk-research-patterns-visual__img"
+            src="../../assets/PATTERNS.png"
+            alt="Search behavior patterns: Budget-led, Use-case-led, Audience-led, Feature-led, and Exact-product-led queries"
+            width="2636"
+            height="516"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <p class="fk-research-patterns__note">
+          Users with exact product names moved through the journey more confidently. Users with natural-language intent needed more guidance, ranking, and explanation.
+        </p>
+      </div>
+
+      <div class="fk-research-platform fk-research-platform--block fk-research-reveal">
+        <p class="fk-research__label">Four primary research insights</p>
+        <div class="fk-research-insights-layout">
+          <ol class="fk-research-insights">
+            <li class="fk-research-insight">
+              <span class="fk-research-insight__index" aria-hidden="true">01</span>
+              <div class="fk-research-insight__body">
+                <h3 class="fk-research-insight__title">Users searched by budget and use case</h3>
+                <p class="fk-research-insight__copy">Many users began with constraints and outcomes rather than brands or exact model names.</p>
+              </div>
+            </li>
+            <li class="fk-research-insight">
+              <span class="fk-research-insight__index" aria-hidden="true">02</span>
+              <div class="fk-research-insight__body">
+                <h3 class="fk-research-insight__title">Discovery was comparison-heavy</h3>
+                <p class="fk-research-insight__copy">Users opened multiple products, switched between screens, and manually compared specifications.</p>
+              </div>
+            </li>
+            <li class="fk-research-insight">
+              <span class="fk-research-insight__index" aria-hidden="true">03</span>
+              <div class="fk-research-insight__body">
+                <h3 class="fk-research-insight__title">First-time and price-sensitive buyers needed guidance</h3>
+                <p class="fk-research-insight__copy">These users were less confident interpreting technical specifications and wanted clearer recommendations.</p>
+              </div>
+            </li>
+            <li class="fk-research-insight">
+              <span class="fk-research-insight__index" aria-hidden="true">04</span>
+              <div class="fk-research-insight__body">
+                <h3 class="fk-research-insight__title">Trust signals influenced final decisions</h3>
+                <p class="fk-research-insight__copy">Ratings, verified reviews, seller reliability, return information, pricing, and delivery confidence affected the final choice.</p>
+              </div>
+            </li>
+          </ol>
+          <figure class="fk-research-insights-media">
+            <img
+              class="fk-research-insights-media__img"
+              src="../../assets/research-insights.png"
+              alt="Phone mockup showing intent-based search suggestions like gaming phone under 30,000 and best laptop for engineering student"
+              width="880"
+              height="1936"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
+        </div>
+      </div>
+
+      <div class="fk-research-platform fk-research-platform--block fk-research-takeaways-wrap fk-research-reveal">
+        <figure class="fk-affinity">
+          <img
+            class="fk-affinity__img"
+            src="../../assets/amap.png"
+            alt="Affinity mapping board grouping research observations into Budget, Intent, Comparison, and Trust themes"
+            width="890"
+            height="386"
+            loading="lazy"
+            decoding="async"
+          >
+          <figcaption class="fk-affinity__caption">
+            Affinity mapping synthesized interview observations into four recurring behavioral themes: Budget, Intent, Comparison, and Trust.
+          </figcaption>
+        </figure>
+
+        <header class="fk-takeaways__intro">
+          <p class="fk-research__label">Research Takeaways</p>
+          <h2 class="fk-takeaways__heading">What we learned from the research</h2>
+        </header>
+
+        <div class="fk-takeaways-carousel" id="fkTakeawaysCarousel" data-active="0">
+          <div
+            class="fk-takeaways-tabs"
+            role="tablist"
+            aria-orientation="vertical"
+            aria-label="Research takeaways"
+          ></div>
+          <div class="fk-takeaways-panel fk-research-tile" role="tabpanel" id="fkTakeawayPanel" aria-live="polite">
+            <div class="fk-takeaways-panel__inner">
+              <h3 class="fk-takeaways-panel__title" id="fkTakeawayTitle"></h3>
+              <p class="fk-takeaways-panel__copy" id="fkTakeawayCopy"></p>
+            </div>
+          </div>
+          <aside class="fk-takeaways-insight">
+            <p class="fk-takeaways-insight__label">Key Research Insight</p>
+            <h3 class="fk-takeaways-insight__heading">Users didn&rsquo;t need more products—they needed better guidance.</h3>
+          </aside>
+        </div>
+      </div>
+
+      <div class="fk-research-platform fk-research-platform--block fk-research-closing fk-research-reveal">
+        <div class="fk-research-closing__main fk-research-tile">
+          <p class="fk-research__label">Research conclusion</p>
+          <p class="fk-research-conclusion__statement">
+            Users were not only struggling to find products. They were struggling to decide which product best matched their needs.
+          </p>
+          <p class="fk-research-conclusion__support">
+            The existing experience returned options. The opportunity was to provide understanding, prioritization, and decision guidance.
+          </p>
+
+          <div class="fk-research-closing__footer">
+            <p class="fk-research-transition">
+              This insight led us to rethink search as a decision-making system rather than a keyword-retrieval interface.
+              <a class="fk-research-transition__link" href="#system">Continue to System Thinking <span aria-hidden="true">→</span></a>
+            </p>
+          </div>
+
+          <p class="fk-research-journey__callout">
+            <strong>Behavioral observation:</strong> Users were not always using the cart only to purchase. In many sessions, the cart became a temporary comparison space for several similar products.
+          </p>
+        </div>
+
+        <aside class="fk-research-closing__journey fk-research-tile" aria-label="Observed user journey">
+          <p class="fk-research__label">Observed user journey</p>
+          <figure class="fk-research-journey-visual">
+            <img
+              class="fk-research-journey-visual__img"
+              src="../../assets/user-journey.png"
+              alt="Observed user journey flowchart: Search, browse results, apply filters, open product pages, add to cart, compare specifications, read reviews, then purchase or abandon"
+              width="846"
+              height="1768"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- 6. System Thinking -->
+    <section id="system" class="fk-system reveal">
+      <span class="section-tag">System Thinking</span>
+      <h2 class="section-title">From user intent to intelligent product discovery</h2>
+      <p class="section-lead fk-system__lead">
+        Instead of relying on keyword matching alone, the redesigned discovery engine understands user intent, extracts shopping signals, ranks products by relevance, and organizes results into contextual recommendation clusters. This transforms search from retrieving products into guiding confident purchase decisions.
+      </p>
+
+      <!-- Pipeline overview pills -->
+      <div class="sysflow-pipeline" aria-label="AI discovery pipeline overview">
+        <div class="sysflow-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span>User Query</span>
+        </div>
+        <span class="sysflow-pipeline__arrow" aria-hidden="true">→</span>
+        <div class="sysflow-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Intent Detection</span>
+        </div>
+        <span class="sysflow-pipeline__arrow" aria-hidden="true">→</span>
+        <div class="sysflow-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
+          <span>Signal Extraction</span>
+        </div>
+        <span class="sysflow-pipeline__arrow" aria-hidden="true">→</span>
+        <div class="sysflow-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/></svg>
+          <span>AI Ranking</span>
+        </div>
+        <span class="sysflow-pipeline__arrow" aria-hidden="true">→</span>
+        <div class="sysflow-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="7" cy="7" r="2.6"/><circle cx="17" cy="7" r="2.6"/><circle cx="7" cy="17" r="2.6"/><circle cx="17" cy="17" r="2.6"/></svg>
+          <span>Result Clustering</span>
+        </div>
+        <span class="sysflow-pipeline__arrow" aria-hidden="true">→</span>
+        <div class="sysflow-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+          <span>Guided UI Experience</span>
+        </div>
+      </div>
+
+      <!-- Six-stage detail board -->
+      <div class="sysflow-board" aria-label="AI discovery pipeline in detail">
+
+        <!-- 1. User Query -->
+        <article class="sysflow-stage sysflow-stage--query">
+          <header class="sysflow-stage__head">
+            <span class="sysflow-stage__badge" aria-hidden="true">1</span>
+            <h3 class="sysflow-stage__title">User Query</h3>
+          </header>
+          <div class="sysflow-query-flow">
+            <div class="sysflow-query">Best gaming phone under ₹30,000</div>
+            <span class="sysflow-query-flow__arrow" aria-hidden="true"></span>
+            <div class="sysflow-phone" aria-hidden="true">
+              <span class="sysflow-phone__cam"></span>
+              <span class="sysflow-phone__speaker"></span>
+              <div class="sysflow-phone__screen">
+                <span class="sysflow-phone__lens">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.2-3.2"/></svg>
+                </span>
+                <div class="sysflow-phone__skeleton">
+                  <span class="sysflow-phone__skeleton-row sysflow-phone__skeleton-row--avatar"></span>
+                  <span class="sysflow-phone__skeleton-row"></span>
+                  <span class="sysflow-phone__skeleton-row sysflow-phone__skeleton-row--short"></span>
+                </div>
+              </div>
+              <span class="sysflow-phone__home"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Intent Detection -->
+        <article class="sysflow-stage">
+          <header class="sysflow-stage__head">
+            <span class="sysflow-stage__badge" aria-hidden="true">2</span>
+            <h3 class="sysflow-stage__title">Intent Detection</h3>
+          </header>
+          <div class="sysflow-intent">
+            <div class="sysflow-intent__row"><span>Primary Intent</span><span class="sysflow-chip">Buy</span></div>
+            <div class="sysflow-intent__row"><span>Category</span><span class="sysflow-chip">Smartphones</span></div>
+            <div class="sysflow-intent__row"><span>Use Case</span><span class="sysflow-chip">Gaming</span></div>
+            <div class="sysflow-intent__row"><span>Budget</span><span class="sysflow-chip">Up to ₹30,000</span></div>
+            <div class="sysflow-intent__row"><span>Preference</span><span class="sysflow-chip">High Performance</span></div>
+            <div class="sysflow-intent__row"><span>Priority</span><span class="sysflow-chip">Gaming, Battery, Display</span></div>
+          </div>
+          <div class="sysflow-note sysflow-note--summary">
+            <span class="sysflow-note__label">Intent Summary</span>
+            User wants the best performance phone for gaming within a budget of ₹30,000.
+          </div>
+        </article>
+
+        <!-- 3. Signal Extraction -->
+        <article class="sysflow-stage">
+          <header class="sysflow-stage__head">
+            <span class="sysflow-stage__badge" aria-hidden="true">3</span>
+            <h3 class="sysflow-stage__title">Signal Extraction</h3>
+          </header>
+          <p class="sysflow-stage__sub">Shopping Signals Identified</p>
+          <div class="sysflow-signals">
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/processor.png" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Processor <small>(Performance)</small></span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/gpu.png" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">GPU <small>(Graphics)</small></span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/ram.png" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">RAM</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/refresh.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Refresh Rate</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/battery.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Battery Capacity</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/charging-speed.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Charging Speed</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/thermal-management.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Thermal Management</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/reviews.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Reviews &amp; Ratings</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/price.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Price</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/availability.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Availability</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/brand-trust.gif" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Brand Trust</span>
+            </span>
+            <span class="sysflow-signal">
+              <img class="sysflow-signal__icon" src="../../assets/popular.png" alt="" width="20" height="20" loading="lazy" decoding="async">
+              <span class="sysflow-signal__text">Popularity</span>
+            </span>
+          </div>
+          <div class="sysflow-note sysflow-note--green">
+            <span class="sysflow-note__check" aria-hidden="true">✓</span>
+            12+ signals extracted from query, user behavior &amp; marketplace data.
+          </div>
+        </article>
+
+        <!-- 4. AI Ranking Engine -->
+        <article class="sysflow-stage">
+          <header class="sysflow-stage__head">
+            <span class="sysflow-stage__badge" aria-hidden="true">4</span>
+            <h3 class="sysflow-stage__title">AI Ranking Engine</h3>
+          </header>
+          <div class="sysflow-brain" aria-hidden="true">
+            <img src="../../assets/ai.gif" alt="" width="40" height="40" loading="lazy" decoding="async">
+          </div>
+          <p class="sysflow-stage__sub">Ranking Factors (Weighted)</p>
+          <div class="sysflow-factors">
+            <div class="sysflow-factor">
+              <div class="sysflow-factor__row"><span>Gaming Performance</span><span class="sysflow-factor__pct">28%</span></div>
+              <div class="sysflow-factor__bar"><span class="sysflow-factor__fill" style="width: 100%"></span></div>
+            </div>
+            <div class="sysflow-factor">
+              <div class="sysflow-factor__row"><span>Budget Match</span><span class="sysflow-factor__pct">22%</span></div>
+              <div class="sysflow-factor__bar"><span class="sysflow-factor__fill" style="width: 79%"></span></div>
+            </div>
+            <div class="sysflow-factor">
+              <div class="sysflow-factor__row"><span>Battery Score</span><span class="sysflow-factor__pct">18%</span></div>
+              <div class="sysflow-factor__bar"><span class="sysflow-factor__fill" style="width: 64%"></span></div>
+            </div>
+            <div class="sysflow-factor">
+              <div class="sysflow-factor__row"><span>Review Confidence</span><span class="sysflow-factor__pct">15%</span></div>
+              <div class="sysflow-factor__bar"><span class="sysflow-factor__fill" style="width: 54%"></span></div>
+            </div>
+            <div class="sysflow-factor">
+              <div class="sysflow-factor__row"><span>Availability</span><span class="sysflow-factor__pct">10%</span></div>
+              <div class="sysflow-factor__bar"><span class="sysflow-factor__fill" style="width: 36%"></span></div>
+            </div>
+            <div class="sysflow-factor">
+              <div class="sysflow-factor__row"><span>Popularity</span><span class="sysflow-factor__pct">7%</span></div>
+              <div class="sysflow-factor__bar"><span class="sysflow-factor__fill" style="width: 25%"></span></div>
+            </div>
+          </div>
+          <div class="sysflow-score">
+            <p class="sysflow-score__label">Overall Relevance Score (0 – 100)</p>
+            <p class="sysflow-score__value">89%</p>
+          </div>
+        </article>
+
+        <!-- 5. Result Clustering -->
+        <article class="sysflow-stage">
+          <header class="sysflow-stage__head">
+            <span class="sysflow-stage__badge" aria-hidden="true">5</span>
+            <h3 class="sysflow-stage__title">Result Clustering</h3>
+          </header>
+          <p class="sysflow-stage__sub">Products organized into meaningful clusters</p>
+          <div class="sysflow-clusters">
+            <div class="sysflow-cluster sysflow-cluster--blue">
+              <span class="sysflow-cluster__icon" aria-hidden="true"><img src="../../assets/joystick.png" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+              <span class="sysflow-cluster__name">Best for Gaming<span class="sysflow-cluster__count">23 products</span></span>
+            </div>
+            <div class="sysflow-cluster sysflow-cluster--green">
+              <span class="sysflow-cluster__icon" aria-hidden="true"><img src="../../assets/battery.gif" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+              <span class="sysflow-cluster__name">Best Battery Life<span class="sysflow-cluster__count">18 products</span></span>
+            </div>
+            <div class="sysflow-cluster sysflow-cluster--violet">
+              <span class="sysflow-cluster__icon" aria-hidden="true"><img src="../../assets/camera.gif" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+              <span class="sysflow-cluster__name">Best Camera<span class="sysflow-cluster__count">15 products</span></span>
+            </div>
+            <div class="sysflow-cluster sysflow-cluster--amber">
+              <span class="sysflow-cluster__icon" aria-hidden="true"><img src="../../assets/value.gif" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+              <span class="sysflow-cluster__name">Best Value for Money<span class="sysflow-cluster__count">26 products</span></span>
+            </div>
+            <div class="sysflow-cluster sysflow-cluster--rose">
+              <span class="sysflow-cluster__icon" aria-hidden="true"><img src="../../assets/premium.gif" alt="" width="20" height="20" loading="lazy" decoding="async"></span>
+              <span class="sysflow-cluster__name">Premium Picks<span class="sysflow-cluster__count">12 products</span></span>
+            </div>
+          </div>
+          <div class="sysflow-note sysflow-note--green">AI groups results by intent and product strengths.</div>
+        </article>
+
+        <!-- 6. Guided UI Experience -->
+        <article class="sysflow-stage">
+          <header class="sysflow-stage__head">
+            <span class="sysflow-stage__badge" aria-hidden="true">6</span>
+            <h3 class="sysflow-stage__title">Guided UI Experience</h3>
+          </header>
+          <p class="sysflow-stage__sub">Intent Chips</p>
+          <div class="sysflow-chips">
+            <span class="sysflow-chip sysflow-chip--ui">Gaming</span>
+            <span class="sysflow-chip sysflow-chip--ui">₹30k</span>
+            <span class="sysflow-chip sysflow-chip--ui">120Hz</span>
+            <span class="sysflow-chip sysflow-chip--ui">Fast Charging</span>
+            <span class="sysflow-chip sysflow-chip--ui">5G</span>
+          </div>
+          <p class="sysflow-stage__sub">AI Explanation</p>
+          <div class="sysflow-explain">
+            <span class="sysflow-explain__icon" aria-hidden="true">
+              <img src="../../assets/artificial-i.gif" alt="" width="22" height="22" loading="lazy" decoding="async">
+            </span>
+            <span>These phones are ideal for gaming. They offer high performance processors, 120Hz+ display and long battery life within your budget.</span>
+          </div>
+          <p class="sysflow-stage__sub">Top Recommendation</p>
+          <div class="sysflow-product">
+            <img class="sysflow-product__img" src="../../assets/poco.jpg" alt="Poco X6 Pro 5G in black" width="56" height="78" loading="lazy" decoding="async">
+            <span class="sysflow-product__info">
+              <span class="sysflow-product__name">Poco X6 Pro 5G</span>
+              <span class="sysflow-product__spec">8GB | 256GB</span>
+              <span class="sysflow-product__rating">4.4 ★ <em>(12.5K)</em></span>
+              <span class="sysflow-product__price">₹24,999</span>
+              <span class="sysflow-product__tag">Best for Gaming</span>
+            </span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Comparison + impact -->
+      <div class="sysflow-bottom">
+        <div class="sysflow-panel">
+          <h3 class="sysflow-panel__title">Traditional Search vs AI Discovery</h3>
+          <div class="sysflow-versus">
+            <div class="sysflow-versus__col">
+              <p class="sysflow-versus__head sysflow-versus__head--old">Traditional Search</p>
+              <ul class="sysflow-versus__list">
+                <li><span class="sysflow-mark sysflow-mark--no" aria-hidden="true"><img src="../../assets/close.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Keyword matching</li>
+                <li><span class="sysflow-mark sysflow-mark--no" aria-hidden="true"><img src="../../assets/close.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Flat list of products</li>
+                <li><span class="sysflow-mark sysflow-mark--no" aria-hidden="true"><img src="../../assets/close.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Manual filtering &amp; comparison</li>
+                <li><span class="sysflow-mark sysflow-mark--no" aria-hidden="true"><img src="../../assets/close.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>No understanding of intent</li>
+                <li><span class="sysflow-mark sysflow-mark--no" aria-hidden="true"><img src="../../assets/close.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Overwhelming results</li>
+              </ul>
+            </div>
+            <span class="sysflow-versus__badge" aria-hidden="true">VS</span>
+            <div class="sysflow-versus__col">
+              <p class="sysflow-versus__head sysflow-versus__head--new">AI Discovery (Redesigned)</p>
+              <ul class="sysflow-versus__list">
+                <li><span class="sysflow-mark sysflow-mark--yes" aria-hidden="true"><img src="../../assets/right.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Intent understanding</li>
+                <li><span class="sysflow-mark sysflow-mark--yes" aria-hidden="true"><img src="../../assets/right.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Ranked &amp; clustered results</li>
+                <li><span class="sysflow-mark sysflow-mark--yes" aria-hidden="true"><img src="../../assets/right.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>AI-driven recommendations</li>
+                <li><span class="sysflow-mark sysflow-mark--yes" aria-hidden="true"><img src="../../assets/right.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Context-aware explanations</li>
+                <li><span class="sysflow-mark sysflow-mark--yes" aria-hidden="true"><img src="../../assets/right.gif" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Relevant, confident decisions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sysflow-panel">
+          <h3 class="sysflow-panel__title">System Impact</h3>
+          <div class="sysflow-impact">
+            <article class="sysflow-impact__card">
+              <span class="sysflow-impact__icon sysflow-impact__icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 20v-6M12 20V6M18 20v-9"/></svg>
+              </span>
+              <p class="sysflow-impact__value">12+</p>
+              <p class="sysflow-impact__label">Shopping signals extracted</p>
+              <p class="sysflow-impact__note">From query, behavior &amp; marketplace data</p>
+            </article>
+            <article class="sysflow-impact__card">
+              <span class="sysflow-impact__icon sysflow-impact__icon--green" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="7" cy="7" r="2.6"/><circle cx="17" cy="7" r="2.6"/><circle cx="7" cy="17" r="2.6"/><circle cx="17" cy="17" r="2.6"/></svg>
+              </span>
+              <p class="sysflow-impact__value">5</p>
+              <p class="sysflow-impact__label">Meaningful result clusters</p>
+              <p class="sysflow-impact__note">Organized by intent and product strengths</p>
+            </article>
+            <article class="sysflow-impact__card">
+              <span class="sysflow-impact__icon sysflow-impact__icon--violet" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+              </span>
+              <p class="sysflow-impact__value">90%+</p>
+              <p class="sysflow-impact__label">Relevant recommendations</p>
+              <p class="sysflow-impact__note">Improved relevance and user satisfaction</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key takeaway -->
+      <aside class="sysflow-takeaway">
+        <span class="sysflow-takeaway__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.6 1 1.5 1 2.5h6c0-1 .3-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>
+        </span>
+        <p><strong>Key Takeaway:</strong> This system transforms search from a passive retrieval tool into an intelligent discovery engine that understands users, evaluates products like an expert, and guides them to the right choice with confidence.</p>
+      </aside>
+    </section>
+
+    <!-- 6b. Design Exploration -->
+    <section id="exploration" class="fk-explore explore-reveal">
+      <span class="section-tag">Design Exploration</span>
+      <h2 class="section-title">Exploring multiple concepts before the final experience</h2>
+      <p class="section-lead fk-explore__lead">
+        Before designing the final AI-powered discovery experience, I explored multiple layouts, navigation patterns, interaction models, and product discovery flows. These low-fidelity wireframes helped validate the overall information architecture before investing in high-fidelity design.
+      </p>
+
+      <div class="fk-explore-board">
+        <img
+          class="fk-explore-board__img"
+          src="../../assets/finalwf.png"
+          alt="Wireframes and high-fidelity screens exploring layouts, navigation patterns, and product discovery flows"
+          width="1024"
+          height="704"
+          loading="lazy"
+          decoding="async">
+      </div>
+
+      <div class="fk-explore-metrics" aria-label="Design exploration metrics">
+        <article class="fk-explore-metric snapshot-metric">
+          <strong class="snapshot-metric__value">
+            <span class="snapshot-metric__num">40+</span>
+          </strong>
+          <span class="snapshot-metric__label">Low-fidelity screens</span>
+        </article>
+        <article class="fk-explore-metric snapshot-metric">
+          <strong class="snapshot-metric__value">
+            <span class="snapshot-metric__num">15+</span>
+          </strong>
+          <span class="snapshot-metric__label">User flows explored</span>
+        </article>
+        <article class="fk-explore-metric snapshot-metric">
+          <strong class="snapshot-metric__value">
+            <span class="snapshot-metric__num">8</span>
+          </strong>
+          <span class="snapshot-metric__label">Core features iterated</span>
+        </article>
+        <article class="fk-explore-metric snapshot-metric">
+          <strong class="snapshot-metric__value">
+            <span class="snapshot-metric__num">3</span>
+          </strong>
+          <span class="snapshot-metric__label">Navigation concepts tested</span>
+        </article>
+      </div>
+
+      <div class="fk-explore-process" aria-label="Design exploration process">
+        <div class="fk-explore-chip">
+          <span class="fk-explore-chip__title">Research</span>
+        </div>
+        <span class="fk-explore-process__arrow" aria-hidden="true">→</span>
+        <div class="fk-explore-chip">
+          <span class="fk-explore-chip__title">Wireframes</span>
+        </div>
+        <span class="fk-explore-process__arrow" aria-hidden="true">→</span>
+        <div class="fk-explore-chip">
+          <span class="fk-explore-chip__title">Iteration</span>
+        </div>
+        <span class="fk-explore-process__arrow" aria-hidden="true">→</span>
+        <div class="fk-explore-chip">
+          <span class="fk-explore-chip__title">Final UI</span>
+        </div>
+      </div>
+
+      <aside class="fk-explore-callout">
+        <h3 class="fk-explore-callout__title">Why this mattered</h3>
+        <p class="fk-explore-callout__body">
+          Rapid exploration helped validate navigation, information architecture, search behavior, and AI-assisted discovery before moving into visual design.
+        </p>
+      </aside>
+    </section>
+
+    <!-- 7. Solution -->
+    <section id="solution" class="fk-solution solution-reveal">
+      <div class="fk-solution__header">
+        <div class="fk-solution__intro">
+          <span class="section-tag">Solution</span>
+          <h2 class="section-title">From search to AI-powered discovery</h2>
+          <p class="section-lead fk-solution__lead">
+            We transformed keyword-based search into an AI-powered product discovery experience by combining intent understanding, visual search, and guided exploration to reduce decision effort and improve shopping confidence.
+          </p>
+        </div>
+      </div>
+
+      <div class="fk-solution-grid">
+        <article class="fk-solution-card fk-solution-card--image">
+          <h3 class="visually-hidden">Intent-Based Search</h3>
+          <p class="visually-hidden">
+            Problem solved: Traditional keyword search couldn&rsquo;t understand what shoppers were actually trying to accomplish.
+            Solution: Interprets natural language to identify budget, use-case, category, and shopping preferences before retrieving products.
+          </p>
+          <img
+            class="fk-solution-card__img"
+            src="../../assets/solution-intent.png"
+            alt="Intent-Based Search solution card"
+            loading="lazy"
+            decoding="async"
+          >
+        </article>
+
+        <article class="fk-solution-card fk-solution-card--image">
+          <h3 class="visually-hidden">Visual Search</h3>
+          <p class="visually-hidden">
+            Problem solved: Users often knew what they wanted visually but couldn&rsquo;t describe or remember the product name.
+            Solution: Enables discovery using photos, screenshots, or camera input to instantly identify similar products.
+          </p>
+          <img
+            class="fk-solution-card__img"
+            src="../../assets/solution-visual.png"
+            alt="Visual Search solution card"
+            loading="lazy"
+            decoding="async"
+          >
+        </article>
+
+        <article class="fk-solution-card fk-solution-card--image">
+          <h3 class="visually-hidden">Guided Discovery</h3>
+          <p class="visually-hidden">
+            Problem solved: Large product lists created comparison fatigue and slowed decision-making.
+            Solution: Groups products into contextual clusters with smart filters, recommendations, and AI-generated explanations.
+          </p>
+          <img
+            class="fk-solution-card__img"
+            src="../../assets/solution-guided.png"
+            alt="Guided Discovery solution card"
+            loading="lazy"
+            decoding="async"
+          >
+        </article>
+      </div>
+
+      <div class="fk-solution-flow" aria-label="Solution capability flow">
+        <span class="fk-solution-flow__label">Powered by AI</span>
+        <div class="fk-solution-flow__track">
+          <span class="fk-solution-pill">Natural Language</span>
+          <span class="fk-solution-flow__arrow" aria-hidden="true">→</span>
+          <span class="fk-solution-pill">Intent Detection</span>
+          <span class="fk-solution-flow__arrow" aria-hidden="true">→</span>
+          <span class="fk-solution-pill">Visual Search</span>
+          <span class="fk-solution-flow__arrow" aria-hidden="true">→</span>
+          <span class="fk-solution-pill">Smart Ranking</span>
+          <span class="fk-solution-flow__arrow" aria-hidden="true">→</span>
+          <span class="fk-solution-pill">Dynamic Clusters</span>
+          <span class="fk-solution-flow__arrow" aria-hidden="true">→</span>
+          <span class="fk-solution-pill">AI Explanation</span>
+        </div>
+      </div>
+
+      <aside class="fk-solution-outcome">
+        <div class="fk-solution-outcome__copy">
+          <p class="fk-solution-outcome__label">Outcome</p>
+          <h3 class="fk-solution-outcome__title">Search evolved from a keyword lookup into an AI-powered product discovery experience.</h3>
+          <p class="fk-solution-outcome__body">
+            Instead of forcing users to manually compare hundreds of products, the system understands shopping intent, prioritizes relevant options, and guides users toward confident purchase decisions.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 8. Before vs After -->
+    <section id="compare" class="fk-compare reveal">
+      <span class="section-tag">Before vs After</span>
+      <h2 class="section-title">Less friction, more clarity</h2>
+      <p class="section-lead fk-compare__lead">
+        See how key shopping moments evolved from manual product lookup into an intent-aware discovery experience.
+      </p>
+
+      <!-- Comparison 01 — Search Entry (repeat this <article> for future pairs) -->
+      <article class="fk-compare-pair">
+        <p class="fk-compare-pair__id"><span>01</span> / Search Entry</p>
+
+        <div class="fk-compare-pair__grid">
+          <div class="fk-compare-card fk-compare-card--before">
+            <p class="fk-compare-card__label">Before</p>
+            <h3 class="fk-compare-card__title">Product lookup</h3>
+            <p class="fk-compare-card__desc">
+              Search depended on users knowing what to type, with recent searches and product-name suggestions driving discovery.
+            </p>
+            <figure class="fk-compare-card__media">
+              <img
+                src="../../assets/compare-before-1.png"
+                alt="Old Flipkart search screen, driven by recent searches and typed product-name suggestions"
+                width="880" height="1912" loading="lazy" decoding="async">
+            </figure>
+            <div class="fk-compare-card__insight">
+              <span class="fk-compare-card__insight-tag">Text-led search</span>
+              <p class="fk-compare-card__insight-copy">Users needed an idea of what product or keyword to search for.</p>
+            </div>
+          </div>
+
+          <div class="fk-compare-pair__cue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </div>
+
+          <div class="fk-compare-card fk-compare-card--after">
+            <p class="fk-compare-card__label">After</p>
+            <h3 class="fk-compare-card__title">Multimodal discovery</h3>
+            <p class="fk-compare-card__desc">
+              Users can begin discovery through text, photos, gallery uploads, or contextual suggestions&mdash;even without knowing the exact product name.
+            </p>
+            <figure class="fk-compare-card__media">
+              <img
+                src="../../assets/compare-after-1.png"
+                alt="Redesigned discovery screen offering text, photo, gallery upload, and contextual suggestion entry points"
+                width="880" height="1912" loading="lazy" decoding="async">
+            </figure>
+            <div class="fk-compare-card__insight">
+              <span class="fk-compare-card__insight-tag">Multimodal search</span>
+              <p class="fk-compare-card__insight-copy">Multiple discovery paths reduce dependence on exact product names.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 9. Impact -->
+    <section id="impact" class="fk-impact impact-reveal">
+      <span class="section-tag">Impact</span>
+      <h2 class="section-title">Measurable design outcomes</h2>
+      <p class="section-lead fk-impact__lead">
+        The redesign reduced decision friction, improved discovery, and increased user confidence throughout the shopping journey.
+      </p>
+
+      <div class="fk-impact-grid">
+        <article class="fk-impact-card fk-impact-card--blue">
+          <div class="fk-impact-card__head">
+            <p class="fk-impact-card__label">Search-to-product CTR</p>
+          </div>
+          <p class="fk-impact-card__metric" aria-label="38 percent to 61 percent">
+            <span class="fk-impact-count" data-count-from="0" data-count-to="38" data-count-suffix="%">0%</span>
+            <span class="fk-impact-card__arrow">→</span>
+            <span class="fk-impact-count" data-count-from="0" data-count-to="61" data-count-suffix="%">0%</span>
+          </p>
+          <p class="fk-impact-card__desc">More users reached relevant product pages after AI-powered intent understanding replaced keyword-only matching.</p>
+        </article>
+
+        <article class="fk-impact-card fk-impact-card--blue">
+          <div class="fk-impact-card__head">
+            <p class="fk-impact-card__label">Search-led conversions</p>
+          </div>
+          <p class="fk-impact-card__metric">
+            <span class="fk-impact-count" data-count-from="0" data-count-to="22" data-count-prefix="+" data-count-suffix="%">+0%</span>
+          </p>
+          <p class="fk-impact-card__desc">Better product recommendations and contextual discovery increased purchase intent.</p>
+        </article>
+
+        <article class="fk-impact-card fk-impact-card--green">
+          <div class="fk-impact-card__head">
+            <p class="fk-impact-card__label">Return rates</p>
+          </div>
+          <p class="fk-impact-card__metric">
+            <span class="fk-impact-count" data-count-from="0" data-count-to="18" data-count-prefix="−" data-count-suffix="%">−0%</span>
+          </p>
+          <p class="fk-impact-card__desc">Improved intent matching reduced mismatched purchases and increased shopping confidence.</p>
+        </article>
+
+        <article class="fk-impact-card fk-impact-card--yellow">
+          <div class="fk-impact-card__head">
+            <p class="fk-impact-card__label">First-time buyer conversion</p>
+          </div>
+          <p class="fk-impact-card__metric">
+            <span class="fk-impact-count" data-count-from="0" data-count-to="27" data-count-prefix="+" data-count-suffix="%">+0%</span>
+          </p>
+          <p class="fk-impact-card__desc">Guided discovery helped new shoppers compare products faster and make confident decisions.</p>
+        </article>
+      </div>
+
+      <hr class="fk-impact-divider" aria-hidden="true">
+
+      <aside class="fk-impact-insight">
+        <p class="fk-impact-insight__label">Design Insight</p>
+        <h3 class="fk-impact-insight__title">
+          Great discovery isn&rsquo;t about showing more products.<br>
+          It&rsquo;s about showing the right products first.
+        </h3>
+        <p class="fk-impact-insight__body">
+          By understanding user intent instead of relying only on keywords, the experience became faster, more relevant, and easier to trust.
+        </p>
+      </aside>
+    </section>
+
+    <!-- 10. Reflection -->
+    <section id="reflection" class="fk-reflection reflection-reveal">
+      <span class="section-tag">Reflection</span>
+      <h2 class="section-title">What this project taught me</h2>
+
+      <div class="fk-reflection-grid">
+        <article class="fk-reflection-card">
+          <span class="fk-reflection-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg>
+          </span>
+          <h3 class="fk-reflection-card__title">Think beyond interfaces</h3>
+          <p class="fk-reflection-card__body">
+            I learned that great product experiences begin with understanding user intent, not designing individual screens. Defining how the system thinks became just as important as designing the interface itself.
+          </p>
+        </article>
+
+        <article class="fk-reflection-card">
+          <span class="fk-reflection-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a1 1 0 0 0 1 1h4"/><path d="M18 9v2a1 1 0 0 1-1 1h-4"/><path d="M12 15V12"/></svg>
+          </span>
+          <h3 class="fk-reflection-card__title">Design systems over features</h3>
+          <p class="fk-reflection-card__body">
+            Rather than solving isolated problems, I focused on creating a scalable discovery system where search, recommendations, filters, and comparisons work together as one connected experience.
+          </p>
+        </article>
+
+        <article class="fk-reflection-card">
+          <span class="fk-reflection-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+          <h3 class="fk-reflection-card__title">Balance users and business</h3>
+          <p class="fk-reflection-card__body">
+            Every design decision considered both user needs and marketplace goals—reducing decision effort while improving engagement, confidence, and conversion opportunities.
+          </p>
+        </article>
+      </div>
+
+      <blockquote class="fk-reflection-quote">
+        <span class="fk-reflection-quote__mark" aria-hidden="true">&ldquo;</span>
+        <p class="fk-reflection-quote__text">
+          Designing AI isn&rsquo;t about replacing user decisions.<br>
+          It&rsquo;s about helping people make better ones.
+        </p>
+        <footer class="fk-reflection-quote__attr">— Ajith Alphonse</footer>
+      </blockquote>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-text">
+          <h4>Let&rsquo;s build thoughtful product experiences</h4>
+          <p>Happy to walk through intent modeling, discovery flows, and how we balanced AI capability with user trust.</p>
+        </div>
+        <div class="footer-cta">
+          <a href="../../index.html" class="footer-btn" aria-label="Back to portfolio"><span aria-hidden="true">←</span> Work</a>
+          <a href="mailto:ajithalphonse300@gmail.com" class="footer-btn primary">Email</a>
+          <a href="https://www.linkedin.com/in/ajith-alphonse/" class="footer-btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  </div>
+
+  <script>
+    // TRIAL: Hero AI orb toggle — set to false to hide/remove instantly
+    var showAiOrb = true;
+
+    (function initHeroAiOrb() {
+      var orb = document.getElementById('heroAiOrb');
+      if (!orb) return;
+      if (showAiOrb) {
+        orb.hidden = false;
+      } else {
+        orb.remove();
+      }
+    })();
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var id = this.getAttribute('href');
+        if (id.length > 1) {
+          var target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    var navItems = document.querySelectorAll('.side-nav-item');
+    var sectionIds = Array.from(navItems).map(function (a) { return a.getAttribute('href').slice(1); });
+    var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        navItems.forEach(function (item) {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-18% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { obs.observe(s); });
+
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+    var insightQueries = [
+      'best phone under 20k for gaming',
+      'laptop for students',
+      'washing machine for family of 4'
+    ];
+
+    function initInsightQueryTyping(rightCard, reducedMotion) {
+      if (!rightCard || rightCard.dataset.typingStarted === 'true') return;
+      rightCard.dataset.typingStarted = 'true';
+
+      var items = rightCard.querySelectorAll('.query-item');
+      if (!items.length) return;
+
+      items.forEach(function (item, index) {
+        var textEl = item.querySelector('.query-item__text');
+        var cursor = item.querySelector('.query-item__cursor');
+        if (!textEl) return;
+
+        if (reducedMotion) {
+          textEl.textContent = insightQueries[index] || '';
+          if (cursor) cursor.classList.remove('is-active');
+          return;
+        }
+
+        textEl.textContent = '';
+        if (cursor) cursor.classList.remove('is-active');
+      });
+
+      if (reducedMotion) return;
+
+      var charDelay = 40;
+      var betweenDelay = 500;
+
+      function setActiveCursor(activeIndex) {
+        items.forEach(function (item, index) {
+          var cursor = item.querySelector('.query-item__cursor');
+          var isActive = index === activeIndex;
+          if (cursor) cursor.classList.toggle('is-active', isActive);
+          item.classList.toggle('is-typing', isActive);
+        });
+      }
+
+      function typeQuery(index) {
+        if (index >= items.length) {
+          setActiveCursor(-1);
+          return;
+        }
+
+        var item = items[index];
+        var textEl = item.querySelector('.query-item__text');
+        var text = insightQueries[index] || '';
+        var charIndex = 0;
+
+        setActiveCursor(index);
+
+        function typeChar() {
+          if (charIndex < text.length) {
+            textEl.textContent += text.charAt(charIndex);
+            charIndex += 1;
+            window.setTimeout(typeChar, charDelay);
+            return;
+          }
+
+          setActiveCursor(-1);
+
+          window.setTimeout(function () {
+            typeQuery(index + 1);
+          }, betweenDelay);
+        }
+
+        typeChar();
+      }
+
+      window.setTimeout(function () {
+        typeQuery(0);
+      }, 550);
+    }
+
+    var insightSection = document.getElementById('insight');
+    var insightCards = insightSection
+      ? insightSection.querySelectorAll('.insight-card-reveal')
+      : [];
+
+    if (insightSection && insightCards.length) {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var rightCard = insightSection.querySelector('.insight-card-reveal--right');
+
+      if (reducedMotion) {
+        insightSection.classList.add('is-visible', 'is-assembled');
+        insightCards.forEach(function (card) {
+          card.classList.add('is-visible');
+        });
+        initInsightQueryTyping(rightCard, true);
+      } else {
+        var cardRevealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+
+            insightSection.classList.add('is-visible');
+
+            var leftCard = entry.target.querySelector('.insight-card-reveal--left');
+            var rightCardEl = entry.target.querySelector('.insight-card-reveal--right');
+
+            if (leftCard) leftCard.classList.add('is-visible');
+            if (rightCardEl) rightCardEl.classList.add('is-visible');
+
+            /* Typing starts once the right clay tile has mostly risen */
+            window.setTimeout(function () {
+              initInsightQueryTyping(rightCardEl, false);
+            }, 700);
+
+            window.setTimeout(function () {
+              insightSection.classList.add('is-assembled');
+            }, 1300);
+
+            cardRevealObs.unobserve(entry.target);
+          });
+        }, { threshold: 0.2 });
+
+        cardRevealObs.observe(insightSection);
+      }
+    }
+
+    function animateSnapshotCount(el, end, duration, suffix, reducedMotion) {
+      suffix = suffix || '';
+
+      if (reducedMotion) {
+        el.textContent = String(end) + suffix;
+        return;
+      }
+
+      var current = 0;
+      var stepTime = Math.max(duration / end, 12);
+
+      function tick() {
+        current += 1;
+        el.textContent = String(current);
+        el.classList.remove('is-flip');
+        void el.offsetWidth;
+        el.classList.add('is-flip');
+
+        if (current < end) {
+          window.setTimeout(tick, stepTime);
+          return;
+        }
+
+        el.textContent = String(end) + suffix;
+        window.setTimeout(function () {
+          el.classList.remove('is-flip');
+        }, 120);
+      }
+
+      window.setTimeout(tick, stepTime);
+    }
+
+    function initSnapshotSection() {
+      var section = document.getElementById('snapshot');
+      if (!section) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function runSnapshotCounts() {
+        if (section.dataset.countStarted === 'true') return;
+        section.dataset.countStarted = 'true';
+
+        section.querySelectorAll('.snapshot-metric__num[data-count-end]').forEach(function (el) {
+          var end = parseInt(el.getAttribute('data-count-end'), 10);
+          var duration = parseInt(el.getAttribute('data-count-duration'), 10) || 1000;
+          var suffix = el.getAttribute('data-count-suffix') || '';
+          animateSnapshotCount(el, end, duration, suffix, reducedMotion);
+        });
+      }
+
+      if (reducedMotion) {
+        section.classList.add('is-visible', 'is-assembled');
+        section.querySelectorAll('.snapshot-metric__num[data-count-end]').forEach(function (el) {
+          el.textContent = el.getAttribute('data-count-end') + (el.getAttribute('data-count-suffix') || '');
+        });
+        return;
+      }
+
+      var snapshotObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          section.classList.add('is-visible');
+          /* Counts start once early clay tiles have risen in */
+          window.setTimeout(runSnapshotCounts, 1000);
+          /* Unlock physical hover after the full rise sequence settles */
+          window.setTimeout(function () {
+            section.classList.add('is-assembled');
+          }, 1700);
+          snapshotObs.unobserve(section);
+        });
+      }, { threshold: 0.28, rootMargin: '0px 0px -8% 0px' });
+
+      snapshotObs.observe(section);
+    }
+
+    initSnapshotSection();
+
+    (function initProblemSection() {
+      var section = document.getElementById('problem');
+      if (!section || !section.classList.contains('problem-reveal')) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion) {
+        section.classList.add('is-visible', 'is-assembled');
+        return;
+      }
+
+      var problemObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          section.classList.add('is-visible');
+          window.setTimeout(function () {
+            section.classList.add('is-assembled');
+          }, 1650);
+          problemObs.unobserve(section);
+        });
+      }, { threshold: 0.22, rootMargin: '0px 0px -6% 0px' });
+
+      problemObs.observe(section);
+    })();
+
+    (function initResearchSection() {
+      var section = document.getElementById('research');
+      var metricsRoot = document.getElementById('researchMetrics');
+      if (!section || !metricsRoot) return;
+
+      // Metrics should be updated only with verified research values / observed ranges.
+      // Do not treat these as platform-wide Flipkart KPIs unless confirmed.
+      var RESEARCH_METRICS = [
+        {
+          display: '127',
+          countEnd: 127,
+          suffix: '',
+          duration: 1200,
+          title: 'results',
+          note: 'A typical intent-based query such as “gaming phone under ₹30,000” could return more than one hundred products.'
+        },
+        {
+          display: '34%',
+          countEnd: 34,
+          suffix: '%',
+          duration: 1000,
+          title: 'immediately relevant',
+          note: 'Only a portion of surfaced products strongly matched the user’s budget and use-case intent.'
+        },
+        {
+          display: '22%',
+          countEnd: 22,
+          suffix: '%',
+          duration: 900,
+          title: 'partially relevant',
+          note: 'Some results met the budget requirement but lacked clear evidence that they were suitable for gaming.'
+        },
+        {
+          display: '5–7',
+          countEnd: null,
+          suffix: '',
+          duration: 0,
+          title: 'products explored',
+          note: 'Users frequently opened or added several similar products before feeling ready to make a decision.'
+        },
+        {
+          display: '8–12',
+          countEnd: null,
+          suffix: '',
+          duration: 0,
+          title: 'minutes',
+          note: 'Some users spent several minutes comparing specifications, ratings, reviews, and offers before selecting one product.'
+        }
+      ];
+
+      metricsRoot.innerHTML = RESEARCH_METRICS.map(function (metric) {
+        var valueAttrs = metric.countEnd != null
+          ? ' data-count-end="' + metric.countEnd + '" data-count-suffix="' + metric.suffix + '" data-count-duration="' + metric.duration + '"'
+          : '';
+        var initial = metric.countEnd != null ? '0' + metric.suffix : metric.display;
+        return (
+          '<div class="fk-research-metric">' +
+            '<strong class="fk-research-metric__value">' +
+              '<span class="fk-research-metric__num"' + valueAttrs + '>' + initial + '</span>' +
+            '</strong>' +
+            '<span class="fk-research-metric__title">' + metric.title + '</span>' +
+            '<span class="fk-research-metric__note">' + metric.note + '</span>' +
+          '</div>'
+        );
+      }).join('');
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var revealBlocks = section.querySelectorAll('.fk-research-reveal');
+      var insightsList = section.querySelector('.fk-research-insights');
+
+      function revealResearchBlocks() {
+        revealBlocks.forEach(function (block, index) {
+          window.setTimeout(function () {
+            block.classList.add('is-visible');
+          }, reducedMotion ? 0 : index * 70);
+        });
+        if (insightsList) insightsList.classList.add('is-visible');
+        metricsRoot.classList.add('is-visible');
+      }
+
+      function runResearchCounts() {
+        if (metricsRoot.dataset.countStarted === 'true') return;
+        metricsRoot.dataset.countStarted = 'true';
+
+        metricsRoot.querySelectorAll('.fk-research-metric__num[data-count-end]').forEach(function (el) {
+          var end = parseInt(el.getAttribute('data-count-end'), 10);
+          var duration = parseInt(el.getAttribute('data-count-duration'), 10) || 1000;
+          var suffix = el.getAttribute('data-count-suffix') || '';
+          animateSnapshotCount(el, end, duration, suffix, reducedMotion);
+        });
+      }
+
+      if (reducedMotion) {
+        section.classList.add('is-visible', 'is-assembled');
+        revealResearchBlocks();
+        metricsRoot.querySelectorAll('.fk-research-metric__num[data-count-end]').forEach(function (el) {
+          el.textContent = el.getAttribute('data-count-end') + (el.getAttribute('data-count-suffix') || '');
+        });
+        return;
+      }
+
+      var researchObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          section.classList.add('is-visible');
+          revealResearchBlocks();
+          window.setTimeout(runResearchCounts, 280);
+          window.setTimeout(function () {
+            section.classList.add('is-assembled');
+          }, 900);
+          researchObs.unobserve(section);
+        });
+      }, { threshold: 0.12 });
+
+      researchObs.observe(section);
+    })();
+
+    (function initTakeawaysCarousel() {
+      var root = document.getElementById('fkTakeawaysCarousel');
+      var tablist = root && root.querySelector('.fk-takeaways-tabs');
+      var panel = document.getElementById('fkTakeawayPanel');
+      var titleEl = document.getElementById('fkTakeawayTitle');
+      var copyEl = document.getElementById('fkTakeawayCopy');
+      if (!root || !tablist || !panel || !titleEl || !copyEl) return;
+
+      var TAKEAWAYS = [
+        {
+          title: 'Intent-first Search',
+          description: 'Most shoppers described their goals using budgets, use-cases, or desired outcomes rather than exact product models.'
+        },
+        {
+          title: 'Discovery Overload',
+          description: 'Search returned many possible products, but users struggled to identify which option best matched their needs.'
+        },
+        {
+          title: 'Comparison-heavy Behavior',
+          description: 'Users opened multiple product pages, compared specifications manually, and often used the cart as a temporary comparison space.'
+        },
+        {
+          title: 'Trust Drives Decisions',
+          description: 'Users relied on reviews, ratings, seller credibility, return information, and clear recommendation reasons before purchasing.'
+        },
+        {
+          title: 'AI Opportunity',
+          description: 'The opportunity was to transform search from product retrieval into guided discovery that understands intent and reduces decision effort.'
+        }
+      ];
+
+      var activeIndex = 0;
+      var switchTimer = null;
+      var hoverEnabled = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var tabs = [];
+
+      function renderTabs() {
+        tablist.innerHTML = TAKEAWAYS.map(function (item, index) {
+          return (
+            '<button' +
+              ' type="button"' +
+              ' class="fk-takeaways-tab' + (index === 0 ? ' is-active' : '') + '"' +
+              ' role="tab"' +
+              ' id="fkTakeawayTab-' + index + '"' +
+              ' aria-selected="' + (index === 0 ? 'true' : 'false') + '"' +
+              ' aria-controls="fkTakeawayPanel"' +
+              ' tabindex="' + (index === 0 ? '0' : '-1') + '"' +
+              ' data-index="' + index + '"' +
+            '>' + item.title + '</button>'
+          );
+        }).join('');
+        tabs = Array.prototype.slice.call(tablist.querySelectorAll('.fk-takeaways-tab'));
+      }
+
+      function setActive(index, options) {
+        options = options || {};
+        if (index < 0 || index >= TAKEAWAYS.length) return;
+        if (index === activeIndex && !options.force) return;
+
+        var item = TAKEAWAYS[index];
+        activeIndex = index;
+        root.setAttribute('data-active', String(index));
+
+        tabs.forEach(function (tab, i) {
+          var selected = i === index;
+          tab.classList.toggle('is-active', selected);
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+          tab.tabIndex = selected ? 0 : -1;
+        });
+
+        panel.setAttribute('aria-labelledby', 'fkTakeawayTab-' + index);
+
+        function applyContent() {
+          titleEl.textContent = item.title;
+          copyEl.textContent = item.description;
+          panel.classList.remove('is-switching');
+          switchTimer = null;
+        }
+
+        if (switchTimer) {
+          window.clearTimeout(switchTimer);
+          switchTimer = null;
+        }
+
+        if (reducedMotion || options.instant) {
+          titleEl.textContent = item.title;
+          copyEl.textContent = item.description;
+          panel.classList.remove('is-switching');
+          return;
+        }
+
+        panel.classList.add('is-switching');
+        switchTimer = window.setTimeout(applyContent, 160);
+      }
+
+      function focusTab(index) {
+        if (!tabs[index]) return;
+        tabs[index].focus();
+        setActive(index);
+      }
+
+      renderTabs();
+      setActive(0, { force: true, instant: true });
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          setActive(parseInt(tab.getAttribute('data-index'), 10));
+        });
+
+        if (hoverEnabled) {
+          tab.addEventListener('mouseenter', function () {
+            setActive(parseInt(tab.getAttribute('data-index'), 10));
+          });
+        }
+      });
+
+      tablist.addEventListener('keydown', function (event) {
+        var key = event.key;
+        var horizontal = window.matchMedia('(max-width: 720px)').matches;
+        var next = activeIndex;
+
+        if (key === 'ArrowDown' || (horizontal && key === 'ArrowRight')) {
+          event.preventDefault();
+          next = (activeIndex + 1) % TAKEAWAYS.length;
+          focusTab(next);
+        } else if (key === 'ArrowUp' || (horizontal && key === 'ArrowLeft')) {
+          event.preventDefault();
+          next = (activeIndex - 1 + TAKEAWAYS.length) % TAKEAWAYS.length;
+          focusTab(next);
+        } else if (key === 'Home') {
+          event.preventDefault();
+          focusTab(0);
+        } else if (key === 'End') {
+          event.preventDefault();
+          focusTab(TAKEAWAYS.length - 1);
+        }
+      });
+    })();
+
+    (function initProblemVideoControl() {
+      var video = document.getElementById('problemVideo');
+      var btn = document.getElementById('problemVideoBtn');
+      if (!video || !btn) return;
+
+      var userPaused = false;
+
+      function syncButton() {
+        var playing = !video.paused && !video.ended;
+        btn.classList.toggle('is-playing', playing);
+        btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        btn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+      }
+
+      function pauseVideo() {
+        userPaused = true;
+        try {
+          video.pause();
+        } catch (err) {}
+        // Force a freeze on the current frame for some WebM/alpha players
+        try {
+          video.currentTime = video.currentTime;
+        } catch (err) {}
+        syncButton();
+      }
+
+      function playVideo() {
+        userPaused = false;
+        var playPromise = video.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.then(syncButton).catch(function () {
+            syncButton();
+          });
+        } else {
+          syncButton();
+        }
+      }
+
+      function togglePlayback(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        if (video.paused) {
+          playVideo();
+        } else {
+          pauseVideo();
+        }
+      }
+
+      btn.addEventListener('click', togglePlayback);
+      video.addEventListener('click', togglePlayback);
+
+      video.addEventListener('play', function () {
+        if (userPaused) {
+          pauseVideo();
+          return;
+        }
+        syncButton();
+      });
+      video.addEventListener('pause', syncButton);
+
+      // Keep autoplay muted; if browser blocks it, show play state
+      var autoplayPromise = video.play();
+      if (autoplayPromise && typeof autoplayPromise.then === 'function') {
+        autoplayPromise.then(syncButton).catch(function () {
+          userPaused = true;
+          syncButton();
+        });
+      } else {
+        syncButton();
+      }
+    })();
+
+    (function initExploreReveal() {
+      var section = document.getElementById('exploration');
+      if (!section || !section.classList.contains('explore-reveal')) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) {
+        section.classList.add('is-visible');
+        return;
+      }
+
+      var exploreObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          exploreObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      exploreObs.observe(section);
+    })();
+
+    (function initSolutionReveal() {
+      var section = document.getElementById('solution');
+      if (!section || !section.classList.contains('solution-reveal')) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) {
+        section.classList.add('is-visible');
+        return;
+      }
+
+      var solutionObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          solutionObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      solutionObs.observe(section);
+    })();
+
+    (function initImpactReveal() {
+      var section = document.getElementById('impact');
+      if (!section || !section.classList.contains('impact-reveal')) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var counters = section.querySelectorAll('.fk-impact-count');
+
+      function renderCount(el, value) {
+        var prefix = el.getAttribute('data-count-prefix') || '';
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        el.textContent = prefix + value + suffix;
+      }
+
+      function animateCounts() {
+        counters.forEach(function (el) {
+          if (el.dataset.counted === 'true') return;
+          el.dataset.counted = 'true';
+
+          var from = parseInt(el.getAttribute('data-count-from') || '0', 10);
+          var to = parseInt(el.getAttribute('data-count-to') || '0', 10);
+          if (reducedMotion) {
+            renderCount(el, to);
+            return;
+          }
+
+          var duration = 1800;
+          var start = null;
+
+          function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var value = Math.round(from + (to - from) * eased);
+            renderCount(el, value);
+            if (progress < 1) requestAnimationFrame(step);
+          }
+
+          requestAnimationFrame(step);
+        });
+      }
+
+      if (reducedMotion) {
+        section.classList.add('is-visible');
+        animateCounts();
+        return;
+      }
+
+      var impactObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          animateCounts();
+          impactObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      impactObs.observe(section);
+    })();
+
+    (function initReflectionReveal() {
+      var section = document.getElementById('reflection');
+      if (!section || !section.classList.contains('reflection-reveal')) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) {
+        section.classList.add('is-visible');
+        return;
+      }
+
+      var reflectionObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          reflectionObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      reflectionObs.observe(section);
+    })();
+  </script>
+</body>
+</html>
