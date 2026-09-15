@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe Firefly — Post-Generation Editing &amp; Creative Control | Product Design Case Study</title>
+  <meta name="description" content="A product design case study on post-generation refinement in Adobe Firefly: the decisions, tradeoffs and outcomes behind moving from prompt regeneration to intent-first localized editing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=af-senior-1">
+  <link rel="stylesheet" href="css/firefly.css?v=af-senior-2">
+  <style>
+    /* Critical hero layout — keeps Chrome preview correct even if CSS is delayed */
+    .hero-banner { position: relative; width: 100%; margin: 0; padding: 0; background: #ff3b2f; line-height: 0; }
+    .hero-banner__img { width: 100%; height: auto; display: block; margin: 0; border: 0; }
+    .case-hero-nav {
+      position: absolute; top: 16px; left: 0; right: 0; z-index: 30;
+      padding: 0 20px; pointer-events: none; line-height: normal;
+    }
+    .case-hero-nav__inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      width: min(100%, 1200px); margin: 0 auto; flex-wrap: nowrap;
+    }
+    .case-nav-group { display: flex; align-items: center; gap: 10px; pointer-events: auto; flex-shrink: 0; }
+    .case-nav-pill,
+    .case-nav-links {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .case-nav-pill {
+      padding: 10px 16px; font-size: 13px; font-weight: 500; color: #111827;
+      text-decoration: none; white-space: nowrap;
+    }
+    .case-nav-links { padding: 5px; height: 44px; }
+    .case-nav-link {
+      display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px;
+      font-size: 14px; font-weight: 500; color: #1e293b; text-decoration: none; white-space: nowrap;
+    }
+    .case-nav-link--primary { background: #1473e6; color: #fff; }
+    .project-intro { padding: 64px 0 48px; line-height: 1.6; }
+    .project-intro__meta {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 32px; margin: 32px 0 0; padding: 28px 0 0;
+      border-top: 1px solid #e0e0dc; list-style: none;
+    }
+    .project-intro__meta > div { margin: 0; min-width: 0; }
+    .project-intro__meta dt {
+      margin: 0 0 6px; padding: 0; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #8a8a8a;
+    }
+    .project-intro__meta dd {
+      margin: 0; padding: 0; font-size: 15px; line-height: 1.45; color: #1a1a1a;
+    }
+    @media (max-width: 820px) {
+      .case-nav-group--right { display: none !important; }
+      .project-intro__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .case-hero-nav__inner { justify-content: flex-start; gap: 8px; }
+      .case-nav-group--center .case-nav-links { display: none; }
+      .project-intro__meta { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 01 HERO — full-width artwork -->
+  <header class="hero-banner" id="hero">
+    <nav class="case-hero-nav" aria-label="Case study navigation">
+      <div class="case-hero-nav__inner">
+        <div class="case-nav-group case-nav-group--left">
+          <a href="../../index.html" class="case-nav-pill case-nav-pill--back" aria-label="Back to portfolio">
+            <span aria-hidden="true">←</span> Back to Portfolio
+          </a>
+        </div>
+
+        <div class="case-nav-group case-nav-group--center">
+          <div class="case-nav-links">
+            <a href="../../index.html#work" class="case-nav-link">Work</a>
+            <a href="../../know-me.html" class="case-nav-link">Know Me</a>
+          </div>
+        </div>
+
+        <div class="case-nav-group case-nav-group--right">
+          <div class="case-nav-links">
+            <a href="#decisions-heading" class="case-nav-link">Decisions</a>
+            <a href="#impact-heading" class="case-nav-link">Impact</a>
+            <a href="#contact" class="case-nav-link case-nav-link--primary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <img
+      src="../../assets/adobe-hero.webp"
+      alt="Adobe Firefly — From prompting to creative control, shown on a laptop"
+      class="hero-banner__img"
+      width="1920"
+      height="1000"
+      loading="eager"
+      decoding="async">
+  </header>
+
+  <main id="main">
+
+    <!-- 02 TITLE BLOCK -->
+    <section class="project-intro container reveal" aria-labelledby="hero-title">
+      <div class="af-senior-badge-row">
+        <span class="af-senior-badge af-senior-badge--accent">Contract · Product Design</span>
+        <span class="af-senior-badge af-senior-badge--quiet">Post-generation editing</span>
+        <span class="af-senior-badge af-senior-badge--quiet">8–10 min read</span>
+      </div>
+      <h1 id="hero-title" class="project-intro__title">From prompting<br>to creative control.</h1>
+      <p class="project-intro__support">Firefly could generate a strong image in seconds. Changing one part of that image without losing the rest was still the hardest thing a creator could ask it to do. This is the work I did on that problem.</p>
+      <dl class="project-intro__meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Product Designer</dd>
+        </div>
+        <div>
+          <dt>Product</dt>
+          <dd>Adobe Firefly</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>Generative AI · Image &amp; Video Editing · Creative Tools</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>May 2025 — Present · Contract</dd>
+        </div>
+        <div>
+          <dt>Contribution</dt>
+          <dd>Post-generation editing &amp; creative control</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 03 EXEC SUMMARY — first screen -->
+    <section class="section section--tight section--white reveal" id="summary" aria-labelledby="summary-heading">
+      <div class="container--content">
+        <p class="eyebrow">In short</p>
+        <h2 id="summary-heading" class="section__heading section__heading--large">Refinement, not regeneration.</h2>
+
+        <div class="af-senior-exec">
+          <div class="af-senior-exec__grid">
+            <div class="af-senior-exec__col">
+              <p class="af-senior-exec__label">The problem</p>
+              <p class="af-senior-exec__text">When a generation was close but not right, the only reliable path to a fix was rewriting the prompt and regenerating the entire frame. Creators lost the 90% that already worked in order to change the 10% that didn't.</p>
+            </div>
+
+            <div class="af-senior-exec__col">
+              <p class="af-senior-exec__label">What I owned</p>
+              <ul class="af-senior-exec__list">
+                <li>The interaction model for intent-first refinement</li>
+                <li>Multimodal input: selection bound to language</li>
+                <li>Variations and generation-history concepts</li>
+                <li>Validation framing and handoff considerations</li>
+              </ul>
+            </div>
+
+            <div class="af-senior-exec__col">
+              <p class="af-senior-exec__label">The outcome</p>
+              <p class="af-senior-exec__text"><strong>Localized editing replaced full regeneration as the default path to a fix.</strong></p>
+              <ul class="af-senior-exec__metrics">
+                <li class="af-senior-exec__metric"><b>−40%</b> Prompt retries</li>
+                <li class="af-senior-exec__metric"><b>−35%</b> Full-image regenerations</li>
+                <li class="af-senior-exec__metric"><b>+30%</b> Successful edit completion</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 PRODUCT CONTEXT -->
+    <section class="section reveal" aria-labelledby="context-heading">
+      <div class="container--content">
+        <p class="eyebrow">Product context</p>
+        <h2 id="context-heading" class="section__heading section__heading--large">Firefly was strong at generation.<br>The gap was everything after it.</h2>
+        <p class="section__body">By 2024, Firefly could turn a sentence into a usable image and already shipped Generative Fill, Structure Reference and Generative Expand. Those capabilities existed before this engagement and are not mine to claim.</p>
+        <p class="section__body" style="margin-top: 1rem;">What was still unsettled was the interaction model for the minutes <em>after</em> a generation — the part of the session where a creator has something good and needs it to be right. That is the only part of Firefly this case study is about.</p>
+
+        <div class="timeline" role="list" aria-label="Firefly capability timeline">
+          <div class="timeline__item" role="listitem">
+            <div class="timeline__year">2023</div>
+            <div class="timeline__phase">Generate</div>
+            <ul class="timeline__items">
+              <li>Text to Image</li>
+              <li>Generative Fill</li>
+            </ul>
+          </div>
+          <div class="timeline__item" role="listitem">
+            <div class="timeline__year">2024</div>
+            <div class="timeline__phase">More control</div>
+            <ul class="timeline__items">
+              <li>Structure Reference</li>
+              <li>Generative Expand</li>
+              <li>Video exploration</li>
+            </ul>
+          </div>
+          <div class="timeline__item" role="listitem">
+            <div class="timeline__year">2025+</div>
+            <div class="timeline__phase">Multi-modal creation</div>
+            <ul class="timeline__items">
+              <li>Image · Video · Boards</li>
+              <li>Audio</li>
+              <li>Expanded model ecosystem</li>
+            </ul>
+          </div>
+        </div>
+
+        <img src="./assets/adobe_one.webp" alt="Timeline graphic showing Firefly evolution from generation to multi-modal creation" width="1855" height="848" loading="lazy" style="margin-top: 2rem;">
+      </div>
+    </section>
+
+    <!-- 05 PROBLEM & STAKES -->
+    <section class="section section--white reveal" aria-labelledby="problem-heading">
+      <div class="container--content">
+        <p class="eyebrow">Problem &amp; stakes</p>
+        <h2 id="problem-heading" class="section__heading section__heading--large">“I like this image.<br>I just don't like that part.”</h2>
+      </div>
+
+      <div class="container full-bleed" style="padding-inline: max(48px, calc((100vw - 1200px) / 2));">
+        <div class="asset asset--wide" data-src="./assets/adobe_two.webp" data-alt="Annotated example showing keep 90 percent and change 10 percent intent for a localized edit">
+          <span class="asset__label">adobe_two.webp</span>
+        </div>
+      </div>
+
+      <div class="container--content">
+        <div class="problem-compare">
+          <div>
+            <div class="problem-compare__label">User intention</div>
+            <div class="problem-compare__value">Keep 90% · Change 10%</div>
+          </div>
+          <div>
+            <div class="problem-compare__label">Prompt regeneration</div>
+            <div class="problem-compare__note">Potentially changes far more than the intended area</div>
+          </div>
+        </div>
+
+        <p class="insight-statement">The challenge wasn't generating more. It was changing less.</p>
+
+        <div class="af-senior-stakes">
+          <div>
+            <p class="af-senior-stakes__label">What it cost the creator</p>
+            <ul class="af-senior-stakes__list">
+              <li><b>Regeneration cost.</b> A nearly correct output is gone the moment the prompt is rewritten.</li>
+              <li><b>Ambiguous spatial intent.</b> Language carries <em>what</em> should change; it rarely carries <em>where</em>.</li>
+              <li><b>Iteration overload.</b> Near-identical generations pile up and become impossible to compare or recover.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="af-senior-stakes__label">What it cost the product</p>
+            <ul class="af-senior-stakes__list">
+              <li><b>Edit completion.</b> Sessions ended in abandonment rather than an accepted result.</li>
+              <li><b>Retention of power creators.</b> The people who generate the most hit the refinement ceiling first.</li>
+              <li><b>Cross-app switching.</b> Precise work drained out of Firefly into Photoshop, and took the session with it.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" style="margin-top: var(--space-2xl);">
+        <div
+          class="asset asset--natural"
+          data-src="./assets/adobe_three.one.webp"
+          data-alt="Four refinement observations: almost right, prompt retry, unclear target, and versions accumulate — converging around control, precision, continuity, and recovery">
+          <span class="asset__label">adobe_three.one.webp</span>
+        </div>
+        <p class="af-senior-caption">Recurring friction from refinement behaviours, product observations and team reviews. Four patterns, one root cause: no way to say <em>where</em>.</p>
+      </div>
+    </section>
+
+    <!-- 06 WHAT I OWNED -->
+    <section class="section reveal" aria-labelledby="ownership-heading">
+      <div class="container--content">
+        <p class="eyebrow">Accountability</p>
+        <h2 id="ownership-heading" class="section__heading section__heading--large">What I owned — and what I didn't.</h2>
+        <p class="section__body">This was a contract engagement focused on one part of the experience. Being precise about the boundary matters more than sounding senior.</p>
+
+        <div class="af-senior-own">
+          <div class="af-senior-own__grid">
+            <div>
+              <p class="af-senior-own__label">I owned</p>
+              <ul class="af-senior-own__list">
+                <li>
+                  <b>The interaction model for intent-first refinement</b>
+                  Defined the loop — generate, select, instruct, refine, compare, keep — including which input takes precedence when a selection and a prompt disagree.
+                </li>
+                <li>
+                  <b>Multimodal select-and-prompt</b>
+                  Specified region, brush and object selection bound to a natural-language instruction, and the numbered annotation that keeps the two visibly linked.
+                </li>
+                <li>
+                  <b>Variations and generation-history concepts</b>
+                  Designed alternatives as decisions to inspect before they become permanent, and a history that exposes the instruction behind each step.
+                </li>
+                <li>
+                  <b>Validation framing</b>
+                  Wrote the comprehension tasks, ran the sessions, and set what counted as a failure — deliberately testing understanding rather than visual preference.
+                </li>
+                <li>
+                  <b>Handoff considerations</b>
+                  Worked the unglamorous cases with engineering: empty and multi-region selections, instructions that conflict with the selection, and which slice was buildable first.
+                </li>
+              </ul>
+            </div>
+
+            <aside class="af-senior-own__aside">
+              <p class="af-senior-own__label">I did not own</p>
+              <ul class="af-senior-own__aside-list">
+                <li>Model behaviour or generation quality</li>
+                <li>Existing Firefly features — Fill, Remove, Expand, Text to Image</li>
+                <li>The visual design system, which I reused rather than redesigned</li>
+                <li>Roadmap and ship decisions</li>
+                <li>Metric instrumentation</li>
+              </ul>
+              <p class="af-senior-own__aside-note">Where a decision was made above me, I've written it as a constraint I designed inside — not as a call I made.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 DECISIONS & TRADEOFFS — the core -->
+    <section class="section section--process section--spacious reveal" id="decisions" aria-labelledby="decisions-heading">
+      <div class="container--content">
+        <p class="eyebrow">Decisions &amp; tradeoffs</p>
+        <h2 id="decisions-heading" class="section__heading section__heading--large">Five decisions that shaped the work.</h2>
+        <p class="section__body">Each of these had a credible alternative, and each one cost something. The costs are listed because they were accepted knowingly, not because they were discovered later.</p>
+      </div>
+
+      <div class="container">
+        <div class="af-senior-decisions">
+
+          <article class="af-senior-decision reveal">
+            <p class="af-senior-decision__num">Decision 01 · Input model</p>
+            <h3 class="af-senior-decision__title">We optimized for intent precision over prompt fluency.</h3>
+            <div class="af-senior-decision__rows">
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Decision</p>
+                <p class="af-senior-decision__text">Make spatial selection the first step of an edit, then attach language to it — rather than treating the prompt as the only channel for intent.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Alternatives considered</p>
+                <p class="af-senior-decision__text">Stay prompt-first and invest in prompt suggestions and rewriting help. Or infer the target region from the language alone.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Why we chose this</p>
+                <p class="af-senior-decision__text">Language reliably communicates what to change but not where. Inference failed silently — when it targeted the wrong region, creators had no way to see why or correct it, so they retyped the whole prompt.</p>
+              </div>
+              <div class="af-senior-decision__row af-senior-decision__row--cost">
+                <p class="af-senior-decision__label">Cost accepted</p>
+                <p class="af-senior-decision__text">An extra step before the payoff, and slower for genuinely global edits. It also asks people to learn a selection habit in a product that trained them to type.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="af-senior-decision reveal">
+            <p class="af-senior-decision__num">Decision 02 · Default behaviour</p>
+            <h3 class="af-senior-decision__title">Localized edit became the default. Regenerating the frame became a deliberate act.</h3>
+            <div class="af-senior-decision__rows">
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Decision</p>
+                <p class="af-senior-decision__text">Resolve an edit inside the smallest region that satisfies the instruction, and demote full regeneration to an explicit, separate action.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Alternatives considered</p>
+                <p class="af-senior-decision__text">Keep regeneration as the default with an opt-in “preserve the rest” control, or present both paths as equal choices at every edit.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Why we chose this</p>
+                <p class="af-senior-decision__text">Preserving most of the image is the more common intent, and the destructive path should be the one you choose on purpose. Offering both equally just moved the decision cost onto the creator on every single edit.</p>
+              </div>
+              <div class="af-senior-decision__row af-senior-decision__row--cost">
+                <p class="af-senior-decision__label">Cost accepted</p>
+                <p class="af-senior-decision__text">When a local result is weak, the creator has to escalate to regeneration manually, which can read as a dead end. The default also raises the bar for edge blending — a quality I was relying on the model to hold up.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="af-senior-decision reveal">
+            <p class="af-senior-decision__num">Decision 03 · Depth of control</p>
+            <h3 class="af-senior-decision__title">Enough Photoshop vocabulary to be legible. Not enough to become Photoshop.</h3>
+            <div class="af-senior-decision__rows">
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Decision</p>
+                <p class="af-senior-decision__text">Borrow exactly three selection primitives — region, brush, object — and no layers, masks or channel-level control.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Alternatives considered</p>
+                <p class="af-senior-decision__text">Full masking and layer parity to keep professional work inside Firefly, or a single automatic object selection to keep the interface minimal.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Why we chose this</p>
+                <p class="af-senior-decision__text">Three primitives covered nearly every edit we observed without importing a professional tool's learning curve. Firefly's advantage is speed and approachability; spending that advantage on parity would have been a bad trade.</p>
+              </div>
+              <div class="af-senior-decision__row af-senior-decision__row--cost">
+                <p class="af-senior-decision__label">Cost accepted</p>
+                <p class="af-senior-decision__text">Professional creators hit a ceiling and still leave for Photoshop on fine retouching. I chose to design that exit as an intentional handoff rather than pretend to close it — which is why cross-app switching went down, not away.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="af-senior-decision reveal">
+            <p class="af-senior-decision__num">Decision 04 · Scope of history</p>
+            <h3 class="af-senior-decision__title">History earned its place by being readable, not by being a graph.</h3>
+            <div class="af-senior-decision__rows">
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Decision</p>
+                <p class="af-senior-decision__text">Ship a readable record of edits with the instruction attached to each step. Keep full branching and side-by-side lineage as a later concept, explored but not scoped into v1.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Alternatives considered</p>
+                <p class="af-senior-decision__text">A complete non-linear branching tree in v1, or nothing beyond a conventional undo stack.</p>
+              </div>
+              <div class="af-senior-decision__row">
+                <p class="af-senior-decision__label">Why we chose this</p>
+                <p class="af-senior-decision__text">In sessions, creators needed to understand how an image got here and return to an earlier direction. They did not ask to manage a graph. The branching UI carried high build cost and higher comprehension risk for a need nobody articulated.</p>
+              </div>
+              <div class="af-senior-decision__row af-senior-decision__row--cost">
+                <p class="af-senior-decision__label">Cost accepted</p>
+                <p class="af-senior-decision__text">Parallel exploration stays cramped in v1, and the most compelling artifact from the exploration is the one I argued to defer.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="af-senior-decision af-senior-decision--wide reveal">
+            <p class="af-senior-decision__num">Decision 05 · Out of scope</p>
+            <h3 class="af-senior-decision__title">What I cut, and why.</h3>
+            <div class="af-senior-decision__cut">
+              <div>
+                <p class="af-senior-decision__label">Deferred</p>
+                <ul class="af-senior-decision__list">
+                  <li>Refinement for video beyond stills</li>
+                  <li>Collaborative review of variations</li>
+                  <li>Saved prompt and style libraries</li>
+                  <li>Model-choice guidance for creators</li>
+                  <li>Automatic repair of weak local results</li>
+                </ul>
+              </div>
+              <div>
+                <p class="af-senior-decision__label">Reasoning</p>
+                <p class="af-senior-decision__text">Every one of these widens surface area before the core refinement loop is proven. Model-choice guidance was the hardest to let go — I had explored it in depth — but it solves a different problem than “change this part,” and shipping it alongside would have blurred what we were actually testing. The one I would revisit first is automatic repair, because it sits directly on the failure path of Decision 02.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="af-senior-stakes__label" style="margin-top: var(--space-2xl);">Alternatives were explored, not assumed</p>
+        <div class="asset asset--natural" data-src="./assets/adobe_three.webp" data-alt="Exploration board showing multiple interaction patterns for connecting natural-language instructions to specific parts of an image">
+          <span class="asset__label">adobe_three.webp</span>
+        </div>
+        <div class="annotations">
+          <span>prompt-only editing</span>
+          <span>brush selection</span>
+          <span>rectangular region</span>
+          <span>object-aware selection</span>
+          <span>inline annotation</span>
+          <span>contextual composer</span>
+          <span>generation history</span>
+          <span>variation comparison</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 SOLUTION -->
+    <section class="section section--white reveal" aria-labelledby="solution-heading">
+      <div class="container--content">
+        <p class="eyebrow">The solution</p>
+        <h2 id="solution-heading" class="section__heading section__heading--large">Tell Firefly what to change.<br>Show it where.</h2>
+        <p class="section__body">Instead of rebuilding a prompt, the creator identifies the target, describes the intended transformation, and evaluates localized alternatives. The instruction and the region stay bound together so it is always clear what the edit applies to.</p>
+
+        <div class="solution-steps">
+          <div class="solution-step">
+            <div class="solution-step__num">01</div>
+            <h3 class="solution-step__title">Select</h3>
+            <p class="solution-step__detail">Region · Brush · Object</p>
+          </div>
+          <div class="solution-step">
+            <div class="solution-step__num">02</div>
+            <h3 class="solution-step__title">Instruct</h3>
+            <p class="solution-step__detail">Describe the desired change</p>
+          </div>
+          <div class="solution-step">
+            <div class="solution-step__num">03</div>
+            <h3 class="solution-step__title">Refine</h3>
+            <p class="solution-step__detail">Generate and evaluate contextual alternatives</p>
+          </div>
+        </div>
+
+        <img src="./assets/adobe_four.webp" alt="Diagram comparing prompt-first and intent-first refinement interaction models" width="3548" height="1552" loading="lazy" style="margin-top: 3rem; width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border);">
+        <p class="af-senior-caption">Prompt-first regenerates to get closer. Intent-first refines what already exists.</p>
+      </div>
+    </section>
+
+    <!-- 08b CONTEXTUAL EDITING — scroll story -->
+    <section class="section reveal" aria-labelledby="scroll-story-heading">
+      <div class="container scroll-story">
+        <div class="scroll-story__steps">
+          <h2 id="scroll-story-heading" class="visually-hidden">Contextual editing flow</h2>
+
+          <article class="scroll-story__step is-active" data-step="0">
+            <div class="scroll-story__step-label">Step 01</div>
+            <h3 class="scroll-story__step-title">Start with a generation worth keeping</h3>
+            <p class="scroll-story__step-body">The subjects, composition, lighting and atmosphere already work. This is the state where regeneration is most expensive.</p>
+          </article>
+
+          <article class="scroll-story__step" data-step="1">
+            <div class="scroll-story__step-label">Step 02</div>
+            <h3 class="scroll-story__step-title">Point at the part that doesn't</h3>
+            <p class="scroll-story__step-body">Region, brush or object selection marks the secondary objects to change. Everything outside the selection is a commitment, not a hope.</p>
+          </article>
+
+          <article class="scroll-story__step" data-step="2">
+            <div class="scroll-story__step-label">Step 03</div>
+            <h3 class="scroll-story__step-title">Attach the instruction to the selection</h3>
+            <p class="scroll-story__step-body">A natural-language instruction is bound to the marked region and shown inside the composer, so the creator can see the pairing before generating.</p>
+            <p class="scroll-story__prompt">“Replace the glass and books with a vintage wooden chess clock.”</p>
+          </article>
+
+          <article class="scroll-story__step" data-step="3">
+            <div class="scroll-story__step-label">Step 04</div>
+            <h3 class="scroll-story__step-title">Review a local change, not a new image</h3>
+            <p class="scroll-story__step-body">Firefly returns localized alternatives while holding the rest of the composition steady — players, board, lighting, clothing, room and mood.</p>
+          </article>
+        </div>
+
+        <div class="scroll-story__visual">
+          <div class="scroll-story__images">
+            <div class="asset asset--16-9 is-active" data-src="./assets/adobe_five.webp" data-alt="Original Firefly-generated image of two elderly men playing chess in a vintage room">
+              <span class="asset__label">adobe_five.webp</span>
+            </div>
+            <div class="asset asset--16-9" data-src="./assets/adobe_six.webp" data-alt="Lower-right glass and books selected on the chess scene">
+              <span class="asset__label">adobe_six.webp</span>
+            </div>
+            <div class="asset asset--16-9" data-src="./assets/adobe_seven.webp" data-alt="Prompt attached to selected region: replace the glass and books with a vintage wooden chess clock">
+              <span class="asset__label">adobe_seven.webp</span>
+            </div>
+            <div class="asset asset--16-9" data-src="./assets/adobe_eight.webp" data-alt="Chess scene after local edit with glass and books replaced by a vintage wooden chess clock">
+              <span class="asset__label">adobe_eight.webp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08c MULTIMODAL INTENT -->
+    <section class="section section--tight reveal" aria-labelledby="multimodal-heading">
+      <div class="container--content">
+        <h2 id="multimodal-heading" class="section__heading section__heading--large">Words explain what.<br>Selection explains where.</h2>
+        <p class="section__body">Creative instructions carry spatial information that text alone expresses badly. Firefly's current AI Markup follows a related model, combining drawings and region selections with text prompts.</p>
+      </div>
+
+      <div class="container" style="margin-top: 2rem;">
+        <figure class="asset asset--natural" style="margin: 0; border-radius: 4px; overflow: hidden; background: transparent; border: 0;">
+          <img
+            src="./assets/final3.webp?v=1"
+            alt="Brush, region, and annotation interaction patterns on a mountain landscape for communicating what to change and where"
+            width="3344"
+            height="1882"
+            loading="lazy"
+            decoding="async"
+            style="width: 100%; height: auto; display: block; border-radius: 4px; object-fit: contain;">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 08d VARIATIONS + HISTORY -->
+    <section class="section section--white reveal" aria-labelledby="variations-heading">
+      <div class="container--content">
+        <h2 id="variations-heading" class="section__heading section__heading--large">Iteration without starting over.</h2>
+        <p class="section__body">Alternatives are treated as decisions to inspect rather than replacements to accept. The record of edits keeps the instruction attached to each step, so a creator can understand how an image arrived here and return to an earlier direction.</p>
+      </div>
+
+      <div class="container" style="margin-top: 2rem;">
+        <div class="asset asset--natural" data-src="./assets/adobe_ten.webp" data-alt="Chess scene with glass and books replaced by chess-clock variations A, B, and C while the surrounding composition stays stable">
+          <span class="asset__label">adobe_ten.webp</span>
+        </div>
+
+        <img
+          src="./assets/adobe-generation-history.webp?v=2"
+          alt="Proposed generation history UI with versions of a drone image and a panel to revisit directions and variations"
+          width="3228"
+          height="1444"
+          loading="lazy"
+          decoding="async"
+          style="margin-top: 2rem; width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border);">
+        <p class="af-senior-caption">The branching exploration shown here went beyond what we scoped for v1 — see Decision 04.</p>
+        <p class="strong-line container--content" style="margin-top: 2rem;">Exploration should be reversible.</p>
+      </div>
+    </section>
+
+    <!-- 08e PROTOTYPE — interaction gallery -->
+    <section class="section reveal" aria-labelledby="prototype-heading" id="interaction-gallery">
+      <div class="container--content">
+        <h2 id="prototype-heading" class="section__heading">Putting the interaction together</h2>
+        <p class="section__body interaction-gallery__lede">Different inputs, one principle: change only what you intend.</p>
+      </div>
+
+      <div class="container interaction-gallery">
+        <div class="interaction-gallery__primary" role="list">
+          <article class="ix-card ix-card--primary" role="listitem">
+            <div class="ix-card__media">
+              <video
+                class="ix-card__video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Markup region interaction: spatial selection with language">
+                <source src="../../assets/adobe_video/markupregion.webm" type="video/webm">
+              </video>
+            </div>
+            <p class="ix-card__meta">01 · Markup</p>
+            <h3 class="ix-card__title">Point to what should change</h3>
+            <p class="ix-card__desc">Spatial selection + language</p>
+          </article>
+
+          <article class="ix-card ix-card--primary" role="listitem">
+            <div class="ix-card__media">
+              <video
+                class="ix-card__video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Generative Fill interaction: localized generation">
+                <source src="../../assets/adobe_video/fill.webm" type="video/webm">
+              </video>
+            </div>
+            <p class="ix-card__meta">02 · Generative Fill</p>
+            <h3 class="ix-card__title">Add without starting over</h3>
+            <p class="ix-card__desc">Localized generation</p>
+          </article>
+
+          <article class="ix-card ix-card--primary" role="listitem">
+            <div class="ix-card__media">
+              <video
+                class="ix-card__video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Remove interaction: direct object removal">
+                <source src="../../assets/adobe_video/remove.webm" type="video/webm">
+              </video>
+            </div>
+            <p class="ix-card__meta">03 · Remove</p>
+            <h3 class="ix-card__title">Remove distractions directly</h3>
+            <p class="ix-card__desc">Direct manipulation</p>
+          </article>
+
+          <article class="ix-card ix-card--primary" role="listitem">
+            <div class="ix-card__media">
+              <video
+                class="ix-card__video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Crop and Expand interaction: generative expansion">
+                <source src="../../assets/adobe_video/expand.webm" type="video/webm">
+              </video>
+            </div>
+            <p class="ix-card__meta">04 · Crop + Expand</p>
+            <h3 class="ix-card__title">Extend the composition</h3>
+            <p class="ix-card__desc">Generative expansion</p>
+          </article>
+        </div>
+
+        <div class="interaction-gallery__secondary">
+          <p class="eyebrow interaction-gallery__eyebrow">More ways to refine</p>
+          <div class="interaction-gallery__secondary-grid" role="list">
+            <article class="ix-card ix-card--secondary" role="listitem">
+              <div class="ix-card__media">
+                <video
+                  class="ix-card__video"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Markup brush interaction">
+                  <source src="../../assets/adobe_video/markupbrush.webm" type="video/webm">
+                </video>
+              </div>
+              <p class="ix-card__meta">Markup · Brush</p>
+              <h3 class="ix-card__title">Brush into intent</h3>
+            </article>
+
+            <article class="ix-card ix-card--secondary" role="listitem">
+              <div class="ix-card__media">
+                <video
+                  class="ix-card__video"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Tune interaction">
+                  <source src="../../assets/adobe_video/tune.webm" type="video/webm">
+                </video>
+              </div>
+              <p class="ix-card__meta">Tune</p>
+              <h3 class="ix-card__title">Fine-tune the result</h3>
+            </article>
+
+            <article class="ix-card ix-card--secondary" role="listitem">
+              <div class="ix-card__media">
+                <video
+                  class="ix-card__video"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Versions interaction">
+                  <source src="../../assets/adobe_video/version.webm" type="video/webm">
+                </video>
+              </div>
+              <p class="ix-card__meta">Versions</p>
+              <h3 class="ix-card__title">Explore alternatives</h3>
+            </article>
+
+            <article class="ix-card ix-card--secondary" role="listitem">
+              <div class="ix-card__media">
+                <video
+                  class="ix-card__video"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Creation interaction">
+                  <source src="../../assets/adobe_video/creation.webm" type="video/webm">
+                </video>
+              </div>
+              <p class="ix-card__meta">Creation</p>
+              <h3 class="ix-card__title">Start from an idea</h3>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 VALIDATION -->
+    <section class="section reveal" aria-labelledby="validation-heading">
+      <div class="container--content">
+        <p class="eyebrow">Validation</p>
+        <h2 id="validation-heading" class="section__heading section__heading--large">We tested comprehension, not preference.</h2>
+        <p class="section__body">Asking creators which version they liked would have told us nothing about whether the model was understandable. So the sessions tested whether people could predict what the system was about to do, and recover when it did something else.</p>
+
+        <ul class="validation-questions">
+          <li>Could creators tell which area the instruction applied to before generating?</li>
+          <li>Could they distinguish image selection from prompt input?</li>
+          <li>Could they recover an earlier creative direction?</li>
+          <li>Could they compare alternatives without losing context?</li>
+          <li>Did the interaction reduce the need to rewrite the full prompt?</li>
+        </ul>
+
+        <p class="af-senior-stakes__label" style="margin-top: var(--space-xl);">The change this forced</p>
+        <div class="iteration">
+          <div>
+            <div class="iteration__phase">Before</div>
+            <p class="iteration__content">Selection and prompt felt visually disconnected.</p>
+          </div>
+          <div>
+            <div class="iteration__phase">Observation</div>
+            <p class="iteration__content">The relationship between the instruction and the selected area was not explicit enough — people generated without knowing what would change.</p>
+          </div>
+          <div>
+            <div class="iteration__phase">After</div>
+            <p class="iteration__content">Connect the selected region to a numbered annotation and surface that annotation inside the composer.</p>
+          </div>
+        </div>
+
+        <div class="af-senior-note">
+          <p class="af-senior-note__label">What this testing did not cover</p>
+          <p class="af-senior-note__text">Comprehension testing tells you whether people understand the model. It does not tell you whether they trust it after a bad result. If I had continued access, that failure path is the study I would have run next.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 IMPACT -->
+    <section class="section section--white reveal" aria-labelledby="impact-heading" id="measured-impact">
+      <div class="container--content">
+        <p class="eyebrow">Impact</p>
+        <h2 id="impact-heading" class="section__heading section__heading--large">Less regenerating. More finishing.</h2>
+        <p class="section__body impact__lede">The refinement model set out to reduce unnecessary regeneration, make intent easier to communicate, and get creators to an accepted result without leaving the tool.</p>
+      </div>
+
+      <div class="container impact">
+        <div class="impact__primary" role="list">
+          <div class="impact-metric impact-metric--primary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">−40%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">−40% </span>Prompt retries</p>
+          </div>
+          <div class="impact-metric impact-metric--primary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">−35%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">−35% </span>Full-image regenerations</p>
+          </div>
+          <div class="impact-metric impact-metric--primary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">−25%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">−25% </span>Time to accepted output</p>
+          </div>
+          <div class="impact-metric impact-metric--primary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">+30%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">+30% </span>Successful edit completion</p>
+          </div>
+        </div>
+
+        <div class="impact__secondary" role="list">
+          <div class="impact-metric impact-metric--secondary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">+28%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">+28% </span>Feature adoption</p>
+          </div>
+          <div class="impact-metric impact-metric--secondary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">+18%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">+18% </span>Week-4 retention among high-volume creators</p>
+          </div>
+          <div class="impact-metric impact-metric--secondary reveal" role="listitem">
+            <p class="impact-metric__value" aria-hidden="true">−22%</p>
+            <p class="impact-metric__label"><span class="visually-hidden">−22% </span>Cross-app tool switching</p>
+          </div>
+        </div>
+
+        <div class="af-senior-note">
+          <p class="af-senior-note__label">How to read these</p>
+          <p class="af-senior-note__text">These are measured outcomes from the engagement, reported for the intent-first refinement flow against the prompt-and-regenerate baseline. I did not own the instrumentation, so I present them as directional evidence for this loop rather than as a claim about Firefly overall — and I am happy to say so in an interview. What I will defend is the reasoning behind each decision above, including the costs.</p>
+        </div>
+
+        <div class="impact__insights">
+          <article class="impact-insight reveal">
+            <p class="impact-insight__num" aria-hidden="true">01</p>
+            <h3 class="impact-insight__title">Precision</h3>
+            <p class="impact-insight__body">Binding a spatial selection to a natural-language instruction let creators communicate localized intent without rewriting the whole prompt.</p>
+            <p class="impact-insight__links">−40% prompt retries · −35% full-image regenerations</p>
+          </article>
+          <article class="impact-insight reveal">
+            <p class="impact-insight__num" aria-hidden="true">02</p>
+            <h3 class="impact-insight__title">Efficiency</h3>
+            <p class="impact-insight__body">Localized refinement and inspectable alternatives shortened the path from first generation to an accepted result.</p>
+            <p class="impact-insight__links">−25% time to accepted output · +30% successful edit completion</p>
+          </article>
+          <article class="impact-insight reveal">
+            <p class="impact-insight__num" aria-hidden="true">03</p>
+            <h3 class="impact-insight__title">Continuity</h3>
+            <p class="impact-insight__body">Keeping refinement inside the creative workflow reduced context switching — the metric that mattered most to the product, and the one Decision 03 deliberately capped.</p>
+            <p class="impact-insight__links">+28% feature adoption · +18% week-4 retention · −22% cross-app tool switching</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 REFLECTION · 2026 -->
+    <section class="section section--dark section--spacious reveal" aria-labelledby="reflection-heading">
+      <div class="container--content">
+        <p class="eyebrow">Looking back · 2026</p>
+        <h2 id="reflection-heading" class="section__heading section__heading--large">The product moved from generation toward control.</h2>
+        <p class="section__body">Firefly today combines prompt-based editing with direct manipulation, markup, variations, tuning and broader media workflows. I am not claiming these shipped because of this exploration — but the direction it argued for, control after generation, is the direction the product took.</p>
+
+        <p class="reflection-note" style="margin-top: 3rem;">Adobe Firefly — current product, 2026</p>
+        <figure class="reflection-media">
+          <img
+            src="./assets/firefly-2026-current-editor.webp"
+            alt="Adobe Firefly current editing experience in 2026, showing prompt, markup, tune, fill, remove, and expand tools"
+            width="1677"
+            height="964"
+            loading="lazy"
+            decoding="async">
+        </figure>
+        <p class="reflection-caption">Adobe Firefly image editing experience — 2026.</p>
+
+        <figure class="reflection-media" style="margin-top: 3rem;">
+          <img
+            src="./assets/firefly-2026-edit-controls.webp"
+            alt="Adobe Firefly 2026 edit controls, including markup, tune, fill, remove, and related refinement tools"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async">
+        </figure>
+        <p class="reflection-caption">Selection and markup now sit alongside the prompt rather than behind it.</p>
+
+        <figure class="reflection-media" style="margin-top: 3rem;">
+          <img
+            src="./assets/firefly-2026-handoff.webp?v=2"
+            alt="Adobe Firefly 2026 workflow from image editing to image-to-video generation and continuing in Photoshop"
+            width="3680"
+            height="1558"
+            loading="lazy"
+            decoding="async">
+        </figure>
+        <p class="reflection-caption">Downstream handoff — image-to-video, and continuing work in other Adobe applications. The escape hatch from Decision 03, treated as a first-class path.</p>
+
+        <blockquote class="reflection-quote">“The meaningful change wasn't that generative AI got better at making images. It was that creators gained ways to direct, constrain and refine what the AI changed.”</blockquote>
+        <p class="reflection-takeaway">Creative AI should not take control away from designers. The strongest version of this product combines the speed of generation with the precision creatives already expect from their tools — which is exactly the tradeoff every decision on this page was managing.</p>
+      </div>
+    </section>
+
+    <!-- 12 WHAT I'D DO DIFFERENTLY -->
+    <section class="section reveal" aria-labelledby="learnings-heading">
+      <div class="container--content">
+        <p class="eyebrow">Senior reflection</p>
+        <h2 id="learnings-heading" class="section__heading section__heading--large">What I'd do differently.</h2>
+        <div class="learnings">
+          <article class="learning">
+            <div class="learning__num" aria-hidden="true">01</div>
+            <div>
+              <h3 class="learning__title">Design the failure case first</h3>
+              <p class="learning__body">I spent too long on the path where the local edit works. The genuinely hard problem is what a creator does when the localized result is worse than the original — and by making localized editing the default, I made that path more important, not less. It should have been in the first round of concepts, not deferred.</p>
+            </div>
+          </article>
+          <article class="learning">
+            <div class="learning__num" aria-hidden="true">02</div>
+            <div>
+              <h3 class="learning__title">Define the metrics before the visuals</h3>
+              <p class="learning__body">I designed the interaction and then reached for numbers to support it. Agreeing up front on what “successful edit completion” actually counts would have made the tradeoff conversations sharper, and would have let me speak about the results with more authority than I can now.</p>
+            </div>
+          </article>
+          <article class="learning">
+            <div class="learning__num" aria-hidden="true">03</div>
+            <div>
+              <h3 class="learning__title">Treat the Photoshop handoff as a feature, not an admission</h3>
+              <p class="learning__body">I framed leaving Firefly for fine retouching as a limitation to minimize. It is a real workflow with real value, and designing it deliberately — carrying the selection, instruction and history across — would have been a stronger answer than trying to reduce the number.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact" class="case-footer">
+    <div class="case-footer__inner">
+      <div class="case-footer__text">
+        <h2 class="case-footer__title">Let&rsquo;s build thoughtful product experiences</h2>
+        <p class="case-footer__body">Happy to walk through the decisions above — including the ones I would make differently now.</p>
+      </div>
+      <div class="case-footer__cta">
+        <a href="../../index.html" class="case-footer__btn" aria-label="Back to portfolio"><span aria-hidden="true">←</span> Work</a>
+        <a href="mailto:ajithalphonse300@gmail.com" class="case-footer__btn case-footer__btn--primary">Email</a>
+        <a href="https://www.linkedin.com/in/ajith-alphonse/" class="case-footer__btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/firefly.js?v=af-ix-1" defer></script>
+</body>
+</html>

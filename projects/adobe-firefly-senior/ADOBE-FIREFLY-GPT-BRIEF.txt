@@ -1,0 +1,345 @@
+ADOBE FIREFLY CASE STUDY — BRIEF FOR CHATGPT
+================================================
+
+Purpose of this file:
+Help ChatGPT understand how this Adobe Firefly portfolio case-study page
+is built, what the story is, what is locked, and what still needs assets.
+
+
+------------------------------------------------
+1. WHAT THIS PROJECT IS
+------------------------------------------------
+
+This is a product-design case study page inside a personal portfolio.
+
+It is NOT claiming that the designer created Adobe Firefly.
+
+Correct positioning:
+
+"I worked on / explored post-generation editing and refinement
+of AI-generated creative content."
+
+Not:
+
+"I redesigned Adobe Firefly."
+
+
+------------------------------------------------
+2. CORE STORY (LOCKED)
+------------------------------------------------
+
+A creator generates something they mostly like.
+
+They do NOT want another completely different generation.
+
+They want to change ONE specific thing while preserving everything
+that already works.
+
+
+Core user thought:
+"I like this image. I just don't like that part."
+
+
+Core design problem:
+How can creators communicate WHAT should change,
+WHERE it should change,
+and WHAT should remain untouched?
+
+
+Core interaction shift:
+
+FROM:
+DESCRIBE → GENERATE → REGENERATE
+
+TOWARD:
+GENERATE → SELECT → INSTRUCT → REFINE → COMPARE → KEEP
+
+
+Keep / change idea:
+KEEP 90%
+CHANGE 10%
+
+The challenge wasn't generating more.
+It was changing less.
+
+
+------------------------------------------------
+3. PROJECT METADATA (VERIFIED)
+------------------------------------------------
+
+Role: Product Designer
+Product: Adobe Firefly
+Timeline: May 2025 — Present · Contract
+Focus: Generative AI · Image & Video Editing · Creative Tools
+Contribution: Post-generation editing & creative control
+
+
+------------------------------------------------
+4. OWNERSHIP RULES (IMPORTANT)
+------------------------------------------------
+
+Do NOT imply the designer invented Firefly or created:
+- Generative Fill
+- Generative Remove
+- Generative Expand
+- Text to Image
+- other existing Firefly capabilities
+
+Those existed as product context.
+
+The project focus is narrower:
+
+POST-GENERATION REFINEMENT EXPERIENCE
+
+Problem is NOT:
+"Firefly cannot edit."
+
+Problem IS:
+"How can post-generation refinement become more precise,
+direct, and controllable?"
+
+
+------------------------------------------------
+5. PRIMARY CONCEPTUAL EXAMPLE (CHESS)
+------------------------------------------------
+
+Old coffee / compass / Hydro Flask examples are retired.
+
+New recurring example:
+
+Image: two elderly men playing chess in a vintage room.
+
+Creator likes:
+- both chess players
+- chess board
+- composition
+- lighting
+- vintage room
+- warm atmosphere
+- color treatment
+- overall mood
+
+Creator wants to change only:
+the drinking glass + books in the lower-right area
+
+Exact edit prompt:
+"Replace the glass and books with a vintage wooden chess clock."
+
+
+------------------------------------------------
+6. FINAL VISIBLE STORY ORDER (LOCKED)
+------------------------------------------------
+
+01 Hero
+   From prompting to creative control
+
+02 The Challenge
+   Generating was fast. Refining was still unpredictable.
+
+03 Firefly Product Context
+   2023 → 2024 → 2025+ evolution
+   Firefly was already powerful. Interaction model still evolving.
+
+04 My Focus (scope bridge)
+   Post-generation editing & refinement
+   Explains WHERE this project sits inside Firefly
+
+05 Core Problem
+   "I like this image. I just don't like that part."
+   Keep 90% / Change 10%
+
+06 Refinement Problems
+   01 Regeneration cost
+   02 Ambiguous intent
+   03 Iteration overload
+   04 Creative continuity
+
+07 How Might We
+   Change only what creators intend without restarting the image
+   Prompt → Result  toward  Select → Instruct → Refine
+
+08 Design Principles
+   01 Preserve intent
+   02 Point, then describe
+   03 Explore without penalty
+
+09 Exploration
+   Ways creators communicate intent
+
+10 Interaction Model
+   Prompt-first vs Intent-first refinement
+
+11 Core Solution
+   Select → Instruct → Refine
+
+12 Contextual Editing Flow
+   Chess image scenario (4 steps)
+
+13 Spatial + Language
+   Words explain what. Selection explains where.
+
+14 Controlled Variations
+   Iteration without starting over
+
+15 Generation History
+   Creativity doesn't move in a straight line
+
+16 Prototype
+   Generate → Select → Instruct → Refine → Compare → Keep → History
+
+17 Testing + Iteration
+   Comprehension, not visual preference
+   No fake metrics
+
+18 Design Outcome
+   Qualitative outcomes + success metrics TO TRACK (not claimed results)
+
+19 Current Product Reflection · 2026
+   Looking back at current Firefly capabilities
+   Must be labeled as current-product reflection
+   Does NOT claim every shown feature was personally designed
+
+20 Learnings
+
+
+Hidden / not part of visible story:
+Adjacent exploration about model recommendation (Model A/B/C/D)
+Kept in source but commented out.
+
+
+------------------------------------------------
+7. DESIGN SYSTEM RULES (LOCKED)
+------------------------------------------------
+
+This page already has a complete editorial visual system.
+
+DO NOT redesign:
+
+- fonts / typography
+- colors / backgrounds / accents
+- spacing / containers / grids
+- cards / borders / radius
+- nav / header / footer
+- animations / transitions
+- responsive behavior
+- overall aesthetic
+
+If new content is needed, reuse existing classes and patterns
+so it looks native to the page.
+
+This phase is CONTENT + STORY alignment only.
+Visual redesign is forbidden.
+
+
+------------------------------------------------
+8. HOW THE PAGE IS BUILT (TECHNICAL)
+------------------------------------------------
+
+Folder:
+portfolio/adobe-firefly/
+
+Main page:
+index.html
+
+Styles:
+../css/global.css
+../css/firefly.css
+
+Theme tokens (shared portfolio system):
+../theme/tokens.css
+../theme/base.css
+../theme/layout.css
+
+Interactions:
+../js/firefly.js
+- sticky nav scroll state
+- reveal-on-scroll
+- lazy-load assets via data-src placeholders
+- sticky scroll-story step syncing
+
+Assets folder:
+../assets/adobe-firefly/
+
+Asset pattern:
+Many images use placeholder containers:
+
+<div class="asset asset--wide" data-src="...">
+  <span class="asset__label">filename.webp</span>
+</div>
+
+JS inserts the image when the file exists.
+If missing, the label stays visible as a placeholder.
+
+
+------------------------------------------------
+9. CURRENT ASSETS STATUS
+------------------------------------------------
+
+Present:
+- adobe_one.png          (Firefly evolution / product context visual)
+- adobe_two.png          (Keep 90% / Change 10% annotated visual)
+- generation-history-flow.svg
+- interaction-model.svg
+- firefly-product-evolution.svg (older; adobe_one.png is currently used)
+
+Still missing / placeholders remain:
+- firefly-hero-edit-control.webp
+- firefly-exploration-board.webp
+- contextual-edit-before.webp
+- contextual-edit-selection.webp
+- contextual-edit-prompt.webp
+- contextual-edit-result.webp
+- variation-comparison.webp
+- generation-history-ui.webp
+- firefly-contextual-edit-demo.mp4
+- firefly-2026-current-editor.webp
+- firefly-2026-edit-controls.webp
+- firefly-2026-handoff.webp
+
+
+------------------------------------------------
+10. NEXT PHASE (AFTER CONTENT LOCK)
+------------------------------------------------
+
+1. Create final visual assets (especially chess scenario)
+2. Insert assets into existing placeholders
+3. Polish responsiveness if needed
+4. Final recruiter review
+
+Do NOT propose:
+- new page structure
+- new theme
+- typography redesign
+- color redesign
+- another narrative pivot
+
+Content structure is now LOCKED.
+
+
+------------------------------------------------
+11. WHAT CHATGPT SHOULD DO WHEN ASKED TO HELP
+------------------------------------------------
+
+Help with:
+- copy refinement within the locked story
+- asset briefs / image generation prompts
+- alt text
+- section-by-section writing polish
+- recruiter-facing clarity checks
+
+Do NOT:
+- redesign the page visually
+- invent fake metrics / fake research numbers
+- broaden the story beyond post-generation refinement
+- claim ownership of all Firefly features
+- reintroduce coffee / compass / Hydro Flask narrative
+
+
+------------------------------------------------
+12. ONE-SENTENCE SUMMARY
+------------------------------------------------
+
+This case study shows how post-generation editing in Adobe Firefly
+can help creators keep what already works and change only what they
+intend — moving from prompt regeneration toward select, instruct,
+and refine.

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFilterButtons();
     initSmoothScroll();
     initProjectHeroVideos();
+    initAdobeFireflyThumbnailParallax();
     /* EXPERIMENTAL — safe to remove: see initExpScrollHero() below */
     initExpScrollHero();
     /* Mobile: unified whole-card reveal (no split text/thumbnail animation) */
@@ -260,6 +261,66 @@ function initProjectHeroVideos() {
     frame.addEventListener('focusout', pause);
   });
 }
+
+// ===== Adobe Firefly layered thumbnail mouse parallax =====
+function initAdobeFireflyThumbnailParallax() {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    // Prefer fine pointer, but still enable on desktop browsers that report mixed hover.
+    var coarseOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (coarseOnly) return;
+
+    var thumbs = document.querySelectorAll('#project-adobe-firefly .adobe-thumbnail');
+    if (!thumbs.length) return;
+
+    thumbs.forEach(function (thumb) {
+        var link = thumb.closest('.project-hero-media-link') || thumb;
+        var raf = 0;
+        var targetX = 0;
+        var targetY = 0;
+        var currentX = 0;
+        var currentY = 0;
+        var active = false;
+
+        function render() {
+            currentX += (targetX - currentX) * 0.16;
+            currentY += (targetY - currentY) * 0.16;
+            thumb.style.setProperty('--mx', currentX.toFixed(4));
+            thumb.style.setProperty('--my', currentY.toFixed(4));
+            if (active || Math.abs(currentX) > 0.002 || Math.abs(currentY) > 0.002) {
+                raf = requestAnimationFrame(render);
+            } else {
+                raf = 0;
+                thumb.style.setProperty('--mx', '0');
+                thumb.style.setProperty('--my', '0');
+            }
+        }
+
+        function onMove(e) {
+            var rect = thumb.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
+            targetX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+            targetY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+            targetX = Math.max(-1, Math.min(1, targetX));
+            targetY = Math.max(-1, Math.min(1, targetY));
+            active = true;
+            if (!raf) raf = requestAnimationFrame(render);
+        }
+
+        function onLeave() {
+            active = false;
+            targetX = 0;
+            targetY = 0;
+            if (!raf) raf = requestAnimationFrame(render);
+        }
+
+        link.addEventListener('mousemove', onMove, { passive: true });
+        link.addEventListener('mouseenter', onMove, { passive: true });
+        link.addEventListener('mouseleave', onLeave);
+    });
+}
+window.initAdobeFireflyThumbnailParallax = initAdobeFireflyThumbnailParallax;
 
 // ===== Landing hero portrait reveal =====
 function initLandingReveal() {

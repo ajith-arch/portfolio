@@ -14,8 +14,8 @@
             window.__initialTheme = theme;
         })();
     </script>
-    <link rel="icon" type="image/jpeg" href="assets/profile.jpg">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/webp" href="assets/profile.webp">
+    <link rel="stylesheet" href="styles.css?v=adobe-thumb-9">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Google tag (gtag.js) -->
@@ -56,7 +56,7 @@
                     </span>
                 </button>
                 <div class="nav-left">
-                    <img src="assets/profile.jpg" alt="Ajith Alphonse" class="nav-avatar" onerror="this.style.background='#ddd'">
+                    <img src="assets/profile.webp" alt="Ajith Alphonse" class="nav-avatar" onerror="this.style.background='#ddd'">
                 </div>
                 <div class="nav-links">
                     <a href="#work" class="nav-link active">Work</a>
@@ -94,7 +94,7 @@
                         <div class="hero-layout">
                             <figure class="portrait-wrapper" aria-label="Interactive portrait reveal">
                                 <img
-                                    src="./assets/image/anime-one.png"
+                                    src="./assets/image/anime-one.webp"
                                     alt=""
                                     class="portrait portrait-anime"
                                     loading="eager"
@@ -102,7 +102,7 @@
                                     aria-hidden="true"
                                 >
                                 <img
-                                    src="./assets/image/real-one.png"
+                                    src="./assets/image/real-one.webp"
                                     alt="Portrait of Ajith Alphonse"
                                     class="portrait portrait-real"
                                     fetchpriority="high"
@@ -129,26 +129,35 @@
 
                 <div class="project-hero-list">
 
-                    <!-- 1. Adobe Firefly — From Prompting to Creative Control -->
-                    <article id="project-adobe-firefly" class="project-card project-hero" data-category="b2b">
+                    <!-- 1. Adobe Firefly — Senior case study -->
+                    <article id="project-adobe-firefly-senior" class="project-card project-hero" data-category="b2b">
                         <div class="project-hero-inner">
                             <div class="project-hero-text">
-                                <p class="project-hero-eyebrow">Adobe Firefly &middot; Product Design</p>
-                                <h3 class="project-hero-title">Adobe Firefly — From Prompting to Creative Control</h3>
+                                <p class="project-hero-eyebrow">Adobe Firefly &middot; Contract · Product Design · 8–10 min read</p>
+                                <h3 class="project-hero-title">Owning post-generation control in Adobe Firefly</h3>
                                 <p class="project-hero-desc">
-                                    Exploring post-generation editing so creators can change only what they intend — keep 90%, change 10% — after the first AI generation.
+                                    A senior case study on intent-first refinement: what I owned, the tradeoffs I accepted, and the product impact of making localized edits the default over full regeneration.
                                 </p>
                                 <div class="project-tags">
+                                    <span class="tag">8–10 min read</span>
+                                    <span class="tag">Ownership</span>
+                                    <span class="tag">Tradeoffs</span>
                                     <span class="tag">Generative AI</span>
-                                    <span class="tag">Creative Control</span>
-                                    <span class="tag">Interaction Design</span>
+                                    <span class="tag">Product Impact</span>
                                 </div>
-                                <a href="projects/adobe-firefly/" class="project-hero-link">View case study →</a>
+                                <a href="projects/adobe-firefly-senior/" class="project-hero-link">View case study →</a>
                             </div>
                             <div class="project-hero-media">
-                                <a href="projects/adobe-firefly/" class="project-hero-media-link" aria-label="Open Adobe Firefly case study">
-                                    <div class="project-hero-media-frame project-hero-media--adobe-firefly">
-                                        <img src="assets/adobe-firefly-thumbnail.png" alt="Adobe Firefly — keep 90% change 10% post-generation editing concept" class="project-hero-poster" loading="lazy">
+                                <a href="projects/adobe-firefly-senior/" class="project-hero-media-link" aria-label="Open Adobe Firefly case study — 8 to 10 minute read">
+                                    <div class="project-hero-media-frame">
+                                        <img
+                                          src="assets/adobe-firefly-senior-thumbnail.webp"
+                                          alt="Adobe Firefly — owning post-generation creative control, 8 to 10 minute case study"
+                                          class="project-hero-poster"
+                                          width="1600"
+                                          height="900"
+                                          loading="eager"
+                                          decoding="async">
                                     </div>
                                 </a>
                             </div>
@@ -200,7 +209,7 @@
                                     One autonomous system, two experiences: a simple predictive product for campus users, and an intelligent command layer for fleet operators.
                                 </p>
                                 <div class="project-tags">
-                                    <span class="tag tag-university"><img src="assets/u logo.png" alt="U" class="tag-logo"> University of Utah</span>
+                                    <span class="tag tag-university"><img src="assets/u logo.webp" alt="U" class="tag-logo"> University of Utah</span>
                                     <span class="tag">B2B SaaS</span>
                                     <span class="tag">Campus Logistics</span>
                                     <span class="tag">AI-Assisted</span>
@@ -235,7 +244,7 @@
                                     Self-initiated workflow optimization for the University of Utah Campus Store, reducing PDP publishing time from 30–40 minutes to under 10 minutes.
                                 </p>
                                 <div class="project-tags">
-                                    <span class="tag tag-university"><img src="assets/u logo.png" alt="U" class="tag-logo"> University of Utah</span>
+                                    <span class="tag tag-university"><img src="assets/u logo.webp" alt="U" class="tag-logo"> University of Utah</span>
                                     <span class="tag">Enterprise UX</span>
                                     <span class="tag">Workflow Optimization</span>
                                 </div>
@@ -276,7 +285,7 @@
                             <div class="project-hero-media">
                                 <a href="projects/adobe-creative-flow/" class="project-hero-media-link" aria-label="Open Adobe Creative Flow case study">
                                     <div class="project-hero-media-frame project-hero-media--adobe-flow">
-                                        <img src="assets/adobe-creative-flow-thumbnail.png" alt="Adobe Creative Flow — a connected timeline across Firefly, Photoshop, Illustrator, and Express" class="project-hero-poster" loading="lazy">
+                                        <img src="assets/adobe-creative-flow-thumbnail.webp" alt="Adobe Creative Flow — a connected timeline across Firefly, Photoshop, Illustrator, and Express" class="project-hero-poster" loading="lazy">
                                     </div>
                                 </a>
                             </div>
@@ -369,7 +378,7 @@
                                     Systems-level UX work for the University of Utah Campus Store, aligning product discovery with student shopping behavior.
                                 </p>
                                 <div class="project-tags">
-                                    <span class="tag tag-university"><img src="assets/u logo.png" alt="U" class="tag-logo"> University of Utah</span>
+                                    <span class="tag tag-university"><img src="assets/u logo.webp" alt="U" class="tag-logo"> University of Utah</span>
                                     <span class="tag">Retail UX</span>
                                     <span class="tag tag-coming-soon">Coming soon</span>
                                 </div>
@@ -454,7 +463,7 @@
                             <div class="project-hero-media">
                                 <div class="project-hero-media-link project-hero-media-link--static">
                                     <div class="project-hero-media-frame project-hero-media--codebell">
-                                        <img src="assets/codebell-thumbnail.png" alt="Codebell ordering system preview" class="project-hero-poster">
+                                        <img src="assets/codebell-thumbnail.webp" alt="Codebell ordering system preview" class="project-hero-poster">
                                     </div>
                                 </div>
                             </div>
@@ -478,7 +487,7 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=adobe-parallax-2"></script>
 </body>
 </html>
 

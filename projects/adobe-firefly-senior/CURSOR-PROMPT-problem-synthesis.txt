@@ -1,0 +1,173 @@
+CURSOR PROMPT — Adobe Firefly Case Study
+Section to add: PROBLEM SYNTHESIS
+================================================
+
+Attach the reference screenshot with this prompt.
+
+Goal:
+Add a new CONTENT section to the existing Adobe Firefly case-study page.
+Use the attached screenshot as the layout/content reference.
+
+IMPORTANT:
+- Do NOT redesign the page visually
+- Reuse the existing Adobe Firefly design system
+  (fonts, colors, spacing, typography, borders, containers, reveal animation)
+- Do NOT invent new fonts, colors, card styles, or themes
+- Match nearby sections already on the page
+
+
+------------------------------------------------
+WHERE TO PLACE IT
+------------------------------------------------
+
+Insert this section AFTER:
+“I like this image. I just don’t like that part.”
++ Keep 90% · Change 10%
++ “The challenge wasn’t generating more. It was changing less.”
+
+And BEFORE:
+“Reconstructing the refinement journey”
+
+
+------------------------------------------------
+SECTION STRUCTURE + TEXT
+------------------------------------------------
+
+1) Keep the existing comparison labels above if already present:
+
+USER INTENTION
+Keep 90% · Change 10%
+
+PROMPT REGENERATION
+Potentially changes far more than the intended area
+
+Insight line:
+The challenge wasn’t generating more. It was changing less.
+
+
+2) Then add:
+
+EYEBROW:
+Problem synthesis
+
+HEADING:
+Patterns behind the refinement problem
+
+BODY:
+Reviewing refinement behaviors, product observations, team discussions, and early explorations revealed recurring friction in how creators try to make changes to generated content.
+
+
+3) Then a 4-column pattern board (desktop → stack on mobile):
+
+--------------------------------
+01
+ALMOST RIGHT
+The result is close, but not perfect.
+
+IMAGE PLACEHOLDER 01
+Filename to use later: problem-pattern-01.png
+Alt: Chess scene that is almost right — creator likes most of the image
+
+Quote:
+“I like this, I just don’t want the glass and books.”
+--------------------------------
+
+Arrow →
+
+--------------------------------
+02
+PROMPT RETRY
+Rewriting the prompt changes more than intended.
+
+IMAGE PLACEHOLDER 02
+Filename to use later: problem-pattern-02.png
+Alt: Same chess scene with a rewritten prompt and Generate control
+
+Quote:
+“I tried updating the prompt, but now the output looks different.”
+--------------------------------
+
+Arrow →
+
+--------------------------------
+03
+UNCLEAR TARGET
+Text alone doesn’t specify exactly where to change.
+
+IMAGE PLACEHOLDER 03
+Filename to use later: problem-pattern-03.png
+Alt: Chess scene with unclear target — prompt explains what but not where
+
+Quote:
+“The prompt explains what, but not where.”
+--------------------------------
+
+Arrow →
+
+--------------------------------
+04
+VERSIONS ACCUMULATE
+Multiple generations become hard to compare and recover.
+
+IMAGE PLACEHOLDER 04
+Filename to use later: problem-pattern-04.png
+Alt: Chess scene with multiple recent generations stacked and hard to track
+
+Quote:
+“I generated a few more options, but it’s getting hard to track which one I liked.”
+--------------------------------
+
+
+4) Then synthesis close:
+
+EYEBROW:
+What kept repeating?
+
+HEADING:
+Control · Precision · Continuity · Recovery
+
+SUPPORT:
+These patterns converged around four recurring refinement problems.
+
+
+5) Existing next section remains:
+
+Reconstructing the refinement journey
+I revisited the workflow through common generative-image behaviors: creating, evaluating, correcting and iterating.
+
+
+------------------------------------------------
+IMAGE PLACEHOLDER RULES
+------------------------------------------------
+
+For each of the 4 images:
+- Use the existing asset placeholder pattern already used on this page
+- Show a temporary filename label until the real image is added
+- Keep equal image sizes across all 4 columns
+- Prefer landscape aspect similar to the screenshot (~16:9)
+- Do not crop the chess story awkwardly
+- Leave clear placeholders so I can drop final PNGs later
+
+Suggested filenames:
+1. problem-pattern-01.png
+2. problem-pattern-02.png
+3. problem-pattern-03.png
+4. problem-pattern-04.png
+
+Asset folder:
+../assets/adobe-firefly/
+
+
+------------------------------------------------
+IMPLEMENTATION RULES
+------------------------------------------------
+
+- Content + structure only
+- Reuse existing classes/components where possible
+- Keep responsive behavior consistent with the rest of the page
+- No fake metrics
+- No visual redesign
+- After coding, tell me:
+  1. which file(s) changed
+  2. exact placeholder filenames waiting for images
+  3. where the section sits in the page order
