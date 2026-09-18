@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../flipkart-ai-discovery.css?v=2">
+  <link rel="stylesheet" href="../flipkart-ai-discovery.css?v=3">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNSPYP46HC"></script>
   <script>
@@ -1255,6 +1255,35 @@
       }
     })();
 
+    /* Mobile: force reveal classes so IntersectionObserver / GPU layers can't leave content blank */
+    var preferInstantReveal = window.matchMedia(
+      '(max-width: 900px), (hover: none) and (pointer: coarse), (prefers-reduced-motion: reduce)'
+    ).matches;
+
+    function forceAllRevealsVisible() {
+      var selectors = [
+        '.reveal',
+        '.insight-reveal',
+        '.snapshot-reveal',
+        '.problem-reveal',
+        '.research-reveal',
+        '.explore-reveal',
+        '.solution-reveal',
+        '.impact-reveal',
+        '.reflection-reveal',
+        '.insight-card-reveal',
+        '.fk-research-reveal',
+        '.fk-research-metrics'
+      ];
+      document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+        el.classList.add('is-visible', 'is-assembled');
+      });
+    }
+
+    if (preferInstantReveal) {
+      forceAllRevealsVisible();
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (e) {
         var id = this.getAttribute('href');
@@ -1288,9 +1317,14 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) entry.target.classList.add('is-visible');
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, preferInstantReveal
+      ? { threshold: 0, rootMargin: '0px' }
+      : { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+    if (preferInstantReveal) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+    }
 
     var insightQueries = [
       'best phone under 20k for gaming',

@@ -6161,3 +6161,89 @@ footer {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   Mobile visibility lock
+   iOS/Android: opacity-0 reveal + 3D/blur compositing often
+   leaves sections blank after scroll. Keep desktop motion;
+   force content visible on small / touch viewports.
+   ============================================================ */
+@media (max-width: 900px), ((hover: none) and (pointer: coarse)) {
+  .flipkart-case-study-body::before,
+  .flipkart-case-study-body::after {
+    position: absolute;
+    z-index: 0;
+  }
+
+  .flipkart-case-study-body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .reveal,
+  .reveal.is-visible,
+  .insight-card-reveal,
+  .fk-research-reveal,
+  .fk-research-reveal.is-visible,
+  .fk-research.research-reveal .fk-research-platform:first-child,
+  .fk-research.research-reveal.is-visible .fk-research-platform:first-child,
+  .fk-research-metrics .fk-research-metric,
+  .fk-research-metrics.is-visible .fk-research-metric,
+  .problem-section.problem-reveal .problem-panel,
+  .problem-section.problem-reveal .problem-phone-clay,
+  .snapshot-section.snapshot-reveal .snapshot-copy-block,
+  .snapshot-section.snapshot-reveal .snapshot-metric,
+  .fk-solution.solution-reveal .section-tag,
+  .fk-solution.solution-reveal .section-title,
+  .fk-solution.solution-reveal .fk-solution__lead,
+  .fk-solution.solution-reveal .fk-solution-card,
+  .fk-solution.solution-reveal .fk-solution-flow,
+  .fk-solution.solution-reveal .fk-solution-pill,
+  .fk-solution.solution-reveal .fk-solution-flow__arrow,
+  .fk-solution.solution-reveal .fk-solution-outcome,
+  .fk-compare.reveal .fk-compare-card--before,
+  .fk-compare.reveal .fk-compare-pair__cue,
+  .fk-compare.reveal .fk-compare-card--after,
+  .fk-impact.impact-reveal .section-tag,
+  .fk-impact.impact-reveal .section-title,
+  .fk-impact.impact-reveal .fk-impact__lead,
+  .fk-impact.impact-reveal .fk-impact-card,
+  .fk-impact.impact-reveal .fk-impact-divider,
+  .fk-impact.impact-reveal .fk-impact-insight,
+  .fk-reflection.reflection-reveal .section-tag,
+  .fk-reflection.reflection-reveal .section-title,
+  .fk-reflection.reflection-reveal .fk-reflection-card,
+  .fk-reflection.reflection-reveal .fk-reflection-quote,
+  .fk-explore.explore-reveal,
+  .fk-explore-board,
+  .fk-explore-metric.snapshot-metric,
+  .fk-explore-chip,
+  .fk-explore-process__arrow,
+  .fk-explore-callout {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .hero-follow__inner,
+  .snapshot-wrapper,
+  .problem-bento,
+  .fk-research.research-reveal {
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+
+  .project-info-card,
+  .insight-content-card,
+  .snapshot-metric,
+  .snapshot-copy-block,
+  .problem-panel,
+  .problem-phone-clay,
+  .fk-research-tile {
+    backface-visibility: visible !important;
+    transform-style: flat !important;
+    will-change: auto !important;
+  }
+}
