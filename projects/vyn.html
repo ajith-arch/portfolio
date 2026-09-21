@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VYN — Designing the Human Command Layer for Autonomous Campus Delivery</title>
-  <meta name="description" content="A product design case study for VYN: a simple predictive experience for campus users and an intelligent command layer for fleet operators.">
+  <title>VYN — Designing the Human Command Layer for Autonomous Campus Delivery | Product Design Case Study</title>
+  <meta name="description" content="A senior product design case study on VYN, an autonomous campus delivery system: the two-product boundary I set, the decisions and tradeoffs behind hiding robotics from users and giving operators an attention queue, the AI authority model, and an honest account of what the work proved.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./vyn.css?v=5">
-  <style>
-    html, body.vyn-page { margin: 0; background: #fafafa; color: #111114; font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./vyn.css?v=vyn-senior-2">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNSPYP46HC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,851 +18,894 @@
   </script>
 </head>
 <body class="vyn-page">
+
   <a class="vyn-skip" href="#main">Skip to content</a>
 
-  <nav class="vyn-nav" id="vynNav" aria-label="Case study">
-    <div class="vyn-wrap vyn-nav__inner">
-      <a class="vyn-nav__logo" href="../index.html">Ajith Alphonse</a>
-      <div class="vyn-nav__links">
-        <a class="vyn-nav__link" href="#overview">Overview</a>
-        <a class="vyn-nav__link" href="#user">User</a>
-        <a class="vyn-nav__link" href="#ai">AI</a>
-        <a class="vyn-nav__link" href="#command">Command</a>
-        <a class="vyn-nav__link" href="#system">System</a>
+  <nav class="vyn-nav" id="vynNav" aria-label="Case study navigation">
+    <div class="vyn-nav__inner">
+      <div class="vyn-nav__group">
+        <a href="../index.html" class="vyn-nav__pill" aria-label="Back to portfolio"><span aria-hidden="true">&larr;</span>&nbsp;Back to Portfolio</a>
       </div>
-      <a class="vyn-nav__back" href="../index.html#work">← Work</a>
+      <div class="vyn-nav__group vyn-nav__group--center">
+        <div class="vyn-nav__links">
+          <a href="#overview" class="vyn-nav__link">Overview</a>
+          <a href="#decisions" class="vyn-nav__link">Decisions</a>
+          <a href="#impact" class="vyn-nav__link">Impact</a>
+        </div>
+      </div>
+      <div class="vyn-nav__group vyn-nav__group--right">
+        <div class="vyn-nav__links">
+          <a href="../index.html#work" class="vyn-nav__link">Work</a>
+          <a href="../know-me.html" class="vyn-nav__link">Know Me</a>
+          <a href="#contact" class="vyn-nav__link vyn-nav__link--primary">Contact</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <main id="main">
 
-    <header class="vyn-hero" id="overview">
-      <div class="vyn-wrap vyn-hero__intro">
-        <p class="vyn-eyebrow">Case study / AI + robotics product design</p>
-        <h1 class="vyn-h1">VYN — Designing the Human Command Layer for Autonomous Campus Delivery</h1>
-        <p class="vyn-support">One autonomous system.<br>Two radically different experiences.</p>
-        <p class="vyn-lead">A simple predictive product for campus users, and an intelligent command layer for the people who keep the fleet running. Users should not need to understand robotics. Operators should not need to hunt for what a robot needs.</p>
-        <dl class="vyn-meta">
-          <div><dt>Role</dt><dd>Product Designer</dd></div>
-          <div><dt>Platforms</dt><dd>iOS + Web / Tablet</dd></div>
-          <div><dt>Duration</dt><dd>8 weeks</dd></div>
-          <div><dt>Focus</dt><dd>AI product design</dd></div>
-          <div><dt>HRI</dt><dd>Human–robot interaction</dd></div>
-          <div><dt>Also</dt><dd>Fleet operations · design systems</dd></div>
-        </dl>
+    <!-- 01 · HERO -->
+    <header class="vyn-hero vyn-container vyn-container--content vyn-reveal" id="overview">
+      <div class="vyn-badges">
+        <span class="vyn-badge vyn-badge--accent">Product Design</span>
+        <span class="vyn-badge">Human&ndash;Robot Interaction</span>
+        <span class="vyn-badge">8&ndash;10 min read</span>
       </div>
 
-      <div class="vyn-wrap vyn-mt-48">
-        <figure class="project-visual-placeholder project-visual-placeholder--xl project-visual-placeholder--bleed">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-eco" aria-hidden="true">
-              <div class="vyn-skel-phone">
-                <div class="vyn-skel-phone__bar"></div>
-                <div class="vyn-skel-phone__body">
-                  <div class="vyn-skel-line vyn-skel-line--sm"></div>
-                  <div class="vyn-skel-line vyn-skel-line--md"></div>
-                  <div class="vyn-skel-map"><i class="vyn-skel-dot" style="top:46%;left:58%"></i></div>
-                  <div class="vyn-skel-block"></div>
-                </div>
-              </div>
-              <div class="vyn-eco__link"><span>Mission #482</span></div>
-              <div class="vyn-skel-desk">
-                <div class="vyn-skel-desk__bar"></div>
-                <div class="vyn-skel-desk__shell">
-                  <div class="vyn-skel-desk__nav"></div>
-                  <div class="vyn-skel-desk__map"><i class="vyn-skel-dot" style="top:38%;left:42%"></i><i class="vyn-skel-dot" style="top:62%;left:70%"></i></div>
-                  <div class="vyn-skel-desk__side">
-                    <div class="vyn-skel-line vyn-skel-line--sm"></div>
-                    <div class="vyn-skel-block"></div>
-                    <div class="vyn-skel-line"></div>
-                    <div class="vyn-skel-line vyn-skel-line--md"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">VYN Product Ecosystem</h3>
-            <p class="project-visual-placeholder__desc">Mobile customer experience paired with the fleet command system controlling the same delivery mission.</p>
-            <p class="project-visual-placeholder__meta">Combined composition · 1600 × 1000 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-user-home.webp · vyn-command-overview.webp</p>
-            <ul class="project-visual-placeholder__tags">
-              <li>Two products</li>
-              <li>One mission</li>
-              <li>Shared system</li>
-            </ul>
-          </figcaption>
-        </figure>
-      </div>
+      <h1 class="vyn-title" id="case-title">Designing the human command layer <br>for autonomous campus delivery.</h1>
+      <p class="vyn-support">One autonomous system. Two radically different experiences.</p>
+
+      <dl class="vyn-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Product Designer</dd>
+        </div>
+        <div>
+          <dt>Duration</dt>
+          <dd>8 weeks</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>HRI &middot; Fleet operations &middot; AI product design</dd>
+        </div>
+        <div>
+          <dt>Platforms</dt>
+          <dd>iOS + Web</dd>
+        </div>
+        <div>
+          <dt>Contribution</dt>
+          <dd>The two-product boundary, both experiences end to end, and the AI authority model between them</dd>
+        </div>
+      </dl>
     </header>
 
-    <section class="vyn-section vyn-section--white" aria-labelledby="glance-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Project at a glance</p>
-        <h2 class="vyn-h2" id="glance-title">Campus infrastructure, not a delivery app.</h2>
-        <p class="vyn-lead">VYN is a closed-campus system for verified university users. The design target is short transfers during class breaks — not city-scale logistics.</p>
-        <div class="vyn-strip vyn-mt-40">
-          <div><em>Constraint</em><strong>1,500 acres</strong><span>Campus scale</span></div>
-          <div><em>Constraint</em><strong>Verified UIDs</strong><span>Closed network</span></div>
-          <div><em>Design target</em><strong>5–15 min</strong><span>Class-break window</span></div>
-          <div><em>System</em><strong>2 products</strong><span>User + Command</span></div>
+    <!-- 02 · HERO MEDIA -->
+    <section class="vyn-container vyn-reveal" aria-label="VYN brand system">
+      <figure class="vyn-media">
+        <div class="vyn-media__frame">
+          <video
+            class="vyn-media__video"
+            src="../assets/thumbnail%20one.mp4"
+            poster="./vyn-assets/hero-poster.jpg"
+            autoplay muted loop playsinline
+            preload="metadata"
+            aria-label="VYN brand mark animation: three orbiting nodes circling the VYN wordmark"></video>
+          <div class="vyn-media__overlay" aria-hidden="true">
+            <span class="vyn-media__kicker">VYN</span>
+            <span class="vyn-media__line">Campus infrastructure, not a delivery app</span>
+          </div>
+        </div>
+        <figcaption class="vyn-media__caption">
+          <p class="vyn-media__desc">Three nodes orbiting one core &mdash; the identity was built around the actual product shape: a fleet in motion around a single coordinating layer.</p>
+          <ul class="vyn-media__tags">
+            <li>VYN User &middot; iOS</li>
+            <li>VYN Command &middot; Web</li>
+            <li>One shared mission object</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- 03 · EXEC SUMMARY -->
+    <section class="vyn-section vyn-section--tight vyn-reveal" id="summary" aria-labelledby="summary-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">In short</p>
+        <h2 id="summary-heading" class="vyn-h2 vyn-h2--accent">Autonomy is the easy part to demo and the hard part to hand to people.</h2>
+        <p class="vyn-lead">A robot that drives itself across campus still needs two humans to succeed: someone who trusts it enough to hand over a package, and someone who can tell within seconds whether the fleet is fine. Those two people need almost nothing in common, and building one interface for both is the most common way this category fails.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-32">
+        <div class="vyn-clay">
+          <div class="vyn-exec">
+            <div class="vyn-exec__col">
+              <p class="vyn-exec__label">The problem</p>
+              <p class="vyn-exec__text">Campus delivery fails on coordination, not distance. And the system that solves it produces two irreconcilable users &mdash; a student with four minutes between classes, and an operator responsible for a dozen autonomous machines at once.</p>
+            </div>
+            <div class="vyn-exec__col">
+              <p class="vyn-exec__label">What I owned</p>
+              <ul class="vyn-list">
+                <li>The decision to build two products instead of one app with a role switch</li>
+                <li>VYN User end to end &mdash; request, send, track, handoff, and every exception</li>
+                <li>VYN Command&rsquo;s information architecture and the attention-queue model</li>
+                <li>The AI behaviour spec: what the system may claim, recommend, automate, and must escalate</li>
+              </ul>
+            </div>
+            <div class="vyn-exec__col">
+              <p class="vyn-exec__label">The outcome (honest)</p>
+              <p class="vyn-exec__text"><strong>A designed system and a validated interaction model &mdash; not an operating fleet.</strong> No robot ran on this design. What exists is a product boundary, two complete experiences, an AI authority model, and a measurement plan for the claims I could not yet test.</p>
+              <p class="vyn-exec__text">There are no fleet KPIs on this page, because I did not own a fleet.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="vyn-section" aria-labelledby="two-title">
-      <div class="vyn-wrap">
+    <!-- 04 · CONSTRAINTS -->
+    <section class="vyn-section vyn-section--white vyn-reveal" aria-labelledby="constraints-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">The box I was designing inside</p>
+        <h2 id="constraints-heading" class="vyn-h2">Four constraints did more design work than any idea I had.</h2>
+        <p class="vyn-lead">A closed campus is not a small city. The boundaries are tighter, the identities are known, and the time budget is brutal &mdash; which rules out most of what consumer delivery apps do.</p>
+      </div>
+      <div class="vyn-container vyn-mt-40">
+        <div class="vyn-strip vyn-stagger">
+          <div class="vyn-strip__item vyn-reveal">
+            <em>Scale</em>
+            <strong>1,500 acres</strong>
+            <span>One campus, fixed map, known buildings &mdash; routing is solvable, so routing is not the product.</span>
+          </div>
+          <div class="vyn-strip__item vyn-reveal">
+            <em>Identity</em>
+            <strong>Verified UIDs</strong>
+            <span>Everyone is already authenticated. Stranger-danger patterns from consumer delivery are dead weight here.</span>
+          </div>
+          <div class="vyn-strip__item vyn-reveal">
+            <em>Time budget</em>
+            <strong>5&ndash;15 min</strong>
+            <span>The class-break window. Anything that needs the sender to wait for a reply has already failed.</span>
+          </div>
+          <div class="vyn-strip__item vyn-reveal">
+            <em>Surface</em>
+            <strong>2 products</strong>
+            <span>One autonomous system, two human roles with opposite information needs and opposite tolerances for complexity.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · PROBLEM -->
+    <section class="vyn-section vyn-reveal" aria-labelledby="problem-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">Problem &amp; stakes</p>
+        <h2 id="problem-heading" class="vyn-h2">The problem isn&rsquo;t distance. It&rsquo;s coordination.</h2>
+        <p class="vyn-lead">A ten-minute walk across campus is not a ten-minute task. It becomes a forty-minute interruption once you add remembering, finding a window, locating a person inside a building, waiting for them to show up, and getting back late. The walk is the only part anyone would have estimated.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-48">
+        <div class="vyn-flow">
+          <div class="vyn-flow__row vyn-flow__row--before">
+            <div class="vyn-flow__label">
+              <em>Today</em>
+              <strong>Six steps</strong>
+              <span>Five of them are coordination, not transport.</span>
+            </div>
+            <ol class="vyn-flow__steps vyn-stagger">
+              <li class="vyn-step vyn-reveal"><span class="vyn-step__n">01</span><strong>Remember</strong><em>Easy to forget entirely</em></li>
+              <li class="vyn-step vyn-reveal"><span class="vyn-step__n">02</span><strong>Find a window</strong><em>Both calendars must agree</em></li>
+              <li class="vyn-step vyn-reveal"><span class="vyn-step__n">03</span><strong>Walk</strong><em>Detour between classes</em></li>
+              <li class="vyn-step vyn-reveal"><span class="vyn-step__n">04</span><strong>Locate</strong><em>Building, floor, desk</em></li>
+              <li class="vyn-step vyn-reveal"><span class="vyn-step__n">05</span><strong>Hand off</strong><em>Both people, same place, same minute</em></li>
+              <li class="vyn-step vyn-reveal"><span class="vyn-step__n">06</span><strong>Return</strong><em>Already late</em></li>
+            </ol>
+          </div>
+
+          <div class="vyn-flow__row vyn-flow__row--after">
+            <div class="vyn-flow__label">
+              <em>With VYN</em>
+              <strong>Three steps</strong>
+              <span>The sender&rsquo;s obligation ends at the drop-off.</span>
+            </div>
+            <ol class="vyn-flow__steps vyn-flow__steps--after">
+              <li class="vyn-step vyn-step--accent"><span class="vyn-step__n">01</span><strong>Request</strong><em>Recipient, item, pickup point</em></li>
+              <li class="vyn-step vyn-step--accent"><span class="vyn-step__n">02</span><strong>Load</strong><em>Robot arrives at the sender</em></li>
+              <li class="vyn-step vyn-step--accent"><span class="vyn-step__n">03</span><strong>Done</strong><em>Tracking continues without them</em></li>
+            </ol>
+          </div>
+        </div>
+
+        <p class="vyn-caption">The distance is unchanged. What collapses is the number of moments where two people have to be synchronised &mdash; from five down to one, and that one happens on the sender&rsquo;s schedule.</p>
+      </div>
+    </section>
+
+    <!-- 06 · STRATEGY PIVOT -->
+    <section class="vyn-section vyn-section--white vyn-reveal" aria-labelledby="pivot-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">Strategy pivot</p>
+        <h2 id="pivot-heading" class="vyn-h2">The breakthrough wasn&rsquo;t a better waiting state. It was removing the waiting state.</h2>
+        <p class="vyn-lead">My first flows had the sender pick a person, then wait for that person to accept. I spent a week designing the waiting screen &mdash; pending states, nudges, expiry timers, a graceful way to fail. All of it was craft applied to a step that should not have existed. Inside a five-minute class break, a pending state is a dead end with good typography.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-48">
+        <div class="vyn-pivot">
+          <article class="vyn-pivot__side">
+            <p class="vyn-pivot__tag">Before &middot; person-to-person</p>
+            <div class="vyn-branch">
+              <div class="vyn-branch__root">Sender requests</div>
+              <div class="vyn-branch__stem" aria-hidden="true"></div>
+              <ul class="vyn-branch__list">
+                <li><span class="vyn-dot vyn-dot--wait" aria-hidden="true"></span>Recipient in class &mdash; <em>waiting</em></li>
+                <li><span class="vyn-dot vyn-dot--wait" aria-hidden="true"></span>Recipient off campus &mdash; <em>waiting</em></li>
+                <li><span class="vyn-dot vyn-dot--wait" aria-hidden="true"></span>Recipient never opens the app &mdash; <em>expired</em></li>
+              </ul>
+            </div>
+            <p class="vyn-pivot__note">Every branch parks the sender in a state they cannot resolve, during the only free minutes they have.</p>
+          </article>
+
+          <div class="vyn-pivot__arrow" aria-hidden="true"><span>&rarr;</span></div>
+
+          <article class="vyn-pivot__side vyn-pivot__side--after">
+            <p class="vyn-pivot__tag vyn-pivot__tag--accent">After &middot; department pre-acceptance</p>
+            <div class="vyn-branch">
+              <div class="vyn-branch__root vyn-branch__root--accent">Sender requests</div>
+              <div class="vyn-branch__stem" aria-hidden="true"></div>
+              <ul class="vyn-branch__list">
+                <li><span class="vyn-dot vyn-dot--go" aria-hidden="true"></span>Department desk has standing acceptance &mdash; <em>robot proceeds</em></li>
+                <li><span class="vyn-dot vyn-dot--go" aria-hidden="true"></span>Person available now &mdash; <em>direct handoff</em></li>
+                <li><span class="vyn-dot vyn-dot--go" aria-hidden="true"></span>Desk closing soon &mdash; <em>next open window offered before send</em></li>
+              </ul>
+            </div>
+            <p class="vyn-pivot__note">Departments accept once, as a policy, instead of individuals accepting every time. The recipient stops being a blocking dependency.</p>
+          </article>
+        </div>
+
+        <div class="vyn-clay vyn-clay--cost vyn-mt-40">
+          <div class="vyn-cost">
+            <div>
+              <p class="vyn-exec__label">What this decision cost</p>
+              <p class="vyn-exec__text">Pre-acceptance is an organisational commitment, not a feature. It needs a department to agree that a robot may leave a package at its desk during posted hours, and someone there to own what arrives. That is a policy conversation I could scope but not close &mdash; so the design has to work when a department says no.</p>
+            </div>
+            <div>
+              <p class="vyn-exec__label">How the design absorbs a &ldquo;no&rdquo;</p>
+              <p class="vyn-exec__text">Person-to-person sending stays as a first-class path with an honest constraint attached: it is offered when the system has signal that the recipient is reachable, and it carries a visible risk of return. The pivot changes the default, not the option set.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · OWNERSHIP -->
+    <section class="vyn-section vyn-reveal" aria-labelledby="ownership-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">Accountability</p>
+        <h2 id="ownership-heading" class="vyn-h2">What I owned &mdash; and what I didn&rsquo;t.</h2>
+        <p class="vyn-lead">This was design work wrapped around an autonomy stack I did not build and a university policy surface I did not control. Being precise about that boundary matters more than sounding senior about it.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-40">
+        <div class="vyn-own">
+          <div class="vyn-own__col">
+            <p class="vyn-own__head vyn-own__head--yes">I owned</p>
+            <ul class="vyn-own__list">
+              <li>
+                <strong>The product boundary</strong>
+                Argued that VYN is two products sharing one mission object, not one application with a role switch &mdash; and defined what each side is allowed to know about the other.
+              </li>
+              <li>
+                <strong>VYN User, end to end</strong>
+                Request, recipient selection, pickup, review, robot assignment, live tracking, secure handoff, completion, and every exception path including the ones that end in a return.
+              </li>
+              <li>
+                <strong>VYN Command&rsquo;s information architecture</strong>
+                The attention-first structure, the robot-as-object detail view, the incident workspace, and the rule that direct teleoperation is entered deliberately rather than sitting ambient on a dashboard.
+              </li>
+              <li>
+                <strong>The AI authority model</strong>
+                What the system may observe, explain, recommend, automate without asking, and must escalate &mdash; plus what an operator sees before approving anything consequential.
+              </li>
+              <li>
+                <strong>Failure and degradation states</strong>
+                What both products do when the recipient is gone, the department is closed, the robot stops, the compartment won&rsquo;t lock, or the prediction service is unavailable.
+              </li>
+              <li>
+                <strong>The shared design system</strong>
+                Status language, semantic colour rules (never colour alone), map markers, and the component set that makes one team&rsquo;s alert legible to the other team&rsquo;s screen.
+              </li>
+            </ul>
+          </div>
+          <div class="vyn-own__col">
+            <p class="vyn-own__head vyn-own__head--no">I did not own</p>
+            <ul class="vyn-own__list vyn-own__list--muted">
+              <li><strong>The autonomy stack</strong> Routing, localisation, obstacle handling and safe-stop behaviour were given to me as capabilities with known limits.</li>
+              <li><strong>The prediction models</strong> Battery-at-destination, ETA and orchestration scoring. I designed how their output and uncertainty are shown, not how they compute.</li>
+              <li><strong>Hardware and safety</strong> Chassis, payload compartment, sensors and certification.</li>
+              <li><strong>University policy</strong> Who may send, who may receive, which departments participate, and who is accountable when something goes missing.</li>
+              <li><strong>Roadmap and deployment</strong> Whether this ships, in what order, and on which buildings first.</li>
+              <li><strong>Production instrumentation</strong> Which is the direct reason the impact section below claims no operational metrics.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 · DECISIONS -->
+    <section class="vyn-section vyn-section--white vyn-reveal" id="decisions" aria-labelledby="decisions-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">Decisions &amp; tradeoffs</p>
+        <h2 id="decisions-heading" class="vyn-h2">Four decisions that shaped the system.</h2>
+        <p class="vyn-lead">Each of these had a credible alternative that a reasonable designer would have picked, and each one cost something real. The costs are listed because they were accepted knowingly, not discovered afterwards.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-48">
+        <div class="vyn-decisions vyn-stagger">
+
+          <!-- D1 -->
+          <article class="vyn-decision vyn-clay vyn-reveal">
+            <div class="vyn-decision__head">
+              <span class="vyn-decision__num">01</span>
+              <div>
+                <p class="vyn-decision__kicker">User experience</p>
+                <h3 class="vyn-decision__title">Hide the robotics. Show the outcome.</h3>
+              </div>
+            </div>
+
+            <div class="vyn-dviz" aria-hidden="true">
+              <div class="vyn-dviz__from">
+                <span>Battery 24%</span><span>Localisation 98%</span><span>Route v3</span><span>Payload locked</span>
+              </div>
+              <div class="vyn-dviz__arrow">&rarr;</div>
+              <div class="vyn-dviz__to">Your robot is 6 minutes away</div>
+            </div>
+
+            <div class="vyn-decision__grid">
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Decision</p>
+                <p class="vyn-decision__text">The user-facing product exposes one machine fact &mdash; where the package is and when it arrives. Telemetry, robot identity, fleet state and every other robot on campus stay out of the interface entirely. The user tracks a delivery, not a machine.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Alternatives considered</p>
+                <p class="vyn-decision__text">Show the fleet map with all robots, which is what every robotics demo does because it looks impressive. Or expose battery and sensor confidence as a transparency feature, on the argument that autonomy earns trust by being legible.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Why I chose it</p>
+                <p class="vyn-decision__text">Transparency only builds trust when the person can act on what they see. A student cannot do anything with &ldquo;localisation confidence 91%&rdquo; except worry. Exposing it transfers operational anxiety to someone with no authority to resolve it &mdash; the worst trade in the system.</p>
+              </div>
+              <div class="vyn-decision__block vyn-decision__block--cost">
+                <p class="vyn-decision__label">Cost accepted</p>
+                <p class="vyn-decision__text">When something goes wrong, the user has no independent way to verify what happened, so the exception copy has to do all the work &mdash; and if it ever lies, the whole abstraction collapses at once. I also gave up the demo appeal of a live fleet map, which is the single thing stakeholders ask for first.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- D2 -->
+          <article class="vyn-decision vyn-clay vyn-reveal">
+            <div class="vyn-decision__head">
+              <span class="vyn-decision__num">02</span>
+              <div>
+                <p class="vyn-decision__kicker">Operations</p>
+                <h3 class="vyn-decision__title">An attention queue, not an equally-lit map.</h3>
+              </div>
+            </div>
+
+            <div class="vyn-dviz" aria-hidden="true">
+              <div class="vyn-dviz__from vyn-dviz__from--dots">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="vyn-dviz__arrow">&rarr;</div>
+              <div class="vyn-dviz__to vyn-dviz__to--queue">1 needs attention &middot; VYN-07</div>
+            </div>
+
+            <div class="vyn-decision__grid">
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Decision</p>
+                <p class="vyn-decision__text">Command opens on what needs a human, ranked, with the map as supporting context rather than the primary object. Twelve healthy robots produce one line of text; one at-risk robot produces a card with a recommendation attached.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Alternatives considered</p>
+                <p class="vyn-decision__text">The conventional fleet console: a full-bleed live map where every robot renders identically and the operator scans for anomalies. Or a dashboard-first layout leading with utilisation and throughput charts.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Why I chose it</p>
+                <p class="vyn-decision__text">An equal-density map makes the operator&rsquo;s job pattern-matching against a moving picture, and that degrades exactly when the fleet is busiest. The target was five seconds to answer four questions: is anything wrong, which robot, why, and do I need to act. A ranked queue answers all four; a map answers none of them without interpretation.</p>
+              </div>
+              <div class="vyn-decision__block vyn-decision__block--cost">
+                <p class="vyn-decision__label">Cost accepted</p>
+                <p class="vyn-decision__text">The queue is only as good as the ranking behind it, so a missed signal is now invisible rather than merely hard to spot &mdash; a map at least gives the operator a chance to notice something the system didn&rsquo;t flag. Experienced operators also lose the ambient spatial awareness they build from watching a map, which is real skill I am deliberately trading away for triage speed.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- D3 -->
+          <article class="vyn-decision vyn-clay vyn-reveal">
+            <div class="vyn-decision__head">
+              <span class="vyn-decision__num">03</span>
+              <div>
+                <p class="vyn-decision__kicker">AI behaviour</p>
+                <h3 class="vyn-decision__title">AI recommends. Humans approve anything with consequences.</h3>
+              </div>
+            </div>
+
+            <div class="vyn-dviz" aria-hidden="true">
+              <div class="vyn-dviz__from">
+                <span>Detect</span><span>Explain</span><span>Recommend</span>
+              </div>
+              <div class="vyn-dviz__arrow">&rarr;</div>
+              <div class="vyn-dviz__to vyn-dviz__to--human">Operator approves</div>
+            </div>
+
+            <div class="vyn-decision__grid">
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Decision</p>
+                <p class="vyn-decision__text">The system automates only reversible, low-consequence actions &mdash; a minor reroute around congestion, a charging decision for an idle robot. Anything that changes what a user was promised, moves a mission between robots, or touches a stopped robot requires an explicit human approval with the expected consequence stated before the click.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Alternatives considered</p>
+                <p class="vyn-decision__text">Full autonomy with exception-only escalation, which is where fleet products eventually want to go and where the operational savings are. Or the opposite: advisory-only AI that never acts, on the grounds that oversight is safer when nothing is automatic.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Why I chose it</p>
+                <p class="vyn-decision__text">Full autonomy asks for trust the system has not earned on day one, and the first bad automatic decision would end operator confidence permanently. Advisory-only is the reverse failure &mdash; it buries the operator in confirmations for things nobody would ever say no to, which is how approval becomes reflex. Splitting on consequence and reversibility keeps approval meaningful in the moments where it actually is.</p>
+              </div>
+              <div class="vyn-decision__block vyn-decision__block--cost">
+                <p class="vyn-decision__label">Cost accepted</p>
+                <p class="vyn-decision__text">A human in the loop is a latency floor: incidents wait for someone to look. The model also does not scale &mdash; it holds for a campus fleet and breaks somewhere past the point where one operator can read every recommendation. Worst of all, the boundary between &ldquo;reversible&rdquo; and &ldquo;consequential&rdquo; is a judgement I encoded, and a wrong call there is invisible until it causes an incident.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- D4 -->
+          <article class="vyn-decision vyn-clay vyn-reveal">
+            <div class="vyn-decision__head">
+              <span class="vyn-decision__num">04</span>
+              <div>
+                <p class="vyn-decision__kicker">Product strategy</p>
+                <h3 class="vyn-decision__title">Predict availability instead of asking for it.</h3>
+              </div>
+            </div>
+
+            <div class="vyn-dviz" aria-hidden="true">
+              <div class="vyn-dviz__from"><span>Request</span><span class="vyn-dviz__wait">Waiting for accept&hellip;</span><span>Deliver</span></div>
+              <div class="vyn-dviz__arrow">&rarr;</div>
+              <div class="vyn-dviz__to vyn-dviz__to--accent">Request &rarr; Deliver</div>
+            </div>
+
+            <div class="vyn-decision__grid">
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Decision</p>
+                <p class="vyn-decision__text">Remove the acceptance handshake from the critical path. Departments carry standing acceptance during posted hours, and for person-to-person sends the system predicts reachability from class patterns, past acceptance and building access &mdash; then warns <em>before</em> confirm rather than failing afterwards.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Alternatives considered</p>
+                <p class="vyn-decision__text">Keep the handshake and make waiting pleasant: live status, nudges, a generous expiry. Or schedule everything in advance so both parties commit to a slot up front.</p>
+              </div>
+              <div class="vyn-decision__block">
+                <p class="vyn-decision__label">Why I chose it</p>
+                <p class="vyn-decision__text">Both alternatives solve the wrong problem. A better waiting screen still consumes the class break, and scheduling reintroduces the calendar negotiation the product exists to eliminate. Prediction moves the uncertainty to where it is cheap &mdash; before the user has committed anything &mdash; and leaves them with a choice rather than a pending state.</p>
+              </div>
+              <div class="vyn-decision__block vyn-decision__block--cost">
+                <p class="vyn-decision__label">Cost accepted</p>
+                <p class="vyn-decision__text">The system now makes a claim about a person&rsquo;s availability, which is a claim it can get wrong and which touches privacy in a way an acceptance tap does not. I kept the signals coarse and campus-scoped for that reason, and accepted weaker predictions as the price. There is also a cold-start hole: a new recipient has no history, so the first send to anyone is the least informed one.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 · TWO PRODUCTS -->
+    <section class="vyn-section vyn-reveal" aria-labelledby="split-heading">
+      <div class="vyn-container vyn-container--content">
         <p class="vyn-eyebrow">One system, two humans</p>
-        <h2 class="vyn-h2" id="two-title">Users should not need to understand robotics. Operators should not need to hunt for what a robot needs.</h2>
-        <div class="vyn-compare vyn-mt-48">
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage">
-              <div class="vyn-skel-phone" aria-hidden="true">
-                <div class="vyn-skel-phone__bar"></div>
-                <div class="vyn-skel-phone__body">
-                  <div class="vyn-skel-line vyn-skel-line--sm"></div>
-                  <div class="vyn-skel-map"><i class="vyn-skel-dot" style="top:50%;left:60%"></i></div>
-                  <div class="vyn-skel-line vyn-skel-line--md"></div>
+        <h2 id="split-heading" class="vyn-h2">Users should not need to understand robotics. Operators should not need to hunt for what a robot needs.</h2>
+        <p class="vyn-lead">Same robot. Same minute. Same mission. Below is Mission #482 rendered for both people &mdash; the clearest test of whether the two-product boundary actually holds, because if one side needs something from the other&rsquo;s screen, the split was wrong.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-48">
+        <div class="vyn-split">
+
+          <!-- USER -->
+          <figure class="vyn-split__side">
+            <figcaption class="vyn-split__cap">
+              <p class="vyn-split__tag">VYN User &middot; iOS</p>
+              <h3 class="vyn-h3">Trust autonomy without managing it</h3>
+              <p class="vyn-split__desc">One fact, one place, one action if needed. No robot identity, no fleet, no telemetry.</p>
+            </figcaption>
+
+            <div class="vyn-ui-phone" role="img" aria-label="VYN User live tracking screen: your robot is 6 minutes away, arriving at Marriott Library at 2:24 PM, picked up from the Engineering Building at 2:12 PM, with handoff code 4 8 2 1.">
+              <div class="vyn-ui-phone__status"><span>9:41</span><span class="vyn-ui-phone__icons" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <div class="vyn-ui-phone__body">
+                <p class="vyn-ui-phone__eyebrow">Live delivery</p>
+                <p class="vyn-ui-phone__headline">Your robot is<br><strong>6 minutes away</strong></p>
+
+                <div class="vyn-ui-phone__map" aria-hidden="true">
+                  <svg viewBox="0 0 280 150" role="presentation" focusable="false">
+                    <rect width="280" height="150" fill="#eaf0ff"/>
+                    <g stroke="#dbe4ff" stroke-width="1">
+                      <path d="M0 42H280M0 96H280M64 0V150M186 0V150"/>
+                    </g>
+                    <rect x="18" y="52" width="38" height="32" rx="4" fill="#dde5fb"/>
+                    <rect x="196" y="18" width="56" height="26" rx="4" fill="#dde5fb"/>
+                    <rect x="88" y="104" width="70" height="30" rx="4" fill="#dde5fb"/>
+                    <path class="vyn-route-ahead" d="M36 96 C 92 96, 104 58, 156 52 S 214 40, 236 34" fill="none" stroke="#3157f6" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+                    <path class="vyn-route-done" d="M36 96 C 78 96, 96 66, 132 56" fill="none" stroke="#3157f6" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="36" cy="96" r="4.5" fill="#3157f6" opacity="0.4"/>
+                    <circle cx="236" cy="34" r="5" fill="#111114"/>
+                    <circle class="vyn-route-pulse" cx="132" cy="56" r="11" fill="#3157f6" opacity="0.16"/>
+                    <circle cx="132" cy="56" r="5.5" fill="#3157f6"/>
+                  </svg>
+                </div>
+
+                <ul class="vyn-ui-phone__timeline">
+                  <li class="is-done"><span aria-hidden="true"></span><strong>Engineering Building</strong><em>Picked up &middot; 2:12 PM</em></li>
+                  <li class="is-active"><span aria-hidden="true"></span><strong>Marriott Library</strong><em>Arriving &middot; 2:24 PM</em></li>
+                </ul>
+
+                <div class="vyn-ui-phone__foot">
+                  <div>
+                    <p class="vyn-ui-phone__footlabel">Handoff code</p>
+                    <p class="vyn-ui-phone__code">4 8 2 1</p>
+                  </div>
+                  <button type="button" class="vyn-ui-phone__btn" tabindex="-1">Get help</button>
                 </div>
               </div>
             </div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">User experience</h3>
-              <p class="project-visual-placeholder__desc">Home or live tracking. Hide operational complexity. Speed, confidence, a clear ETA, almost no decisions.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-live-tracking.webp</p>
-            </figcaption>
           </figure>
-          <div class="vyn-compare__mid">Same mission<strong>Mission #482</strong></div>
-          <figure class="project-visual-placeholder project-visual-placeholder--md">
-            <div class="project-visual-placeholder__stage">
-              <div class="vyn-skel-desk" aria-hidden="true" style="width:100%">
-                <div class="vyn-skel-desk__bar"></div>
-                <div class="vyn-skel-desk__shell">
-                  <div class="vyn-skel-desk__nav"></div>
-                  <div class="vyn-skel-desk__map"><i class="vyn-skel-dot" style="top:40%;left:48%"></i></div>
-                  <div class="vyn-skel-desk__side"><div class="vyn-skel-block"></div><div class="vyn-skel-line"></div></div>
+
+          <div class="vyn-split__mid" aria-hidden="true">
+            <span class="vyn-split__line"></span>
+            <span class="vyn-split__badge">Mission #482</span>
+            <span class="vyn-split__line"></span>
+          </div>
+
+          <!-- COMMAND -->
+          <figure class="vyn-split__side vyn-split__side--wide">
+            <figcaption class="vyn-split__cap">
+              <p class="vyn-split__tag">VYN Command &middot; Web</p>
+              <h3 class="vyn-h3">Understand autonomy without constantly controlling it</h3>
+              <p class="vyn-split__desc">Fleet state compressed to one rail, and the single thing that needs a person next to the action that resolves it.</p>
+            </figcaption>
+
+            <div class="vyn-ui-cmd" role="img" aria-label="VYN Command fleet overview: 12 operational, 8 active missions, 3 charging, 1 needs attention, 0 offline. Attention queue shows VYN-07 on mission 482 with a delivery risk: battery 24 percent now, predicted 11 percent at destination. Recommended action is to transfer mission 482 to VYN-03, with approve, modify and dismiss controls.">
+              <div class="vyn-ui-cmd__bar">
+                <span class="vyn-ui-cmd__brand">VYN Command</span>
+                <span class="vyn-ui-cmd__crumb">Fleet overview</span>
+                <span class="vyn-ui-cmd__time">2:18 PM</span>
+              </div>
+
+              <div class="vyn-ui-cmd__rail">
+                <span class="vyn-pill"><i class="vyn-pill__dot vyn-pill__dot--ok" aria-hidden="true"></i>12 Operational</span>
+                <span class="vyn-pill"><i class="vyn-pill__dot vyn-pill__dot--go" aria-hidden="true"></i>8 Active missions</span>
+                <span class="vyn-pill"><i class="vyn-pill__dot vyn-pill__dot--charge" aria-hidden="true"></i>3 Charging</span>
+                <span class="vyn-pill vyn-pill--alert"><i class="vyn-pill__dot vyn-pill__dot--warn" aria-hidden="true"></i>1 Needs attention</span>
+                <span class="vyn-pill"><i class="vyn-pill__dot vyn-pill__dot--off" aria-hidden="true"></i>0 Offline</span>
+              </div>
+
+              <div class="vyn-ui-cmd__body">
+                <div class="vyn-ui-cmd__queue">
+                  <p class="vyn-ui-cmd__qhead">Needs attention <span>1</span></p>
+
+                  <article class="vyn-att">
+                    <header class="vyn-att__head">
+                      <span class="vyn-att__id">VYN-07</span>
+                      <span class="vyn-att__sep" aria-hidden="true">&middot;</span>
+                      <span class="vyn-att__mission">Mission #482</span>
+                      <span class="vyn-att__flag">Delivery risk</span>
+                    </header>
+
+                    <dl class="vyn-att__facts">
+                      <div><dt>What</dt><dd>Battery will fall below reserve before handoff</dd></div>
+                      <div><dt>Why</dt><dd>24% now, predicted 11% at Marriott Library &middot; uphill route, 2 stops queued after</dd></div>
+                      <div><dt>Confidence</dt><dd>88% &middot; based on 41 comparable runs</dd></div>
+                    </dl>
+
+                    <div class="vyn-att__rec">
+                      <p class="vyn-att__reclabel">Recommended</p>
+                      <p class="vyn-att__rectext">Transfer #482 to VYN-03 &mdash; idle, 180 m away, 94% charge.</p>
+                      <p class="vyn-att__conseq">Consequence: ETA 6 min &rarr; 8 min. Under the 3-minute threshold, so the recipient sees no change.</p>
+                    </div>
+
+                    <div class="vyn-att__actions">
+                      <button type="button" class="vyn-btn vyn-btn--primary" tabindex="-1">Approve transfer</button>
+                      <button type="button" class="vyn-btn" tabindex="-1">Modify</button>
+                      <button type="button" class="vyn-btn vyn-btn--ghost" tabindex="-1">Dismiss</button>
+                    </div>
+                  </article>
+
+                  <p class="vyn-ui-cmd__rest">11 other robots nominal &middot; 7 missions on schedule &middot; no operator action required</p>
+                </div>
+
+                <div class="vyn-ui-cmd__map" aria-hidden="true">
+                  <svg viewBox="0 0 300 260" role="presentation" focusable="false">
+                    <rect width="300" height="260" fill="#14141a"/>
+                    <g stroke="#23232c" stroke-width="1">
+                      <path d="M0 60H300M0 130H300M0 200H300M80 0V260M180 0V260"/>
+                    </g>
+                    <rect x="24" y="72" width="44" height="42" rx="4" fill="#1c1c25"/>
+                    <rect x="196" y="28" width="66" height="34" rx="4" fill="#1c1c25"/>
+                    <rect x="98" y="148" width="62" height="40" rx="4" fill="#1c1c25"/>
+                    <path d="M46 130 C 110 130, 140 86, 200 62" fill="none" stroke="#3157f6" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M200 62 C 228 52, 244 46, 258 42" fill="none" stroke="#3157f6" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>
+                    <circle cx="200" cy="62" r="13" fill="#e0a12a" opacity="0.18"/>
+                    <circle cx="200" cy="62" r="5" fill="#e0a12a"/>
+                    <circle cx="128" cy="170" r="4" fill="#4e7cff" opacity="0.8"/>
+                    <circle cx="64" cy="210" r="4" fill="#4e7cff" opacity="0.8"/>
+                    <circle cx="242" cy="150" r="4" fill="#4e7cff" opacity="0.8"/>
+                    <circle cx="90" cy="46" r="4" fill="#3f8f68" opacity="0.9"/>
+                    <circle cx="254" cy="212" r="4" fill="#3f8f68" opacity="0.9"/>
+                    <circle cx="150" cy="96" r="4" fill="#4e7cff" opacity="0.5"/>
+                  </svg>
+                  <span class="vyn-ui-cmd__maptag">Map is context, not the first read</span>
                 </div>
               </div>
             </div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Operations experience</h3>
-              <p class="project-visual-placeholder__desc">Fleet Overview. Expose exactly enough complexity to act: health, risk, coordination, intervention.</p>
-              <p class="project-visual-placeholder__meta">Desktop · 1440 × 960 recommended</p>
-              <p class="project-visual-placeholder__file">vyn-command-fleet-overview.webp</p>
-            </figcaption>
           </figure>
         </div>
+
+        <p class="vyn-caption vyn-caption--center">Both interfaces are rebuilt in HTML and CSS from the design files rather than pasted in as flat exports, so the type, states and data stay legible at any width. The values shown are the worked example I designed against.</p>
       </div>
     </section>
 
-    <section class="vyn-section vyn-section--white" aria-labelledby="map-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">System map</p>
-        <h2 class="vyn-h2" id="map-title">Intent in. Oversight around it. Mechanics underneath.</h2>
-        <p class="vyn-lead">Commands are designed around human intent, not robot mechanics. “Deliver to Marriott Library” is the default language. Low-level control only appears when intervention is required.</p>
-        <div class="vyn-map vyn-mt-40" role="img" aria-label="VYN system: campus user through VYN User, mission request, AI, orchestrator, robot fleet, and department. Operator and VYN Command observe from the side.">
-          <svg viewBox="0 0 1100 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="24" fill="#666A73" font-size="11" font-family="Inter, sans-serif" letter-spacing="1.4">CONSUMER PATH</text>
-            <rect x="0" y="48" width="128" height="44" rx="22" fill="#fff" stroke="#E5E5E7"/>
-            <text x="64" y="75" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">Campus user</text>
-            <path d="M136 70 H168" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="176" y="48" width="112" height="44" rx="22" fill="#EEF2FF" stroke="#C9D4FF"/>
-            <text x="232" y="75" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">VYN User</text>
-            <path d="M296 70 H328" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="336" y="48" width="132" height="44" rx="22" fill="#fff" stroke="#E5E5E7"/>
-            <text x="402" y="75" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">Mission request</text>
-            <path d="M476 70 H508" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="516" y="48" width="128" height="44" rx="22" fill="#EEF2FF" stroke="#C9D4FF"/>
-            <text x="580" y="75" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">AI decision</text>
-            <path d="M652 70 H684" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="692" y="48" width="140" height="44" rx="22" fill="#fff" stroke="#E5E5E7"/>
-            <text x="762" y="75" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">Orchestrator</text>
-            <path d="M840 70 H872" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="880" y="48" width="100" height="44" rx="22" fill="#fff" stroke="#E5E5E7"/>
-            <text x="930" y="75" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">Robot fleet</text>
-            <path d="M988 70 H1008" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="1010" y="48" width="90" height="44" rx="22" fill="#fff" stroke="#E5E5E7"/>
-            <text x="1055" y="75" text-anchor="middle" fill="#111114" font-size="11" font-family="Inter, sans-serif">Receiver</text>
-            <text x="0" y="168" fill="#666A73" font-size="11" font-family="Inter, sans-serif" letter-spacing="1.4">OPERATIONS</text>
-            <rect x="0" y="188" width="100" height="44" rx="22" fill="#fff" stroke="#E5E5E7"/>
-            <text x="50" y="215" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">Operator</text>
-            <path d="M108 210 H140" stroke="#C5C7CC" stroke-width="1.2"/>
-            <rect x="148" y="188" width="128" height="44" rx="22" fill="#EEF2FF" stroke="#C9D4FF"/>
-            <text x="212" y="215" text-anchor="middle" fill="#111114" font-size="12" font-family="Inter, sans-serif">VYN Command</text>
-            <path d="M276 210 C 420 210, 520 140, 580 92" stroke="#A1A1AA" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-            <path d="M276 210 C 560 210, 760 140, 930 92" stroke="#A1A1AA" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
-            <text x="320" y="248" fill="#666A73" font-size="12" font-family="Inter, sans-serif">Observes orchestration, fleet health, and incidents. Does not sit inside the user path.</text>
-          </svg>
+    <!-- 10 · AI RIGOR (DARK) -->
+    <section class="vyn-section vyn-section--dark vyn-reveal" aria-labelledby="ai-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">AI product rigor</p>
+        <h2 id="ai-heading" class="vyn-h2">Reduce attention without removing authority.</h2>
+        <p class="vyn-lead">An operations AI is not a feature you add to a dashboard &mdash; it is a set of standing permissions. The design work was deciding where each of those permissions stops, and what the product does on the day the model is confidently wrong.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-56">
+        <p class="vyn-eyebrow vyn-eyebrow--dark">The escalation ladder</p>
+        <div class="vyn-ladder vyn-stagger" role="list">
+          <article class="vyn-ladder__rung vyn-reveal" role="listitem">
+            <div class="vyn-ladder__rail"><span class="vyn-ladder__bar" style="--h: 22%"></span></div>
+            <p class="vyn-ladder__n">01</p>
+            <h3 class="vyn-ladder__name">Observe</h3>
+            <p class="vyn-ladder__who">System</p>
+            <p class="vyn-ladder__text">Detects the condition and states it plainly. No interpretation yet.</p>
+          </article>
+          <article class="vyn-ladder__rung vyn-reveal" role="listitem">
+            <div class="vyn-ladder__rail"><span class="vyn-ladder__bar" style="--h: 38%"></span></div>
+            <p class="vyn-ladder__n">02</p>
+            <h3 class="vyn-ladder__name">Explain</h3>
+            <p class="vyn-ladder__who">System</p>
+            <p class="vyn-ladder__text">Adds the signals behind it, so the operator can check the reasoning rather than trust it.</p>
+          </article>
+          <article class="vyn-ladder__rung vyn-reveal" role="listitem">
+            <div class="vyn-ladder__rail"><span class="vyn-ladder__bar" style="--h: 54%"></span></div>
+            <p class="vyn-ladder__n">03</p>
+            <h3 class="vyn-ladder__name">Recommend</h3>
+            <p class="vyn-ladder__who">System</p>
+            <p class="vyn-ladder__text">Proposes one action with its expected consequence and at least one alternative.</p>
+          </article>
+          <article class="vyn-ladder__rung vyn-ladder__rung--human vyn-reveal" role="listitem">
+            <div class="vyn-ladder__rail"><span class="vyn-ladder__bar" style="--h: 76%"></span></div>
+            <p class="vyn-ladder__n">04</p>
+            <h3 class="vyn-ladder__name">Approve</h3>
+            <p class="vyn-ladder__who vyn-ladder__who--human">Human</p>
+            <p class="vyn-ladder__text">The gate. Anything consequential stops here until a person accepts, modifies or refuses it.</p>
+          </article>
+          <article class="vyn-ladder__rung vyn-reveal" role="listitem">
+            <div class="vyn-ladder__rail"><span class="vyn-ladder__bar" style="--h: 62%"></span></div>
+            <p class="vyn-ladder__n">05</p>
+            <h3 class="vyn-ladder__name">Automate</h3>
+            <p class="vyn-ladder__who">System</p>
+            <p class="vyn-ladder__text">Only reversible, low-consequence policies run unattended &mdash; and every one of them is logged where the operator reads it.</p>
+          </article>
+          <article class="vyn-ladder__rung vyn-ladder__rung--human vyn-reveal" role="listitem">
+            <div class="vyn-ladder__rail"><span class="vyn-ladder__bar" style="--h: 100%"></span></div>
+            <p class="vyn-ladder__n">06</p>
+            <h3 class="vyn-ladder__name">Escalate</h3>
+            <p class="vyn-ladder__who vyn-ladder__who--human">Human</p>
+            <p class="vyn-ladder__text">Safety, property or a stopped robot. The system stops proposing and simply hands over.</p>
+          </article>
         </div>
+
+        <div class="vyn-chips vyn-mt-32">
+          <p class="vyn-chips__label">What an operator sees before approving anything consequential</p>
+          <ul class="vyn-chips__list">
+            <li>What happened</li>
+            <li>Why &mdash; the signals used</li>
+            <li>Confidence, and what it is based on</li>
+            <li>Recommended action</li>
+            <li>Expected consequence</li>
+            <li>At least one alternative</li>
+            <li>Override, always</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="vyn-container vyn-mt-56">
+        <p class="vyn-eyebrow vyn-eyebrow--dark">Authority model</p>
+        <h3 class="vyn-h3 vyn-h3--dark">Where the line sits, case by case.</h3>
+        <div class="vyn-authority">
+          <div class="vyn-authority__head" aria-hidden="true">
+            <span>Situation</span><span>The system may</span><span>A human must</span>
+          </div>
+          <div class="vyn-authority__row">
+            <span class="vyn-authority__k">Minor congestion on a route</span>
+            <span>Reroute and log it</span>
+            <span class="vyn-authority__h">Nothing &mdash; it appears in the activity log</span>
+          </div>
+          <div class="vyn-authority__row">
+            <span class="vyn-authority__k">Battery predicted below reserve at destination</span>
+            <span>Propose a transfer with a named replacement</span>
+            <span class="vyn-authority__h">Approve the transfer</span>
+          </div>
+          <div class="vyn-authority__row">
+            <span class="vyn-authority__k">Path blocked, robot stopped safely</span>
+            <span>Diagnose and offer reroute or remote assist</span>
+            <span class="vyn-authority__h">Choose the action</span>
+          </div>
+          <div class="vyn-authority__row">
+            <span class="vyn-authority__k">Payload compartment fails to lock</span>
+            <span>Hold the mission and notify</span>
+            <span class="vyn-authority__h">Decide between return and field recovery</span>
+          </div>
+          <div class="vyn-authority__row">
+            <span class="vyn-authority__k">Anything the recipient would notice &mdash; destination change, ETA slip beyond 3 min</span>
+            <span>Recommend only</span>
+            <span class="vyn-authority__h">Approve before the user is told</span>
+          </div>
+        </div>
+        <p class="vyn-caption vyn-caption--dark">The last row is the one I argued hardest for. The user-facing abstraction from Decision 01 only survives if no machine can quietly change what a person was promised.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-56">
+        <p class="vyn-eyebrow vyn-eyebrow--dark">Failure model</p>
+        <h3 class="vyn-h3 vyn-h3--dark">Five ways this gets worse over time, and what holds it.</h3>
+        <ul class="vyn-fail vyn-stagger">
+          <li class="vyn-reveal"><strong>Approval becomes reflex.</strong> If operators approve everything without reading, the gate is theatre. The queue is capped, every recommendation must state a consequence in plain language, and there is no bulk-approve &mdash; deliberately, even though operators will ask for one.</li>
+          <li class="vyn-reveal"><strong>Confidently wrong prediction.</strong> An 88% confidence that reads like certainty is worse than no number. Confidence is always shown with its basis &mdash; &ldquo;41 comparable runs&rdquo; &mdash; and a recommendation with thin history says so instead of rounding up.</li>
+          <li class="vyn-reveal"><strong>Automation drift.</strong> Low-consequence policies accumulate until nobody remembers what runs unattended. Every automated action lands in the same log the operator already reads, and the policy list is a visible, editable surface rather than a config file.</li>
+          <li class="vyn-reveal"><strong>The model is unavailable.</strong> Command degrades to raw telemetry and manual dispatch with an explicit banner &mdash; never to a blank dashboard, and never to a dashboard that looks healthy because nothing is being evaluated.</li>
+          <li class="vyn-reveal"><strong>Explanations that can&rsquo;t be checked.</strong> A rationale nobody can verify trains people to skip reading it. Every explanation names the signal it used, and when the evidence isn&rsquo;t there the system reports the condition without proposing a fix.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="vyn-section" id="problem" aria-labelledby="problem-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Problem</p>
-        <h2 class="vyn-h2" id="problem-title">The problem isn’t distance. It’s coordination.</h2>
-        <p class="vyn-lead">On a large campus, a 10-minute walk becomes a 40-minute interruption once you add finding the person, waiting, handing off, and returning.</p>
-        <div class="vyn-timeline">
-          <article><strong>Remember</strong><span>Easy to forget</span></article>
-          <article><strong>Check schedule</strong><span>No free windows</span></article>
-          <article><strong>Walk</strong><span>Detour between classes</span></article>
-          <article><strong>Find destination</strong><span>Buildings, floors, desks</span></article>
-          <article><strong>Handoff</strong><span>Both people must be there</span></article>
-          <article><strong>Return</strong><span>Already late</span></article>
-        </div>
-        <div class="vyn-reduce">
-          <div>
-            <p class="vyn-eyebrow">Current</p>
-            <p class="vyn-h3">6 steps / high coordination</p>
-          </div>
-          <div>
-            <p class="vyn-eyebrow">VYN</p>
-            <p class="vyn-h3">Remember → Request → Done</p>
-          </div>
-        </div>
+    <!-- 11 · IMPACT -->
+    <section class="vyn-section vyn-section--white vyn-reveal" id="impact" aria-labelledby="impact-heading">
+      <div class="vyn-container vyn-container--content">
+        <p class="vyn-eyebrow">Impact</p>
+        <h2 id="impact-heading" class="vyn-h2">What this work actually produced.</h2>
+        <p class="vyn-lead">No robot ran on this design, no fleet was operated, and no delivery was completed. I would rather be precise than impressive, so this section separates what the work produced, what a small amount of testing supported, and what I would have to measure before defending any of it.</p>
       </div>
-    </section>
 
-    <section class="vyn-section vyn-section--white" aria-labelledby="research-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Research and constraints</p>
-        <h2 class="vyn-h2" id="research-title">The product is shaped by three kinds of constraint.</h2>
-        <div class="vyn-cols vyn-mt-40">
-          <div>
-            <h3 class="vyn-h3">User constraints</h3>
-            <p>Time scarcity between classes.</p>
-            <p>Trust barriers with unknown couriers.</p>
-            <p>Location ambiguity.</p>
-            <p>Receiver availability that cannot be assumed.</p>
-          </div>
-          <div>
-            <h3 class="vyn-h3">System constraints</h3>
-            <p>Robot utilization and battery.</p>
-            <p>Operating zones.</p>
-            <p>Route variability.</p>
-            <p>Network reliability behind a simple ETA.</p>
-          </div>
-          <div>
-            <h3 class="vyn-h3">Organizational constraints</h3>
-            <p>Department hours.</p>
-            <p>Institutional accountability.</p>
-            <p>Verified identities.</p>
-            <p>Who can send, receive, and intervene.</p>
-          </div>
-        </div>
-        <p class="vyn-note">Conceptual product exploration informed by campus logistics, robotics operating patterns, and delivery failure modes. Not presented as a completed field study.</p>
-      </div>
-    </section>
+      <div class="vyn-container vyn-mt-48">
+        <div class="vyn-impact vyn-stagger">
 
-    <section class="vyn-section" aria-labelledby="pivot-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Product strategy</p>
-        <h2 class="vyn-h2" id="pivot-title">The breakthrough wasn’t a better waiting state.<br>It was removing the waiting state.</h2>
-        <div class="vyn-reduce vyn-mt-40">
-          <div>
-            <p class="vyn-eyebrow">Before</p>
-            <h3 class="vyn-h3">Person-to-person</h3>
-            <ul class="vyn-flow-list">
-              <li>Sender</li>
-              <li>Receiver 01 acceptance — waiting</li>
-              <li>Receiver 02 acceptance — waiting</li>
-              <li>Receiver 03 acceptance — waiting</li>
+          <article class="vyn-impact__block vyn-reveal">
+            <p class="vyn-impact__n">01 &mdash; Design outcomes</p>
+            <p class="vyn-impact__text">The concrete deliverables: a defended two-product boundary with a shared mission object, two complete experiences including failure paths, an attention-queue pattern for fleet triage, an AI authority model that maps actions to who decides, and a tablet deployment flow that lets a non-specialist bring a robot online without touching motor-level configuration.</p>
+            <ul class="vyn-impact__list">
+              <li><strong>2 products</strong><span>From one system, with an explicit contract between them</span></li>
+              <li><strong>6 rungs</strong><span>Escalation ladder covering every AI action in the product</span></li>
+              <li><strong>Exceptions first</strong><span>Recipient gone, desk closed, robot stopped, compartment jammed, model down</span></li>
             </ul>
-          </div>
-          <div>
-            <p class="vyn-eyebrow">After</p>
-            <h3 class="vyn-h3">Department pre-acceptance</h3>
-            <ul class="vyn-flow-list">
-              <li>Sender</li>
-              <li>Approved department</li>
-              <li>Robot proceeds</li>
+          </article>
+
+          <article class="vyn-impact__block vyn-reveal">
+            <p class="vyn-impact__n">02 &mdash; What validation showed</p>
+            <p class="vyn-impact__text">I ran informal walkthroughs with campus students and department front-desk staff &mdash; not a study, and not enough people to claim a result. What I was checking was comprehension: could a sender predict what happens next, and could a desk staffer say what a robot arriving at their counter would require of them.</p>
+            <ul class="vyn-impact__list vyn-impact__list--qual">
+              <li><strong>Held up</strong><span>Removing the acceptance step read as obviously correct to senders; nobody asked to see the robot&rsquo;s battery.</span></li>
+              <li><strong>Held up</strong><span>Desk staff understood standing acceptance immediately &mdash; it maps to how mail and packages already work at a front desk.</span></li>
+              <li><strong>Broke</strong><span>The availability warning was read as a system error rather than advice, which sent me back to rewrite it as a choice with two visible options instead of a caution.</span></li>
+              <li><strong>Unresolved</strong><span>Nobody could tell me what they would do if a robot arrived and the desk was unexpectedly unstaffed. That gap is a policy question, not a copy question.</span></li>
             </ul>
-          </div>
-        </div>
-        <figure class="project-visual-placeholder project-visual-placeholder--lg vyn-mt-48">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-eco" aria-hidden="true">
-              <div class="vyn-skel-phone"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line vyn-skel-line--sm"></div><div class="vyn-skel-block"></div><div class="vyn-skel-line"></div></div></div>
-              <div class="vyn-eco__link"><span>Person / Department</span></div>
-              <div class="vyn-skel-phone"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line vyn-skel-line--md"></div><div class="vyn-skel-block"></div><div class="vyn-skel-line vyn-skel-line--sm"></div></div></div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">Send Item — Person &amp; Department</h3>
-            <p class="project-visual-placeholder__desc">Two VYN User screens showing recipient type switching between an individual and a pre-approved university department.</p>
-            <p class="project-visual-placeholder__meta">iOS · 1600 × 900 combined export</p>
-            <p class="project-visual-placeholder__file">vyn-user-send-person-department.webp</p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section vyn-section--white" id="user" aria-labelledby="user-title">
-      <div class="vyn-wrap">
-        <div class="vyn-chapter">
-          <span class="vyn-chapter__num" aria-hidden="true">01</span>
-          <div>
-            <p class="vyn-eyebrow">VYN User</p>
-            <h2 class="vyn-h2" id="user-title">Autonomy without complexity.</h2>
-          </div>
-        </div>
-        <p class="vyn-lead">Students care about getting an item delivered. They should not need to manage a robot. Request → prepare → send → track → receive.</p>
-
-        <p class="vyn-eyebrow vyn-mt-64">Primary screens</p>
-        <div class="vyn-phones vyn-phones--3 vyn-mt-24">
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-map"><i class="vyn-skel-dot" style="top:44%;left:50%"></i></div><div class="vyn-skel-block"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">VYN User — Home</h3>
-              <p class="project-visual-placeholder__desc">Campus map, verified-campus state, robot availability, services, Start Delivery CTA.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-home.webp</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line vyn-skel-line--md"></div><div class="vyn-skel-block"></div><div class="vyn-skel-line"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Send Item — Person</h3>
-              <p class="project-visual-placeholder__desc">Recipient search, recent contacts, pickup-now default, item details, pickup location.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-send-person.webp</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-map"><i class="vyn-skel-dot" style="top:40%;left:62%"></i></div><div class="vyn-skel-line vyn-skel-line--sm"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Live Tracking</h3>
-              <p class="project-visual-placeholder__desc">Only the user’s assigned robot appears. Map route, ETA, destination, current delivery status.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-live-tracking.webp</p>
-            </figcaption>
-          </figure>
-        </div>
-
-        <p class="vyn-eyebrow vyn-mt-64">Secondary</p>
-        <div class="vyn-phones vyn-phones--secondary vyn-mt-24">
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line"></div><div class="vyn-skel-line vyn-skel-line--md"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Review Delivery</h3>
-              <p class="project-visual-placeholder__desc">Recipient, pickup, destination, robot-ready time, item details, ETA prediction and confirm.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-review.webp</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-block"></div><div class="vyn-skel-line vyn-skel-line--sm"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Robot Assigned</h3>
-              <p class="project-visual-placeholder__desc">Assigned robot identity, estimated arrival, preparation instructions, mission status.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-robot-assigned.webp</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-block"></div><div class="vyn-skel-line"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Secure Handoff</h3>
-              <p class="project-visual-placeholder__desc">OTP / QR verification, robot arrival, package retrieval.</p>
-              <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-              <p class="project-visual-placeholder__file">vyn-user-handoff.webp</p>
-            </figcaption>
-          </figure>
-        </div>
-
-        <p class="vyn-eyebrow vyn-mt-64">Complete + exception states</p>
-        <div class="vyn-phones vyn-phones--4 vyn-mt-24">
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line vyn-skel-line--sm"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Delivery Complete</h3>
-              <p class="project-visual-placeholder__desc">Completion confirmation, destination, delivery time, optional history action.</p>
-              <p class="project-visual-placeholder__file">vyn-user-complete.webp</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line vyn-skel-line--md"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Receiver unavailable</h3>
-              <p class="project-visual-placeholder__desc">Suggest a department desk instead of failing the send.</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Department closing</h3>
-              <p class="project-visual-placeholder__desc">Block send or offer the next open window.</p>
-            </figcaption>
-          </figure>
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage"><div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-line vyn-skel-line--sm"></div></div></div></div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-              <h3 class="vyn-h3">Robot delayed / handoff timeout</h3>
-              <p class="project-visual-placeholder__desc">Update ETA with cause. Secure hold, then reassign or return.</p>
-              <p class="project-visual-placeholder__file">vyn-user-exception-states.webp</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="vyn-section" id="ai" aria-labelledby="ai-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">AI for the user</p>
-        <h2 class="vyn-h2" id="ai-title">Intelligence should reduce decisions, not create new ones.</h2>
-        <p class="vyn-lead">On the user side, AI is invisible unless it improves the decision. Defaults, warnings, recommendations, prediction — always with override. Not a chatbot.</p>
-        <div class="vyn-ai vyn-mt-40">
-          <article>
-            <small>Signal</small>
-            <p class="vyn-body">Acceptance history, class patterns, location habits.</p>
-            <small class="vyn-mt-16">Interpretation</small>
-            <p class="vyn-body">Likely unavailable.</p>
-            <small class="vyn-mt-16">Behavior</small>
-            <p class="vyn-body">“Deliver to Marriott Library instead?”</p>
           </article>
-          <article>
-            <small>Signal</small>
-            <p class="vyn-body">Item type, pickup location, past prep times.</p>
-            <small class="vyn-mt-16">Interpretation</small>
-            <p class="vyn-body">Most senders are ready now.</p>
-            <small class="vyn-mt-16">Behavior</small>
-            <p class="vyn-body">Highlight Pickup now. Schedule stays one tap away.</p>
-          </article>
-          <article>
-            <small>Signal</small>
-            <p class="vyn-body">Route history, slope, congestion.</p>
-            <small class="vyn-mt-16">Interpretation</small>
-            <p class="vyn-body">A single minute is not always honest.</p>
-            <small class="vyn-mt-16">Behavior</small>
-            <p class="vyn-body">Show a range only when it changes expectation.</p>
-          </article>
-          <article>
-            <small>Signal</small>
-            <p class="vyn-body">Building access, hours, known delays.</p>
-            <small class="vyn-mt-16">Interpretation</small>
-            <p class="vyn-body">This send is likely to stall.</p>
-            <small class="vyn-mt-16">Behavior</small>
-            <p class="vyn-body">Warn before confirm. Suggest an alternative.</p>
-          </article>
-        </div>
-        <figure class="project-visual-placeholder project-visual-placeholder--lg vyn-mt-48">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-phone" aria-hidden="true"><div class="vyn-skel-phone__bar"></div><div class="vyn-skel-phone__body"><div class="vyn-skel-block"></div><div class="vyn-skel-line vyn-skel-line--md"></div><div class="vyn-skel-line"></div></div></div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">AI-Assisted Delivery Decision</h3>
-            <p class="project-visual-placeholder__desc">Mobile interface showing a receiver-availability warning with an alternative department recommendation.</p>
-            <p class="project-visual-placeholder__meta">iPhone · portrait</p>
-            <p class="project-visual-placeholder__file">vyn-user-ai-recommendation.webp</p>
-            <ul class="project-visual-placeholder__tags"><li>Availability</li><li>Override preserved</li></ul>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
 
-    <section class="vyn-section vyn-section--dark" id="command" aria-labelledby="transition-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Behind the delivery</p>
-        <h2 class="vyn-h2" id="transition-title">Simple on the surface.<br>Complex underneath.</h2>
-        <p class="vyn-lead">Every “6 minutes away” message hides route planning, battery prediction, robot health, obstacle detection, connectivity, and mission coordination.</p>
-        <p class="vyn-support vyn-mt-40">VYN Command</p>
-        <p class="vyn-body">The operating system behind the experience.</p>
-        <figure class="project-visual-placeholder project-visual-placeholder--xl project-visual-placeholder--dark vyn-mt-48">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk" aria-hidden="true" style="width:min(920px,100%);opacity:.9">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-desk__shell">
-                <div class="vyn-skel-desk__nav"></div>
-                <div class="vyn-skel-desk__map"><i class="vyn-skel-dot" style="top:36%;left:40%"></i><i class="vyn-skel-dot" style="top:58%;left:66%"></i></div>
-                <div class="vyn-skel-desk__side"><div class="vyn-skel-block"></div><div class="vyn-skel-line"></div><div class="vyn-skel-line vyn-skel-line--md"></div></div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Robot operations / desktop</p>
-            <h3 class="vyn-h3">Fleet command entering view</h3>
-            <p class="project-visual-placeholder__desc">Dashboard silhouette for the operating system behind every consumer ETA.</p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section vyn-section--white" aria-labelledby="ops-title">
-      <div class="vyn-wrap">
-        <div class="vyn-chapter">
-          <span class="vyn-chapter__num" aria-hidden="true">02</span>
-          <div>
-            <p class="vyn-eyebrow">VYN Command</p>
-            <h2 class="vyn-h2" id="ops-title">From monitoring robots to commanding outcomes.</h2>
-          </div>
-        </div>
-        <p class="vyn-lead">This is a robot monitoring, fleet operations, mission management, and exception management product. Not an analytics dashboard. Within about five seconds the operator should know whether anything is wrong, which robot, where, why, and whether they need to act.</p>
-        <div class="vyn-jobs vyn-mt-40">
-          <div><h3 class="vyn-h3">Deploy</h3><p>Bring another robot into the fleet.</p></div>
-          <div><h3 class="vyn-h3">Observe</h3><p>Is the system healthy?</p></div>
-          <div><h3 class="vyn-h3">Coordinate</h3><p>Assign and batch missions.</p></div>
-          <div><h3 class="vyn-h3">Diagnose</h3><p>Why did it stop?</p></div>
-          <div><h3 class="vyn-h3">Intervene</h3><p>Reroute, assist, or cancel.</p></div>
-          <div><h3 class="vyn-h3">Learn</h3><p>What keeps happening?</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="vyn-section" aria-labelledby="fleet-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Primary operations surface</p>
-        <h2 class="vyn-h2" id="fleet-title">Attention first. Then what is happening. Then what may happen next.</h2>
-        <p class="vyn-lead">Overview · Missions · Fleet · Map · Incidents · Deployments · Analytics. Status is always icon, color, and label.</p>
-        <figure class="project-visual-placeholder project-visual-placeholder--xl vyn-mt-40">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk" aria-hidden="true" style="width:min(1080px,100%)">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-desk__shell" style="min-height:480px">
-                <div class="vyn-skel-desk__nav"></div>
-                <div class="vyn-skel-desk__map">
-                  <i class="vyn-skel-dot" style="top:28%;left:32%"></i>
-                  <i class="vyn-skel-dot" style="top:46%;left:58%"></i>
-                  <i class="vyn-skel-dot" style="top:64%;left:44%"></i>
-                  <i class="vyn-skel-dot" style="top:52%;left:76%;background:#C93A3A"></i>
-                </div>
-                <div class="vyn-skel-desk__side">
-                  <div class="vyn-skel-line vyn-skel-line--sm"></div>
-                  <div class="vyn-skel-block"></div>
-                  <div class="vyn-skel-line"></div>
-                  <div class="vyn-skel-line vyn-skel-line--md"></div>
-                  <div class="vyn-skel-block"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Robot operations / desktop</p>
-            <h3 class="vyn-h3">VYN Command — Fleet Overview</h3>
-            <p class="project-visual-placeholder__desc">Primary fleet command dashboard for monitoring all autonomous delivery robots across campus. Fleet health, live locations, mission progress, charging state, and an AI-assisted attention queue. Compact rail: 12 Operational · 8 Active Missions · 3 Charging · 1 Needs Attention · 0 Offline. Map occupies most of the main area. Attention Queue sits beside it — VYN-07 delivery risk, battery predicted at destination 11%, transfer Mission #482 to VYN-03.</p>
-            <p class="project-visual-placeholder__meta">Desktop · 1600 × 1100 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-command-fleet-overview.webp</p>
-            <ul class="project-visual-placeholder__tags">
-              <li>Fleet health</li>
-              <li>Mission monitoring</li>
-              <li>AI recommendations</li>
+          <article class="vyn-impact__block vyn-reveal">
+            <p class="vyn-impact__n">03 &mdash; What I would measure first</p>
+            <p class="vyn-impact__text">Each of these exists to catch a specific way one of my decisions could be wrong. If I were handed a pilot tomorrow, this is the instrumentation I would ask for before anything else.</p>
+            <ul class="vyn-impact__measure">
+              <li><strong>Completion rate for first-time senders</strong>Tests Decision 01 &mdash; whether hiding robotics removed friction or hid something people needed.</li>
+              <li><strong>Department opt-in and withdrawal rate</strong>Tests Decision 04 &mdash; whether pre-acceptance survives contact with real departments, or gets revoked after the first awkward delivery.</li>
+              <li><strong>Time to first action on an attention item</strong>Tests Decision 02 &mdash; whether the queue actually beats a map, measured when the fleet is busy rather than idle.</li>
+              <li><strong>Approval rate versus override rate on recommendations</strong>Tests Decision 03 &mdash; an approval rate near 100% means the gate has become reflex and the authority is fictional.</li>
+              <li><strong>Second-intervention rate after an approved action</strong>Whether recommendations actually resolve incidents, or just defer them by a few minutes.</li>
+              <li><strong>Handoff timeout rate by building and hour</strong>Tests the 5&ndash;15 minute window assumption the whole product is built on.</li>
             </ul>
-          </figcaption>
-        </figure>
-        <div class="vyn-anno">
-          <div><span>01</span><p>Attention first. Critical intervention is surfaced before analytics.</p></div>
-          <div><span>02</span><p>Map as operational context. Robots, missions, chargers, incidents.</p></div>
-          <div><span>03</span><p>Predicted battery. Operators see destination charge, not only current.</p></div>
-          <div><span>04</span><p>Human approval. Consequential recommendations require confirmation.</p></div>
+          </article>
+
+        </div>
+
+        <div class="vyn-clay vyn-clay--flat vyn-mt-40">
+          <p class="vyn-exec__label">How to read this page</p>
+          <p class="vyn-exec__text">Every figure above describes the design or a walkthrough observation. None of them is an operational metric, a pilot result, or a production outcome &mdash; because I did not own instrumentation, and inventing the numbers would make the honest parts of this case study worthless too.</p>
         </div>
       </div>
     </section>
 
-    <section class="vyn-section vyn-section--white" aria-labelledby="robot-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Robot as the operational object</p>
-        <h2 class="vyn-h2" id="robot-title">What is this robot doing, and is it healthy?</h2>
-        <figure class="project-visual-placeholder project-visual-placeholder--lg vyn-mt-40">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk" aria-hidden="true" style="width:min(960px,100%)">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-desk__shell">
-                <div class="vyn-skel-desk__nav"></div>
-                <div class="vyn-skel-desk__map"><i class="vyn-skel-dot" style="top:48%;left:55%"></i></div>
-                <div class="vyn-skel-desk__side"><div class="vyn-skel-line vyn-skel-line--sm"></div><div class="vyn-skel-line"></div><div class="vyn-skel-block"></div></div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">Robot Detail — VYN-07</h3>
-            <p class="project-visual-placeholder__desc">Delivering · Autonomous · Mission #482 · Engineering → Marriott Library · ETA 6 min · Battery 24% · Predicted at destination 11% · Connectivity excellent · Payload secured · Localization 98%. Tabs: Overview / Sensors / Missions / Health / History. Camera stays off the default dashboard.</p>
-            <p class="project-visual-placeholder__meta">Desktop · 1440 × 960 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-command-robot-detail.webp</p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section" aria-labelledby="incident-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Incident response</p>
-        <h2 class="vyn-h2" id="incident-title">When autonomy stops, the operator should already know what to do.</h2>
-        <figure class="project-visual-placeholder project-visual-placeholder--xl vyn-mt-40">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk" aria-hidden="true" style="width:min(1000px,100%)">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-desk__shell" style="min-height:420px">
-                <div class="vyn-skel-desk__nav"></div>
-                <div class="vyn-skel-desk__map"><i class="vyn-skel-dot" style="top:50%;left:48%;background:#C93A3A"></i></div>
-                <div class="vyn-skel-desk__side"><div class="vyn-skel-block"></div><div class="vyn-skel-line"></div><div class="vyn-skel-line vyn-skel-line--md"></div><div class="vyn-skel-block"></div></div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">Incident Workspace — Path Blocked</h3>
-            <p class="project-visual-placeholder__desc">VYN-04. Confidence 94%. Robot stopped safely. Mission #491. Recommended reroute through the Student Union walkway: +180 m, +2 min, −3% battery. Actions: Apply reroute · Remote assist · Cancel mission. Timeline from detection to awaiting decision.</p>
-            <p class="project-visual-placeholder__meta">Desktop · 1600 × 1100 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-command-incident.webp</p>
-            <ul class="project-visual-placeholder__tags"><li>Decision support</li><li>Human oversight</li><li>Risk communication</li></ul>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section vyn-section--white" aria-labelledby="teleop-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Remote assist</p>
-        <h2 class="vyn-h2" id="teleop-title">Direct control only after the operator asks for it.</h2>
-        <p class="vyn-lead">Joystick controls are withheld in monitoring mode. Return to Autonomy stays persistent once they enter.</p>
-        <figure class="project-visual-placeholder project-visual-placeholder--xl project-visual-placeholder--dark vyn-mt-40">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk" aria-hidden="true" style="width:min(1000px,100%)">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-desk__shell" style="min-height:400px;grid-template-columns:1.2fr .8fr 200px">
-                <div class="vyn-skel-desk__map"></div>
-                <div class="vyn-skel-desk__map" style="background:#dce3f7"><i class="vyn-skel-dot" style="top:50%;left:50%"></i></div>
-                <div class="vyn-skel-desk__side"><div class="vyn-skel-line vyn-skel-line--sm"></div><div class="vyn-skel-line"></div><div class="vyn-skel-block"></div></div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">Remote Assist — VYN-04</h3>
-            <p class="project-visual-placeholder__desc">Camera stream, local environment / LiDAR, map and route, obstacle detections, battery, network latency, speed, localization confidence, mission status. Direction control, stop, and resume autonomy appear only in this mode.</p>
-            <p class="project-visual-placeholder__meta">Desktop · 1600 × 1100 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-command-remote-assist.webp</p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section" aria-labelledby="orch-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Multi-robot orchestration</p>
-        <h2 class="vyn-h2" id="orch-title">AI proposes allocation. Operators keep authority.</h2>
-        <figure class="project-visual-placeholder project-visual-placeholder--lg vyn-mt-40">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk" aria-hidden="true" style="width:min(920px,100%)">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-desk__shell">
-                <div class="vyn-skel-desk__nav"></div>
-                <div class="vyn-skel-desk__side" style="border-right:1px solid #ececee"><div class="vyn-skel-line"></div><div class="vyn-skel-block"></div><div class="vyn-skel-block"></div></div>
-                <div class="vyn-skel-desk__side"><div class="vyn-skel-line vyn-skel-line--sm"></div><div class="vyn-skel-block"></div></div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">Mission Orchestration</h3>
-            <p class="project-visual-placeholder__desc">Four tasks ready. Recommended batch of #483 + #486 because destinations share 71% of the route. Estimated 12 minutes fleet time saved. Approve plan or modify assignment.</p>
-            <p class="project-visual-placeholder__meta">Desktop · 1440 × 960 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-command-orchestration.webp</p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section vyn-section--white" aria-labelledby="deploy-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Robot deployment</p>
-        <h2 class="vyn-h2" id="deploy-title">Unbox. Power on. Connect. Deploy.</h2>
-        <p class="vyn-lead">Identify → Network → Health check → Localization → Safety → Test mission → Ready. Tablet-first, almost consumer-grade.</p>
-        <figure class="project-visual-placeholder project-visual-placeholder--lg vyn-mt-40">
-          <div class="project-visual-placeholder__stage">
-            <div class="vyn-skel-desk vyn-skel-tablet" aria-hidden="true" style="width:min(720px,100%)">
-              <div class="vyn-skel-desk__bar"></div>
-              <div class="vyn-skel-phone__body">
-                <div class="vyn-skel-line vyn-skel-line--sm"></div>
-                <div class="vyn-skel-line vyn-skel-line--md"></div>
-                <div class="vyn-skel-block"></div>
-                <div class="vyn-skel-line"></div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="project-visual-placeholder__caption">
-            <p class="project-visual-placeholder__cat">Figma export / UI screen</p>
-            <h3 class="vyn-h3">Robot Deployment</h3>
-            <p class="project-visual-placeholder__desc">Self-service tablet stepper for activating another robot without translating motor-level configuration in the field.</p>
-            <p class="project-visual-placeholder__meta">Tablet · 1180 × 820 recommended</p>
-            <p class="project-visual-placeholder__file">vyn-command-deployment.webp</p>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="vyn-section" aria-labelledby="ladder-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Operations AI model</p>
-        <h2 class="vyn-h2" id="ladder-title">For operators, AI should become more visible — not more magical.</h2>
-        <div class="vyn-ladder vyn-mt-40">
-          <article><p class="vyn-eyebrow">Observe</p><p>AI detects.</p></article>
-          <article><p class="vyn-eyebrow">Explain</p><p>AI adds context.</p></article>
-          <article><p class="vyn-eyebrow">Recommend</p><p>AI proposes action.</p></article>
-          <article><p class="vyn-eyebrow">Approve</p><p>Human confirms.</p></article>
-          <article><p class="vyn-eyebrow">Automate</p><p>Low-risk policies run.</p></article>
-          <article><p class="vyn-eyebrow">Escalate</p><p>Human intervention required.</p></article>
-        </div>
-        <div class="vyn-callout">
-          <strong>What the operator sees on anything consequential</strong>
-          <p>What happened · Why · Confidence · Recommended action · Expected consequence · Alternative · Override</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="vyn-section vyn-section--white" id="system" aria-labelledby="ds-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Design system</p>
-        <h2 class="vyn-h2" id="ds-title">Rational, human, focused.</h2>
-        <p class="vyn-lead">Semantic color appears only when state requires it. Status is color + icon + text. Product panels stay tight. The case study stays editorial.</p>
-
-        <div class="vyn-ds-row">
-          <h3 class="vyn-h3">Color</h3>
-          <div class="vyn-swatch-row">
-            <div class="vyn-swatch"><i style="background:#3157F6"></i><span>VYN Blue</span></div>
-            <div class="vyn-swatch"><i style="background:#FAFAFA"></i><span>Background</span></div>
-            <div class="vyn-swatch"><i style="background:#111114"></i><span>Text</span></div>
-            <div class="vyn-swatch"><i style="background:#278456"></i><span>Success</span></div>
-            <div class="vyn-swatch"><i style="background:#B66A16"></i><span>Attention</span></div>
-            <div class="vyn-swatch"><i style="background:#C93A3A"></i><span>Critical</span></div>
-          </div>
-        </div>
-        <div class="vyn-ds-row">
-          <h3 class="vyn-h3">Type</h3>
-          <div class="vyn-type-sample">
-            <span style="font-size:28px;letter-spacing:-.03em;color:#111114">Display · case-study headings</span>
-            <span style="font-size:18px;color:#111114">Heading · section titles</span>
-            <span style="font-size:16px">Body · 16 / 18</span>
-            <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Label / metadata</span>
-            <span style="font-size:14px">Operational data · 13–14</span>
-          </div>
-        </div>
-        <div class="vyn-ds-row">
-          <h3 class="vyn-h3">Status</h3>
-          <div class="vyn-chip-row">
-            <span class="vyn-chip"><i style="background:#278456"></i>Healthy</span>
-            <span class="vyn-chip"><i style="background:#3157F6"></i>Delivering</span>
-            <span class="vyn-chip"><i style="background:#B66A16"></i>Charging</span>
-            <span class="vyn-chip"><i style="background:#666A73"></i>Idle</span>
-            <span class="vyn-chip"><i style="background:#B66A16"></i>Attention</span>
-            <span class="vyn-chip"><i style="background:#C93A3A"></i>Critical</span>
-            <span class="vyn-chip"><i style="background:#111114"></i>Offline</span>
-            <span class="vyn-chip"><i style="background:#3157F6"></i>Remote Assist</span>
-          </div>
-        </div>
-        <div class="vyn-ds-row">
-          <h3 class="vyn-h3">Components that prove the system</h3>
-          <p class="vyn-body">Primary / secondary / danger buttons. Robot row. Mission row. Attention item. Incident card. AI recommendation. Status badge. Search, filters, tabs, stepper. Map markers for robot, route, incident, charger, restricted zone. 8px spacing. 44px touch on tablet. Consequential actions confirm. Emergency actions stay distinct.</p>
-        </div>
-        <p class="vyn-note vyn-mt-40">Accessibility: WCAG AA contrast, keyboard access, visible focus, reduced motion, semantic HTML, no color-only states. Direct teleoperation is opt-in, not ambient.</p>
-      </div>
-    </section>
-
-    <section class="vyn-section" aria-labelledby="final-title">
-      <div class="vyn-wrap">
-        <p class="vyn-eyebrow">Same robot, different information</p>
-        <h2 class="vyn-h2" id="final-title">Same robot. Same mission. Different information.</h2>
-        <div class="vyn-final vyn-mt-48">
-          <figure class="project-visual-placeholder project-visual-placeholder--phone">
-            <div class="project-visual-placeholder__stage">
-              <div class="vyn-skel-phone" aria-hidden="true">
-                <div class="vyn-skel-phone__bar"></div>
-                <div class="vyn-skel-phone__body">
-                  <div class="vyn-skel-line vyn-skel-line--sm"></div>
-                  <div class="vyn-skel-map"><i class="vyn-skel-dot" style="top:48%;left:58%"></i></div>
-                  <div class="vyn-skel-line vyn-skel-line--md"></div>
-                </div>
-              </div>
-            </div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">VYN User</p>
-              <h3 class="vyn-h3">Your robot is 6 minutes away.</h3>
-              <p class="project-visual-placeholder__desc">Marriott Library. ETA 6 min. No fleet health. No battery forecast. No incident controls.</p>
-              <p class="project-visual-placeholder__file">vyn-user-live-tracking.webp</p>
-            </figcaption>
-          </figure>
-          <div class="vyn-final__mid">Mission #482<br><strong>Same physical event.<br>Different cognitive needs.</strong></div>
-          <figure class="project-visual-placeholder project-visual-placeholder--md">
-            <div class="project-visual-placeholder__stage">
-              <div class="vyn-skel-desk" aria-hidden="true" style="width:100%">
-                <div class="vyn-skel-desk__bar"></div>
-                <div class="vyn-skel-desk__shell">
-                  <div class="vyn-skel-desk__nav"></div>
-                  <div class="vyn-skel-desk__map"><i class="vyn-skel-dot" style="top:46%;left:52%"></i></div>
-                  <div class="vyn-skel-desk__side"><div class="vyn-skel-line vyn-skel-line--sm"></div><div class="vyn-skel-line"></div></div>
-                </div>
-              </div>
-            </div>
-            <figcaption class="project-visual-placeholder__caption">
-              <p class="project-visual-placeholder__cat">VYN Command</p>
-              <h3 class="vyn-h3">VYN-07 · Autonomous</h3>
-              <p class="project-visual-placeholder__desc">Mission #482. Battery 76%. ETA 6 min. Mission healthy. No intervention required.</p>
-              <p class="project-visual-placeholder__file">vyn-command-robot-detail.webp</p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="vyn-section vyn-section--white" aria-labelledby="reflect-title">
-      <div class="vyn-wrap">
+    <!-- 12 · REFLECTION -->
+    <section class="vyn-section vyn-reveal" aria-labelledby="reflection-heading">
+      <div class="vyn-container vyn-container--content">
         <p class="vyn-eyebrow">Reflection</p>
-        <h2 class="vyn-h2" id="reflect-title">Designing VYN changed the problem from “How should a robot-delivery app work?”</h2>
-        <p class="vyn-support">to “How should humans interact with an autonomous system when they have completely different responsibilities?”</p>
-        <div class="vyn-take">
-          <div>
-            <h3 class="vyn-h3">User</h3>
-            <p>Trust autonomy without managing it.</p>
-          </div>
-          <div>
-            <h3 class="vyn-h3">Operator</h3>
-            <p>Understand autonomy without constantly controlling it.</p>
-          </div>
-          <div>
-            <h3 class="vyn-h3">AI</h3>
-            <p>Reduce attention without removing authority.</p>
-          </div>
-          <div>
-            <h3 class="vyn-h3">System</h3>
-            <p>Design failures as deliberately as success.</p>
+        <h2 id="reflection-heading" class="vyn-h2">The question changed halfway through, and that was the work.</h2>
+        <p class="vyn-lead">I started on &ldquo;how should a robot delivery app work?&rdquo; and finished on &ldquo;how should humans interact with an autonomous system when they carry completely different responsibilities for it?&rdquo; Everything good in this project came after that second question replaced the first &mdash; including the decision to stop designing one product.</p>
+      </div>
+
+      <div class="vyn-container vyn-mt-40">
+        <div class="vyn-limits">
+          <article class="vyn-limits__col">
+            <h3 class="vyn-h3">Limitations I&rsquo;d state in an interview before you asked</h3>
+            <ul class="vyn-limits__list">
+              <li><strong>No field deployment.</strong> Every claim about operator speed or sender confidence is a design argument, not an observed result. The attention queue has never been used during an actual bad afternoon.</li>
+              <li><strong>The strategy depends on a commitment I couldn&rsquo;t secure.</strong> Department pre-acceptance needs institutional buy-in. I designed the fallback, but the headline strategy is contingent on a conversation that never happened.</li>
+              <li><strong>Single-campus assumptions throughout.</strong> Fixed map, verified identities, short distances, one operator. Loosen any of those and at least two of the four decisions need re-arguing &mdash; the authority model first.</li>
+              <li><strong>AI behaviour is specified, not evaluated.</strong> I defined what the system may claim and when it must defer. I never saw it be wrong in front of a real operator, which is the only test that matters for a trust model.</li>
+              <li><strong>Accessibility is designed to guidelines, not tested with people.</strong> Contrast, focus order, non-colour status and reduced motion are all handled in the system. None of it has been through assistive technology with an actual user.</li>
+            </ul>
+          </article>
+
+          <article class="vyn-limits__col">
+            <h3 class="vyn-h3">What I&rsquo;d do differently</h3>
+            <ul class="vyn-limits__list">
+              <li><strong>Talk to a department in week one.</strong> The pivot that shaped the whole product rests on organisational behaviour, and I validated it with users long before I pressure-tested it with the institution that has to agree to it.</li>
+              <li><strong>Design the log before the dashboard.</strong> I built the attention queue first and the activity log second. It should have been the reverse &mdash; what the system did unattended is the record that keeps automation honest, and it deserved to be a primary surface rather than a tab.</li>
+              <li><strong>Write the failure copy earlier.</strong> The abstraction in Decision 01 puts enormous weight on exception messages, and I wrote them last. The availability warning that tested badly is the direct consequence of treating that copy as finishing work.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="vyn-takeaway vyn-mt-48">
+          <p class="vyn-takeaway__label">The four rules the system ended up running on</p>
+          <div class="vyn-takeaway__grid vyn-stagger">
+            <div class="vyn-reveal"><strong>User</strong><span>Trust autonomy without managing it.</span></div>
+            <div class="vyn-reveal"><strong>Operator</strong><span>Understand autonomy without constantly controlling it.</span></div>
+            <div class="vyn-reveal"><strong>AI</strong><span>Reduce attention without removing authority.</span></div>
+            <div class="vyn-reveal"><strong>System</strong><span>Design the failures as deliberately as the successes.</span></div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="vyn-footer">
-    <div class="vyn-wrap vyn-footer__row">
-      <p class="vyn-note">VYN — one autonomous system, two experiences.</p>
+  <footer id="contact" class="vyn-footer">
+    <div class="vyn-footer__inner">
       <div>
-        <a href="../index.html#work">← Back to work</a>
-        <a href="mailto:ajithalphonse300@gmail.com">Contact</a>
+        <h2 class="vyn-footer__title">Let&rsquo;s talk about the decisions, not just the screens</h2>
+        <p class="vyn-footer__body">Happy to walk through the tradeoffs above &mdash; including the two I&rsquo;d argue differently now, and what I&rsquo;d instrument first if this ever met a real fleet.</p>
+      </div>
+      <div class="vyn-footer__cta">
+        <a href="../index.html#work" class="vyn-footer__btn"><span aria-hidden="true">&larr;</span> Work</a>
+        <a href="mailto:ajithalphonse300@gmail.com" class="vyn-footer__btn vyn-footer__btn--primary">Email</a>
+        <a href="https://www.linkedin.com/in/ajith-alphonse/" class="vyn-footer__btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>
 
   <script>
-    (function () {
+    (function initNav() {
       var nav = document.getElementById('vynNav');
-      window.addEventListener('scroll', function () {
-        if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 8);
-      }, { passive: true });
+      if (!nav) return;
+      var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    (function initReveals() {
+      var targets = document.querySelectorAll('.vyn-reveal');
+      if (!targets.length) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        Array.prototype.forEach.call(targets, function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+
+      Array.prototype.forEach.call(targets, function (el) { observer.observe(el); });
     })();
   </script>
 </body>
