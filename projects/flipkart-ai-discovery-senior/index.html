@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flipkart — From Keyword Search to Intent-Aware Discovery | Product Design Case Study</title>
+  <meta name="description" content="A senior product design case study on intent-aware product discovery for Flipkart: what I owned, the decisions and tradeoffs behind intent expression, multimodal entry, result clustering and comparison depth, and how the work was validated.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fk-senior.css?v=fk-senior-1">
+</head>
+<body class="fks-page">
+
+  <!-- 01 HERO -->
+  <header class="fks-hero" id="hero">
+    <nav class="fks-nav" aria-label="Case study navigation">
+      <div class="fks-nav__inner">
+        <div class="fks-nav__group fks-nav__group--left">
+          <a href="../../index.html" class="fks-nav__pill" aria-label="Back to portfolio">
+            <span aria-hidden="true">&larr;</span>&nbsp;Back to Portfolio
+          </a>
+        </div>
+
+        <div class="fks-nav__group fks-nav__group--center">
+          <div class="fks-nav__links">
+            <a href="../../index.html#work" class="fks-nav__link">Work</a>
+            <a href="../../know-me.html" class="fks-nav__link">Know Me</a>
+          </div>
+        </div>
+
+        <div class="fks-nav__group fks-nav__group--right">
+          <div class="fks-nav__links">
+            <a href="#decisions-heading" class="fks-nav__link">Decisions</a>
+            <a href="#impact-heading" class="fks-nav__link">Impact</a>
+            <a href="#contact" class="fks-nav__link fks-nav__link--primary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <img
+      src="../../assets/flip-home.webp"
+      alt="Flipkart AI-powered product discovery shown on a phone and laptop"
+      class="fks-hero__img"
+      width="3840"
+      height="2000"
+      loading="eager"
+      decoding="async">
+  </header>
+
+  <main id="main">
+
+    <!-- 02 TITLE -->
+    <section class="fks-intro fks-container fks-container--content fks-reveal" aria-labelledby="case-title">
+      <div class="fks-badges">
+        <span class="fks-badge fks-badge--accent">Product Design</span>
+        <span class="fks-badge fks-badge--yellow">AI Discovery</span>
+        <span class="fks-badge">8&ndash;10 min read</span>
+      </div>
+
+      <h1 id="case-title" class="fks-title">From keyword search <br>to intent-aware discovery.</h1>
+      <p class="fks-support">Flipkart could return thousands of products. Helping people express what they meant &mdash; then decide with confidence &mdash; was the harder product problem.</p>
+
+      <dl class="fks-meta">
+        <div>
+          <dt>Role</dt>
+          <dd>Product Designer</dd>
+        </div>
+        <div>
+          <dt>Product</dt>
+          <dd>Flipkart &mdash; search &amp; discovery</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>AI Search &middot; Product Discovery &middot; E-commerce Decision Support</dd>
+        </div>
+        <div>
+          <dt>Duration</dt>
+          <dd>8 months</dd>
+        </div>
+        <div>
+          <dt>Contribution</dt>
+          <dd>Intent-aware discovery experience &mdash; search entry &rarr; results &rarr; comparison &rarr; decision support</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 03 EXEC SUMMARY -->
+    <section class="fks-section fks-section--tight fks-reveal" id="summary" aria-labelledby="summary-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">In short</p>
+        <h2 id="summary-heading" class="fks-h2 fks-h2--accent">Retrieval was never the bottleneck. Interpretation was.</h2>
+        <p class="fks-lead">Flipkart&rsquo;s search could find matching products in milliseconds. What it could not do was tell someone which of those products actually answered the goal behind their query &mdash; or give them a way to settle the comparison without opening eight tabs.</p>
+      </div>
+
+      <div class="fks-container" style="margin-top: 32px;">
+        <div class="fks-clay">
+          <div class="fks-exec">
+            <div class="fks-exec__col">
+              <p class="fks-exec__label">The problem</p>
+              <p class="fks-exec__text">People searched in goals &mdash; budget, use case, audience &mdash; but the system matched on keywords. A query like &ldquo;best gaming phone under &#8377;30,000&rdquo; returned a long, flat, unranked list where relevance was left entirely to the shopper to work out.</p>
+            </div>
+
+            <div class="fks-exec__col">
+              <p class="fks-exec__label">What I owned</p>
+              <ul class="fks-list">
+                <li>The intent model for search entry and query interpretation</li>
+                <li>Result clustering and the explanation pattern attached to each cluster</li>
+                <li>Side-by-side comparison and decision-support surfaces</li>
+                <li>Concept validation framing and the query analysis behind it</li>
+              </ul>
+            </div>
+
+            <div class="fks-exec__col">
+              <p class="fks-exec__label">The outcome (honest)</p>
+              <p class="fks-exec__text"><strong>A validated discovery concept, not a shipped platform experiment.</strong> The work produced a research-grounded opportunity case, a tested interaction model, and a reusable set of intent, cluster and explanation patterns.</p>
+              <p class="fks-exec__text">Every number on this page is a research observation or a concept-validation result &mdash; never a Flipkart production A/B outcome.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 PROBLEM & STAKES -->
+    <section class="fks-section fks-reveal" aria-labelledby="problem-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">Problem &amp; stakes</p>
+        <h2 id="problem-heading" class="fks-h2">&ldquo;It found me a hundred phones. <br>It didn&rsquo;t tell me which one to buy.&rdquo;</h2>
+        <p class="fks-lead">A keyword engine treats a query as a filter. A shopper treats it as a question. That gap is invisible when someone types a model number, and it is the whole experience when they type a goal.</p>
+      </div>
+
+      <div class="fks-container">
+        <div class="fks-two-col">
+          <div class="fks-clay fks-clay--plain">
+            <p class="fks-label">What it cost the shopper</p>
+            <ul class="fks-list">
+              <li><b>Unranked abundance.</b> More results read as more work, not more choice. Nothing said which items were the strongest answer.</li>
+              <li><b>Manual comparison.</b> People held specs in their head across tabs, and gave up before finishing.</li>
+              <li><b>No basis for confidence.</b> Even after choosing, shoppers couldn&rsquo;t say why their pick beat the next one &mdash; so the decision stayed reversible in their mind.</li>
+            </ul>
+          </div>
+
+          <div class="fks-clay fks-clay--plain">
+            <p class="fks-label">What it cost the product</p>
+            <ul class="fks-list">
+              <li><b>Abandoned sessions.</b> High-intent traffic arrived ready to buy and left mid-evaluation.</li>
+              <li><b>Decision deferral.</b> Carts and wishlists absorbed indecision the results page should have resolved.</li>
+              <li><b>Weak differentiation.</b> If discovery is a filtered list, every marketplace is the same list. Interpretation is where a platform can actually be better.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fks-container--content" style="padding: 0;">
+          <p class="fks-statement">The problem wasn&rsquo;t finding products. It was resolving intent.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 RESEARCH -->
+    <section class="fks-section fks-reveal" id="research" aria-labelledby="research-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">Research</p>
+        <h2 id="research-heading" class="fks-h2 fks-h2--accent">People searched in goals. The system read keywords.</h2>
+        <p class="fks-lead">I worked from query analysis, shopping-session observation and a competitor review of discovery patterns across major marketplaces. The pattern was consistent enough that it stopped being interesting and started being a brief.</p>
+      </div>
+
+      <div class="fks-container" style="margin-top: 32px;">
+        <div class="fks-clay">
+          <p class="fks-label">Research observations</p>
+          <ul class="fks-metrics">
+            <li class="fks-metric">
+              <span class="fks-metric__value">127</span>
+              <span class="fks-metric__title">results</span>
+              <span class="fks-metric__note">A typical intent-based query such as &ldquo;gaming phone under &#8377;30,000&rdquo; could return more than one hundred products.</span>
+            </li>
+            <li class="fks-metric">
+              <span class="fks-metric__value">34%</span>
+              <span class="fks-metric__title">immediately relevant</span>
+              <span class="fks-metric__note">Only a portion of surfaced products strongly matched both the budget and the use-case intent.</span>
+            </li>
+            <li class="fks-metric">
+              <span class="fks-metric__value">22%</span>
+              <span class="fks-metric__title">partially relevant</span>
+              <span class="fks-metric__note">Met the budget requirement but carried no clear evidence of being suitable for gaming.</span>
+            </li>
+            <li class="fks-metric">
+              <span class="fks-metric__value">5&ndash;7</span>
+              <span class="fks-metric__title">products explored</span>
+              <span class="fks-metric__note">Shoppers opened or saved several similar products before feeling ready to decide.</span>
+            </li>
+            <li class="fks-metric">
+              <span class="fks-metric__value">8&ndash;12</span>
+              <span class="fks-metric__title">minutes</span>
+              <span class="fks-metric__note">Time spent comparing specifications, ratings, reviews and offers before selecting one product.</span>
+            </li>
+          </ul>
+
+          <div class="fks-note">
+            <p class="fks-note__label">How to read these</p>
+            <p class="fks-note__text">These are <strong>research observations</strong> from query analysis and observed shopping sessions &mdash; they describe the problem I was designing against. They are not Flipkart platform KPIs and not experiment results.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fks-container" style="margin-top: 20px;">
+        <div class="fks-clay">
+          <p class="fks-label">What one query revealed</p>
+          <p class="fks-query__prompt">
+            <span class="fks-query__prompt-label">User query</span>
+            <span class="fks-query__prompt-text">&ldquo;Best gaming phone under &#8377;30,000&rdquo;</span>
+          </p>
+
+          <div class="fks-query__split">
+            <div class="fks-tile">
+              <h3 class="fks-tile__title">The system recognised</h3>
+              <ul class="fks-tile__list">
+                <li>Category: mobile phone</li>
+                <li>Price filter: below &#8377;30,000</li>
+                <li>Keyword match on &ldquo;gaming&rdquo;</li>
+              </ul>
+            </div>
+            <div class="fks-tile fks-tile--expect">
+              <h3 class="fks-tile__title">The shopper expected</h3>
+              <ul class="fks-tile__list">
+                <li>Strong sustained gaming performance</li>
+                <li>A reliable processor and GPU</li>
+                <li>Thermal management under load</li>
+                <li>Battery life that survives long sessions</li>
+                <li>A high-refresh-rate display</li>
+                <li>Evidence from people who actually game</li>
+                <li>A clear recommendation</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="fks-query__takeaway">The system could retrieve products. It could not explain which ones best satisfied the goal &mdash; and &ldquo;best&rdquo;, the most important word in the query, was the one word it ignored entirely.</p>
+        </div>
+      </div>
+
+      <div class="fks-container" style="margin-top: 20px;">
+        <div class="fks-clay">
+          <p class="fks-label">Four insights that shaped the work</p>
+          <div class="fks-insights-layout">
+            <ol class="fks-insights">
+              <li class="fks-insight">
+                <span class="fks-insight__index" aria-hidden="true">01</span>
+                <div>
+                  <h3 class="fks-insight__title">Shoppers searched by budget and use case</h3>
+                  <p class="fks-insight__copy">Most sessions began with a price ceiling and a job to be done rather than a brand or model name. The query described a situation, not a database lookup.</p>
+                </div>
+              </li>
+              <li class="fks-insight">
+                <span class="fks-insight__index" aria-hidden="true">02</span>
+                <div>
+                  <h3 class="fks-insight__title">Discovery was comparison-heavy by nature</h3>
+                  <p class="fks-insight__copy">People opened multiple products and rebuilt the same spec comparison by hand every time. Comparison wasn&rsquo;t an optional feature at the end of the funnel; it <em>was</em> the funnel.</p>
+                </div>
+              </li>
+              <li class="fks-insight">
+                <span class="fks-insight__index" aria-hidden="true">03</span>
+                <div>
+                  <h3 class="fks-insight__title">First-time and price-sensitive buyers needed interpretation</h3>
+                  <p class="fks-insight__copy">Least confident reading specifications, most affected by a wrong purchase. They didn&rsquo;t want more data &mdash; they wanted it translated into a consequence they could judge.</p>
+                </div>
+              </li>
+              <li class="fks-insight">
+                <span class="fks-insight__index" aria-hidden="true">04</span>
+                <div>
+                  <h3 class="fks-insight__title">Trust signals decided the final choice</h3>
+                  <p class="fks-insight__copy">Ratings, verified reviews, seller reliability, returns and delivery confidence moved the decision more than specifications did &mdash; so any recommendation that hid its reasoning would be ignored.</p>
+                </div>
+              </li>
+            </ol>
+
+            <figure class="fks-insights-media">
+              <img
+                src="../../assets/research-insights.webp"
+                alt="Phone mockup showing intent-based search suggestions such as gaming phone under 30,000 and best laptop for an engineering student"
+                width="880"
+                height="1936"
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 OWNERSHIP -->
+    <section class="fks-section fks-reveal" aria-labelledby="ownership-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">Accountability</p>
+        <h2 id="ownership-heading" class="fks-h2">What I owned &mdash; and what I didn&rsquo;t.</h2>
+        <p class="fks-lead">This was design work on one slice of a very large surface, alongside engineering, data science and category teams. Being precise about the boundary matters more than sounding senior.</p>
+      </div>
+
+      <div class="fks-container">
+        <div class="fks-own">
+          <div class="fks-clay">
+            <p class="fks-label">I owned</p>
+            <ul class="fks-own__list">
+              <li>
+                <b>The intent model for search entry</b>
+                Defined how a natural-language query decomposes into budget, use case, audience and feature intent &mdash; and how each becomes something the shopper can see, confirm and edit rather than something the system silently assumes.
+              </li>
+              <li>
+                <b>Result clustering and its explanation pattern</b>
+                Specified how results group into intent-aligned sets, what each cluster is allowed to claim, and the one-line rationale attached to every recommendation.
+              </li>
+              <li>
+                <b>Comparison and decision support</b>
+                Designed the side-by-side comparison, the attribute hierarchy behind it, and the trust signals that sit next to the choice at the moment it is made.
+              </li>
+              <li>
+                <b>Validation framing</b>
+                Wrote the concept-test tasks, ran the sessions, and set what counted as failure &mdash; testing whether people could predict and challenge the system&rsquo;s reasoning, not whether they liked the layout.
+              </li>
+              <li>
+                <b>The honest-recommendation rules</b>
+                Argued for and specified when the system must decline to recommend, and the language it uses when evidence is thin.
+              </li>
+            </ul>
+          </div>
+
+          <aside class="fks-clay fks-clay--plain">
+            <p class="fks-label">I did not own</p>
+            <ul class="fks-own__aside-list">
+              <li>The ranking or retrieval models</li>
+              <li>Catalogue data quality and attribute coverage</li>
+              <li>Pricing, offers and seller policy</li>
+              <li>Flipkart&rsquo;s design system, which I worked inside rather than redesigned</li>
+              <li>Roadmap, prioritisation and ship decisions</li>
+              <li>Production instrumentation and experiment design</li>
+            </ul>
+            <p class="fks-own__aside-note">Where a decision was made above me, I&rsquo;ve written it as a constraint I designed inside &mdash; not a call I made. It&rsquo;s also why the impact section claims no platform metrics: I did not own the measurement.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 DECISIONS -->
+    <section class="fks-section fks-reveal" id="decisions" aria-labelledby="decisions-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">Decisions &amp; tradeoffs</p>
+        <h2 id="decisions-heading" class="fks-h2 fks-h2--accent">Four decisions that shaped the work.</h2>
+        <p class="fks-lead">Each of these had a credible alternative, and each one cost something real. The costs are listed because they were accepted knowingly, not discovered later.</p>
+      </div>
+
+      <div class="fks-container">
+        <div class="fks-decisions">
+
+          <article class="fks-clay fks-reveal">
+            <p class="fks-decision__num">Decision 01 &middot; Query model</p>
+            <h3 class="fks-decision__title">Intent expression over keyword purity.</h3>
+            <div class="fks-decision__rows">
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Decision</p>
+                <p class="fks-decision__text">Treat the query as a statement of intent to be interpreted and made visible &mdash; budget, use case, audience, priority attributes shown back as editable chips &mdash; instead of a keyword string to be matched literally.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Alternatives considered</p>
+                <p class="fks-decision__text">Keep literal matching and invest in better filters and query suggestions. Or interpret intent silently in the background and only show the improved ranking.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Why we chose this</p>
+                <p class="fks-decision__text">Better filters ask the shopper to translate their goal into the system&rsquo;s vocabulary &mdash; exactly the work they were failing at. Silent interpretation performs well until it is wrong, and when it is wrong invisibly the shopper has no idea why the results look odd and no way to correct it. Making interpretation visible turns a model error into a two-second fix.</p>
+              </div>
+              <div class="fks-decision__row fks-decision__row--cost">
+                <p class="fks-decision__label">Cost accepted</p>
+                <p class="fks-decision__text">The results page now carries a layer of reasoning that has to be read, which slows down the shopper who typed an exact model name. And every interpretation error is on display &mdash; deliberately more accountable, and therefore more embarrassing when the model misfires.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fks-clay fks-reveal">
+            <p class="fks-decision__num">Decision 02 &middot; Input model</p>
+            <h3 class="fks-decision__title">Multimodal entry, scoped to where it earns its place.</h3>
+            <div class="fks-decision__rows">
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Decision</p>
+                <p class="fks-decision__text">Support image and voice entry as routes into the same intent model &mdash; and require every non-text input to resolve into the same visible, editable intent before it returns results.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Alternatives considered</p>
+                <p class="fks-decision__text">Stay text-only and keep the model surface small. Or build visual search as a separate destination with its own results experience, the way most marketplaces had.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Why we chose this</p>
+                <p class="fks-decision__text">A photo answers &ldquo;something like this&rdquo; far better than a sentence, and voice carries constraints people won&rsquo;t type on a phone. But a separate visual-search destination fragments the journey and doubles the surface. One intent representation meant one explanation pattern, one comparison model, one place to fix things.</p>
+              </div>
+              <div class="fks-decision__row fks-decision__row--cost">
+                <p class="fks-decision__label">Cost accepted</p>
+                <p class="fks-decision__text">Image input is the weakest link: strong on category and style, poor on use case, so it needs a clarifying step that makes it feel slower than it looks in a demo. I also accepted a heavier first run &mdash; three entry points to explain instead of one. Multimodal parity was the first thing I&rsquo;d have cut under schedule pressure.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fks-clay fks-reveal">
+            <p class="fks-decision__num">Decision 03 &middot; Results structure</p>
+            <h3 class="fks-decision__title">Explained clusters over a longer flat list.</h3>
+            <div class="fks-decision__rows">
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Decision</p>
+                <p class="fks-decision__text">Group results into a small number of intent-aligned clusters &mdash; best overall for the stated goal, best value, strongest on the attribute the shopper prioritised &mdash; and attach a short, specific rationale to each cluster and each top recommendation.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Alternatives considered</p>
+                <p class="fks-decision__text">Keep the flat list and improve ranking quietly. Or go further and return a single &ldquo;best&rdquo; answer with everything else collapsed behind it.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Why we chose this</p>
+                <p class="fks-decision__text">Better ranking on a flat list is invisible &mdash; the shopper still verifies it themselves, so it buys no confidence. A single answer is the opposite failure: it asks for trust the system hasn&rsquo;t earned, and one bad recommendation poisons every future one. Clusters let the system commit to a point of view while keeping alternatives visible &mdash; the shape of advice people actually accept.</p>
+              </div>
+              <div class="fks-decision__row fks-decision__row--cost">
+                <p class="fks-decision__label">Cost accepted</p>
+                <p class="fks-decision__text">Clustering is only as honest as the catalogue data behind it, and attribute coverage is uneven &mdash; which is why clusters degrade to a ranked list rather than invent a distinction. It also pushes products further down the page. The rationale line is the fragile part: written badly it reads as marketing copy and the whole pattern loses credibility.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fks-clay fks-reveal">
+            <p class="fks-decision__num">Decision 04 &middot; Decision support</p>
+            <h3 class="fks-decision__title">Comparison deep enough to settle the choice, shallow enough to finish.</h3>
+            <div class="fks-decision__rows">
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Decision</p>
+                <p class="fks-decision__text">Cap comparison at three products and roughly six attributes, chosen by the stated intent rather than by the spec sheet, with each attribute translated into a consequence &mdash; &ldquo;holds 60fps in long sessions&rdquo; rather than a chipset name.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Alternatives considered</p>
+                <p class="fks-decision__text">A full comparison table with every attribute and no limit on products, matching what power users ask for. Or no comparison surface at all, letting the clusters carry the whole decision.</p>
+              </div>
+              <div class="fks-decision__row">
+                <p class="fks-decision__label">Why we chose this</p>
+                <p class="fks-decision__text">In sessions, a full table recreated the exact overload people came to escape &mdash; they scrolled it and still couldn&rsquo;t say which product was better for them. Three products kept the comparison legible on a phone, and intent-selected attributes meant the table answered <em>their</em> question instead of listing everything the catalogue knew.</p>
+              </div>
+              <div class="fks-decision__row fks-decision__row--cost">
+                <p class="fks-decision__label">Cost accepted</p>
+                <p class="fks-decision__text">Expert shoppers hit a ceiling and still want the full sheet, so we kept a path to it and accepted it is worse than a purpose-built table. Selecting attributes by intent also means the system decides what matters &mdash; real editorial power, and the place where a wrong call is most damaging because it is least visible.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 SOLUTION -->
+    <section class="fks-section fks-reveal" aria-labelledby="solution-heading">
+      <div class="fks-container fks-container--content">
+        <img class="fks-section-icon" src="../../assets/Discovery.gif" alt="" width="96" height="96" loading="lazy" decoding="async" aria-hidden="true">
+        <p class="fks-eyebrow">The solution</p>
+        <h2 id="solution-heading" class="fks-h2">Say what you meant. <br>See why these.</h2>
+        <p class="fks-lead">One loop, four moves. The shopper states a goal, sees how the system understood it, reads results that are grouped and explained, and settles the choice in one place.</p>
+      </div>
+
+      <div class="fks-container">
+        <ol class="fks-flow">
+          <li class="fks-flow__step">
+            <span class="fks-flow__num">01</span>
+            <h3 class="fks-flow__title">Express</h3>
+            <p class="fks-flow__detail">Type, speak or photograph the goal &mdash; in the shopper&rsquo;s own words.</p>
+          </li>
+          <li class="fks-flow__step">
+            <span class="fks-flow__num">02</span>
+            <h3 class="fks-flow__title">Confirm</h3>
+            <p class="fks-flow__detail">Budget, use case and priorities come back as editable chips before anything is ranked.</p>
+          </li>
+          <li class="fks-flow__step">
+            <span class="fks-flow__num">03</span>
+            <h3 class="fks-flow__title">Understand</h3>
+            <p class="fks-flow__detail">Results arrive in intent-aligned clusters, each carrying a reason it exists.</p>
+          </li>
+          <li class="fks-flow__step">
+            <span class="fks-flow__num">04</span>
+            <h3 class="fks-flow__title">Decide</h3>
+            <p class="fks-flow__detail">Three products, the attributes that matter for this goal, and the trust signals beside them.</p>
+          </li>
+        </ol>
+
+        <div class="fks-compare">
+          <figure class="fks-compare__card fks-compare__card--before">
+            <figcaption class="fks-compare__tag">Before</figcaption>
+            <img
+              class="fks-compare__img"
+              src="../../assets/compare-before-1.webp"
+              alt="Before: a flat, unranked list of phone results with no grouping or explanation"
+              width="880"
+              height="1912"
+              loading="lazy"
+              decoding="async">
+            <p class="fks-compare__caption">A long, flat list. Every product looks equally plausible, relevance is unstated, and the whole evaluation is offloaded onto the shopper.</p>
+          </figure>
+
+          <div class="fks-compare__cue" aria-hidden="true">&rarr;</div>
+
+          <figure class="fks-compare__card fks-compare__card--after">
+            <figcaption class="fks-compare__tag">After</figcaption>
+            <img
+              class="fks-compare__img"
+              src="../../assets/compare-after-1.webp"
+              alt="After: intent-aligned result clusters with short rationales and a focused comparison surface"
+              width="880"
+              height="1912"
+              loading="lazy"
+              decoding="async">
+            <p class="fks-compare__caption">Interpreted intent at the top, clustered results underneath, and a rationale on each recommendation &mdash; so the shopper can agree, disagree, or correct the system in one tap.</p>
+          </figure>
+        </div>
+        <p class="fks-caption fks-container--content" style="padding: 0; margin-top: 20px;">The visible difference is structure. The real difference is that the second screen can be argued with.</p>
+      </div>
+    </section>
+
+    <!-- 09 AI PRODUCT RIGOR -->
+    <section class="fks-section fks-reveal" aria-labelledby="rigor-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">AI product rigor</p>
+        <h2 id="rigor-heading" class="fks-h2 fks-h2--accent">Designing the model&rsquo;s behaviour, including when it&rsquo;s wrong.</h2>
+        <p class="fks-lead">An intent layer is a product surface with a failure rate. Most of the design work was deciding what the system is allowed to claim, and what it does when it gets the query wrong.</p>
+      </div>
+
+      <div class="fks-container">
+        <div class="fks-rigor">
+          <div class="fks-clay">
+            <h3 class="fks-rigor__title">How intent is modelled</h3>
+            <ol class="fks-chain">
+              <li><b>Decompose.</b> The query splits into budget, category, use case, audience and priority attributes &mdash; each a slot that can be filled, empty or uncertain.</li>
+              <li><b>Surface.</b> Every filled slot appears as an editable chip. Nothing influences ranking while staying invisible.</li>
+              <li><b>Translate.</b> Use case maps to observable evidence &mdash; &ldquo;gaming&rdquo; becomes sustained performance, thermals, battery and refresh rate, not a marketing tag.</li>
+              <li><b>Cluster.</b> Results group by which part of the intent they satisfy best, so the grouping is itself an explanation.</li>
+              <li><b>Justify.</b> Each recommendation carries a short reason tied to the stated goal, drawn from attributes and review evidence rather than generic praise.</li>
+            </ol>
+          </div>
+
+          <div class="fks-clay fks-clay--plain">
+            <h3 class="fks-rigor__title">Where it fails</h3>
+            <ul class="fks-fails">
+              <li><b>Ambiguous or mixed intent.</b> &ldquo;Good phone for my mother&rdquo; carries an audience and no attributes. The system asks one clarifying question rather than guessing an answer it would then have to defend.</li>
+              <li><b>Thin catalogue data.</b> If evidence for a claim isn&rsquo;t in the attributes or reviews, the cluster degrades to a ranked list. The rule I pushed hardest for: no rationale beats a fabricated one.</li>
+              <li><b>Image input without use case.</b> A photo gives category and style, rarely purpose &mdash; so visual entry always routes through intent confirmation before ranking.</li>
+              <li><b>Over-narrow interpretation.</b> Confident wrong parsing is worse than vague parsing, so chips are removable and the unfiltered result set is one tap away.</li>
+              <li><b>Commercial pressure.</b> A rationale slot is an attractive place for a sponsored message. Keeping it strictly evidence-derived is a policy decision, not a visual one &mdash; and it needs an owner after launch.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fks-container--content" style="padding: 0; margin-top: 48px;">
+          <h3 class="fks-rigor__title">How the concept was evaluated</h3>
+          <p class="fks-body-text" style="margin-top: 0;">I tested whether people could predict and challenge the system&rsquo;s reasoning &mdash; not whether they preferred the new screens. Preference tests on a redesign tell you almost nothing.</p>
+        </div>
+
+        <div class="fks-eval">
+          <div class="fks-eval__item">
+            <p class="fks-eval__kicker">Method 01</p>
+            <h4 class="fks-eval__title">Query analysis</h4>
+            <p class="fks-eval__copy">Sampled real intent-led queries to establish how often budget, use case and audience appeared, and which the existing system could act on. This set the ceiling on what an intent layer could realistically improve.</p>
+          </div>
+          <div class="fks-eval__item">
+            <p class="fks-eval__kicker">Method 02</p>
+            <h4 class="fks-eval__title">Concept tests</h4>
+            <p class="fks-eval__copy">Moderated sessions on the clustered, explained results against the flat-list baseline, using shoppers&rsquo; own recent purchase goals so the task carried real stakes rather than a scripted scenario.</p>
+          </div>
+          <div class="fks-eval__item">
+            <p class="fks-eval__kicker">Method 03</p>
+            <h4 class="fks-eval__title">Usability &amp; trust probes</h4>
+            <p class="fks-eval__copy">Deliberately showed weak and wrong recommendations to see whether people noticed, corrected the chips, or quietly disengaged &mdash; the behaviour that predicts whether an AI surface survives real traffic.</p>
+          </div>
+        </div>
+
+        <div class="fks-container--content" style="padding: 0;">
+          <div class="fks-note">
+            <p class="fks-note__label">What this testing did not cover</p>
+            <p class="fks-note__text">Concept testing tells you whether people understand and accept the reasoning in a session. It does not tell you what happens to trust after a bad recommendation on a real purchase, or how the pattern holds up across categories with much weaker catalogue data. Those are the two studies I would run before defending this in production.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 IMPACT -->
+    <section class="fks-section fks-reveal" id="impact" aria-labelledby="impact-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">Impact</p>
+        <h2 id="impact-heading" class="fks-h2">What this work actually produced.</h2>
+        <p class="fks-lead">I&rsquo;d rather be precise than impressive. This engagement produced a research-grounded case for change, a validated interaction model, and a set of reusable patterns &mdash; and it is worth being exact about which is which.</p>
+      </div>
+
+      <div class="fks-container">
+        <div class="fks-clay fks-impact-block">
+          <p class="fks-label">01 &mdash; Research-grounded opportunity</p>
+          <p class="fks-exec__text" style="max-width: 68ch;">Query analysis and session observation turned &ldquo;search could be smarter&rdquo; into a specific, sized problem: intent-led queries dominate the categories we looked at, a minority of returned products strongly match that intent, and shoppers spend minutes rebuilding the same comparison by hand. That framing moved the conversation from ranking tweaks to an interpretation layer.</p>
+          <ul class="fks-impact-grid">
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">34%</p>
+              <p class="fks-impact-metric__label">of results strongly matched intent</p>
+              <p class="fks-impact-metric__note">Research observation &mdash; query analysis</p>
+            </li>
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">8&ndash;12 min</p>
+              <p class="fks-impact-metric__label">spent manually comparing</p>
+              <p class="fks-impact-metric__note">Research observation &mdash; session study</p>
+            </li>
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">5&ndash;7</p>
+              <p class="fks-impact-metric__label">products opened before deciding</p>
+              <p class="fks-impact-metric__note">Research observation &mdash; session study</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fks-clay fks-impact-block">
+          <p class="fks-label">02 &mdash; Concept validation outcomes</p>
+          <p class="fks-exec__text" style="max-width: 68ch;">In moderated sessions against the flat-list baseline, clustered-and-explained results were preferred, participants more readily stated which product suited their goal and why, and self-reported decision confidence was higher. These are directional signals from a small qualitative sample &mdash; they establish that the model is <em>understandable</em>, not that it moves revenue.</p>
+          <ul class="fks-impact-grid">
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">Preferred</p>
+              <p class="fks-impact-metric__label">clustered results over the flat list</p>
+              <p class="fks-impact-metric__note">Concept validation &mdash; qualitative, small sample</p>
+            </li>
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">Clearer</p>
+              <p class="fks-impact-metric__label">task articulation of &ldquo;which one and why&rdquo;</p>
+              <p class="fks-impact-metric__note">Concept validation &mdash; moderated sessions</p>
+            </li>
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">Higher</p>
+              <p class="fks-impact-metric__label">self-reported decision confidence</p>
+              <p class="fks-impact-metric__note">Concept validation &mdash; self-report, not behavioural</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fks-clay fks-impact-block">
+          <p class="fks-label">03 &mdash; Design-system outcomes</p>
+          <p class="fks-exec__text" style="max-width: 68ch;">The most durable output was a set of patterns other teams could pick up without re-litigating the reasoning: a trust-signal set with rules for when each signal appears, a cluster model that degrades to a ranked list when data is thin, and an explanation pattern with an evidence requirement attached. These survive whether or not this flow ever ships.</p>
+          <ul class="fks-impact-grid">
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">Signals</p>
+              <p class="fks-impact-metric__label">Ratings, verified reviews, seller reliability, returns and delivery confidence &mdash; with placement rules</p>
+            </li>
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">Clusters</p>
+              <p class="fks-impact-metric__label">Intent-aligned grouping with a defined graceful degradation path</p>
+            </li>
+            <li class="fks-impact-metric">
+              <p class="fks-impact-metric__value">Explanations</p>
+              <p class="fks-impact-metric__label">Rationale pattern with an evidence requirement and a no-claim fallback</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fks-container--content" style="padding: 0;">
+          <div class="fks-note">
+            <p class="fks-note__label">How to read this section</p>
+            <p class="fks-note__text">Nothing here is a Flipkart production A/B result. I didn&rsquo;t own instrumentation or experiment design, so I claim no shipped conversion, click-through or return-rate movement &mdash; and I&rsquo;d be sceptical of any portfolio that did without naming the experiment. What I will defend in detail is the reasoning behind each decision above, the costs I accepted, and what I&rsquo;d measure first if this went live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 REFLECTION -->
+    <section class="fks-section fks-reveal" aria-labelledby="reflection-heading">
+      <div class="fks-container fks-container--content">
+        <p class="fks-eyebrow">Senior reflection</p>
+        <h2 id="reflection-heading" class="fks-h2 fks-h2--accent">What I&rsquo;d challenge next.</h2>
+        <p class="fks-lead">The parts of this work I&rsquo;m least satisfied with are the parts I&rsquo;d start with if I picked it up again.</p>
+
+        <ol class="fks-learnings">
+          <li class="fks-learning">
+            <span class="fks-learning__num" aria-hidden="true">01</span>
+            <div>
+              <h3 class="fks-learning__title">I designed the confident case first</h3>
+              <p class="fks-learning__body">Most of my exploration assumed the intent model parsed the query well. The harder and more common state is partial understanding &mdash; budget clear, use case vague &mdash; and Decision 01 made that state more consequential, not less. It belonged in the first round of concepts, not a later refinement.</p>
+            </div>
+          </li>
+          <li class="fks-learning">
+            <span class="fks-learning__num" aria-hidden="true">02</span>
+            <div>
+              <h3 class="fks-learning__title">Catalogue data is the real ceiling, and I treated it as background</h3>
+              <p class="fks-learning__body">Explanation quality is bounded by attribute coverage, which varies enormously by category. I designed a graceful fallback but never pushed for the coverage audit that would have told us which categories could support this at all &mdash; a prioritisation input I should have produced rather than a risk I noted.</p>
+            </div>
+          </li>
+          <li class="fks-learning">
+            <span class="fks-learning__num" aria-hidden="true">03</span>
+            <div>
+              <h3 class="fks-learning__title">I should have agreed the measures before the screens</h3>
+              <p class="fks-learning__body">Because I designed first and looked for evidence second, the honest impact story here is qualitative. Defining up front what &ldquo;decision confidence&rdquo; counts as behaviourally &mdash; fewer products opened before purchase, fewer returns citing wrong-fit &mdash; would have sharpened the tradeoff conversations and let me speak about outcomes with more authority.</p>
+            </div>
+          </li>
+          <li class="fks-learning">
+            <span class="fks-learning__num" aria-hidden="true">04</span>
+            <div>
+              <h3 class="fks-learning__title">The commercial tension is unresolved</h3>
+              <p class="fks-learning__body">A recommendation surface with an explanation slot is valuable inventory, and &ldquo;the rationale must be evidence-derived&rdquo; is only a rule while someone defends it. I wrote the principle; I didn&rsquo;t design the governance that keeps it true a year after launch &mdash; the part most likely to decide whether shoppers keep trusting it.</p>
+            </div>
+          </li>
+        </ol>
+
+        <blockquote class="fks-quote">The hard part of AI discovery isn&rsquo;t returning better results. It&rsquo;s giving someone a reason to believe the ones they&rsquo;re looking at &mdash; and a way to argue back when they don&rsquo;t.</blockquote>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact" class="fks-footer">
+    <div class="fks-footer__inner">
+      <div>
+        <h2 class="fks-footer__title">Let&rsquo;s talk about the decisions, not just the screens</h2>
+        <p class="fks-footer__body">Happy to walk through the tradeoffs above &mdash; including the ones I&rsquo;d make differently now, and what I&rsquo;d measure first.</p>
+      </div>
+      <div class="fks-footer__cta">
+        <a href="../../index.html" class="fks-footer__btn" aria-label="Back to portfolio"><span aria-hidden="true">&larr;</span> Work</a>
+        <a href="mailto:ajithalphonse300@gmail.com" class="fks-footer__btn fks-footer__btn--primary">Email</a>
+        <a href="https://www.linkedin.com/in/ajith-alphonse/" class="fks-footer__btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function initReveals() {
+      var targets = document.querySelectorAll('.fks-reveal');
+      if (!targets.length) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
