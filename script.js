@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== Theme Toggle + Background Video Source Switching =====
 function initThemeToggle() {
     var STORAGE_KEY = 'portfolio-theme';
+    var DEFAULT_THEME = 'dark';
     var root = document.documentElement;
     var toggle = document.getElementById('themeToggle');
-    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     // Preload both videos once for smoother source swaps.
     preloadThemeVideos();
@@ -28,12 +28,8 @@ function initThemeToggle() {
         return localStorage.getItem(STORAGE_KEY);
     }
 
-    function getSystemTheme() {
-        return mediaQuery.matches ? 'dark' : 'light';
-    }
-
     function resolveTheme() {
-        return getSavedTheme() || window.__initialTheme || getSystemTheme();
+        return getSavedTheme() || window.__initialTheme || DEFAULT_THEME;
     }
 
     function updateToggleState(theme) {
@@ -58,10 +54,6 @@ function initThemeToggle() {
         localStorage.setItem(STORAGE_KEY, theme);
     }
 
-    function clearSavedTheme() {
-        localStorage.removeItem(STORAGE_KEY);
-    }
-
     if (toggle) {
         toggle.addEventListener('click', function () {
             var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -69,13 +61,6 @@ function initThemeToggle() {
             applyTheme(next, { swapVideo: true });
         });
     }
-
-    // Respect system changes only when user has not explicitly selected a theme.
-    mediaQuery.addEventListener('change', function () {
-        if (getSavedTheme()) return;
-        clearSavedTheme();
-        applyTheme(getSystemTheme(), { swapVideo: true });
-    });
 
     applyTheme(resolveTheme(), { swapVideo: true });
 }

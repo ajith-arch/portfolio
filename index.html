@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajith Alphonse | UX Designer</title>
+    <title>Ajith Alphonse | Product Designer</title>
     <script>
         // Apply persisted/system theme early to reduce first-paint mismatch.
         (function () {
             var key = 'portfolio-theme';
             var saved = localStorage.getItem(key);
-            var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            var theme = saved || 'dark';
             document.documentElement.setAttribute('data-theme', theme);
             window.__initialTheme = theme;
         })();
     </script>
-    <link rel="icon" type="image/webp" href="assets/profile.webp">
     <link rel="stylesheet" href="styles.css?v=adobe-thumb-9">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,9 +54,6 @@
                         <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
                     </span>
                 </button>
-                <div class="nav-left">
-                    <img src="assets/profile.webp" alt="Ajith Alphonse" class="nav-avatar" onerror="this.style.background='#ddd'">
-                </div>
                 <div class="nav-links">
                     <a href="#work" class="nav-link active">Work</a>
                     <a href="know-me.html" class="nav-link">Know Me</a>
@@ -84,7 +80,7 @@
                 <div class="hero-foreground-scroll">
                     <div class="hero-identity">
                         <h1 class="hero-identity-name">Ajith Alphonse</h1>
-                        <p class="hero-identity-line">💼 UX Designer at University of Utah</p>
+                        <p class="hero-identity-line">💼 Product Designer · Adobe Firefly</p>
                         <p class="hero-identity-line hero-identity-line--muted">📍 Salt Lake City, Utah</p>
                         <p class="hero-identity-chip-wrap">
                             <span class="hero-identity-chip">5+ Years of Experience</span>
@@ -487,7 +483,7 @@
         </footer>
     </div>
 
-    <script src="script.js?v=adobe-parallax-2"></script>
+    <script src="script.js?v=theme-dark-default-1"></script>
 </body>
 </html>
 

@@ -1544,15 +1544,6 @@ footer {
     inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-.case-nav-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-}
-
 .case-nav-links {
   display: flex;
   align-items: center;
@@ -1968,11 +1959,6 @@ footer {
   .case-nav-link {
     padding: 7px 14px;
     font-size: 14px;
-  }
-
-  .case-nav-avatar {
-    width: 40px;
-    height: 40px;
   }
 }
 

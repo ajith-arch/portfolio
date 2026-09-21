@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Know Me | Ajith Alphonse</title>
-  <link rel="icon" type="image/webp" href="assets/profile.webp">
-  <link rel="stylesheet" href="styles.css">
+  <title>Know Me | Ajith Alphonse — Product Designer</title>
+  <meta name="description" content="About Ajith Alphonse — Product Designer working across generative AI, human-AI interaction, and e-commerce.">
+  <script>
+    (function () {
+      var key = 'portfolio-theme';
+      var saved = localStorage.getItem(key);
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      window.__initialTheme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=know-me-7">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNSPYP46HC"></script>
   <script>
@@ -17,65 +26,149 @@
 </head>
 <body class="about-body">
   <div class="desktop-content">
-    <!-- Navigation -->
     <header class="header">
       <nav class="nav">
-        <div class="nav-left">
-          <a href="index.html">
-            <img src="assets/profile.webp" alt="Ajith Alphonse" class="nav-avatar" onerror="this.style.background='#ddd'">
-          </a>
-        </div>
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Switch to dark mode"
+          aria-pressed="false">
+          <span class="theme-toggle__track" aria-hidden="true">
+            <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+            <span class="theme-toggle__thumb"></span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
+          </span>
+        </button>
         <div class="nav-links">
           <a href="index.html#work" class="nav-link">Work</a>
-          <a href="know-me.html" class="nav-link active">Know Me</a>
+          <a href="know-me.html" class="nav-link active" aria-current="page">Know Me</a>
         </div>
       </nav>
     </header>
 
-    <main class="main about-main">
-      <section class="about-story">
-        <div class="about-header-row">
-          <div class="about-highlight">
-            <span class="about-pill">A bit about me</span>
-          </div>
-          <div class="about-back-link">
-            <a href="index.html#work" aria-label="Back to portfolio"><span class="about-back-link__arrow" aria-hidden="true">←</span><span class="about-back-link__text">Back to Portfolio</span></a>
-          </div>
-        </div>
+    <main class="main about-main about-main--compact">
 
-        <div class="about-grid">
-          <div class="about-text">
-            <p class="about-paragraph">
-              Hi, I’m Ajith Alphonse, currently pursuing my Master’s in Information Systems at the University of Utah, where I focus on design and development. Before that, I completed my Bachelor’s in Architecture and Digital Design in India, along with a minor in User Experience Design, which basically means I’ve always been curious about how things look and how they work.
-            </p>
-            <p class="about-paragraph">
-              My design journey started at 15 when I began building websites, creating templates, and experimenting with graphic design simply because I loved it. What started as curiosity slowly turned into a career. I also enjoy drawing human face portraits, a hobby that keeps my eye sharp and strengthens my sense of detail and visual storytelling.
-            </p>
-            <p class="about-paragraph">
-              Over the past five years, I’ve worked in UX and product design across healthcare, fintech, education, and e-commerce. Currently, I’m working as a UI/UX Designer at the University of Utah Campus Store, where I continue to learn, build, and refine my craft while growing as a designer every day.
-            </p>
-          </div>
-
-          <aside class="about-side-card">
-            <div class="about-side-header">
-              <span class="about-side-label">Currently</span>
-              <span class="about-side-value">UX Designer · University of Utah</span>
-            </div>
-            <div class="about-side-body">
-              <p>Working closely with NetSuite admins, developers, and content teams to reduce friction in day-to-day tools and make complex workflows feel simple and humane.</p>
-            </div>
-          </aside>
-        </div>
-
-        <div class="about-quote">
-          <span class="about-quote-mark">“</span>
-          <p>
-            I care about interfaces that respect people’s time, reduce anxiety, and feel visually calm — whether it’s a healthcare search flow, an enterprise dashboard, or a campus delivery map.
-          </p>
+      <section class="km-hero km-reveal" aria-labelledby="km-hero-heading">
+        <p class="km-eyebrow">About</p>
+        <h1 id="km-hero-heading" class="km-hero__title">I design products that make complex things feel clear.</h1>
+        <div class="km-prose">
+          <p>Hi, I’m Ajith Alphonse — a Product Designer based in Salt Lake City. I work across generative AI, human-AI interaction and digital commerce, turning complex systems into interfaces that feel clear and controllable.</p>
         </div>
       </section>
+
+      <section class="km-bento km-reveal" aria-label="Flagship work">
+        <article class="km-clay km-clay--copy">
+          <p class="km-eyebrow">Currently</p>
+          <h2 class="km-clay__title">Adobe Firefly</h2>
+          <p class="km-clay__body">Contract Product Design focused on post-generation editing and creative control — helping creators refine localized areas, combine spatial input with language, and keep direction after the first AI result.</p>
+          <a href="projects/adobe-firefly-senior/" class="km-clay__link">View Adobe Firefly case study →</a>
+        </article>
+
+        <article class="km-clay km-clay--copy">
+          <p class="km-eyebrow">Previously</p>
+          <h2 class="km-clay__title">Flipkart</h2>
+          <p class="km-clay__body">Product / UX design for AI-powered search and product discovery — intent-aware shopping, visual search, adaptive filters, comparison and decision support at e-commerce scale.</p>
+          <a href="projects/flipkart-ai-discovery/" class="km-clay__link">View Flipkart case study →</a>
+        </article>
+      </section>
+
+      <section class="km-bridge km-bridge--compact km-reveal" aria-labelledby="km-bridge-heading">
+        <h2 id="km-bridge-heading" class="km-bridge__title">Different products. The same design question.</h2>
+        <p class="km-bridge__body">How do people communicate intent, understand the system, and decide with confidence?</p>
+      </section>
+
+      <section class="km-section km-artwork km-reveal" aria-labelledby="km-craft-heading">
+        <div class="km-artwork__intro">
+          <p class="km-eyebrow">Outside the screen</p>
+          <h2 id="km-craft-heading" class="km-section__title">I still draw people.</h2>
+          <div class="km-prose">
+            <p>Portrait drawing keeps my eye sensitive to small details — the same ones that make an interface feel intentional.</p>
+          </div>
+        </div>
+        <ul class="km-collage" aria-label="Artwork">
+          <li class="km-collage__tile">
+            <img src="assets/artwork/mango.png" alt="Colored pencil drawing of mangoes on a branch" width="586" height="790" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/butterfly.png" alt="Colored pencil drawing of a butterfly with art supplies" width="627" height="796" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/portrait-01.jpg" alt="Pencil portrait of a man in a turtleneck" width="600" height="750" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/portrait-02.jpg" alt="Pencil portrait with short hair and beard" width="600" height="750" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/portrait-03.jpg" alt="Pencil portrait with voluminous hair" width="600" height="750" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/portrait-04.jpg" alt="Pencil portrait of a man wearing glasses" width="600" height="750" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/portrait-05.jpg" alt="Pencil portrait of a couple" width="600" height="750" loading="lazy" decoding="async">
+          </li>
+          <li class="km-collage__tile">
+            <img src="assets/artwork/portrait-06.jpg" alt="Pencil portrait of a woman" width="600" height="750" loading="lazy" decoding="async">
+          </li>
+        </ul>
+      </section>
+
+      <section class="km-section km-snapshot km-reveal" aria-labelledby="km-snapshot-heading">
+        <p class="km-eyebrow">At a glance</p>
+        <h2 id="km-snapshot-heading" class="visually-hidden">At a glance</h2>
+        <div class="km-glance">
+          <article class="km-clay km-glance__card">
+            <p class="km-snapshot__label">Now</p>
+            <h3 class="km-snapshot__org">Adobe Firefly</h3>
+            <p class="km-snapshot__meta">Product Design · Generative AI</p>
+          </article>
+          <article class="km-clay km-glance__card">
+            <p class="km-snapshot__label">Before</p>
+            <h3 class="km-snapshot__org">Flipkart</h3>
+            <p class="km-snapshot__meta">Search / Discovery / Commerce</p>
+          </article>
+          <article class="km-clay km-glance__card">
+            <p class="km-snapshot__label">Education</p>
+            <h3 class="km-snapshot__org">MS Information Systems</h3>
+            <p class="km-snapshot__meta">University of Utah · 2026</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="km-closing km-closing--compact km-reveal" aria-labelledby="km-closing-heading">
+        <h2 id="km-closing-heading" class="km-closing__title">Let’s build something thoughtful.</h2>
+        <div class="km-closing__links">
+          <a href="index.html#work" class="footer-link">View my work</a>
+          <a href="mailto:ajithalphonse300@gmail.com" class="footer-link">Email me</a>
+          <a href="https://www.linkedin.com/in/ajith-alphonse/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </section>
+
     </main>
   </div>
+
+  <script src="script.js?v=know-me-5"></script>
+  <script>
+    (function () {
+      var nodes = document.querySelectorAll('.km-reveal');
+      if (!nodes.length) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        nodes.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      nodes.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
 </body>
 </html>
-
