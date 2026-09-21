@@ -5,8 +5,8 @@ same bar as `../adobe-firefly-senior/`: explicit ownership boundaries, decisions
 alternatives and accepted costs, AI product rigor (how intent is modelled, where it fails, how it
 was evaluated), and honest impact framing.
 
-The original case study is untouched and still lives at **`../flipkart-ai-discovery/`**
-(with its stylesheet at `../flipkart-ai-discovery.css`). Nothing in this folder modifies it.
+The original case study is archived (not public) at **`../../archive/flipkart-ai-discovery/`**.
+Public visits to `../flipkart-ai-discovery/` redirect here.
 
 ## Files
 
