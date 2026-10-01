@@ -728,8 +728,220 @@
   display: none;
 }
 
+/* ---------- One type family for every title, label, and emphasis ---------- */
+.grid-robotic-variant .editorial-case-study :is(h3, h4, strong, i, em, .method-ui-top) {
+  font-family: Manrope, "DM Sans", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.grid-robotic-variant .priority-row h3,
+.grid-robotic-variant .tradeoff-row h3 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em !important;
+  color: #1e293b;
+}
+
+.grid-robotic-variant .measure-item strong,
+.grid-robotic-variant .permission-row strong {
+  font-size: 19px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em !important;
+}
+
+.grid-robotic-variant .ownership-list strong {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.012em !important;
+}
+
+.grid-robotic-variant .scope-matrix strong {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.55 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.grid-robotic-variant .artifact-annotation strong,
+.grid-robotic-variant .switch-recommendation strong {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.012em !important;
+}
+
+.grid-robotic-variant .decision-traces h4 {
+  font-size: clamp(1.3rem, 1.7vw, 1.5rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.grid-robotic-variant .method-copy h3 {
+  font-size: clamp(1.65rem, 2.6vw, 2.35rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.grid-robotic-variant .status-surface-body h4 {
+  line-height: 1.15 !important;
+  margin-bottom: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.grid-robotic-variant .iteration-panel strong {
+  font-size: clamp(1.35rem, 2vw, 1.7rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.grid-robotic-variant .system-node strong {
+  font-family: Manrope, "DM Sans", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.grid-robotic-variant .system-node i {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.grid-robotic-variant .priority-row strong,
+.grid-robotic-variant .decision-traces strong,
+.grid-robotic-variant .notebook-row strong,
+.grid-robotic-variant .recovery-detail strong,
+.grid-robotic-variant .system-foot strong,
+.grid-robotic-variant .measurement-note strong {
+  font-weight: 600 !important;
+  letter-spacing: -0.005em !important;
+}
+
+/* ---------- Readable row copy ---------- */
+.grid-robotic-variant .priority-row p,
+.grid-robotic-variant .tradeoff-row p,
+.grid-robotic-variant .tradeoff-row > div,
+.grid-robotic-variant .permission-row p,
+.grid-robotic-variant .artifact-annotation p,
+.grid-robotic-variant .measure-item p,
+.grid-robotic-variant .decision-traces p,
+.grid-robotic-variant .validation-path p,
+.grid-robotic-variant .ownership-list p {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #3f4f5f !important;
+}
+
+.grid-robotic-variant .priority-row strong {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.grid-robotic-variant .notebook-row strong {
+  font-size: 15px !important;
+}
+
+.grid-robotic-variant .tradeoff-row small {
+  display: block;
+  margin-bottom: 6px;
+  font: 600 10.5px/1.4 "IBM Plex Mono", monospace;
+  letter-spacing: 0.06em;
+  color: #2a5f8f;
+}
+
+.grid-robotic-variant .tradeoff-row {
+  align-items: baseline;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+.grid-robotic-variant .measure-item {
+  align-items: baseline;
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
+}
+
+.grid-robotic-variant .priority-row {
+  align-items: baseline;
+}
+
+/* ---------- Tablet + desktop rhythm ---------- */
+@media (min-width: 768px) {
+  :where(.grid-robotic-variant) .editorial-section {
+    padding-top: 88px !important;
+    padding-bottom: 88px !important;
+  }
+
+  .grid-robotic-variant .artifacts-section {
+    padding-bottom: 64px !important;
+  }
+
+  .grid-robotic-variant .editorial-footer {
+    padding-top: 88px !important;
+  }
+
+  .grid-robotic-variant .footer-bottom {
+    margin-top: 88px !important;
+  }
+
+  .grid-robotic-variant .editorial-footer p {
+    margin-top: 40px !important;
+  }
+
+  .visual-proof-ownership,
+  .visual-proof-baseline,
+  .visual-proof-states {
+    margin-top: 80px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-proof-journey,
+  .visual-proof-iteration,
+  .visual-proof-evaluation {
+    margin-top: 72px !important;
+  }
+
+  .grid-robotic-variant .ownership-brief,
+  .grid-robotic-variant .scope-matrix,
+  .grid-robotic-variant .decision-model,
+  .grid-robotic-variant .measurement-plan,
+  .grid-robotic-variant .recovery-accordions {
+    margin-top: 88px !important;
+  }
+
+  .grid-robotic-variant .method-artifact,
+  .grid-robotic-variant .status-showcase {
+    margin-top: 96px !important;
+  }
+
+  .grid-robotic-variant .constraint-ledger,
+  .grid-robotic-variant .decision-traces,
+  .grid-robotic-variant .system-map,
+  .grid-robotic-variant .state-lab,
+  .grid-robotic-variant .artifact-spread {
+    margin-top: 72px !important;
+  }
+
+  .grid-robotic-variant .tradeoff-list,
+  .grid-robotic-variant .iteration-panel,
+  .grid-robotic-variant .priority-formula,
+  .grid-robotic-variant .measurement-note {
+    margin-top: 56px !important;
+  }
+}
+
 /* ---------- Tablet ---------- */
 @media (min-width: 768px) and (max-width: 1023px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   .fk-work-link {
     position: absolute;
   }

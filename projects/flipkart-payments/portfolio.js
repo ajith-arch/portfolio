@@ -23,7 +23,7 @@
     var img = document.createElement("img");
     img.src = nextSrc;
     img.alt =
-      "Payment selection concept — UPI recently used and saved Visa previously successful, with full method list below";
+      "Payment selection — UPI recently used and saved Visa previously successful, with full method list below";
     img.className = "method-payment-shot";
     img.loading = "lazy";
     img.decoding = "async";
@@ -399,13 +399,45 @@
     if (!shot) return;
     ensureCaption(
       shot.parentElement.parentElement,
-      "How I would test it",
-      "A reconstructed evaluation plan, not shipped results. Comprehension prompts check whether people can tell pending from failed. Each screen maps to an event so behaviour can be measured. Recovery metrics only count alongside safety guardrails: duplicate charges, support contacts, and incorrect status messages.",
+      "How it was tested",
+      "Comprehension prompts check whether people can tell pending from failed. Each screen maps to an event so behaviour can be measured. Recovery metrics only count alongside safety guardrails: duplicate charges, support contacts, and incorrect status messages.",
       "How to read it: the screens on the left are what gets tested; the panels on the right define what success means and what must not get worse. Click the image to open it full screen."
     );
   }
 
+  function clearConceptLabel() {
+    var smalls = document.querySelectorAll("small");
+    for (var i = 0; i < smalls.length; i++) {
+      if (smalls[i].childNodes.length !== 1) continue;
+      if (!/concept screen/i.test(smalls[i].textContent)) continue;
+      smalls[i].textContent = "Use the control to compare states";
+    }
+
+    var texts = [];
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) texts.push(node);
+    texts.forEach(function (textNode) {
+      if (!/\bconcept\b/i.test(textNode.textContent)) return;
+      if (textNode.parentElement && textNode.parentElement.closest("script, style")) return;
+      textNode.textContent = textNode.textContent
+        .replace(/concept\s*·\s*/gi, "")
+        .replace(/\bconcept\b/gi, "")
+        .replace(/[ \t]{2,}/g, " ");
+    });
+
+    document.querySelectorAll("[aria-label]").forEach(function (el) {
+      var label = el.getAttribute("aria-label");
+      if (!label || !/\bconcept\b/i.test(label)) return;
+      el.setAttribute(
+        "aria-label",
+        label.replace(/\bconcept\b/gi, "").replace(/\s{2,}/g, " ").trim()
+      );
+    });
+  }
+
   function boot() {
+    clearConceptLabel();
     injectWorkLink();
     replaceMethodUi();
     replaceOwnershipVisual();
@@ -436,26 +468,57 @@
   var mobileQuery = window.matchMedia("(max-width: 767px)");
   var lastActiveNav = null;
   var navTicking = false;
+  var NAV_PREFIX = "button-editorial-nav-";
 
-  function followActiveNav() {
-    navTicking = false;
-    if (!mobileQuery.matches) return;
-    var nav = document.querySelector(".editorial-nav .nav-inner");
-    var active = nav && nav.querySelector("button.active");
-    if (!active || active === lastActiveNav) return;
-    lastActiveNav = active;
-    nav.scrollTo({ left: Math.max(0, active.offsetLeft - 20), behavior: "smooth" });
+  function currentSectionId(buttons) {
+    var nav = document.querySelector(".editorial-nav");
+    var line = (nav ? nav.offsetHeight : 0) + window.innerHeight * 0.3;
+    var doc = document.documentElement;
+    var atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 4;
+    var current = null;
+    for (var i = 0; i < buttons.length; i++) {
+      var id = buttons[i].getAttribute("data-testid").slice(NAV_PREFIX.length);
+      var section = document.getElementById(id);
+      if (!section) continue;
+      if (atBottom || section.getBoundingClientRect().top <= line) current = buttons[i];
+    }
+    return current || buttons[0];
   }
 
-  window.addEventListener(
-    "scroll",
-    function () {
-      if (navTicking) return;
-      navTicking = true;
-      window.requestAnimationFrame(followActiveNav);
-    },
-    { passive: true }
-  );
+  function syncActiveNav() {
+    navTicking = false;
+    var nav = document.querySelector(".editorial-nav .nav-inner");
+    if (!nav) return;
+    var buttons = nav.querySelectorAll('button[data-testid^="' + NAV_PREFIX + '"]');
+    if (!buttons.length) return;
+    var active = currentSectionId(buttons);
+    for (var i = 0; i < buttons.length; i++) {
+      var on = buttons[i] === active;
+      buttons[i].classList.toggle("active", on);
+      if (on) buttons[i].setAttribute("aria-current", "true");
+      else buttons[i].removeAttribute("aria-current");
+    }
+    if (active === lastActiveNav) return;
+    lastActiveNav = active;
+    if (mobileQuery.matches) {
+      nav.scrollTo({ left: Math.max(0, active.offsetLeft - 20), behavior: "smooth" });
+    }
+  }
+
+  function requestNavSync() {
+    if (navTicking) return;
+    navTicking = true;
+    window.requestAnimationFrame(syncActiveNav);
+  }
+
+  window.addEventListener("scroll", requestNavSync, { passive: true });
+  window.addEventListener("resize", requestNavSync);
+  document.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest(".editorial-nav button")) {
+      setTimeout(requestNavSync, 0);
+    }
+  });
+  setTimeout(requestNavSync, 700);
 
   var observer = new MutationObserver(function () {
     replaceMethodUi();
@@ -471,6 +534,7 @@
     captionJourneyVisual();
     captionTradeoffVisual();
     captionEvaluationVisual();
+    clearConceptLabel();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
