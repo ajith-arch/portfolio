@@ -45,6 +45,7 @@
   padding-left: var(--fk-hero-inset-left) !important;
   padding-right: var(--fk-hero-inset-right) !important;
   padding-bottom: 56px !important;
+  overflow-x: clip;
 }
 
 .editorial-topbar,
@@ -721,4 +722,386 @@
   box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
   object-fit: contain;
   image-rendering: auto;
+}
+
+.fk-tap-hint {
+  display: none;
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .fk-work-link {
+    position: absolute;
+  }
+
+  .editorial-hero,
+  .grid-robotic-variant .editorial-hero {
+    --fk-hero-inset-left: 5vw;
+  }
+
+  .editorial-topbar {
+    min-height: 36px;
+    align-items: center;
+    padding-left: 104px !important;
+  }
+}
+
+/* ---------- Mobile (phones and small tablets) ---------- */
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  /* Back link scrolls away with the hero so it never covers the section index */
+  .fk-work-link {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .editorial-hero,
+  .grid-robotic-variant .editorial-hero {
+    --fk-hero-inset-left: 20px;
+    --fk-hero-inset-right: 20px;
+    padding-top: 22px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .editorial-topbar {
+    min-height: 32px;
+    align-items: center;
+    padding-left: 88px !important;
+    line-height: 1.5;
+  }
+
+  .editorial-hero .hero-editorial-layout,
+  .grid-robotic-variant .editorial-hero .hero-editorial-layout {
+    margin-top: 40px !important;
+    gap: 40px !important;
+  }
+
+  .editorial-hero .hero-copy h1,
+  .grid-robotic-variant .hero-copy h1,
+  .grid-robotic-variant .editorial-hero .hero-copy h1 {
+    font-size: clamp(1.85rem, 8.4vw, 2.3rem) !important;
+    line-height: 1.18 !important;
+    margin-top: 20px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .editorial-hero .hero-foot,
+  .grid-robotic-variant .editorial-hero .hero-foot {
+    left: auto !important;
+    right: auto !important;
+    max-width: 100%;
+    margin-top: 28px !important;
+  }
+
+  /* Sticky section index: room for the items, soft edge where it scrolls */
+  .editorial-nav .nav-label {
+    display: none;
+  }
+
+  .editorial-nav .nav-inner {
+    gap: 18px;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+
+  .editorial-nav .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Section rhythm */
+  .grid-robotic-variant .editorial-section,
+  .editorial-section {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .editorial-section:has(.visual-proof-journey) + .artifacts-section,
+  .editorial-section:has(.visual-proof-iteration) + .measure-section {
+    padding-top: 64px !important;
+  }
+
+  .grid-robotic-variant .split-heading,
+  .grid-robotic-variant .system-intro,
+  .grid-robotic-variant .state-heading,
+  .grid-robotic-variant .artifact-heading,
+  .grid-robotic-variant .measure-layout,
+  .grid-robotic-variant .scope-intro,
+  .grid-robotic-variant .priority-heading,
+  .grid-robotic-variant .tradeoffs-heading,
+  .grid-robotic-variant .decision-heading {
+    gap: 14px !important;
+  }
+
+  .grid-robotic-variant .split-heading,
+  .grid-robotic-variant .system-intro,
+  .grid-robotic-variant .state-heading,
+  .grid-robotic-variant .artifact-heading,
+  .grid-robotic-variant .measure-layout,
+  .grid-robotic-variant .decision-heading {
+    margin-top: 28px !important;
+  }
+
+  .grid-robotic-variant .split-heading p,
+  .grid-robotic-variant .system-intro p,
+  .grid-robotic-variant .state-heading p,
+  .grid-robotic-variant .artifact-heading p,
+  .grid-robotic-variant .measure-layout p,
+  .grid-robotic-variant .scope-intro p,
+  .grid-robotic-variant .priority-heading p,
+  .grid-robotic-variant .tradeoffs-heading p,
+  .grid-robotic-variant .decision-heading p {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .grid-robotic-variant .ownership-brief,
+  .grid-robotic-variant .scope-matrix,
+  .grid-robotic-variant .state-lab,
+  .grid-robotic-variant .decision-model,
+  .grid-robotic-variant .measurement-plan {
+    margin-top: 48px !important;
+  }
+
+  .grid-robotic-variant .system-map,
+  .grid-robotic-variant .priority-formula,
+  .grid-robotic-variant .decision-traces,
+  .grid-robotic-variant .recovery-accordions,
+  .grid-robotic-variant .tradeoff-list,
+  .grid-robotic-variant .iteration-panel,
+  .grid-robotic-variant .validation-path,
+  .grid-robotic-variant .measurement-note {
+    margin-top: 40px !important;
+  }
+
+  .grid-robotic-variant .problem-statement {
+    margin-bottom: 44px !important;
+  }
+
+  .grid-robotic-variant .artifact-spread {
+    margin-top: 48px !important;
+    gap: 48px !important;
+  }
+
+  .grid-robotic-variant .method-artifact {
+    margin-top: 64px !important;
+  }
+
+  .grid-robotic-variant .status-showcase {
+    margin-top: 56px !important;
+    padding-top: 36px !important;
+  }
+
+  .grid-robotic-variant .plan-disclaimer {
+    margin-top: 28px !important;
+  }
+
+  .grid-robotic-variant .editorial-footer {
+    padding-top: 64px !important;
+  }
+
+  .grid-robotic-variant .editorial-footer p {
+    margin-top: 28px !important;
+  }
+
+  .grid-robotic-variant .footer-bottom {
+    margin-top: 48px !important;
+  }
+
+  /* Headings that kept the display face on small screens */
+  .grid-robotic-variant .method-copy h2,
+  .grid-robotic-variant .method-copy h3 {
+    font-family: Manrope, "DM Sans", sans-serif !important;
+    font-size: clamp(1.65rem, 7vw, 2rem) !important;
+    font-weight: 500 !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  /* System map: vertical chain instead of a clipped sideways row */
+  .grid-robotic-variant .system-map {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .grid-robotic-variant .system-node-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .grid-robotic-variant .system-node {
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 14px 16px !important;
+  }
+
+  .grid-robotic-variant .system-node-wrap > svg {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  /* Seven-step flow: last step spans the row instead of leaving a hole */
+  .grid-robotic-variant .flow-path > div:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  /* State lab: copy above the phone, not squeezed beside it */
+  .grid-robotic-variant .state-story {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+    padding: 24px 0 0 !important;
+  }
+
+  .grid-robotic-variant .state-story .editorial-phone,
+  .grid-robotic-variant #states .editorial-phone {
+    width: 250px !important;
+  }
+
+  .grid-robotic-variant .state-switcher button {
+    margin-right: 14px;
+    padding-right: 6px;
+  }
+
+  .grid-robotic-variant .state-switcher button span {
+    margin-right: 6px;
+  }
+
+  /* Visual sections */
+  .visual-proof-ownership,
+  .visual-proof-baseline,
+  .visual-proof-states {
+    margin-top: 48px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-proof-journey,
+  .visual-proof-iteration,
+  .visual-proof-evaluation {
+    margin-top: 56px !important;
+  }
+
+  .visual-proof-ownership .ownership-decision-host,
+  .visual-proof-baseline .baseline-states-host,
+  .visual-proof-states .states-frames-host,
+  .visual-proof-journey .journey-frames-host,
+  .visual-proof-iteration .tradeoff-compare-host,
+  .visual-proof-evaluation .evaluation-framework-host {
+    margin-inline: -12px !important;
+    overflow: hidden;
+  }
+
+  .visual-proof-ownership .ownership-decision-host {
+    width: calc(100% + 24px) !important;
+  }
+
+  .visual-proof-ownership .ownership-decision-shot,
+  .visual-proof-states .states-frames-shot,
+  .visual-proof-journey .journey-frames-shot,
+  .visual-proof-iteration .tradeoff-compare-shot {
+    max-width: none;
+    border-radius: 8px;
+  }
+
+  /* Crop the empty margins around the phones; the full image opens on tap */
+  .visual-proof-baseline .baseline-states-shot {
+    width: 190%;
+    max-width: none;
+    margin-left: -45%;
+  }
+
+  .visual-proof-evaluation .evaluation-framework-link {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .visual-proof-evaluation .evaluation-framework-shot {
+    border-radius: 8px;
+  }
+
+  .fk-visual-caption {
+    margin-top: 14px;
+    padding: 0 16px;
+  }
+
+  .fk-visual-caption__text {
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .fk-visual-caption .fk-visual-caption__note {
+    font-size: 13px;
+  }
+
+  .fk-tap-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 16px 0;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eef3f8;
+    color: #475569;
+    font: 500 11.5px/1.2 Manrope, "DM Sans", sans-serif;
+    letter-spacing: 0.01em;
+    pointer-events: none;
+  }
+
+  .fk-tap-hint svg {
+    width: 12px;
+    height: 12px;
+    flex: none;
+  }
+
+  /* Payment selection phone */
+  .method-artifact .method-payment-shot {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 767px) and (hover: none), (max-width: 767px) and (pointer: coarse) {
+  .fk-zoom-viewer__hint {
+    display: block;
+    animation: fk-hint-fade 3.2s ease forwards;
+  }
+}
+
+@keyframes fk-hint-fade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .fk-zoom-viewer__close {
+    top: max(14px, env(safe-area-inset-top));
+    right: 14px;
+  }
+
+  .fk-zoom-viewer__hint {
+    bottom: max(18px, env(safe-area-inset-bottom));
+    white-space: nowrap;
+  }
 }

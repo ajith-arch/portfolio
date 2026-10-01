@@ -287,7 +287,10 @@
 
     var hint = document.createElement("p");
     hint.className = "fk-zoom-viewer__hint";
-    hint.textContent = "Move to pan · Click or Esc to close";
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    hint.textContent = finePointer
+      ? "Move to pan · Click or Esc to close"
+      : "Drag to explore · Tap × to close";
 
     viewer.appendChild(stage);
     viewer.appendChild(close);
@@ -296,8 +299,6 @@
 
     var prevOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
-
-    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     function pan(e) {
       var maxX = stage.scrollWidth - stage.clientWidth;
@@ -336,6 +337,15 @@
       img.setAttribute("tabindex", "0");
       img.setAttribute("role", "button");
       img.setAttribute("aria-label", "Open full size: " + img.alt);
+    }
+
+    if (!frame.nextElementSibling || !frame.nextElementSibling.classList.contains("fk-tap-hint")) {
+      var tapHint = document.createElement("span");
+      tapHint.className = "fk-tap-hint";
+      tapHint.setAttribute("aria-hidden", "true");
+      tapHint.innerHTML =
+        '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9"/></svg>Tap to enlarge';
+      frame.insertAdjacentElement("afterend", tapHint);
     }
 
     frame.addEventListener("click", function () {
@@ -422,6 +432,30 @@
     setTimeout(boot, 100);
     setTimeout(boot, 600);
   }
+
+  var mobileQuery = window.matchMedia("(max-width: 767px)");
+  var lastActiveNav = null;
+  var navTicking = false;
+
+  function followActiveNav() {
+    navTicking = false;
+    if (!mobileQuery.matches) return;
+    var nav = document.querySelector(".editorial-nav .nav-inner");
+    var active = nav && nav.querySelector("button.active");
+    if (!active || active === lastActiveNav) return;
+    lastActiveNav = active;
+    nav.scrollTo({ left: Math.max(0, active.offsetLeft - 20), behavior: "smooth" });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (navTicking) return;
+      navTicking = true;
+      window.requestAnimationFrame(followActiveNav);
+    },
+    { passive: true }
+  );
 
   var observer = new MutationObserver(function () {
     replaceMethodUi();
