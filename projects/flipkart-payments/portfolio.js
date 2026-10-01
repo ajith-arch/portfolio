@@ -405,6 +405,17 @@
     );
   }
 
+  var TOPBAR_NOTE = "Flipkart Payments · Reconstructed for portfolio presentation";
+
+  function replaceTopbarNote() {
+    var nodes = document.querySelectorAll(".editorial-topbar span");
+    for (var i = 0; i < nodes.length; i++) {
+      if (!/not an official flipkart page/i.test(nodes[i].textContent)) continue;
+      if (nodes[i].textContent === TOPBAR_NOTE) continue;
+      nodes[i].textContent = TOPBAR_NOTE;
+    }
+  }
+
   function clearConceptLabel() {
     var smalls = document.querySelectorAll("small");
     for (var i = 0; i < smalls.length; i++) {
@@ -437,6 +448,7 @@
   }
 
   function boot() {
+    replaceTopbarNote();
     clearConceptLabel();
     injectWorkLink();
     replaceMethodUi();
@@ -535,6 +547,7 @@
     captionTradeoffVisual();
     captionEvaluationVisual();
     clearConceptLabel();
+    replaceTopbarNote();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
