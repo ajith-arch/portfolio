@@ -1,0 +1,724 @@
+/* Portfolio chrome for Flipkart Payments case */
+.fk-work-link {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+  font: 500 13px/1.2 Inter, system-ui, sans-serif;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.fk-work-link:hover {
+  background: #fff;
+  color: #2874f0;
+}
+
+/* Hide case monogram (A / 04) in the hero top bar */
+.editorial-monogram,
+.editorial-topbar a.editorial-monogram,
+[data-testid="link-editorial-home"] {
+  display: none !important;
+}
+
+/*
+  Shared hero column:
+  left edge = start of “Personal case study…”
+  right edge = end of “2024 / payment resilience”
+  (same inset for topbar + layout + foot)
+*/
+.editorial-hero,
+.grid-robotic-variant .editorial-hero {
+  --fk-hero-inset-left: max(5vw, 132px);
+  --fk-hero-inset-right: 5vw;
+  --fk-hero-max: 1230px;
+  min-height: 0 !important;
+  padding-left: var(--fk-hero-inset-left) !important;
+  padding-right: var(--fk-hero-inset-right) !important;
+  padding-bottom: 56px !important;
+}
+
+.editorial-topbar,
+.editorial-hero .hero-editorial-layout,
+.grid-robotic-variant .editorial-hero .hero-editorial-layout {
+  width: 100%;
+  max-width: var(--fk-hero-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
+.editorial-hero .hero-editorial-layout {
+  align-items: center;
+  margin-top: 72px !important;
+}
+
+/*
+  Match ALL large section titles to the same calm scale.
+  Covers Oxanium billboard headings across every case section.
+*/
+.grid-robotic-variant .hero-copy h1,
+.grid-robotic-variant .editorial-hero .hero-copy h1,
+.editorial-hero .hero-copy h1,
+.grid-robotic-variant .scope-intro h2,
+.grid-robotic-variant .priority-heading h2,
+.grid-robotic-variant .tradeoffs-heading h2,
+.grid-robotic-variant .decision-heading h2,
+.grid-robotic-variant .measure-layout h2,
+.grid-robotic-variant .evidence-section .split-heading h2,
+.grid-robotic-variant .split-heading h2,
+.grid-robotic-variant .system-intro h2,
+.grid-robotic-variant .state-heading h2,
+.grid-robotic-variant .artifact-heading h2,
+.grid-robotic-variant .editorial-footer h2,
+.grid-robotic-variant .editorial-case-study .scope-intro h2,
+.grid-robotic-variant .editorial-case-study .priority-heading h2,
+.grid-robotic-variant .editorial-case-study .tradeoffs-heading h2,
+.grid-robotic-variant .editorial-case-study .decision-heading h2,
+.grid-robotic-variant .editorial-case-study .measure-layout h2,
+.grid-robotic-variant .editorial-case-study .split-heading h2,
+.grid-robotic-variant .editorial-case-study .system-intro h2,
+.grid-robotic-variant .editorial-case-study .state-heading h2,
+.grid-robotic-variant .editorial-case-study .artifact-heading h2,
+.grid-robotic-variant .method-switch-body h3,
+.grid-robotic-variant .status-showcase-copy h3,
+.grid-robotic-variant .decision-model-heading h3,
+.grid-robotic-variant .ownership-intro h3,
+.grid-robotic-variant .visual-proof-intro h3,
+.grid-robotic-variant .state-story h3,
+.split-heading h2,
+.system-intro h2,
+.state-heading h2,
+.artifact-heading h2,
+.decision-heading h2,
+.measure-layout h2,
+.editorial-footer h2 {
+  font-family: Manrope, "DM Sans", sans-serif !important;
+  font-size: clamp(1.65rem, 2.6vw, 2.35rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
+  max-width: 28ch;
+}
+
+.editorial-hero .hero-copy h1,
+.grid-robotic-variant .hero-copy h1,
+.grid-robotic-variant .editorial-hero .hero-copy h1 {
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem) !important;
+  max-width: 22ch;
+  margin-top: 28px !important;
+  margin-bottom: 22px !important;
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+.editorial-hero .hero-copy h1 em,
+.grid-robotic-variant .hero-copy h1 em,
+.grid-robotic-variant .scope-intro h2 i,
+.grid-robotic-variant .priority-heading h2 i,
+.grid-robotic-variant .tradeoffs-heading h2 i,
+.grid-robotic-variant .decision-heading h2 i,
+.grid-robotic-variant .measure-layout h2 i,
+.grid-robotic-variant .split-heading h2 i,
+.grid-robotic-variant .system-intro h2 i,
+.grid-robotic-variant .state-heading h2 i,
+.grid-robotic-variant .artifact-heading h2 i,
+.grid-robotic-variant .editorial-footer h2 i,
+.grid-robotic-variant .evidence-section .split-heading h2 i,
+.grid-robotic-variant .method-switch-body h3 i,
+.grid-robotic-variant .status-showcase-copy h3 i,
+.grid-robotic-variant .decision-model-heading h3 i,
+.split-heading h2 i,
+.system-intro h2 i,
+.state-heading h2 i,
+.artifact-heading h2 i,
+.decision-heading h2 i,
+.measure-layout h2 i,
+.editorial-footer h2 i {
+  font-family: inherit !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+}
+
+.grid-robotic-variant .scope-intro h2,
+.grid-robotic-variant .priority-heading h2,
+.grid-robotic-variant .tradeoffs-heading h2,
+.grid-robotic-variant .decision-heading h2,
+.grid-robotic-variant .measure-layout h2,
+.grid-robotic-variant .split-heading h2,
+.grid-robotic-variant .system-intro h2,
+.grid-robotic-variant .state-heading h2,
+.grid-robotic-variant .artifact-heading h2,
+.grid-robotic-variant .evidence-section .split-heading h2,
+.grid-robotic-variant .editorial-footer h2,
+.split-heading h2,
+.system-intro h2,
+.state-heading h2,
+.artifact-heading h2,
+.decision-heading h2,
+.measure-layout h2,
+.editorial-footer h2 {
+  margin-top: 12px !important;
+  margin-bottom: 18px !important;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+/* Breathing room between section number + kicker label pairs */
+.grid-robotic-variant .section-marker,
+.editorial-case-study .section-marker {
+  margin-bottom: 18px !important;
+}
+
+.grid-robotic-variant .system-kicker,
+.editorial-case-study .system-kicker {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.grid-robotic-variant .ownership-intro > span,
+.grid-robotic-variant .decision-model-heading > span,
+.grid-robotic-variant .trace-intro > span,
+.grid-robotic-variant .measurement-plan-header > span {
+  margin-bottom: 12px !important;
+}
+
+/*
+  Ownership list: drop decorative hairlines.
+  Spacing alone separates items; keep structure readable.
+*/
+.grid-robotic-variant .ownership-brief {
+  border-top: none !important;
+  padding-top: 8px !important;
+}
+
+.grid-robotic-variant .ownership-list {
+  border-top: none !important;
+}
+
+.grid-robotic-variant .ownership-list > div {
+  border-bottom: none !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.grid-robotic-variant .ownership-list > div:first-child {
+  padding-top: 4px !important;
+}
+
+/* About this case study — no decorative top rule */
+.grid-robotic-variant .evidence-note {
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+/* State phones: match hero handset size, no tinted panel frame */
+.grid-robotic-variant .state-story {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 280px) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 28px 0 !important;
+}
+
+.grid-robotic-variant .state-tone-amber,
+.grid-robotic-variant .state-tone-blue,
+.grid-robotic-variant .state-tone-green {
+  background: transparent !important;
+  border: none !important;
+}
+
+.grid-robotic-variant .state-story .editorial-phone,
+.grid-robotic-variant #states .editorial-phone {
+  width: 260px !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: 393 / 852;
+  margin-inline: auto;
+  justify-self: center;
+}
+
+/* Softer, more natural checking indicator */
+.grid-robotic-variant .phone-state-symbol {
+  width: 14cqw !important;
+  height: 14cqw !important;
+  background: #eef5fb !important;
+  box-shadow: inset 0 0 0 1.5px #c5daf0;
+}
+
+.grid-robotic-variant .phone-symbol-ring {
+  width: 55% !important;
+  height: 55% !important;
+  border: 2.5px solid #c9dceb !important;
+  border-top-color: #2874f0 !important;
+  border-radius: 50%;
+  background: transparent !important;
+  animation: fk-spin 0.9s linear infinite;
+}
+
+@keyframes fk-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Foot strip uses absolute left/right — match the same insets */
+.editorial-hero .hero-foot,
+.grid-robotic-variant .editorial-hero .hero-foot {
+  left: var(--fk-hero-inset-left) !important;
+  right: var(--fk-hero-inset-right) !important;
+  max-width: var(--fk-hero-max);
+  margin-inline: auto;
+  width: auto;
+}
+
+/* Hero phone: natural handset size, not a full-column billboard */
+.editorial-hero .hero-artifact,
+.grid-robotic-variant .hero-artifact,
+.grid-robotic-variant .editorial-hero .hero-artifact {
+  max-width: 300px !important;
+  width: 100%;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin-inline: auto;
+  justify-self: end;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.editorial-hero .hero-artifact .artifact-index {
+  position: static !important;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.editorial-hero .hero-artifact .editorial-phone,
+.editorial-hero .editorial-phone {
+  width: 260px !important;
+  max-width: 100%;
+  margin: 0 auto !important;
+  aspect-ratio: 393 / 852;
+}
+
+.editorial-hero .hero-artifact-caption {
+  margin-top: 14px;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .editorial-hero .hero-artifact,
+  .grid-robotic-variant .hero-artifact {
+    justify-self: center;
+    max-width: 280px !important;
+  }
+
+  .editorial-hero .hero-artifact .editorial-phone,
+  .editorial-hero .editorial-phone {
+    width: 240px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .editorial-hero,
+  .grid-robotic-variant .editorial-hero {
+    --fk-hero-inset-left: max(20px, 108px);
+    --fk-hero-inset-right: 20px;
+  }
+}
+
+/* Payment selection: real PNG instead of built illustration */
+.grid-robotic-variant .method-artifact,
+.method-artifact {
+  grid-template-columns: minmax(0, 0.85fr) minmax(300px, 1.25fr) !important;
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px) !important;
+}
+
+.grid-robotic-variant .method-artifact .method-ui.method-ui--photo,
+.method-artifact .method-ui.method-ui--photo {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  max-width: 420px;
+  width: 100%;
+  margin-inline: auto 0;
+  justify-self: end;
+  box-shadow: none !important;
+}
+
+.method-artifact .method-payment-shot {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0;
+  border-radius: 28px;
+}
+
+@media (max-width: 900px) {
+  .grid-robotic-variant .method-artifact,
+  .method-artifact {
+    grid-template-columns: 1fr !important;
+  }
+
+  .grid-robotic-variant .method-artifact .method-ui.method-ui--photo,
+  .method-artifact .method-ui.method-ui--photo {
+    max-width: 340px;
+    margin-inline: auto;
+    justify-self: center;
+  }
+
+  .method-artifact .method-payment-shot {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+/* Baseline visual: both starting states in one image */
+.visual-proof-baseline .visual-proof-intro,
+.visual-proof-baseline .visual-proof-guidance {
+  display: none !important;
+}
+
+.visual-proof-baseline {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.visual-proof-baseline .baseline-states-host {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.visual-proof-baseline .baseline-states-shot {
+  display: block;
+  width: 100%;
+  max-width: min(1200px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+/* States visual: three annotated frames in one image */
+.visual-proof-states .visual-proof-intro,
+.visual-proof-states .visual-proof-guidance {
+  display: none !important;
+}
+
+.visual-proof-states {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.visual-proof-states .states-frames-host {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.visual-proof-states .states-frames-shot {
+  display: block;
+  width: 100%;
+  max-width: min(1200px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Journey visual: three-step recovery flow in one image */
+.visual-proof-journey .visual-proof-intro,
+.visual-proof-journey .visual-proof-guidance {
+  display: none !important;
+}
+
+.visual-proof-journey {
+  margin-top: 88px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-top: 0 !important;
+}
+
+.editorial-section:has(.visual-proof-journey) {
+  padding-bottom: 32px !important;
+}
+
+.editorial-section:has(.visual-proof-journey) + .artifacts-section {
+  padding-top: 80px !important;
+}
+
+/* Trade-off visual: A/B comparison in one image */
+.visual-proof-iteration .visual-proof-intro,
+.visual-proof-iteration .visual-proof-guidance {
+  display: none !important;
+}
+
+.visual-proof-iteration {
+  margin-top: 88px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-top: 0 !important;
+}
+
+.visual-proof-iteration .tradeoff-compare-host {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.visual-proof-iteration .tradeoff-compare-shot {
+  display: block;
+  width: 100%;
+  max-width: min(1200px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.editorial-section:has(.visual-proof-iteration) {
+  padding-bottom: 32px !important;
+}
+
+.editorial-section:has(.visual-proof-iteration) + .measure-section {
+  padding-top: 80px !important;
+}
+
+/* Evaluation visual: framework sheet on a white card */
+.visual-proof-evaluation .visual-proof-intro,
+.visual-proof-evaluation .visual-proof-guidance {
+  display: none !important;
+}
+
+.visual-proof-evaluation {
+  margin-top: 88px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-top: 0 !important;
+}
+
+.visual-proof-evaluation .evaluation-framework-host {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.visual-proof-evaluation .evaluation-framework-link {
+  display: block;
+  width: min(1600px, 94vw);
+  margin-left: calc((100% - min(1600px, 94vw)) / 2);
+  cursor: zoom-in;
+}
+
+.fk-zoom-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.fk-zoomable {
+  cursor: zoom-in;
+}
+
+.fk-zoomable:focus-visible,
+.fk-zoom-frame:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+.fk-zoom-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(248, 250, 252, 0.98);
+}
+
+.fk-zoom-viewer__stage {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  cursor: zoom-out;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fk-zoom-viewer__stage {
+    scrollbar-width: none;
+  }
+
+  .fk-zoom-viewer__stage::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fk-zoom-viewer__img {
+  display: block;
+  width: 3200px;
+  max-width: none;
+  height: auto;
+}
+
+.fk-zoom-viewer__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #fff;
+  color: #0f172a;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.fk-zoom-viewer__hint {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #fff;
+  font-size: 13px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .fk-zoom-viewer__img {
+    width: 260vw;
+  }
+
+  .fk-zoom-viewer__hint {
+    display: none;
+  }
+}
+
+.visual-proof-evaluation .evaluation-framework-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+}
+
+.visual-proof-journey .journey-frames-host {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.visual-proof-journey .journey-frames-shot {
+  display: block;
+  width: 100%;
+  max-width: min(1200px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.fk-visual-caption {
+  max-width: min(1200px, 100%);
+  margin: 16px auto 0;
+  padding: 0 4px;
+  text-align: left;
+}
+
+.fk-visual-caption__label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.fk-visual-caption__text {
+  margin: 0;
+  max-width: 68ch;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.fk-visual-caption .fk-visual-caption__note {
+  margin: 14px 0 0;
+  padding-left: 10px;
+  max-width: 68ch;
+  border-left: 2px solid #cbd5e1;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+/* Ownership visual: decision note fills the placeholder */
+.visual-proof-ownership .visual-proof-intro,
+.visual-proof-ownership .visual-proof-guidance,
+.visual-proof-ownership figcaption,
+.visual-proof-ownership .visual-proof-index {
+  display: none !important;
+}
+
+.visual-proof-ownership {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.visual-proof-ownership .visual-proof-grid,
+.visual-proof-ownership .visual-proof-grid-1 {
+  grid-template-columns: 1fr !important;
+  max-width: none !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.visual-proof-ownership .ownership-decision-host,
+.visual-proof-ownership .visual-proof-filled,
+.visual-proof-ownership .visual-proof-slot {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  display: block !important;
+  overflow: visible;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.visual-proof-ownership .ownership-decision-shot {
+  display: block;
+  width: 100%;
+  max-width: min(1200px, 100%);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  object-fit: contain;
+  image-rendering: auto;
+}
