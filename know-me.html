@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Know Me | Ajith Alphonse — Product Designer</title>
-  <meta name="description" content="About Ajith Alphonse — Product Designer working across generative AI, human-AI interaction, and e-commerce.">
+  <meta name="description" content="About Ajith Alphonse — Product Designer working across enterprise workflows, generative AI, and digital commerce.">
   <script>
     (function () {
-      var key = 'portfolio-theme';
-      var saved = localStorage.getItem(key);
-      var theme = saved || 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-      window.__initialTheme = theme;
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.setAttribute('data-theme-lock', 'light');
+      document.documentElement.classList.add('ab-js');
+      window.__initialTheme = 'light';
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=know-me-7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=know-me-8">
+  <link rel="stylesheet" href="know-me.css?v=3">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNSPYP46HC"></script>
   <script>
@@ -24,22 +27,11 @@
     gtag('config', 'G-TNSPYP46HC');
   </script>
 </head>
-<body class="about-body">
+<body class="ab">
+  <div class="ab-grid" aria-hidden="true"></div>
   <div class="desktop-content">
     <header class="header">
       <nav class="nav">
-        <button
-          type="button"
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Switch to dark mode"
-          aria-pressed="false">
-          <span class="theme-toggle__track" aria-hidden="true">
-            <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
-            <span class="theme-toggle__thumb"></span>
-            <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
-          </span>
-        </button>
         <div class="nav-links">
           <a href="index.html#work" class="nav-link">Work</a>
           <a href="know-me.html" class="nav-link active" aria-current="page">Know Me</a>
@@ -47,128 +39,107 @@
       </nav>
     </header>
 
-    <main class="main about-main about-main--compact">
+    <main class="ab-main">
 
-      <section class="km-hero km-reveal" aria-labelledby="km-hero-heading">
-        <p class="km-eyebrow">About</p>
-        <h1 id="km-hero-heading" class="km-hero__title">I design products that make complex things feel clear.</h1>
-        <div class="km-prose">
-          <p>Hi, I’m Ajith Alphonse — a Product Designer based in Salt Lake City. I work across generative AI, human-AI interaction and digital commerce, turning complex systems into interfaces that feel clear and controllable.</p>
-        </div>
-      </section>
-
-      <section class="km-bento km-reveal" aria-label="Flagship work">
-        <article class="km-clay km-clay--copy">
-          <p class="km-eyebrow">Currently</p>
-          <h2 class="km-clay__title">Adobe Firefly</h2>
-          <p class="km-clay__body">Contract Product Design focused on post-generation editing and creative control — helping creators refine localized areas, combine spatial input with language, and keep direction after the first AI result.</p>
-          <a href="projects/adobe-firefly-case/" class="km-clay__link">View Adobe Firefly case study →</a>
-        </article>
-
-        <article class="km-clay km-clay--copy">
-          <p class="km-eyebrow">Previously</p>
-          <h2 class="km-clay__title">Flipkart</h2>
-          <p class="km-clay__body">Product / UX design for AI-powered search and product discovery — intent-aware shopping, visual search, adaptive filters, comparison and decision support at e-commerce scale.</p>
-          <a href="projects/flipkart-ai-discovery-senior/" class="km-clay__link">View Flipkart case study →</a>
-        </article>
-      </section>
-
-      <section class="km-bridge km-bridge--compact km-reveal" aria-labelledby="km-bridge-heading">
-        <h2 id="km-bridge-heading" class="km-bridge__title">Different products. The same design question.</h2>
-        <p class="km-bridge__body">How do people communicate intent, understand the system, and decide with confidence?</p>
-      </section>
-
-      <section class="km-section km-artwork km-reveal" aria-labelledby="km-craft-heading">
-        <div class="km-artwork__intro">
-          <p class="km-eyebrow">Outside the screen</p>
-          <h2 id="km-craft-heading" class="km-section__title">I still draw people.</h2>
-          <div class="km-prose">
-            <p>Portrait drawing keeps my eye sensitive to small details — the same ones that make an interface feel intentional.</p>
+      <section class="ab-hero" aria-labelledby="km-hero-heading" data-hero>
+        <div class="ab-hero__stage">
+          <div class="ab-wrap ab-hero__inner">
+            <p class="ab-meta ab-hero__eyebrow">About</p>
+            <h1 id="km-hero-heading" class="ab-hero__title" data-split>I design products that make complex things feel clear.</h1>
+            <p class="ab-hero__context">Hi, I’m Ajith Alphonse — a Product Designer based in Salt Lake City. I work across enterprise workflows, generative AI and digital commerce, turning complex systems into interfaces that feel clear and controllable.</p>
           </div>
         </div>
-        <ul class="km-collage" aria-label="Artwork">
-          <li class="km-collage__tile">
-            <img src="assets/artwork/mango.png" alt="Colored pencil drawing of mangoes on a branch" width="586" height="790" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/butterfly.png" alt="Colored pencil drawing of a butterfly with art supplies" width="627" height="796" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/portrait-01.jpg" alt="Pencil portrait of a man in a turtleneck" width="600" height="750" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/portrait-02.jpg" alt="Pencil portrait with short hair and beard" width="600" height="750" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/portrait-03.jpg" alt="Pencil portrait with voluminous hair" width="600" height="750" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/portrait-04.jpg" alt="Pencil portrait of a man wearing glasses" width="600" height="750" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/portrait-05.jpg" alt="Pencil portrait of a couple" width="600" height="750" loading="lazy" decoding="async">
-          </li>
-          <li class="km-collage__tile">
-            <img src="assets/artwork/portrait-06.jpg" alt="Pencil portrait of a woman" width="600" height="750" loading="lazy" decoding="async">
-          </li>
-        </ul>
       </section>
 
-      <section class="km-section km-snapshot km-reveal" aria-labelledby="km-snapshot-heading">
-        <p class="km-eyebrow">At a glance</p>
-        <h2 id="km-snapshot-heading" class="visually-hidden">At a glance</h2>
-        <div class="km-glance">
-          <article class="km-clay km-glance__card">
-            <p class="km-snapshot__label">Now</p>
-            <h3 class="km-snapshot__org">Adobe Firefly</h3>
-            <p class="km-snapshot__meta">Product Design · Generative AI</p>
+      <section class="ab-work" aria-label="Flagship work">
+        <div class="ab-wrap ab-work__grid" data-reveal>
+          <article class="ab-panel ab-panel--current" data-rise style="--rise: 48px">
+            <div class="ab-panel__in">
+              <p class="ab-meta">Currently</p>
+              <h2 class="ab-panel__title">Adobe Campaign Readiness</h2>
+              <p class="ab-panel__body">Lead product designer on a readiness layer for AI-scaled campaigns across GenStudio, AEM, and Workfront — launch blockers, change impact, and handoffs that keep their context. A proposed exploration, concept-tested with campaign operations participants.</p>
+              <a href="projects/adobe-campaign-readiness/" class="ab-link">View Adobe case study <span class="ab-arrow" aria-hidden="true">→</span></a>
+            </div>
           </article>
-          <article class="km-clay km-glance__card">
-            <p class="km-snapshot__label">Before</p>
-            <h3 class="km-snapshot__org">Flipkart</h3>
-            <p class="km-snapshot__meta">Search / Discovery / Commerce</p>
-          </article>
-          <article class="km-clay km-glance__card">
-            <p class="km-snapshot__label">Education</p>
-            <h3 class="km-snapshot__org">MS Information Systems</h3>
-            <p class="km-snapshot__meta">University of Utah · 2026</p>
+          <article class="ab-panel ab-panel--previous" data-rise style="--rise: 80px; --delay: 120ms">
+            <div class="ab-panel__in">
+              <p class="ab-meta">Previously</p>
+              <h2 class="ab-panel__title">Flipkart Payments</h2>
+              <p class="ab-panel__body">Post-pay UX for the moment a customer doesn’t know if the payment went through — confidence gates, refused unsafe retries, and recovery that keeps the order.</p>
+              <a href="projects/flipkart-payments/" class="ab-link">View Flipkart case study <span class="ab-arrow" aria-hidden="true">→</span></a>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="km-closing km-closing--compact km-reveal" aria-labelledby="km-closing-heading">
-        <h2 id="km-closing-heading" class="km-closing__title">Let’s build something thoughtful.</h2>
-        <div class="km-closing__links">
-          <a href="index.html#work" class="footer-link">View my work</a>
-          <a href="mailto:ajithalphonse300@gmail.com" class="footer-link">Email me</a>
-          <a href="https://www.linkedin.com/in/ajith-alphonse/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <section class="ab-bridge" aria-labelledby="km-bridge-heading">
+        <div class="ab-wrap ab-bridge__grid" data-reveal>
+          <h2 id="km-bridge-heading" class="ab-bridge__title" data-rise style="--rise: 32px">Different products. The same design question.</h2>
+          <p class="ab-bridge__body" data-rise style="--rise: 32px; --delay: 120ms">How do people know where things really stand, and act with confidence when the system isn’t certain?</p>
+        </div>
+      </section>
+
+      <section class="ab-dark" aria-labelledby="km-snapshot-heading" data-dark>
+        <div class="ab-wrap" data-reveal>
+          <p class="ab-meta" data-rise style="--rise: 20px">At a glance</p>
+          <h2 id="km-snapshot-heading" class="visually-hidden">At a glance</h2>
+          <ol class="ab-rows">
+            <li class="ab-row" data-rise style="--rise: 32px; --delay: 80ms">
+              <span class="ab-row__label">Now</span>
+              <h3 class="ab-row__org">Adobe</h3>
+              <span class="ab-row__meta">Product Design · Enterprise campaigns</span>
+            </li>
+            <li class="ab-row" data-rise style="--rise: 32px; --delay: 180ms">
+              <span class="ab-row__label">Before</span>
+              <h3 class="ab-row__org">Flipkart</h3>
+              <span class="ab-row__meta">Payments · Checkout · Commerce</span>
+            </li>
+            <li class="ab-row" data-rise style="--rise: 32px; --delay: 280ms">
+              <span class="ab-row__label">Education</span>
+              <h3 class="ab-row__org">MS Information Systems</h3>
+              <span class="ab-row__meta">University of Utah · 2026</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="ab-art" aria-labelledby="km-craft-heading">
+        <div class="ab-wrap">
+          <div class="ab-art__intro" data-reveal>
+            <p class="ab-meta" data-rise style="--rise: 20px">Outside the screen</p>
+            <h2 id="km-craft-heading" class="ab-art__title" data-rise style="--rise: 32px">I still draw people.</h2>
+            <p class="ab-art__body" data-rise style="--rise: 32px; --delay: 120ms">Portrait drawing keeps my eye sensitive to small details — the same ones that make an interface feel intentional.</p>
+          </div>
+          <ul class="ab-collage" aria-label="Artwork" data-reveal>
+            <li data-rise style="--rise: 32px"><img src="assets/artwork/mango.png" alt="Colored pencil drawing of mangoes on a branch" width="586" height="790" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px; --delay: 60ms"><img src="assets/artwork/butterfly.png" alt="Colored pencil drawing of a butterfly with art supplies" width="627" height="796" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px; --delay: 120ms"><img src="assets/artwork/portrait-01.jpg" alt="Pencil portrait of a man in a turtleneck" width="600" height="750" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px; --delay: 180ms"><img src="assets/artwork/portrait-02.jpg" alt="Pencil portrait with short hair and beard" width="600" height="750" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px"><img src="assets/artwork/portrait-03.jpg" alt="Pencil portrait with voluminous hair" width="600" height="750" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px; --delay: 60ms"><img src="assets/artwork/portrait-04.jpg" alt="Pencil portrait of a man wearing glasses" width="600" height="750" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px; --delay: 120ms"><img src="assets/artwork/portrait-05.jpg" alt="Pencil portrait of a couple" width="600" height="750" loading="lazy" decoding="async"></li>
+            <li data-rise style="--rise: 32px; --delay: 180ms"><img src="assets/artwork/portrait-06.jpg" alt="Pencil portrait of a woman" width="600" height="750" loading="lazy" decoding="async"></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="ab-closing" aria-labelledby="km-closing-heading">
+        <div class="ab-wrap">
+          <div class="ab-closing__inner" data-reveal>
+            <h2 id="km-closing-heading" class="ab-closing__title" data-rise style="--rise: 32px">Let’s build something thoughtful.</h2>
+            <div class="ab-closing__links" data-rise style="--rise: 20px; --delay: 120ms">
+              <a href="index.html#work" class="footer-link ab-link">View my work</a>
+              <a href="mailto:ajithalphonse300@gmail.com" class="footer-link ab-link">Email me</a>
+              <a href="https://www.linkedin.com/in/ajith-alphonse/" class="footer-link ab-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
         </div>
       </section>
 
     </main>
   </div>
 
-  <script src="script.js?v=know-me-5"></script>
-  <script>
-    (function () {
-      var nodes = document.querySelectorAll('.km-reveal');
-      if (!nodes.length) return;
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        nodes.forEach(function (el) { el.classList.add('is-visible'); });
-        return;
-      }
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-      nodes.forEach(function (el) { observer.observe(el); });
-    })();
-  </script>
+  <script src="script.js?v=know-me-6"></script>
+  <script src="know-me.js?v=4"></script>
 </body>
 </html>

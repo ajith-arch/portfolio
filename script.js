@@ -29,6 +29,8 @@ function initThemeToggle() {
     }
 
     function resolveTheme() {
+        var locked = root.getAttribute('data-theme-lock');
+        if (locked) return locked;
         return getSavedTheme() || window.__initialTheme || DEFAULT_THEME;
     }
 
