@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Change Impact — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/readiness.css">
+  <link rel="stylesheet" href="css/markets.css">
+  <link rel="stylesheet" href="css/queue.css">
+  <link rel="stylesheet" href="css/impact.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="readiness">
+  <div id="page">
+    <header class="ci-title">
+      <div>
+        <h2>Change Impact</h2>
+        <p>See what changes when you update the promotional claim. Identify affected experiences, review requirements, and get the right approvals.</p>
+      </div>
+      <button class="ci-btn" id="ci-policy"><span class="mask m-doc"></span>View claim policy</button>
+    </header>
+
+    <section class="ci-cards">
+      <button class="ci-claim cur" id="ci-cur" title="Current claim">
+        <span class="ci-doc"><i></i></span>
+        <span class="ci-ct"><small>Current claim</small><b data-claim="cur"></b><em data-used></em></span>
+      </button>
+      <span class="ci-arrow">→</span>
+      <button class="ci-claim new" id="ci-new" title="Edit proposed claim">
+        <span class="ci-doc"><i></i></span>
+        <span class="ci-ct"><small>Proposed claim</small><b data-claim="new"></b><em data-used></em></span>
+        <span class="ci-edit">Edit</span>
+      </button>
+      <div class="ci-metrics" id="ci-metrics"></div>
+    </section>
+
+    <section class="ci-wrap">
+      <article class="ci-card">
+        <nav class="ci-tabs" id="ci-tabs"></nav>
+
+        <div class="ci-bar" id="ci-bar">
+          <button class="ci-sel" data-sel="market"><span data-label>All markets</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="ci-sel" data-sel="channel"><span data-label>All channels</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="ci-sel" data-sel="status"><span data-label>All statuses</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <label class="ci-search"><span class="mask m-search"></span><input type="search" id="ci-q" placeholder="Search experiences, market, or channel..."></label>
+          <button class="ci-ico is-on" data-view="list" aria-label="List view"><span class="mask m-list"></span></button>
+          <button class="ci-ico" data-view="grid" aria-label="Grid view"><span class="ci-gridic"><i></i><i></i><i></i><i></i></span></button>
+          <button class="ci-btn strong" id="ci-dl"><span class="ci-dlic"></span>Download</button>
+        </div>
+
+        <div class="ci-body" id="ci-body"></div>
+
+        <div class="ci-foot">
+          <span id="ci-count"></span>
+          <div class="ci-pager" id="ci-pager"></div>
+        </div>
+      </article>
+
+      <aside class="ci-panel" id="ci-panel">
+        <div class="ci-ph"><h3>Change summary</h3><button id="ci-more" aria-label="Summary actions">⋮</button></div>
+        <div class="ci-pclaims">
+          <div class="pc cur"><small>Current claim</small><b data-claim="cur"></b><em data-exp></em></div>
+          <span class="ci-parr">→</span>
+          <div class="pc new"><small>Proposed claim</small><b data-claim="new"></b><em data-exp></em></div>
+        </div>
+        <h4>What changes?</h4>
+        <div class="ci-changes" id="ci-changes"></div>
+        <h4>Key impacts</h4>
+        <div class="ci-impacts" id="ci-impacts"></div>
+        <div class="ci-pf">
+          <button class="ci-btn" id="ci-draft">Save as draft</button>
+          <button class="ci-btn dark" id="ci-submit">Submit for review<span class="arr">→</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="q3-steps ci-steps">
+      <h3><span class="q3-target"></span>Next steps</h3>
+      <button class="q3-step" data-step="1"><span class="n">1</span><span class="t"><b>Review affected experiences</b><small>Check high-risk and local overrides</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="2"><span class="n">2</span><span class="t"><b>Get approvals</b><small>Route to legal and regional teams</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="3"><span class="n">3</span><span class="t"><b>Review localized content</b><small>Confirm market-specific updates</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="4"><span class="n">4</span><span class="t"><b>Publish changes</b><small>Update after all approvals</small></span></button>
+      <a class="q3-btn dark q3-plan" href="approvals.html">Go to approvals<span class="arr">→</span></a>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/impact.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

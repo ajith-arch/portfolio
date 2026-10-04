@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Approvals — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="approvals">
+  <div id="page">
+    <section class="stats">
+      <article class="card stat">
+        <div class="label"><span class="mask m-bookmark" style="width:13px;height:16px;color:#0051ff"></span>Approval progress</div>
+        <div class="num"><span id="ap-pct">85%</span></div>
+        <div class="bar"><i class="blue" id="ap-bar" data-w="85%"></i></div>
+        <p class="caption"><span id="ap-approved">246</span> of 289 approved</p>
+      </article>
+      <article class="card stat">
+        <div class="label"><span class="dot amber"></span>Pending</div>
+        <div class="num"><span id="ap-pending">43</span> <span class="delta down">8 due today</span></div>
+        <p class="caption" style="margin-top:22px">Avg. wait 1.8 days</p>
+      </article>
+      <article class="card stat">
+        <div class="label"><span class="dot red"></span>Changes requested</div>
+        <div class="num"><span id="ap-changes">6</span></div>
+        <p class="caption" style="margin-top:22px">Mostly France legal claims</p>
+      </article>
+      <article class="card stat">
+        <div class="label"><span class="dot green"></span>Approved today</div>
+        <div class="num"><span id="ap-today">17</span> <span class="delta up">↑ 31%</span></div>
+        <p class="caption" style="margin-top:22px">Maya Chen approved 12</p>
+      </article>
+    </section>
+
+    <article class="card card-lg panel" style="margin-top:8px;padding-bottom:6px">
+      <div class="panel-head">
+        <div class="ap-tabs" id="ap-tabs" style="margin-top:0;border:0">
+          <button class="is-active" data-t="pending">Pending <span class="badge risk" data-c="pending">43</span></button>
+          <button data-t="changes">Changes requested <span class="badge blocked" data-c="changes">6</span></button>
+          <button data-t="approved">Approved <span class="badge ready" data-c="approved">246</span></button>
+        </div>
+        <div class="toolbar-row">
+          <button class="select" id="ap-reviewer" style="min-width:140px"><span data-label>All reviewers</span><span class="caret"></span></button>
+          <label class="search" style="width:220px"><span class="mask m-search"></span><input type="search" id="ap-search" placeholder="Search approvals..."></label>
+          <button class="btn" id="ap-bulk" style="height:35px">Approve all visible</button>
+        </div>
+      </div>
+      <div style="margin-top:8px;max-height:452px;overflow:auto" class="scroll">
+        <table class="tbl"><thead><tr><th>Item</th><th>Market · Channel</th><th>Reviewer</th><th>Due</th><th>Status</th><th style="text-align:right">Actions</th></tr></thead><tbody id="ap-rows"></tbody></table>
+      </div>
+    </article>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Readiness — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/readiness.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="readiness">
+  <div id="page">
+    <!-- KPI row -->
+    <section class="kpis">
+      <article class="card kpi kpi-launch">
+        <div class="ring" id="ring"><b>78%</b></div>
+        <div class="body">
+          <div class="kpi-head">
+            <h3 class="section-title">Launch readiness ⓘ</h3>
+            <span class="live"><span class="dot green sm"></span>Live data</span>
+          </div>
+          <p class="ready-line">281 of 360 experiences ready</p>
+          <div class="stack" id="stack"><i></i><i></i><i></i><i></i></div>
+          <div class="legend">
+            <button data-filter-status="ready"><span class="dot green"></span>Ready　281</button>
+            <button data-filter-status="risk"><span class="dot amber"></span>At risk 52</button>
+            <button data-filter-status="blocked"><span class="dot red"></span>Blocked 27</button>
+            <button data-filter-status="all"><span class="dot grey"></span>Unknown 0</button>
+          </div>
+        </div>
+      </article>
+
+      <a class="card kpi kpi-stat is-link" href="assets.html">
+        <span class="ic"><span class="mask m-home ic-home"></span></span>
+        <div class="body">
+          <h3 class="section-title">Asset readiness</h3>
+          <div class="value">299 / 300<small>99.7%</small></div>
+          <div class="bar"><i class="green" data-w="99.69%"></i></div>
+          <p class="caption">1 asset pending</p>
+        </div>
+      </a>
+
+      <a class="card kpi kpi-stat approvals is-link" href="approvals.html">
+        <span class="ic"><span class="mask m-bookmark ic-bookmark"></span></span>
+        <div class="body">
+          <h3 class="section-title">Approvals</h3>
+          <div class="value">85%</div>
+          <div class="bar"><i class="blue" data-w="72.99%"></i></div>
+          <p class="caption">246 of 289 approved</p>
+        </div>
+      </a>
+
+      <a class="card kpi kpi-stat activation is-link" href="overview.html">
+        <span class="ic"><span class="mask m-rocket ic-rocket"></span></span>
+        <div class="body">
+          <h3 class="section-title">Activation</h3>
+          <div class="value">62%</div>
+          <div class="bar"><i class="purple" data-w="59%"></i></div>
+          <p class="caption">178 of 289 scheduled</p>
+        </div>
+        <span class="chev">›</span>
+      </a>
+    </section>
+
+    <!-- Markets × Channels + Insights -->
+    <section class="grid-main">
+      <article class="card card-lg mc">
+        <h3 class="card-title"><a class="mc-link" href="markets.html">Markets × Channels</a>　ⓘ<a class="mc-open" href="markets.html">Open full view ›</a></h3>
+        <div class="toolbar">
+          <button class="select" style="width:187px" data-select="view">View by: <span data-label>Market × Channel</span> <img src="assets/icons/chevron-down-select.svg" alt="" style="width:20px;height:9px;margin-right:-5px"></button>
+          <button class="select" style="width:107px" data-select="market"><span data-label>All markets</span><span class="caret"></span></button>
+          <button class="select" style="width:111px" data-select="channel"><span data-label>All channels</span><span class="caret"></span></button>
+          <button class="select" style="width:109px" data-select="status"><span data-label>All statuses</span><span class="caret"></span></button>
+          <label class="search"><span class="mask m-search"></span><input type="search" id="mx-search" placeholder="Search markets or channels..."></label>
+          <button class="icon-btn grid-v" data-view="grid" aria-label="Grid view"><img src="assets/icons/grid-view.png" alt=""></button>
+          <button class="icon-btn list-v is-active" data-view="list" aria-label="Table view"><span class="mask m-list"></span></button>
+          <button class="btn btn-dl" id="download"><span data-dl-icon></span>Download</button>
+        </div>
+        <div class="mx scroll" id="mx">
+          <table>
+            <colgroup><col style="width:154px"><col><col><col><col><col><col style="width:154px"><col style="width:36px"></colgroup>
+            <thead><tr id="mx-head"></tr></thead>
+            <tbody id="mx-body"></tbody>
+          </table>
+          <div class="mx-cards" id="mx-cards"></div>
+        </div>
+      </article>
+
+      <aside class="card insights">
+        <div class="ins-tabs">
+          <button class="is-active" data-ins="key">Key insights</button>
+          <button data-ins="blockers">Launch blockers (3)</button>
+          <button data-ins="risk">At risk (7)</button>
+        </div>
+
+        <div class="ins-panel is-active" data-panel="key">
+          <button class="alert" data-goto="blockers">
+            <span class="bang">!</span>
+            <span><strong>Campaign is not ready to launch</strong><small>3 blockers and 7 at risk could impact the launch.</small></span>
+            <span class="chev">›</span>
+          </button>
+          <button class="ins-item" data-cell="fr:TikTok" style="margin-top:-1px">
+            <span data-thumb="headphones"></span>
+            <p>FR · TikTok · 8 experiences<span>Promotional claim requires review</span><span>“Save $100” not allowed in France</span></p>
+            <span class="chev">›</span>
+          </button>
+          <button class="ins-item" data-cell="de:Instagram">
+            <span data-thumb="mountain"></span>
+            <p>DE · Instagram · 4 experiences<span>Localized asset missing</span><span>German copy not yet generated</span></p>
+            <span class="chev">›</span>
+          </button>
+          <button class="ins-item" data-cell="uk:Email">
+            <span data-thumb="headphones"></span>
+            <p>UK · Email · 2 experiences<span>Approval pending</span><span>Legal review in progress</span></p>
+            <span class="chev">›</span>
+          </button>
+          <h4 class="ins-h4">Other insights</h4>
+          <button class="other" data-goto="risk"><span class="circ" style="background:#ffba00">!</span><p>7 experiences at risk<span>May impact launch timeline</span></p><span class="chev">›</span></button>
+          <a class="other" href="assets.html"><span class="circ" style="background:#076aff">i</span><p>1 asset pending<span>Product hero image awaiting approval</span></p><span class="chev">›</span></a>
+          <a class="other" href="content.html"><span class="circ" style="background:#076aff">i</span><p>Localized content required<span>3 markets have local overrides</span></p><span class="chev">›</span></a>
+          <a class="other" href="activity.html"><span class="circ" style="background:#0bb34d">✓</span><p>Readiness increased by 12%<span>Since last week</span></p><span class="chev">›</span></a>
+        </div>
+
+        <div class="ins-panel" data-panel="blockers">
+          <button class="ins-list-item" data-cell="fr:TikTok"><span class="dot red" style="margin-top:4px"></span><p><b>Promotional claim requires review</b><span>FR · TikTok · 8 experiences — “Save $100” not allowed in France</span></p><span class="chev">›</span></button>
+          <button class="ins-list-item" data-cell="fr:TikTok"><span class="dot red" style="margin-top:4px"></span><p><b>Missing age-gate on landing page</b><span>FR · TikTok · 12 experiences — required by platform policy</span></p><span class="chev">›</span></button>
+          <button class="ins-list-item" data-cell="fr:Email"><span class="dot red" style="margin-top:4px"></span><p><b>Unsubscribe link not localized</b><span>FR · Email · 7 experiences — CNIL compliance</span></p><span class="chev">›</span></button>
+          <a class="btn btn-dark" href="approvals.html" style="width:100%;margin-top:16px">Resolve in Approvals</a>
+        </div>
+
+        <div class="ins-panel" data-panel="risk">
+          <button class="ins-list-item" data-cell="de:Instagram"><span class="dot amber" style="margin-top:4px"></span><p><b>German copy not yet generated</b><span>DE · Instagram · 4 experiences</span></p><span class="chev">›</span></button>
+          <button class="ins-list-item" data-cell="uk:Email"><span class="dot amber" style="margin-top:4px"></span><p><b>Legal review in progress</b><span>UK · Email · 2 experiences</span></p><span class="chev">›</span></button>
+          <button class="ins-list-item" data-cell="fr:Web"><span class="dot amber" style="margin-top:4px"></span><p><b>Hero image resolution too low</b><span>FR · Web · 3 experiences</span></p><span class="chev">›</span></button>
+          <button class="ins-list-item" data-cell="de:YouTube"><span class="dot amber" style="margin-top:4px"></span><p><b>Pre-roll exceeds 15s limit</b><span>DE · YouTube · 2 experiences</span></p><span class="chev">›</span></button>
+          <button class="ins-list-item" data-cell="fr:Instagram"><span class="dot amber" style="margin-top:4px"></span><p><b>Caption over character limit</b><span>FR · Instagram · 5 experiences</span></p><span class="chev">›</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Next steps -->
+    <section class="card next">
+      <div class="ttl"><img src="assets/icons/check-circle.png" alt="">Next steps</div>
+      <div class="steps">
+        <button class="step" data-step="blockers"><span class="num">1</span><p>Review launch blockers<span>Address 3 critical issues</span></p><span class="chev soft">›</span></button>
+        <button class="step" data-step="risk"><span class="num">2</span><p>Resolve at-risk items<span>7 experiences need attention</span></p><span class="chev soft">›</span></button>
+        <a class="step" href="approvals.html"><span class="num">3</span><p>Track approval progress<span>43 approvals pending</span></p><span class="chev soft">›</span></a>
+        <button class="step" data-step="recheck"><span class="num">4</span><p>Recheck readiness<span>Confirm launch readiness</span></p></button>
+      </div>
+      <button class="btn btn-dark btn-plan" id="plan">View launch plan　→</button>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/readiness.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

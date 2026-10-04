@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Settings — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="settings">
+  <div id="page">
+    <section class="st-grid">
+      <nav class="card card-lg st-nav" id="st-nav">
+        <button class="is-active" data-sec="general">General</button>
+        <button data-sec="markets">Markets & channels</button>
+        <button data-sec="notifications">Notifications</button>
+        <button data-sec="integrations">Integrations</button>
+        <button data-sec="danger">Danger zone</button>
+      </nav>
+
+      <form id="st-form" onsubmit="return false">
+        <section class="card card-lg st-sec" id="general">
+          <h3>General</h3>
+          <p class="muted">Basic campaign details shown across GenStudio.</p>
+          <div class="st-body">
+            <div class="two">
+              <div class="field"><label for="f-name">Campaign name</label><input class="input" id="f-name" value="Project Nova"></div>
+              <div class="field"><label>Campaign type</label><button type="button" class="select" data-st="type" style="height:36px;width:100%"><span data-label>Global Campaign</span><span class="caret"></span></button></div>
+            </div>
+            <div class="field"><label for="f-tag">Tagline</label><input class="input" id="f-tag" value="Next-gen audio. A more human sound."></div>
+            <div class="two">
+              <div class="field"><label for="f-date">Launch date</label><input class="input" id="f-date" type="date" value="2026-10-02"></div>
+              <div class="field"><label>Launch time zone</label><button type="button" class="select" data-st="tz" style="height:36px;width:100%"><span data-label>Local time per market</span><span class="caret"></span></button></div>
+            </div>
+            <div class="field"><label for="f-desc">Description</label><textarea class="textarea" id="f-desc">Global launch of Nova over-ear headphones across web, email and social. Experiences are generated with Firefly and localized for six markets.</textarea><span class="hint">Visible to everyone with access to this campaign.</span></div>
+          </div>
+        </section>
+
+        <section class="card card-lg st-sec" id="markets">
+          <h3>Markets & channels</h3>
+          <p class="muted">Choose where Project Nova launches. Readiness is tracked for every combination.</p>
+          <div class="st-body">
+            <div class="field"><label>Markets</label><div class="mk-grid" id="st-markets"></div></div>
+            <div class="field"><label>Channels</label><div class="mk-grid" id="st-channels"></div></div>
+          </div>
+        </section>
+
+        <section class="card card-lg st-sec" id="notifications">
+          <h3>Notifications</h3>
+          <p class="muted">Decide what the campaign team hears about.</p>
+          <div class="st-body" id="st-notifs"></div>
+        </section>
+
+        <section class="card card-lg st-sec" id="integrations">
+          <h3>Integrations</h3>
+          <p class="muted">Connected Adobe apps and workplace tools.</p>
+          <div class="st-body" id="st-integ"></div>
+        </section>
+
+        <section class="card card-lg st-sec" id="danger">
+          <h3>Danger zone</h3>
+          <p class="muted">These actions affect everyone on the campaign.</p>
+          <div class="st-body">
+            <div class="danger-box"><p><b>Pause campaign</b><span>Stops all scheduled activations until resumed.</span></p><button type="button" class="btn" data-danger="pause">Pause</button></div>
+            <div class="danger-box"><p><b>Archive campaign</b><span>Moves Project Nova to the archive. Requires owner approval.</span></p><button type="button" class="btn btn-danger" data-danger="archive">Archive</button></div>
+          </div>
+        </section>
+
+        <div class="save-bar">
+          <span class="note" id="st-note">All changes saved</span>
+          <button type="button" class="btn" id="st-reset">Discard</button>
+          <button type="button" class="btn btn-dark" id="st-save">Save changes</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

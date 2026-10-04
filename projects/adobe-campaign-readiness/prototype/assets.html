@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Assets — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="assets">
+  <div id="page">
+    <section class="stats" style="grid-template-columns:repeat(4,1fr)">
+      <article class="card stat">
+        <div class="label"><span class="mask m-home" style="width:20px;height:20px;color:#075aff"></span>Asset readiness</div>
+        <div class="num">299 / 300 <small>99.7%</small></div>
+        <div class="bar"><i class="green" data-w="99.69%"></i></div>
+        <p class="caption" id="as-pending">1 asset pending</p>
+      </article>
+      <article class="card stat">
+        <div class="label">Images</div>
+        <div class="num">214 <span class="delta up">+18</span></div>
+        <div class="bar"><i class="blue" data-w="71%"></i></div>
+        <p class="caption">Hero, lifestyle and product shots</p>
+      </article>
+      <article class="card stat">
+        <div class="label">Video</div>
+        <div class="num">38 <span class="delta up">+4</span></div>
+        <div class="bar"><i class="purple" data-w="13%"></i></div>
+        <p class="caption">Pre-roll, stories, reels</p>
+      </article>
+      <article class="card stat">
+        <div class="label">Copy & localization</div>
+        <div class="num">48 <span class="delta down">2 missing</span></div>
+        <div class="bar"><i class="amber" data-w="16%"></i></div>
+        <p class="caption">Headlines and body copy · 6 languages</p>
+      </article>
+    </section>
+
+    <div class="toolbar-row" style="margin-top:14px">
+      <div class="chips" id="as-types"></div>
+      <span class="spacer"></span>
+      <div class="storage"><span class="sub">Storage 18.4 GB of 50 GB</span><div class="bar"><i class="blue" data-w="37%"></i></div></div>
+      <label class="search" style="flex:0 1 220px"><span class="mask m-search"></span><input type="search" id="as-search" placeholder="Search assets..."></label>
+      <button class="btn btn-dark" id="as-upload" style="height:35px">↑ Upload</button>
+    </div>
+    <div class="as-grid" id="as-grid"></div>
+    <div id="as-bulk"></div>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

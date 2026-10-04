@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Activity — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="activity">
+  <div id="page">
+    <section class="act-grid">
+      <article class="card card-lg feed">
+        <div class="panel-head">
+          <h3 class="card-title">Activity</h3>
+          <div class="chips" id="act-filters"></div>
+        </div>
+        <div class="comment-box">
+          <span class="avatar" style="background:#121419">AA</span>
+          <input class="input" id="act-input" placeholder="Add an update or @mention a teammate…">
+          <button class="btn btn-dark" id="act-post" style="height:38px">Post</button>
+        </div>
+        <div id="act-feed"></div>
+      </article>
+
+      <aside style="display:flex;flex-direction:column;gap:8px">
+        <article class="card card-lg panel">
+          <h3 class="card-title">This week</h3>
+          <div class="mini-stats">
+            <div><span>Experiences updated</span><b>148</b></div>
+            <div><span>Approvals granted</span><b>63</b></div>
+            <div><span>Comments</span><b>41</b></div>
+            <div><span>Issues resolved</span><b>19</b></div>
+          </div>
+          <div class="spark" id="spark"></div>
+          <p class="sub" style="margin-top:8px">Daily activity · last 14 days</p>
+        </article>
+        <article class="card card-lg panel">
+          <h3 class="card-title">Top contributors</h3>
+          <div class="team-list" id="contributors"></div>
+        </article>
+      </aside>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

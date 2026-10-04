@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Blocker Queue — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/readiness.css">
+  <link rel="stylesheet" href="css/markets.css">
+  <link rel="stylesheet" href="css/queue.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="readiness">
+  <div id="page">
+    <header class="q3-title">
+      <h2>Attention / Blocker Queue</h2>
+      <p>Prioritize launch-critical issues and route the next action to the right owner.</p>
+    </header>
+
+    <section class="q3-cards" id="q3-cards"></section>
+
+    <section class="q3-wrap">
+      <article class="q3-card">
+        <nav class="q3-tabs">
+          <span class="is-active">Blocker Queue</span>
+          <a href="markets.html">Markets × Channels</a>
+          <a href="content.html">Experiences</a>
+          <a href="approvals.html">Approvals</a>
+          <a href="people.html">Owners</a>
+          <a href="activity.html">Activity</a>
+        </nav>
+
+        <div class="q3-bar">
+          <button class="q3-sel" data-sel="view"><span data-label>View: Priority queue</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="q3-sel" data-sel="owner"><span data-label>All owners</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="q3-sel" data-sel="status"><span data-label>All statuses</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="q3-sel" data-sel="due"><span data-label>All due dates</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <label class="q3-search"><span class="mask m-search"></span><input type="search" id="q3-q" placeholder="Search blocker, owner, market..."></label>
+          <button class="q3-crit" id="q3-crit" role="switch" aria-checked="false"><span class="q3-tog"></span>Critical only</button>
+          <button class="q3-sel" data-sel="sort"><span data-label>Sort: Priority</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+        </div>
+
+        <div class="q3-table">
+          <table>
+            <colgroup><col style="width:88px"><col style="width:119px"><col style="width:156px"><col style="width:92px"><col style="width:118px"><col style="width:109px"><col><col style="width:139px"></colgroup>
+            <thead><tr><th>Priority</th><th>Issue</th><th>Market / Channel</th><th>Impact</th><th>Owner</th><th>Due</th><th>Status</th><th>Next action</th></tr></thead>
+            <tbody id="q3-body"></tbody>
+          </table>
+        </div>
+
+        <div class="q3-foot">
+          <span id="q3-count"></span>
+          <div class="q3-pager">
+            <button id="q3-prev">‹<span>Previous</span></button>
+            <span id="q3-page"></span>
+            <button id="q3-next" class="strong"><span>Next</span>›</button>
+          </div>
+        </div>
+      </article>
+
+      <aside class="q3-panel" id="q3-panel">
+        <div class="q3-ph"><h3>Selected item</h3><button id="q3-more" aria-label="Item actions">⋮</button></div>
+        <div id="q3-detail"></div>
+        <div class="q3-pf">
+          <button class="q3-btn" id="q3-assign">Assign / follow up</button>
+          <button class="q3-btn dark" id="q3-go">Investigate<span class="arr">→</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="q3-steps">
+      <h3><span class="q3-target"></span>Next steps</h3>
+      <button class="q3-step" data-step="1" style="width:223.55px"><span class="n">1</span><span class="t"><b>Review launch blockers</b><small>Understand what needs attention</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="2" style="width:213.7px"><span class="n">2</span><span class="t"><b>Route next action</b><small>Assign owners and unblock</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="3" style="width:242.14px"><span class="n">3</span><span class="t"><b>Track progress</b><small>Monitor resolution and update status</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="4" style="width:213.72px"><span class="n">4</span><span class="t"><b>Recheck readiness</b><small>Confirm launch risk is reduced</small></span></button>
+      <a class="q3-btn dark q3-plan" href="overview.html">View launch plan<span class="arr">→</span></a>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/queue.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe Campaign Readiness — From Content Velocity to Campaign Confidence</title>
+  <meta name="description" content="Product design case study: a campaign readiness layer for AI-scaled enterprise campaigns. Blockers, change impact, ownership, and a clear answer to “are we ready to launch?”">
+  <meta name="theme-color" content="#fafaf9" id="meta-theme-color">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/campaign.css?v=acr-14">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("acr-theme");
+        var theme = saved === "dark" || saved === "light"
+          ? saved
+          : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <nav class="case-nav" aria-label="Case study navigation">
+    <div class="container case-nav__inner">
+      <a class="case-nav__back" href="../../index.html">← Portfolio</a>
+      <div class="case-nav__actions">
+        <div class="case-nav__links">
+          <a class="case-nav__link" href="#evidence">Evidence</a>
+          <a class="case-nav__link" href="#solution">Solution</a>
+          <a class="case-nav__link" href="#prototype">Prototype</a>
+          <a class="case-nav__link" href="#tradeoffs">Tradeoffs</a>
+          <a class="case-nav__link" href="#validation">Validation</a>
+        </div>
+        <div class="theme-toggle" role="group" aria-label="Color theme">
+          <button type="button" class="theme-toggle__btn" data-theme-set="light" aria-pressed="true">Light</button>
+          <button type="button" class="theme-toggle__btn" data-theme-set="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="container">
+      <div class="hero__intro">
+        <p class="hero__eyebrow">Adobe · Enterprise product design</p>
+        <h1 class="hero__title">From content velocity to campaign confidence</h1>
+        <p class="hero__lede">AI made it cheap to create hundreds of campaign experiences. The hard job moved to a quieter question three days before launch: are we actually ready? And if not, what blocks us, what does it affect, and who acts next?</p>
+        <p class="hero__status">Proposed product exploration, not shipped. Concept-tested with 5 campaign operations participants. Baselines are estimates and targets are proposals.</p>
+      </div>
+      <dl class="hero__meta">
+        <div><dt>Role</dt><dd>Lead product designer</dd></div>
+        <div><dt>Duration</dt><dd>~6 months</dd></div>
+        <div><dt>Focus</dt><dd>Readiness orchestration</dd></div>
+        <div><dt>Primary user</dt><dd>Campaign operations</dd></div>
+        <div><dt>Scope</dt><dd>5 core screens, interactive prototype</dd></div>
+      </dl>
+      <figure class="viz viz--hero reveal">
+        <button type="button" class="acr-zoom" data-zoom="assets/project-nova-readiness-dashboard.webp" aria-label="Open the Campaign Command Center full size">
+          <img src="assets/project-nova-readiness-dashboard.webp" width="4728" height="3192" alt="Project Nova readiness dashboard — launch in 3 days, 78 percent of 360 experiences ready, France TikTok blocked, and a product hero image still pending">
+        </button>
+        <figcaption class="viz__caption">
+          <span>Campaign Command Center. The first screen answers “Are we ready?”</span>
+          <span class="viz__hint">Click to enlarge</span>
+        </figcaption>
+      </figure>
+      <nav class="screen-index" aria-label="Jump to a screen">
+        <span class="screen-index__label">Jump to the work</span>
+        <a href="#screen-01"><b>01</b> Command Center</a>
+        <a href="#screen-02"><b>02</b> Market × Channel</a>
+        <a href="#screen-03"><b>03</b> Blocker queue</a>
+        <a href="#screen-04"><b>04</b> Change Impact</a>
+        <a href="#screen-05"><b>05</b> Approval &amp; handoff</a>
+        <a class="screen-index__try" href="#prototype">Try the prototype →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Snapshot -->
+    <section class="section" id="snapshot" aria-labelledby="snapshot-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">At a glance</p>
+          <h2 class="section__title" id="snapshot-title">What I set out to design</h2>
+        </div>
+        <dl class="rows reveal">
+          <div class="row">
+            <dt class="row__label">Project type</dt>
+            <dd class="row__body">Proposed product exploration and operational vision. A concept and UX framework, not shipped to production.</dd>
+          </div>
+          <div class="row">
+            <dt class="row__label">Team</dt>
+            <dd class="row__body">I led the design and worked with product designers, UX research, product management, and engineering.</dd>
+          </div>
+          <div class="row">
+            <dt class="row__label">Context</dt>
+            <dd class="row__body">GenAI increased variant volume. Coordination became the bottleneck: reviews, localization, dependencies, ownership.</dd>
+          </div>
+          <div class="row">
+            <dt class="row__label">Problem</dt>
+            <dd class="row__body">Object-level status existed across Adobe tools. A single operational decision did not: launch readiness.</dd>
+          </div>
+          <div class="row">
+            <dt class="row__label">My focus</dt>
+            <dd class="row__body">A readiness and blocker-resolution layer: exceptions, impact, ownership, and safe next actions.</dd>
+          </div>
+          <div class="row">
+            <dt class="row__label">Outcome</dt>
+            <dd class="row__body">A decision model, five core screens, and a working prototype. In concept testing with 5 participants, 19 of 20 tasks were completed without help and no one applied an unsafe change.</dd>
+          </div>
+          <div class="row">
+            <dt class="row__label">Scope</dt>
+            <dd class="row__body">
+              <div class="split">
+                <div class="split__col">
+                  <h3>I owned</h3>
+                  <ul>
+                    <li>Readiness representation</li>
+                    <li>Blocker prioritization</li>
+                    <li>Dependency &amp; change impact</li>
+                    <li>Resolution routing with context</li>
+                  </ul>
+                </div>
+                <div class="split__col split__col--out">
+                  <h3>I did not own</h3>
+                  <ul>
+                    <li>Creation / Firefly experience</li>
+                    <li>AEM DAM redesign</li>
+                    <li>Workfront project management</li>
+                    <li>Legal policy or journey builder</li>
+                  </ul>
+                </div>
+              </div>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Why now -->
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Why this problem</p>
+          <div>
+            <p class="pull">Creation scaled. Coordination didn’t.</p>
+            <h2 class="section__title" id="why-title">Readiness is not a completion percentage</h2>
+            <p class="section__lede">An illustrative model, not Adobe customer data, shows how quickly experience count grows once markets, channels, audiences, and variants multiply.</p>
+          </div>
+        </div>
+        <div class="rail-indent">
+          <p class="scale reveal" aria-label="Illustrative scale">
+            <span>6 markets</span><em>×</em>
+            <span>5 channels</span><em>×</em>
+            <span>4 audiences</span><em>×</em>
+            <span>3 variants</span><em>=</em>
+            <strong>360 experiences</strong>
+          </p>
+          <div class="prose">
+            <p>Each experience can carry its own version, approval, localization, and activation state. 299 of 300 assets can be “done.” If the missing one is the required product hero, the campaign is not 99.7% ready.</p>
+            <p>That gap between status and readiness is the design problem I took on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evidence -->
+    <section class="section" id="evidence" aria-labelledby="evidence-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Evidence</p>
+          <div>
+            <h2 class="section__title" id="evidence-title">What I observed before designing</h2>
+            <p class="section__lede">No proprietary customer logs. The research drew on three inputs, chosen to ground the design in real operational constraints. The quote below is paraphrased from those sessions.</p>
+          </div>
+        </div>
+
+        <div class="findings findings--inputs reveal">
+          <p class="findings__label">Research inputs</p>
+          <ol class="findings__list">
+            <li>
+              <h3><span>01</span>Product walkthroughs</h3>
+              <p>GenStudio, AEM DAM, and Workfront workflows, traced to see how status and task dependencies travel across system boundaries.</p>
+            </li>
+            <li>
+              <h3><span>02</span>Public documentation</h3>
+              <p>Enterprise campaign management patterns, multi-market localization pipelines, and Workfront orchestration structures.</p>
+            </li>
+            <li>
+              <h3><span>03</span>Specialist conversations</h3>
+              <p>Semi-structured interviews and scenario mapping with 10 people: 4 product designers, 1 UX researcher, 2 product managers, and 3 engineers working on enterprise campaign tools.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="rows reveal">
+          <article class="row">
+            <p class="row__label">Walkthrough</p>
+            <div class="row__body">
+              <h3 class="row__title">Readiness was reconstructed, not shown.</h3>
+              <p>Operators opened Workfront for tasks, AEM for assets, and review for approvals, then rebuilt a mental model of launch risk. Often in a spreadsheet or Slack thread the night before go-live.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Failure mode</p>
+            <div class="row__body">
+              <h3 class="row__title">Late surprises clustered after “approved.”</h3>
+              <p>A master offer or hero change after approval invalidated localized or already-routed experiences, with no clear impact map. The team found the fallout during activation prep, not at change time.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Constraint</p>
+            <div class="row__body">
+              <h3 class="row__title">Legal and brand would not accept AI as the decider.</h3>
+              <p>Stakeholders were open to AI summaries and anomaly flags. Compliance review and regional overrides had to stay human-gated. That constraint became the principle “AI advises; policy governs; humans decide” before any UI existed.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Handoff gap</p>
+            <div class="row__body">
+              <h3 class="row__title">Context died at tool boundaries.</h3>
+              <p>When ops routed a blocker into Workfront or AEM, the campaign, market, channel, and reason it was launch-critical often had to be explained again. Carrying context across tools became a requirement.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Operator signal</p>
+            <div class="row__body">
+              <blockquote class="quote">“I can tell you every asset’s status. I still can’t tell you if we should launch on Thursday.”</blockquote>
+              <p><span class="muted">Paraphrased.</span> That question is the one the Command Center has to answer first.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Hypothesis</p>
+            <div class="row__body">
+              <h3 class="row__title">Exception-first readiness beats a completion percentage.</h3>
+              <p>Shifting the operator’s mental model from “how complete are we” to “what blocks launch, and what depends on it” should cut time to a launch decision under pre-launch pressure. The concept test below checked this.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="findings reveal">
+          <p class="findings__label">Failure modes</p>
+          <ol class="findings__list">
+            <li>
+              <h3><span>01</span>False green</h3>
+              <p>High completion with one launch-critical asset missing. Inventory said ready; the launch wasn’t.</p>
+            </li>
+            <li>
+              <h3><span>02</span>Orphan blockers</h3>
+              <p>Blocked items without an owner, due date, or downstream impact. Visible, but no path to action.</p>
+            </li>
+            <li>
+              <h3><span>03</span>Silent overwrite risk</h3>
+              <p>A global “update all” after a copy change threatened legitimate regional variants.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design problem -->
+    <section class="section" id="problem" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Design problem</p>
+          <div>
+            <h2 class="decision-q" id="problem-title">Are we ready to launch?</h2>
+            <p class="section__lede">Primary user: Campaign Operations, three days before a major launch. Creative, brand, legal, regional, and activation teams still own their work. This layer coordinates the decision without taking control from specialists.</p>
+          </div>
+        </div>
+        <div class="decision rail-indent">
+          <div class="prose">
+            <p>I framed the product around that question, then around the follow-ups operators ask when the answer is no. These questions became the information architecture.</p>
+            <p class="aside"><span class="ink">The rule I held:</span> if a screen didn’t answer one of these questions, it didn’t make the core set, however useful it looked as a report.</p>
+          </div>
+          <ol class="decision-steps reveal">
+            <li><span>01</span>If not, why?</li>
+            <li><span>02</span>What is blocked?</li>
+            <li><span>03</span>What does it affect?</li>
+            <li><span>04</span>Who owns the next step?</li>
+            <li><span>05</span>What can safely move?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evolution -->
+    <section class="section" id="evolution" aria-labelledby="evolution-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Evolution</p>
+          <div>
+            <h2 class="section__title" id="evolution-title">How the model evolved</h2>
+            <p class="section__lede">I explored three directions before the final one. Each looked right in a review and failed the operator under launch pressure.</p>
+          </div>
+        </div>
+        <div class="evo reveal" data-tabs>
+          <div class="evo__tabs" role="tablist" aria-label="Rejected directions">
+            <button type="button" class="evo__tab" role="tab" id="evo-tab-1" aria-controls="evo-panel-1" aria-selected="true"><span>01</span>Completion dashboard</button>
+            <button type="button" class="evo__tab" role="tab" id="evo-tab-2" aria-controls="evo-panel-2" aria-selected="false" tabindex="-1"><span>02</span>AI copilot</button>
+            <button type="button" class="evo__tab" role="tab" id="evo-tab-3" aria-controls="evo-panel-3" aria-selected="false" tabindex="-1"><span>03</span>Dependency graph</button>
+          </div>
+          <figure class="evo__panel" role="tabpanel" id="evo-panel-1" aria-labelledby="evo-tab-1">
+            <div class="evo__stage"><img src="assets/early-direction-completion-dashboard.webp" width="4608" height="3072" loading="lazy" decoding="async" alt="Early direction: a completion-focused dashboard showing assets 99.7 percent, approvals 98 percent, localization 97 percent, and France marked complete, while a hidden France TikTok blocker affects 8 experiences"></div>
+            <figcaption class="viz__caption"><span>High completion hid the one blocker that mattered.</span><a class="evo__full" href="assets/early-direction-completion-dashboard.webp" target="_blank" rel="noopener">Open full size ↗</a></figcaption>
+          </figure>
+          <figure class="evo__panel" role="tabpanel" id="evo-panel-2" aria-labelledby="evo-tab-2" hidden>
+            <div class="evo__stage evo__stage--copilot"><img src="assets/early-direction-ai-copilot.webp" width="5016" height="2820" loading="lazy" decoding="async" alt="Early direction: an AI copilot answering “Are we ready to launch on Thursday?” with a list of blockers inside a chat, missing side-by-side market comparison, blocker ranking, and an auditable path to action"></div>
+            <figcaption class="viz__caption"><span>Helpful answers, one at a time. Nothing to scan or compare.</span><a class="evo__full" href="assets/early-direction-ai-copilot.webp" target="_blank" rel="noopener">Open full size ↗</a></figcaption>
+          </figure>
+          <figure class="evo__panel" role="tabpanel" id="evo-panel-3" aria-labelledby="evo-tab-3" hidden>
+            <div class="evo__stage"><img src="assets/early-direction-dependency-graph.webp" width="4608" height="3072" loading="lazy" decoding="async" alt="Early direction: a full dependency graph linking Project Nova to markets, channels, experiences, assets, and approvals, with the France TikTok path and the blocked regional claim highlighted"></div>
+            <figcaption class="viz__caption"><span>Every relationship visible. The next decision wasn’t.</span><a class="evo__full" href="assets/early-direction-dependency-graph.webp" target="_blank" rel="noopener">Open full size ↗</a></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="section section--solution" id="solution" aria-labelledby="solution-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Solution</p>
+          <div>
+            <h2 class="section__title" id="solution-title">One operational loop, five screens</h2>
+            <p class="section__lede">Each screen answers one question in order: from uncertainty to a defensible launch decision, then into the right specialist tool, and back to an updated readiness state.</p>
+            <ol class="journey reveal" aria-label="Solution loop">
+              <li><a href="#screen-01">Readiness</a></li>
+              <li><a href="#screen-02">Locate risk</a></li>
+              <li><a href="#screen-03">Prioritize</a></li>
+              <li><a href="#screen-04">Check impact</a></li>
+              <li><a href="#screen-05">Route &amp; recheck</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Screen 01 -->
+        <article class="screen reveal" id="screen-01">
+          <header class="screen__head">
+            <p class="screen__meta"><span class="screen__num">01</span>Are we ready?</p>
+            <div>
+              <h3 class="screen__title">Campaign Command Center</h3>
+              <p class="screen__body">The moment is three days out. I led with critical blockers and readiness by dimension, not vanity KPIs or a single AI score. Asset readiness reads 99.7%; launch readiness reads 78% with 3 blockers. Both are true, and the second one decides the launch.</p>
+              <p class="screen__must"><span>Shows</span> Launch countdown · Readiness by dimension · Critical vs waiting · Market and channel risk · Data freshness</p>
+            </div>
+          </header>
+          <figure class="viz">
+            <button type="button" class="acr-zoom" data-zoom="assets/project-nova-readiness-dashboard.webp" aria-label="Open the Campaign Command Center full size">
+              <img src="assets/project-nova-readiness-dashboard.webp" width="4728" height="3192" loading="lazy" decoding="async" alt="Project Nova readiness dashboard — launch in 3 days, 78 percent of 360 experiences ready, France TikTok blocked, and a product hero image still pending">
+            </button>
+            <figcaption class="viz__caption"><span>Screen 01 · Command Center</span><span class="viz__hint">Click to enlarge</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- Screen 02 -->
+        <article class="screen reveal" id="screen-02">
+          <header class="screen__head">
+            <p class="screen__meta"><span class="screen__num">02</span>Where is the problem?</p>
+            <div>
+              <h3 class="screen__title">Market × Channel matrix</h3>
+              <p class="screen__body">Markets as rows, channels as columns. Each cell is Ready, Needs review, Blocked, or N/A, shown with an icon and a label, never color alone. A critical-only mode cuts the grid to what can delay launch week.</p>
+            </div>
+          </header>
+          <figure class="viz">
+            <button type="button" class="acr-zoom" data-zoom="assets/web-to-figma-screen-2.webp?v=2" aria-label="Open the Market by Channel matrix full size">
+              <img src="assets/web-to-figma-screen-2.webp?v=2" width="5046" height="2976" loading="lazy" decoding="async" alt="Market by Channel readiness matrix — markets as rows, channels as columns, each cell marked Ready, Needs review, Blocked, or not applicable">
+            </button>
+            <figcaption class="viz__caption"><span>Screen 02 · Market × Channel matrix</span><span class="viz__hint">Click to enlarge</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- Screen 03 -->
+        <article class="screen reveal" id="screen-03">
+          <header class="screen__head">
+            <p class="screen__meta"><span class="screen__num">03</span>What first, and why?</p>
+            <div>
+              <h3 class="screen__title">Blocker queue</h3>
+              <p class="screen__body">Ranked by launch criticality, dependencies, deadline, and severity, not by when the issue arrived. The side panel follows one pattern for every blocker: state, cause, impact, owner, action. The scenario that runs through every screen starts here: France · TikTok.</p>
+            </div>
+          </header>
+          <figure class="viz">
+            <button type="button" class="acr-zoom" data-zoom="assets/web-to-figma-screen-3.webp" aria-label="Open the blocker queue full size">
+              <img src="assets/web-to-figma-screen-3.webp" width="5046" height="3057" loading="lazy" decoding="async" alt="Blocker queue ranked by launch criticality, with the France TikTok blocker selected to show its issue, impact, owner, due time, and why it is prioritized">
+            </button>
+            <figcaption class="viz__caption"><span>Screen 03 · Blocker queue</span><span class="viz__hint">Click to enlarge</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- Screen 04 -->
+        <article class="screen reveal" id="screen-04">
+          <header class="screen__head">
+            <p class="screen__meta"><span class="screen__num">04</span>If we change this, what else changes?</p>
+            <div>
+              <h3 class="screen__title">Change Impact <span class="screen__tag">Signature screen</span></h3>
+              <p class="screen__body">The master claim changes from “Save $100” to “Save 25%.” Before anything is applied, every affected experience is classified. Nothing ships through a blind “update all.”</p>
+              <p class="screen__must"><span>Classifies</span> Safe to update · Local override or review · Previously approved · Already activated · Unknown data</p>
+            </div>
+          </header>
+          <figure class="viz">
+            <button type="button" class="acr-zoom" data-zoom="assets/web-to-figma-screen-5.webp" aria-label="Open the Change Impact screen full size">
+              <img src="assets/web-to-figma-screen-5.webp" width="5046" height="3024" loading="lazy" decoding="async" alt="Change Impact for the claim change from Save $100 to Save 25 percent — 18 experiences safe to update, 20 need review, 6 local overrides, 4 unknown, with France TikTok blocked until legal review">
+            </button>
+            <figcaption class="viz__caption"><span>Screen 04 · Change Impact</span><span class="viz__hint">Click to enlarge</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- Screen 05 -->
+        <article class="screen reveal" id="screen-05">
+          <header class="screen__head">
+            <p class="screen__meta"><span class="screen__num">05</span>Who reviews, and did readiness update?</p>
+            <div>
+              <h3 class="screen__title">Approval &amp; localization impact, then handoff</h3>
+              <p class="screen__body">What changed (copy, image, layout, or CTA) decides which review is required. Work routes into Adobe Review, Workfront, or AEM with the campaign context attached, and readiness recalculates when it comes back.</p>
+            </div>
+          </header>
+          <figure class="viz">
+            <button type="button" class="acr-zoom" data-zoom="assets/web-to-figma-screen-06.webp" aria-label="Open the Approval and localization impact screen full size">
+              <img src="assets/web-to-figma-screen-06.webp" width="5040" height="3045" loading="lazy" decoding="async" alt="Approval and localization impact for the Save $100 to Save 25 percent claim change — 20 reviews required, 6 local overrides, routed to Adobe Review, Workfront, and AEM with campaign context preserved and readiness awaiting review">
+            </button>
+            <figcaption class="viz__caption"><span>Screen 05 · Approval &amp; localization, then handoff</span><span class="viz__hint">Click to enlarge</span></figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- Prototype -->
+    <section class="section" id="prototype" aria-labelledby="prototype-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Prototype</p>
+          <div>
+            <h2 class="section__title" id="prototype-title">Try the flow yourself</h2>
+            <p class="section__lede">A working prototype of the five screens, with sample data. A short guide shows what to click at each step, from the Command Center to a routed review. It takes about two minutes, and every other tab, filter, and button works too.</p>
+          </div>
+        </div>
+
+        <div class="proto reveal" data-proto>
+          <div class="proto__stage" data-proto-stage>
+            <img class="proto__poster" src="assets/project-nova-readiness-dashboard.webp" width="4728" height="3192" loading="lazy" decoding="async" alt="Preview of the interactive Project Nova prototype, opening on the Campaign Command Center">
+            <div class="proto__cover">
+              <button type="button" class="proto__start" data-proto-start>Start the guided prototype</button>
+              <a class="proto__start proto__start--mobile" href="prototype/readiness.html?tour=1" target="_blank" rel="noopener">Open the prototype</a>
+              <p class="proto__note proto__note--desktop">Loads here. About 2 minutes, 5 steps.</p>
+              <p class="proto__note proto__note--mobile">Built for screens 1280px and wider. It opens on a phone, but works best on a laptop or desktop.</p>
+            </div>
+          </div>
+          <div class="proto__meta">
+            <span>Sample data · Desktop recommended</span>
+            <a href="prototype/readiness.html?tour=1" target="_blank" rel="noopener">Open full screen ↗</a>
+          </div>
+        </div>
+
+        <ol class="proto-steps rail-indent">
+          <li><span>01</span>Command Center: open Markets × Channels</li>
+          <li><span>02</span>Matrix: open the blocker queue for France · TikTok</li>
+          <li><span>03</span>Queue: investigate, then review the change impact</li>
+          <li><span>04</span>Change Impact: submit for review</li>
+          <li><span>05</span>Handoff: send to reviewers with context attached</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Tradeoffs -->
+    <section class="section" id="tradeoffs" aria-labelledby="tradeoffs-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Tradeoffs</p>
+          <div>
+            <h2 class="section__title" id="tradeoffs-title">Five decisions, and what I gave up</h2>
+            <p class="section__lede">In each case the obvious option was reasonable. It failed the operator three days before launch.</p>
+          </div>
+        </div>
+
+        <div class="rows reveal">
+          <article class="row">
+            <p class="row__label">01 · Primary model</p>
+            <div class="row__body">
+              <h3 class="row__title">Inventory dashboard vs dependency-aware readiness</h3>
+              <p class="chose"><span>I chose</span> exception-first readiness over complete inventory. See direction 01 in <a href="#evolution" data-evo-open="1">How the model evolved</a>.</p>
+            </div>
+          </article>
+
+          <article class="row">
+            <p class="row__label">02 · Interaction model</p>
+            <div class="row__body">
+              <h3 class="row__title">AI copilot as primary UI vs structured decision surfaces</h3>
+              <p class="chose"><span>I chose</span> structured decision surfaces, with AI as an advisor for summaries and anomaly explanations. See direction 02 in <a href="#evolution" data-evo-open="2">How the model evolved</a>.</p>
+            </div>
+          </article>
+
+          <article class="row">
+            <p class="row__label">03 · Complexity exposure</p>
+            <div class="row__body">
+              <h3 class="row__title">Full dependency graph vs progressive disclosure</h3>
+              <p class="chose"><span>I chose</span> progressive disclosure: Campaign → Market → Channel → Experience → Asset/Version. See direction 03 in <a href="#evolution" data-evo-open="3">How the model evolved</a>.</p>
+            </div>
+          </article>
+
+          <article class="row">
+            <p class="row__label">04 · Change propagation</p>
+            <div class="row__body">
+              <h3 class="row__title">One-click “update all” vs impact-gated apply</h3>
+              <p>Scenario: the master headline changes from “Save $100” to “Save 25%.” A single update-all would be fast and dangerous. Regional offers, prior approvals, and already-activated experiences carry different risks.</p>
+              <p class="chose"><span>I chose</span> Change Impact as its own screen: classify safe, needs review, local override, activated, and unknown, then apply only what policy and people allow. Slower, but nothing breaks silently.</p>
+            </div>
+          </article>
+
+          <article class="row">
+            <p class="row__label">05 · Automation boundary</p>
+            <div class="row__body">
+              <h3 class="row__title">Automated readiness score vs visible ambiguity</h3>
+              <p>A single AI readiness score would feel decisive. It would also create false confidence when data is stale or incomplete.</p>
+              <p class="chose"><span>I chose</span> readiness by dimension, with data freshness and unknown states shown. Automate deterministic, low-risk actions; escalate ambiguity. The scoring model stays a cross-functional definition, so I didn’t invent an algorithm for this case.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="section" id="principles" aria-labelledby="principles-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Principles</p>
+          <h2 class="section__title" id="principles-title">Six rules every screen had to follow</h2>
+        </div>
+        <ol class="principles rail-indent reveal">
+          <li class="principle">
+            <h3><span>01</span>Exceptions over inventory</h3>
+            <p>Surface what needs attention. Don’t make ops inspect healthy objects.</p>
+          </li>
+          <li class="principle">
+            <h3><span>02</span>Impact before action</h3>
+            <p>Show what a change affects before it propagates.</p>
+          </li>
+          <li class="principle">
+            <h3><span>03</span>Explain cause, not only state</h3>
+            <p>“Blocked” without why, impact, and owner is incomplete.</p>
+          </li>
+          <li class="principle">
+            <h3><span>04</span>Preserve local intent</h3>
+            <p>Global updates must not silently overwrite regional decisions.</p>
+          </li>
+          <li class="principle">
+            <h3><span>05</span>AI advises; policy governs; humans decide</h3>
+            <p>No probabilistic auto-approval for legal or compliance.</p>
+          </li>
+          <li class="principle">
+            <h3><span>06</span>Context travels with work</h3>
+            <p>Handoffs into Adobe tools carry the campaign, object, blocker, and action.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="section" id="outcomes" aria-labelledby="outcomes-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Outcomes</p>
+          <div>
+            <h2 class="section__title" id="outcomes-title">How success would be measured</h2>
+            <p class="section__lede">Each measure maps to an operator job. Today’s figures are working estimates from workflow observation. Targets are what I proposed for a production rollout. Concept test results follow below.</p>
+          </div>
+        </div>
+
+        <div class="metrics-wrap reveal">
+          <table class="metrics">
+            <thead>
+              <tr>
+                <th scope="col">Operator job</th>
+                <th scope="col">Measure</th>
+                <th scope="col">Today (est.)</th>
+                <th scope="col">Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Job">Answer readiness</td>
+                <th scope="row">Time to a confident “ready / not ready”</th>
+                <td data-label="Today">~2.5–4 hrs</td>
+                <td data-label="Target" class="target">&lt; 35 min</td>
+              </tr>
+              <tr>
+                <td data-label="Job">Find the critical blocker</td>
+                <th scope="row">Time to identify the launch-critical blocker and its owner</th>
+                <td data-label="Today">~45–90 min</td>
+                <td data-label="Target" class="target">&lt; 10 min</td>
+              </tr>
+              <tr>
+                <td data-label="Job">Understand impact</td>
+                <th scope="row">Correct downstream impact in a change scenario</th>
+                <td data-label="Today">~55–65%</td>
+                <td data-label="Target" class="target">≥ 90%</td>
+              </tr>
+              <tr>
+                <td data-label="Job">Avoid unsafe changes</td>
+                <th scope="row">Global applies made without an impact review</th>
+                <td data-label="Today">Common path</td>
+                <td data-label="Target" class="target">0 without a gate</td>
+              </tr>
+              <tr>
+                <td data-label="Job">Trust the state</td>
+                <th scope="row">Self-reported confidence in the readiness answer</th>
+                <td data-label="Today">~3 / 5</td>
+                <td data-label="Target" class="target">≥ 4.2 / 5</td>
+              </tr>
+              <tr>
+                <td data-label="Job">Fewer late surprises</td>
+                <th scope="row">Launches with a critical blocker found &lt; 48h before go-live</th>
+                <td data-label="Today">~30–40%</td>
+                <td data-label="Target" class="target">&lt; 15%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Validation -->
+    <section class="section" id="validation" aria-labelledby="validation-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Validation</p>
+          <div>
+            <h2 class="section__title" id="validation-title">What concept testing showed</h2>
+            <p class="section__lede">5 participants, experienced campaign operations managers and enterprise marketing producers, ran four pre-launch tasks on the desktop prototype. Times come from the prototype with sample data. They show the model works, not real-world savings.</p>
+          </div>
+        </div>
+
+        <p class="stats rail-indent reveal">
+          <span><b>19 / 20</b>tasks completed without help</span>
+          <span><b>0</b>unsafe applies</span>
+          <span><b>4.6 / 5</b>average confidence</span>
+        </p>
+
+        <div class="rows reveal">
+          <article class="row">
+            <p class="row__label">Task 1</p>
+            <div class="row__body">
+              <h3 class="row__title">“Launch is in three days. Are we ready?”</h3>
+              <p class="result">5 / 5 unaided · 18 s average · confidence 4.8 / 5</p>
+              <p>No errors. One participant paused to compare the 99.7% asset figure with the 78% launch readiness score before answering.</p>
+              <blockquote class="quote quote--sm">“Usually I’d have to ping three regional leads on Slack to know if we’re actually good for Thursday. Seeing 78% right next to the 3 blockers immediately tells me we’re not ready without me having to guess.”</blockquote>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Task 2</p>
+            <div class="row__body">
+              <h3 class="row__title">“Why is France · TikTok blocked, and what is affected?”</h3>
+              <p class="result">5 / 5 unaided · 42 s average · confidence 4.6 / 5</p>
+              <p>One participant opened campaign settings first, then found the blocked cell in the matrix.</p>
+              <blockquote class="quote quote--sm">“The side drawer giving me the root issue, owner, and the exact 8 affected experiences in one view is huge. I don’t have to open Workfront in another tab to figure out who owns the legal hold.”</blockquote>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Task 3</p>
+            <div class="row__body">
+              <h3 class="row__title">“The global offer changed. Which experiences need review?”</h3>
+              <p class="result">4 / 5 unaided · 1 min 15 s average · confidence 4.2 / 5</p>
+              <p>One participant needed a prompt to find the Change Impact entry point. Two hesitated over the difference between “Local override” and “Previously approved.” This was the weakest task, and it shaped the changes below.</p>
+              <blockquote class="quote quote--sm">“Normally a copy change like this terrifies me because someone hits ‘apply all’ and wipes out custom French pricing.”</blockquote>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Task 4</p>
+            <div class="row__body">
+              <h3 class="row__title">“Apply the change without overwriting regional work.”</h3>
+              <p class="result">5 / 5 safe · 35 s average · confidence 4.9 / 5</p>
+              <p>No unsafe applies. The impact gate kept regional overrides out of the bulk update for every participant.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Iterations -->
+    <section class="section" id="iterations" aria-labelledby="iterations-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Iterations</p>
+          <h2 class="section__title" id="iterations-title">What changed after testing</h2>
+        </div>
+        <div class="rows reveal">
+          <article class="row">
+            <p class="row__label">01 · Command Center</p>
+            <div class="row__body">
+              <h3 class="row__title">Asset completion and launch readiness read too alike</h3>
+              <p>In Task 1, the 99.7% asset figure drew attention before the 78% launch readiness score.</p>
+              <p class="chose"><span>I changed</span> the hierarchy. Launch readiness leads as the large card with the critical blockers beside it. Asset readiness became a secondary figure that reads “1 asset pending.”</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">02 · Change Impact</p>
+            <div class="row__body">
+              <h3 class="row__title">The impact classes needed definitions</h3>
+              <p>In Task 3, participants paused to work out how “Local override” differs from “Previously approved.”</p>
+              <p class="chose"><span>Next iteration:</span> inline definitions and an icon for each class, so operators know why an experience is flagged before any bulk action. Not yet in the prototype.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">03 · Handoff</p>
+            <div class="row__body">
+              <h3 class="row__title">Reviewers had to see why it was urgent</h3>
+              <p>Participants wanted proof that the regional legal reviewer in Workfront would understand the urgency without a follow-up message.</p>
+              <p class="chose"><span>I changed</span> the handoff panel to lead with “Context preserved”: campaign, market, channel, owner, and due date travel with every request, followed by why it was routed.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="section" id="reflection" aria-labelledby="reflection-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__kicker">Reflection</p>
+          <h2 class="section__title" id="reflection-title">What held up, and what I’d test next</h2>
+        </div>
+        <div class="rows reveal">
+          <article class="row">
+            <p class="row__label">What held up</p>
+            <div class="row__body">
+              <p>Treating readiness as a derived property of the campaign, not a progress bar. Once the screens followed the operator’s questions in order, the scope stayed small: five screens inside an ecosystem I deliberately didn’t redesign.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Test first</p>
+            <div class="row__body">
+              <p>Whether operators trust a readiness answer when data freshness is low. Whether critical-only mode hides something they need. Whether legal reviewers find the routed context complete enough to act without asking again.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">Open question</p>
+            <div class="row__body">
+              <p>The readiness scoring definition. It belongs to operations, legal, and engineering together, not to design alone. My next step would be a draft model reviewed with all three before building further.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="case-footer" id="contact">
+    <div class="container case-footer__inner">
+      <p class="case-footer__title">Happy to walk through the decision model</p>
+      <a class="case-footer__cta" href="../../index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/campaign.js?v=acr-14" defer></script>
+</body>
+</html>

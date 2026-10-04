@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Content — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="content">
+  <div id="page">
+    <div class="toolbar-row">
+      <div class="chips" id="ct-channels"></div>
+      <span class="spacer"></span>
+      <button class="select" data-ct="market" style="min-width:120px"><span data-label>All markets</span><span class="caret"></span></button>
+      <button class="select" data-ct="status" style="min-width:112px"><span data-label>All statuses</span><span class="caret"></span></button>
+      <label class="search" style="flex:0 1 240px"><span class="mask m-search"></span><input type="search" id="ct-search" placeholder="Search experiences..."></label>
+      <button class="icon-btn is-active" data-ctv="grid" style="width:33px" aria-label="Grid view"><img src="assets/icons/grid-view.png" alt="" style="width:19px;height:19px"></button>
+      <button class="icon-btn" data-ctv="list" style="width:34px" aria-label="List view"><span class="mask m-list" style="width:16px;height:11.25px;color:#090a0a"></span></button>
+      <button class="btn btn-dark" id="ct-generate" style="height:35px">＋ Generate variants</button>
+    </div>
+    <p class="sub" id="ct-count" style="margin:12px 0 10px"></p>
+    <div class="ct-wrap" id="ct-wrap">
+      <div class="ct-grid" id="ct-grid"></div>
+      <div class="ct-list card card-lg" style="overflow:hidden"><table class="tbl"><thead><tr><th>Experience</th><th>Channel</th><th>Market</th><th>Format</th><th>Updated</th><th>Status</th></tr></thead><tbody id="ct-rows"></tbody></table></div>
+    </div>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

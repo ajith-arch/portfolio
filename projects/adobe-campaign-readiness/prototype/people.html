@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · People — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="people">
+  <div id="page">
+    <section class="pp-grid">
+      <article class="card card-lg panel" style="padding-bottom:6px">
+        <div class="panel-head">
+          <h3 class="card-title">Team <span class="badge neutral" id="pp-count">8</span></h3>
+          <div class="toolbar-row">
+            <button class="select" id="pp-role" style="min-width:120px"><span data-label>All roles</span><span class="caret"></span></button>
+            <label class="search" style="width:220px"><span class="mask m-search"></span><input type="search" id="pp-search" placeholder="Search people..."></label>
+            <button class="btn btn-dark" id="pp-invite" style="height:35px">＋ Invite people</button>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <table class="tbl"><thead><tr><th>Name</th><th>Role</th><th>Team</th><th>Markets</th><th>Status</th><th></th></tr></thead><tbody id="pp-rows"></tbody></table>
+        </div>
+      </article>
+
+      <aside style="display:flex;flex-direction:column;gap:8px">
+        <article class="card card-lg panel">
+          <h3 class="card-title">Market coverage</h3>
+          <div class="coverage" id="pp-coverage"></div>
+        </article>
+        <article class="card card-lg panel">
+          <h3 class="card-title">Roles</h3>
+          <div class="roles-help">
+            <div><span class="badge neutral">Owner</span><p><b>Campaign lead</b>Full control, launch sign-off</p></div>
+            <div><span class="badge info">Approver</span><p><b>Final approval</b>Legal, brand and market sign-off</p></div>
+            <div><span class="badge purple">Reviewer</span><p><b>Review & comment</b>Requests changes on experiences</p></div>
+            <div><span class="badge ready">Editor</span><p><b>Create & edit</b>Generates and localizes content</p></div>
+          </div>
+        </article>
+      </aside>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

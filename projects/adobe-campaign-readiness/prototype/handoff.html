@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Approval &amp; localization impact — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/readiness.css">
+  <link rel="stylesheet" href="css/markets.css">
+  <link rel="stylesheet" href="css/queue.css">
+  <link rel="stylesheet" href="css/impact.css">
+  <link rel="stylesheet" href="css/handoff.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="readiness">
+  <div id="page">
+    <header class="ci-title">
+      <div>
+        <h2>Approval &amp; localization impact</h2>
+        <p>Route claim updates to the right reviewers, preserve context, and monitor readiness changes.</p>
+      </div>
+      <button class="ci-btn" id="rh-policy"><span class="mask m-doc"></span>View claim policy</button>
+    </header>
+
+    <section class="rh-cards">
+      <div class="ci-claim cur">
+        <span class="ci-doc"><i></i></span>
+        <span class="ci-ct"><small>Current claim</small><b data-claim="cur"></b><em>Used in 48 experiences</em></span>
+      </div>
+      <span class="ci-arrow">→</span>
+      <div class="ci-claim new">
+        <span class="ci-doc"><i></i></span>
+        <span class="ci-ct"><small>Proposed claim</small><b data-claim="new"></b><em>Used in 48 experiences</em></span>
+      </div>
+      <div class="rh-metrics" id="rh-metrics"></div>
+    </section>
+
+    <section class="rh-wrap">
+      <div class="rh-left">
+        <div class="rh-strip">
+          <div class="rh-sc"><span class="rh-si ok">✓</span><p><b>Copy changed</b><span>Claim text updated</span></p></div>
+          <div class="rh-sc"><span class="rh-si"><span class="mask m-image"></span></span><p><b>Image unchanged</b><span>No image changes</span></p></div>
+          <div class="rh-sc"><span class="rh-si"><span class="mask m-layout"></span></span><p><b>Layout unchanged</b><span>No layout changes</span></p></div>
+          <div class="rh-sc"><span class="rh-si"><span class="mask m-cta"></span></span><p><b>CTA unchanged</b><span>No CTA changes</span></p></div>
+        </div>
+
+        <article class="ci-card rh-card">
+          <nav class="ci-tabs rh-tabs" id="rh-tabs"></nav>
+
+          <div class="ci-bar rh-bar" id="rh-bar">
+            <button class="ci-sel" data-sel="market"><span data-label>All markets</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+            <button class="ci-sel" data-sel="dest"><span data-label>All destinations</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+            <button class="ci-sel" data-sel="status"><span data-label>All review statuses</span><span class="cv"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+            <label class="ci-search"><span class="mask m-search"></span><input type="search" id="rh-q" placeholder="Search experiences, market, or channel..."></label>
+            <button class="ci-ico is-on" data-view="list" aria-label="List view"><span class="mask m-list"></span></button>
+            <button class="ci-ico" data-view="grid" aria-label="Grid view"><span class="ci-gridic"><i></i><i></i><i></i><i></i></span></button>
+            <button class="ci-btn strong" id="rh-dl"><span class="ci-dlic"></span>Download</button>
+          </div>
+
+          <div class="ci-body rh-body" id="rh-body"></div>
+
+          <div class="ci-foot rh-foot">
+            <span id="rh-count"></span>
+            <div class="ci-pager" id="rh-pager"></div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="rh-panel" id="rh-panel">
+        <div class="ci-ph"><h3>Review handoff</h3><button id="rh-more" aria-label="Handoff actions">⋮</button></div>
+        <div class="rh-pclaims">
+          <div class="pc cur"><small>Current claim</small><b data-claim="cur"></b></div>
+          <span class="ci-parr">→</span>
+          <div class="pc new"><small>Proposed claim</small><b data-claim="new"></b></div>
+        </div>
+        <div id="rh-detail"></div>
+        <div class="rh-pf">
+          <button class="ci-btn" id="rh-draft">Save as draft</button>
+          <button class="ci-btn dark" id="rh-send">Send for review<span class="arr">→</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="q3-steps ci-steps rh-steps">
+      <h3><span class="q3-target"></span>Next steps</h3>
+      <button class="q3-step" data-step="1"><span class="n">1</span><span class="t"><b>Review requirements</b><small>Confirm what needs review</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="2"><span class="n">2</span><span class="t"><b>Send to reviewers</b><small>Route to the right teams</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="3"><span class="n">3</span><span class="t"><b>Monitor approvals</b><small>Track status and resolve feedback</small></span><span class="gt">›</span></button>
+      <button class="q3-step" data-step="4"><span class="n">4</span><span class="t"><b>Recheck readiness</b><small>Confirm readiness is updated</small></span></button>
+      <a class="q3-btn dark q3-plan" href="approvals.html">Go to approvals<span class="arr">→</span></a>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/handoff.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* Portfolio visuals overlay — matches Firefly case tokens */
+.ff-vis {
+  --ff-radius: 1.5rem;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .ff-vis { padding: 0 1.5rem; }
+}
+
+.ff-vis__block {
+  margin: 3rem 0 4rem;
+}
+
+.ff-vis__label {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(260 85% 55%);
+  margin: 0 0 1rem;
+}
+
+.dark .ff-vis__label,
+html.dark .ff-vis__label {
+  color: hsl(260 100% 70%);
+}
+
+.ff-vis__frame {
+  border-radius: var(--ff-radius);
+  overflow: hidden;
+  border: 1px solid hsl(220 14% 92%);
+  background: hsl(220 14% 96%);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  aspect-ratio: 16 / 10;
+}
+
+.dark .ff-vis__frame,
+html.dark .ff-vis__frame {
+  border-color: hsl(220 10% 12%);
+  background: hsl(220 10% 8%);
+}
+
+.ff-vis__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.ff-vis__cap {
+  margin-top: 0.85rem;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(220 10% 45%);
+  opacity: 0.75;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.dark .ff-vis__cap,
+html.dark .ff-vis__cap {
+  color: hsl(220 10% 65%);
+}
+
+.ff-vis__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .ff-vis__grid--2 { grid-template-columns: 1fr 1fr; }
+  .ff-vis__grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ff-vis__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1100px) {
+  .ff-vis__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 719px) {
+  .ff-vis__grid--4 { grid-template-columns: 1fr; }
+}
+
+.ff-vis__step {
+  margin: 0;
+}
+
+.ff-vis__step strong {
+  display: block;
+  font-family: "Chakra Petch", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0.65rem 0 0.25rem;
+  color: hsl(220 14% 10%);
+}
+
+.dark .ff-vis__step strong,
+html.dark .ff-vis__step strong {
+  color: #fff;
+}
+
+.ff-vis__step span {
+  display: block;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: hsl(220 10% 45%);
+  font-family: "Chakra Petch", system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.dark .ff-vis__step span,
+html.dark .ff-vis__step span {
+  color: hsl(220 10% 65%);
+}
+
+/* Portfolio back chip injected into floating nav */
+.ff-work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Chakra Petch", system-ui, sans-serif;
+  color: hsl(220 10% 45%);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.ff-work-link:hover {
+  color: hsl(220 14% 10%);
+  background: hsl(220 14% 92%);
+}
+
+.dark .ff-work-link:hover,
+html.dark .ff-work-link:hover {
+  color: #fff;
+  background: hsl(220 10% 12%);
+}
+
+.ff-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.ff-contact-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  font-family: "Chakra Petch", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1px solid hsl(220 14% 92%);
+  color: hsl(220 14% 10%);
+  background: #fff;
+}
+
+.dark .ff-contact-row a,
+html.dark .ff-contact-row a {
+  border-color: hsl(220 10% 12%);
+  color: #fff;
+  background: hsl(220 10% 8%);
+}
+
+.ff-contact-row a.ff-contact-row__primary {
+  background: hsl(260 85% 55%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.dark .ff-contact-row a.ff-contact-row__primary,
+html.dark .ff-contact-row a.ff-contact-row__primary {
+  background: hsl(260 100% 70%);
+  color: hsl(220 14% 10%);
+}

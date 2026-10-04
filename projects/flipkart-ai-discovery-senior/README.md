@@ -1,7 +1,7 @@
 # Flipkart AI Discovery — senior rewrite
 
 This is the **senior rewrite** of the Flipkart AI product discovery case study, written to the
-same bar as `../adobe-firefly-senior/`: explicit ownership boundaries, decisions framed with
+same bar as `../adobe-firefly-case/`: explicit ownership boundaries, decisions framed with
 alternatives and accepted costs, AI product rigor (how intent is modelled, where it fails, how it
 was evaluated), and honest impact framing.
 

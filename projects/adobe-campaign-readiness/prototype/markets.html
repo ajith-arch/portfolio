@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Markets × Channels — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/readiness.css">
+  <link rel="stylesheet" href="css/markets.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="readiness">
+  <div id="page">
+    <section class="rk-cards" id="rk-cards"></section>
+
+    <section class="mx2-wrap">
+      <article class="mx2-card">
+        <div class="mx2-tabs"><span>Markets × Channels</span></div>
+
+        <div class="mx2-bar">
+          <button class="mx2-sel" style="width:187.94px" data-sel="view"><span data-label>View by: Market × Channel</span><span class="cv" style="left:165px"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="mx2-sel" style="width:107.83px" data-sel="market"><span data-label>All markets</span><span class="cv" style="left:85.06px"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="mx2-sel" style="width:112.41px" data-sel="channel"><span data-label>All channels</span><span class="cv" style="left:90.23px"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <button class="mx2-sel" style="width:110.2px" data-sel="status"><span data-label>All statuses</span><span class="cv" style="left:85.82px"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+          <label class="mx2-search"><span class="mask m-search"></span><input type="search" id="mx2-q" placeholder="Search market or channel..."></label>
+          <button class="mx2-crit" id="mx2-crit" role="switch" aria-checked="false"><span class="mx2-tog"></span>Critical only</button>
+          <button class="mx2-sel" style="min-width:98.34px;padding:0 33px 0 10.34px" data-sel="sort"><span data-label>Sort: Risk</span><span class="cv" style="right:15px"><img src="assets/icons/chevron-mx-select.svg" alt=""></span></button>
+        </div>
+
+        <div class="mx2 scroll">
+          <table>
+            <colgroup><col style="width:147px"><col><col><col><col><col><col style="width:159px"><col style="width:37px"></colgroup>
+            <thead><tr id="mx2-head"></tr></thead>
+            <tbody id="mx2-body"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <aside class="sr" id="sr">
+        <div class="sr-head"><h3>Selected risk</h3><button id="sr-more" aria-label="Risk actions">⋮</button></div>
+        <div id="sr-body"></div>
+        <div class="sr-foot">
+          <button class="sr-queue" id="sr-queue">Open blocker queue</button>
+          <button class="sr-go" id="sr-go">Investigate →</button>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/markets.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

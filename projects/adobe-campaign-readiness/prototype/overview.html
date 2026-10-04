@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Nova · Overview — Adobe GenStudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/guide.css">
+</head>
+<body data-page="overview">
+  <div id="page">
+    <section class="stats">
+      <article class="card stat">
+        <div class="label"><span class="stat-ic" style="background:#e6f7ed;color:#067a37;font-size:13px">$</span>Budget</div>
+        <div class="num">$2.4M <small class="muted" style="font-weight:400">of $3.9M</small></div>
+        <div class="bar"><i class="green" data-w="61%"></i></div>
+        <p class="caption">61% spent · on pace</p>
+      </article>
+      <article class="card stat">
+        <div class="label"><span class="stat-ic" style="background:#e2eaff;color:#075aff"><span class="mask m-cube" style="width:13px;height:14.5px"></span></span>Experiences</div>
+        <div class="num">360 <span class="delta up">+48 this week</span></div>
+        <div class="bar"><i class="blue" data-w="78%"></i></div>
+        <p class="caption">281 ready · 52 at risk · 27 blocked</p>
+      </article>
+      <article class="card stat">
+        <div class="label"><span class="stat-ic" style="background:#f0e6ff;color:#8531ff"><span class="mask m-audience" style="width:16px;height:11.5px"></span></span>Projected reach</div>
+        <div class="num">48.2M <span class="delta up">↑ 9.4%</span></div>
+        <div class="bar"><i class="purple" data-w="72%"></i></div>
+        <p class="caption">Across 4 audiences in 6 markets</p>
+      </article>
+      <article class="card stat">
+        <div class="label"><span class="stat-ic" style="background:#ffe9ed;color:#d0182c;font-size:12px">◷</span>Time to launch</div>
+        <div class="num" id="countdown">3d 00h 00m</div>
+        <div class="bar"><i class="red" data-w="92%"></i></div>
+        <p class="caption">Launch Oct 2, 2026 · 09:00 local</p>
+      </article>
+    </section>
+
+    <section class="ov-grid">
+      <article class="card card-lg panel brief">
+        <div class="panel-head"><h3 class="card-title">Campaign brief</h3><a class="link" href="settings.html">Edit</a></div>
+        <dl>
+          <dt>Objective</dt><dd>Launch Nova headphones globally and drive 1.2M pre-orders in the first 30 days.</dd>
+          <dt>Key message</dt><dd>“Next-gen audio. A more human sound.”</dd>
+          <dt>Audiences</dt><dd class="tags"><span class="badge neutral">Audiophiles</span><span class="badge neutral">Commuters</span><span class="badge neutral">Remote workers</span><span class="badge neutral">Gen Z creators</span></dd>
+          <dt>Markets</dt><dd class="flags" id="ov-flags"></dd>
+          <dt>Channels</dt><dd class="ch-icons" id="ov-channels"></dd>
+          <dt>Owner</dt><dd class="cell-flex"><span class="avatar" style="background:#121419;width:24px;height:24px;font-size:10px">AA</span>Ajith Alphonse · Brand Marketing</dd>
+        </dl>
+      </article>
+
+      <article class="card card-lg panel">
+        <div class="panel-head"><h3 class="card-title">Milestones</h3><span class="badge info">Step 4 of 6</span></div>
+        <ul class="ms">
+          <li class="done"><span class="node">✓</span><div><strong>Creative brief approved</strong><p>Brand Marketing</p></div><span class="when">Aug 18</span></li>
+          <li class="done"><span class="node">✓</span><div><strong>Master assets produced</strong><p>300 assets generated with Firefly</p></div><span class="when">Sep 6</span></li>
+          <li class="done"><span class="node">✓</span><div><strong>Localization (4 of 6)</strong><p>DE and FR still in progress</p></div><span class="when">Sep 22</span></li>
+          <li class="now"><span class="node"></span><div><strong>Legal & compliance review</strong><p>43 approvals pending · 3 blockers</p></div><span class="when">Now</span></li>
+          <li><span class="node"></span><div><strong>Activation scheduled</strong><p>Journey Optimizer · Paid social</p></div><span class="when">Sep 30</span></li>
+          <li><span class="node"></span><div><strong>Global launch</strong><p>6 markets · 5 channels</p></div><span class="when">Oct 2</span></li>
+        </ul>
+      </article>
+
+      <article class="card card-lg panel">
+        <div class="panel-head"><h3 class="card-title">Channel mix</h3><button class="select sm" id="mix-metric" style="height:28px"><span data-label>Experiences</span><span class="caret"></span></button></div>
+        <div class="donut-wrap">
+          <div class="donut"><svg viewBox="0 0 132 132" id="donut"></svg><div class="center"><div><b id="donut-total">360</b><span id="donut-label">experiences</span></div></div></div>
+        </div>
+        <div class="lg-list" id="donut-legend" style="margin-top:16px"></div>
+      </article>
+    </section>
+
+    <section class="ov-bottom">
+      <article class="card card-lg panel">
+        <div class="panel-head"><div class="trend-title"><h3 class="card-title">Readiness trend</h3><span class="trend-sum" id="trend-sum"></span></div>
+          <div class="chips" id="trend-range"><button class="chip" data-r="7">7 days</button><button class="chip is-active" data-r="14">14 days</button><button class="chip" data-r="30">30 days</button></div>
+        </div>
+        <div class="perf" id="perf"></div>
+        <div class="perf-x" id="perf-x"></div>
+      </article>
+      <article class="card card-lg panel">
+        <div class="panel-head"><div class="trend-title"><h3 class="card-title">Core team</h3><span class="trend-sum" id="ov-team-count"></span></div><a class="link" href="people.html">View all</a></div>
+        <div class="team-list" id="ov-team"></div>
+      </article>
+    </section>
+  </div>
+
+  <script src="js/shell.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>
