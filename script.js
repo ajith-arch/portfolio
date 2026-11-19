@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initAdobeFireflyThumbnailParallax();
     /* EXPERIMENTAL — safe to remove: see initExpScrollHero() below */
     initExpScrollHero();
+    /* Background video stays fixed behind the whole home page in every mode */
+    initFullPageVideo();
     /* Mobile: unified whole-card reveal (no split text/thumbnail animation) */
     initMobileProjectHeroReveal();
 });
@@ -704,3 +706,17 @@ function initExpScrollHero() {
     update();
 }
 
+
+// ===== Full-page background video =====
+// The scroll-hero mode already pins the video to <body>. When that mode is off
+// (reduced motion, small screens) the video would stay inside the hero only,
+// so pin it here too. The theme swap still finds it by id.
+function initFullPageVideo() {
+    var video = document.getElementById('homeBgVideo');
+    if (!video) return;
+    if (video.parentElement !== document.body) {
+        document.body.insertBefore(video, document.body.firstChild);
+    }
+    video.classList.add('exp-stage-video');
+    document.body.classList.add('bg-video-full');
+}

@@ -2501,3 +2501,21 @@ article.project-hero--coming-soon .project-hero-media-link--static {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-text-muted);
 }
+
+/* ===== Full-page background video (all modes) =====
+ * JS (initFullPageVideo) pins the video to <body> and adds .bg-video-full.
+ * Placed last so it wins over the mobile overrides above. */
+body.bg-video-full .desktop-content {
+    position: relative;
+    z-index: 1;
+}
+body.bg-video-full .hero,
+body.bg-video-full .main,
+body.bg-video-full .projects {
+    background: transparent;
+}
+@media (max-width: 768px) {
+    body.bg-video-full > .exp-stage-video {
+        display: block !important;
+    }
+}
