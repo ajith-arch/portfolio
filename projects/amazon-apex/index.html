@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<!--
+  APEX case study v3 · one typeface, white page, minimal color.
+  Positioning: UI/UX Designer · product design exploration · high-fidelity design + connected prototype.
+  Scenario figures come from the APEX dataset. UX figures are targets for evaluation, not results.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APEX — Fulfillment Intelligence · Ajith Alphonse</title>
+<meta name="description" content="UI/UX case study: a decision workspace that takes fulfillment managers from a carrier-cutoff alert to an approved, audited recovery, and shows whether it worked.">
+<meta property="og:title" content="APEX — Fulfillment Intelligence">
+<meta property="og:image" content="../../assets/amazon-apex-thumbnail.webp">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a written product review. White page, one typeface, tables and real screens carry the story; color only where the data needs it. */
+  --bg: #FFFFFF;
+  --ink: #0F1111;
+  --grey: #565959;
+  --line: #E3E6E6;
+  --soft: #F7F8F8;
+  --link: #1769AA;
+  --dark: #232F3E;
+  --font: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); }
+body { color: var(--ink); font-family: var(--font); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--link); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -.015em; text-wrap: balance; }
+h2 { font-size: clamp(30px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -.02em; }
+h3 { font-size: 21px; line-height: 1.3; }
+h4 { font-size: 16px; line-height: 1.35; letter-spacing: 0; }
+p + p { margin-top: 1em; }
+
+.col { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.text { max-width: 720px; }
+.lede { font-size: 21px; line-height: 1.55; color: #2B2E2E; margin-top: 16px; }
+.label { font-size: 14px; font-weight: 600; color: var(--grey); margin-bottom: 12px; }
+.chapter { padding-top: 112px; scroll-margin-top: 64px; }
+.muted { color: var(--grey); }
+@media (max-width: 640px) { .col { padding: 0 18px; } body { font-size: 17px; } .chapter { padding-top: 80px; } }
+
+/* ---------- reading progress ---------- */
+.bar { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--ink); z-index: 60; }
+.top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .in { max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 56px; display: flex; align-items: center; gap: 18px; font-size: 14px; }
+.top .back { color: var(--ink); font-weight: 600; text-decoration: none; }
+.top .where { flex: 1; color: var(--grey); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top .where b { color: var(--ink); font-weight: 600; }
+.top .pct { color: var(--grey); white-space: nowrap; }
+.clock { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 6px; background: var(--dark); color: #fff; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.clock span { color: #AAB7C4; font-weight: 500; }
+@media (max-width: 760px) { .top .in { padding: 0 16px; } .top .where, .top .pct { display: none; } .clock { margin-left: auto; } }
+
+/* ---------- hero ---------- */
+.hero { padding-top: 64px; }
+.hero h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1.06; letter-spacing: -.03em; font-weight: 800; max-width: 980px; }
+.meta { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--ink); font-size: 15px; }
+.meta span { display: block; font-size: 13px; color: var(--grey); }
+.meta b { font-weight: 600; }
+@media (max-width: 900px) { .meta { grid-template-columns: 1fr 1fr; } }
+.shot { margin-top: 44px; }
+.frame { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #F2F3F5; box-shadow: 0 1px 2px rgba(15,17,17,.06), 0 20px 50px -28px rgba(15,17,17,.35); }
+.frame img { width: 100%; aspect-ratio: 8/5; }
+.cap { font-size: 14px; color: var(--grey); margin-top: 10px; }
+.cap b { color: var(--ink); font-weight: 600; }
+.zoomable { cursor: zoom-in; }
+
+/* ---------- all eight screens ---------- */
+.eight { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; margin-top: 36px; }
+.eight figure { cursor: zoom-in; }
+.eight .frame { border-radius: 8px; box-shadow: 0 1px 2px rgba(15,17,17,.06); transition: box-shadow .2s, transform .2s; }
+.eight figure:hover .frame, .eight figure:focus-visible .frame { box-shadow: 0 16px 34px -20px rgba(15,17,17,.45); transform: translateY(-2px); }
+.eight figcaption { margin-top: 10px; font-size: 14.5px; line-height: 1.45; }
+.eight figcaption b { display: block; font-weight: 700; }
+.eight figcaption span { color: var(--grey); }
+@media (max-width: 1000px) { .eight { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .eight { grid-template-columns: 1fr; } }
+
+/* ---------- shift ---------- */
+.shift { display: grid; grid-template-columns: minmax(0,1fr) 400px; gap: 80px; margin-top: 8px; align-items: start; }
+.tlv { position: relative; padding-left: 28px; margin-top: 8px; }
+.tlv::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.tlv .fill { position: absolute; left: 6px; top: 8px; width: 2px; height: 0; background: var(--ink); }
+.tlv li { list-style: none; position: relative; padding-bottom: 24px; }
+.tlv li::before { content: ""; position: absolute; left: -27px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #C5C9C9; transition: all .3s; }
+.tlv li.lit::before { background: var(--ink); border-color: var(--ink); }
+.tlv b { display: block; font-size: 16px; }
+.tlv b span { color: var(--grey); font-weight: 600; margin-right: 8px; }
+.tlv p { font-size: 15px; color: var(--grey); margin-top: 2px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 32px; }
+.stats div { padding: 16px 16px 16px 0; }
+.stats div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+.stats b { display: block; font-size: 32px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+.stats span { font-size: 13.5px; color: var(--grey); }
+@media (max-width: 960px) { .shift { grid-template-columns: 1fr; gap: 24px; } }
+@media (max-width: 640px) { .stats { grid-template-columns: 1fr 1fr; } .stats div:nth-child(3) { border-left: 0; padding-left: 0; } }
+
+/* ---------- list rows (problem, people, rules, calls, ownership) ---------- */
+.rows { margin-top: 32px; border-top: 1px solid var(--ink); }
+.row { display: grid; gap: 32px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.row.two { grid-template-columns: minmax(0,1fr) minmax(0,1.4fr); }
+.row.three { grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1.4fr); }
+.row.num { grid-template-columns: 44px minmax(0,1fr) minmax(0,1.4fr); }
+.row .n { font-size: 14px; font-weight: 700; color: var(--grey); }
+.row h3 { font-size: 19px; }
+.row p { color: #3A3D3D; font-size: 16.5px; }
+.row .scr { font-size: 13px; color: var(--grey); display: block; margin-top: 6px; }
+.row .no { color: var(--grey); font-size: 16px; text-decoration: line-through; text-decoration-color: rgba(86,89,89,.45); }
+.row small { display: block; font-size: 12.5px; font-weight: 700; color: var(--grey); text-decoration: none; margin-bottom: 2px; }
+.rows-head { display: grid; gap: 32px; padding: 0 0 10px; font-size: 13px; font-weight: 600; color: var(--grey); }
+@media (max-width: 860px) { .row.two, .row.three, .row.num { grid-template-columns: 1fr; gap: 6px; } .rows-head { display: none; } }
+.methods { margin-top: 28px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.methods div { padding: 14px 16px; font-size: 14.5px; line-height: 1.45; }
+.methods div + div { border-left: 1px solid var(--line); }
+.methods b { display: block; font-size: 15px; }
+.methods span { color: var(--grey); }
+@media (max-width: 900px) { .methods { grid-template-columns: 1fr 1fr; } .methods div { border-left: 0 !important; border-top: 1px solid var(--line); } }
+.people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px; }
+.people div { border-top: 1px solid var(--ink); padding-top: 14px; }
+.people .who { font-size: 13px; color: var(--grey); font-weight: 600; }
+.people h3 { margin-top: 2px; }
+.people p { font-size: 16.5px; color: #3A3D3D; margin-top: 10px; }
+@media (max-width: 860px) { .people { grid-template-columns: 1fr; } }
+
+/* ---------- travelling record ---------- */
+.travel { height: 230vh; position: relative; margin-top: 16px; }
+.travel .stick { position: sticky; top: 96px; }
+.rail8 { display: grid; grid-template-columns: repeat(8, 1fr); position: relative; margin-top: 24px; }
+.rail8::before { content: ""; position: absolute; left: 6.25%; right: 6.25%; top: 17px; height: 2px; background: var(--line); }
+.rail8 .prog { position: absolute; left: 6.25%; top: 17px; height: 2px; width: 0; background: var(--ink); transition: width .3s; }
+.st { text-align: center; position: relative; }
+.st .c { width: 36px; height: 36px; border-radius: 50%; margin: 0 auto; background: #fff; border: 2px solid #C5C9C9; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--grey); position: relative; z-index: 1; transition: all .3s; }
+.st.on .c { border-color: var(--ink); color: var(--ink); }
+.st.now .c { background: var(--ink); border-color: var(--ink); color: #fff; }
+.st b { display: block; font-size: 14.5px; margin-top: 8px; }
+.st span { display: block; font-size: 12.5px; color: var(--grey); line-height: 1.4; }
+.record { margin: 36px auto 0; max-width: 940px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 20px 44px -30px rgba(15,17,17,.4); background: #fff; }
+.record table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.record th { text-align: left; font-size: 12.5px; font-weight: 600; color: var(--grey); padding: 12px 16px 2px; }
+.record td { padding: 2px 16px 14px; font-weight: 700; white-space: nowrap; }
+.record .hd { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--grey); }
+.record .hd b { color: var(--ink); }
+.record .ft { padding: 12px 16px; background: var(--soft); border-top: 1px solid var(--line); font-size: 15px; color: #3A3D3D; min-height: 48px; }
+.state { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 13px; font-weight: 700; white-space: nowrap; background: #EEF0F3; transition: background .3s, color .3s; }
+@media (max-width: 900px) { .travel { height: auto; } .travel .stick { position: static; } .rail8 { grid-template-columns: repeat(4, 1fr); row-gap: 18px; } .rail8::before, .rail8 .prog { display: none; } .record { overflow-x: auto; } }
+
+/* ---------- walkthrough ---------- */
+.walk { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(300px,.75fr); gap: 56px; margin-top: 40px; }
+.viewer { position: sticky; top: 80px; height: calc(100vh - 100px); max-height: 740px; display: flex; flex-direction: column; justify-content: center; }
+.vport { position: relative; overflow: hidden; aspect-ratio: 8/5; border-radius: 10px; border: 1px solid var(--line); background: #F2F3F5; box-shadow: 0 20px 50px -28px rgba(15,17,17,.4); }
+.vstage { position: absolute; inset: 0; transform-origin: 0 0; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.vstage img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .35s; }
+.vstage img.on { opacity: 1; }
+.hl { position: absolute; border: 2px solid var(--ink); border-radius: 6px; box-shadow: 0 0 0 9999px rgba(15,17,17,.32); transition: all .7s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
+.hl2 { position: absolute; border: 2px solid var(--ink); border-radius: 6px; transition: all .7s cubic-bezier(.2,.7,.2,1); pointer-events: none; opacity: 0; }
+.vmeta { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 14px; color: var(--grey); }
+.vmeta b { color: var(--ink); }
+.vdots { display: flex; gap: 4px; }
+.vdots i { width: 20px; height: 3px; border-radius: 2px; background: var(--line); }
+.vdots i.on { background: #8A8F8F; }
+.vdots i.now { background: var(--ink); }
+.steps { padding: 16vh 0 30vh; }
+.step { min-height: 60vh; padding: 16px 0; opacity: .3; transition: opacity .35s; }
+.step.on { opacity: 1; }
+.step .when { font-size: 13px; font-weight: 700; color: var(--grey); }
+.step h3 { margin-top: 4px; font-size: 23px; }
+.step p { font-size: 16.5px; color: #3A3D3D; margin-top: 10px; }
+.step .why { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 15px; color: var(--grey); }
+.step .why b { color: var(--ink); }
+.step .inline { display: none; }
+@media (max-width: 1000px) { .walk { grid-template-columns: 1fr; } .viewer { display: none; } .steps { padding: 0; } .step { min-height: 0; opacity: 1; padding: 24px 0; border-top: 1px solid var(--line); } .step .inline { display: block; margin: 14px 0 4px; border: 1px solid var(--line); border-radius: 8px; } }
+
+/* ---------- numbers (dark) ---------- */
+.dark { background: var(--dark); color: #D5DBE1; margin-top: 112px; padding: 96px 0 104px; }
+.dark h2 { color: #fff; }
+.dark .label { color: #AAB7C4; }
+.dark .lede { color: #C3CCD6; }
+.ngrid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; background: #37475A; border: 1px solid #37475A; border-radius: 10px; overflow: hidden; margin-top: 40px; }
+.cell { background: var(--dark); padding: 22px 24px 24px; }
+.cell h4 { color: #fff; font-size: 14.5px; font-weight: 600; }
+.cell .sub { font-size: 13px; color: #95A3B1; }
+.cell .big { font-size: 46px; font-weight: 700; letter-spacing: -.03em; line-height: 1.05; color: #fff; margin-top: 12px; }
+.cell .big small { font-size: 20px; color: #AAB7C4; font-weight: 600; margin-left: 2px; }
+.s3 { grid-column: span 3; } .s4 { grid-column: span 4; } .s5 { grid-column: span 5; } .s6 { grid-column: span 6; } .s7 { grid-column: span 7; } .s8 { grid-column: span 8; }
+.hb { display: grid; grid-template-columns: 78px 1fr 30px; gap: 10px; align-items: center; font-size: 14px; margin-top: 9px; }
+.hb .t, .tp .t { height: 8px; border-radius: 4px; background: #37475A; position: relative; }
+.hb .t i, .tp .t i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: #AAB7C4; width: var(--w); transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+.tp .t i.hot { background: #FF9900; }
+.tp .t u { position: absolute; left: 90%; top: -5px; bottom: -5px; border-left: 2px solid #fff; }
+.hb b, .tp b { color: #fff; text-align: right; }
+.tp { display: grid; grid-template-columns: 70px 1fr 54px; gap: 10px; align-items: center; font-size: 14px; margin-top: 12px; }
+.seg { display: flex; height: 30px; border-radius: 4px; overflow: hidden; margin-top: 14px; gap: 2px; }
+.seg i { display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 13px; font-weight: 700; color: #fff; transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+.seen .hb .t i, .seen .tp .t i, .seen .seg i { transform: scaleX(1); }
+.legendn { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 10px; font-size: 13px; color: #95A3B1; }
+.legendn i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; }
+.strat { display: grid; grid-template-columns: 140px 1fr; gap: 12px; align-items: center; margin-top: 12px; font-size: 14px; }
+.strat .seg { margin-top: 0; height: 26px; }
+.strat small { display: block; color: #95A3B1; font-size: 12.5px; }
+.kv { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 16px; border-top: 1px solid #37475A; }
+.kv div { padding: 12px 12px 0 0; }
+.kv div + div { padding-left: 12px; border-left: 1px solid #37475A; }
+.kv span { display: block; font-size: 12.5px; color: #95A3B1; }
+.kv b { font-size: 26px; font-weight: 700; color: #fff; }
+.note { font-size: 13px; color: #95A3B1; margin-top: 12px; }
+.trend .line { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+@media (max-width: 1000px) { .s3, .s4, .s5 { grid-column: span 6; } .s6, .s7, .s8 { grid-column: span 12; } }
+@media (max-width: 600px) { .ngrid > * { grid-column: span 12 !important; } }
+
+/* ---------- targets ---------- */
+.tt { width: 100%; border-collapse: collapse; margin-top: 32px; font-size: 15.5px; }
+.tt th { text-align: left; font-size: 13px; font-weight: 600; color: var(--grey); padding: 0 16px 10px 0; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+.tt td { padding: 18px 16px 18px 0; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.tt td.m b { display: block; font-weight: 700; }
+.tt td.m span { font-size: 14px; color: var(--grey); }
+.tt td.v { white-space: nowrap; font-weight: 600; }
+.tt td.d { font-weight: 700; white-space: nowrap; }
+.pair { width: 220px; }
+.pair div { display: grid; grid-template-columns: 54px 1fr; gap: 8px; align-items: center; font-size: 12px; color: var(--grey); }
+.pair div + div { margin-top: 5px; }
+.pair i { display: block; height: 8px; border-radius: 2px; background: #C5C9C9; }
+.pair .g i { background: var(--ink); }
+.tablewrap { overflow-x: auto; }
+.tablewrap table { min-width: 820px; }
+.stepper { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 48px; position: relative; }
+.stepper::before { content: ""; position: absolute; left: 0; right: 20%; top: 7px; height: 2px; background: var(--ink); }
+.stepper::after { content: ""; position: absolute; left: 80%; right: 0; top: 7px; height: 2px; background: repeating-linear-gradient(90deg, #C5C9C9 0 6px, transparent 6px 12px); }
+.stepper div { position: relative; padding-right: 20px; }
+.stepper div::before { content: ""; display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--ink); position: relative; z-index: 1; }
+.stepper div.next::before { background: #fff; border: 2px solid var(--ink); }
+.stepper b { display: block; margin-top: 12px; font-size: 15.5px; }
+.stepper span { font-size: 13px; color: var(--grey); display: block; }
+.stepper p { font-size: 14px; color: #3A3D3D; margin-top: 4px; line-height: 1.5; }
+@media (max-width: 860px) { .stepper { grid-template-columns: 1fr; gap: 18px; } .stepper::before, .stepper::after { display: none; } }
+
+/* ---------- anatomy ---------- */
+.anat { display: grid; grid-template-columns: repeat(12, 1fr); gap: 36px 28px; margin-top: 36px; }
+.anat figure { grid-column: span 12; }
+.anat figure.h { grid-column: span 6; }
+.anat .crop { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #F2F3F5; cursor: zoom-in; }
+.anat figcaption { margin-top: 10px; font-size: 15px; line-height: 1.5; max-width: 760px; }
+.anat figcaption b { font-weight: 700; }
+.anat figcaption span { color: var(--grey); }
+@media (max-width: 860px) { .anat figure.h { grid-column: span 12; } }
+.swatches { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; font-size: 14px; }
+.swatches span { display: inline-flex; align-items: center; gap: 8px; }
+.swatches i { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(15,17,17,.12); }
+
+/* ---------- close ---------- */
+.closing { font-size: clamp(26px, 2.8vw, 34px); line-height: 1.3; font-weight: 700; letter-spacing: -.02em; max-width: 900px; }
+.nexts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 36px; }
+.nexts div { border-top: 1px solid var(--ink); padding-top: 14px; }
+.nexts p { color: #3A3D3D; font-size: 16px; margin-top: 4px; }
+@media (max-width: 760px) { .nexts { grid-template-columns: 1fr; } }
+footer { margin-top: 128px; border-top: 1px solid var(--line); padding: 48px 0 44px; }
+.more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--ink); margin-top: 12px; }
+.more a { display: block; padding: 18px 20px 18px 0; text-decoration: none; color: var(--ink); }
+.more a + a { padding-left: 20px; border-left: 1px solid var(--line); }
+.more a:hover b { text-decoration: underline; }
+.more span { font-size: 13px; color: var(--grey); }
+.more b { display: block; font-size: 18px; margin-top: 4px; }
+.fine { display: flex; justify-content: space-between; margin-top: 32px; font-size: 13px; color: var(--grey); }
+@media (max-width: 760px) { .more { grid-template-columns: 1fr; } .more a + a { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } .fine { flex-direction: column; gap: 6px; } }
+
+
+/* ---------- page navigation ---------- */
+.top .home { color: var(--ink); text-decoration: none; font-weight: 600; white-space: nowrap; padding-left: 16px; border-left: 1px solid var(--line); }
+.top .back:hover, .top .home:hover { text-decoration: underline; }
+.totop { position: fixed; right: 24px; bottom: 24px; z-index: 55; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); font: 700 20px var(--font); cursor: pointer; box-shadow: 0 8px 24px -8px rgba(15,17,17,.35); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s; }
+.totop.show { opacity: 1; transform: none; pointer-events: auto; }
+.totop:hover { background: var(--ink); color: #fff; }
+.endnav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.endnav a { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 6px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+.endnav a:hover { background: var(--ink); color: #fff; }
+@media (max-width: 760px) { .top .home { display: none; } .totop { right: 16px; bottom: 16px; width: 44px; height: 44px; } .endnav a { flex: 1 1 100%; justify-content: center; } }
+/* ---------- mobile refinements ---------- */
+.top .back { white-space: nowrap; }
+@media (max-width: 440px) { .clock > span:first-child { display: none; } }
+.trend-mob { display: none; font-size: 14px; color: #C3CCD6; margin-top: 10px; line-height: 1.5; }
+.trend-mob b { color: #fff; }
+@media (max-width: 760px) {
+  h2 { font-size: 28px; }
+  .lede { font-size: 18.5px; }
+  .hero { padding-top: 36px; }
+  .hero h1 { font-size: 36px; line-height: 1.1; }
+  .meta { gap: 14px 18px; font-size: 14.5px; }
+  .shot { margin-top: 28px; }
+  .eight { grid-template-columns: 1fr 1fr; gap: 18px 12px; }
+  .eight figcaption { font-size: 13px; }
+  .eight figcaption span { display: block; }
+  .stats b { font-size: 26px; }
+  .tlv { margin-top: 0; }
+  .methods { grid-template-columns: 1fr; }
+  .record table, .record tbody, .record tr { display: block; }
+  .record tr:first-child { display: none; }
+  .record tr:last-child { display: grid; grid-template-columns: 1fr 1fr; }
+  .record td { display: block; padding: 10px 16px; border-top: 1px solid var(--line); white-space: normal; }
+  .record td::before { display: block; font-size: 12px; font-weight: 600; color: var(--grey); margin-bottom: 2px; }
+  .record td:nth-child(1)::before { content: "Facility"; } .record td:nth-child(2)::before { content: "Orders"; } .record td:nth-child(3)::before { content: "Cutoff"; }
+  .record td:nth-child(4)::before { content: "Owner"; } .record td:nth-child(5)::before { content: "Severity"; } .record td:nth-child(6)::before { content: "State"; }
+  .record { overflow: visible; }
+  .rail8 .st span { display: none; }
+  .st b { font-size: 13px; }
+  .step h3 { font-size: 21px; }
+  .step .inline { cursor: zoom-in; }
+  .dark { padding: 64px 0 72px; margin-top: 80px; }
+  .cell { padding: 18px; }
+  .cell .big { font-size: 38px; }
+  .strat { grid-template-columns: 112px 1fr; }
+  .kv b { font-size: 21px; }
+  .trend svg text { display: none; }
+  .trend-mob { display: block; }
+  .tablewrap { overflow: visible; }
+  .tablewrap table { min-width: 0; }
+  .tt thead { display: none; }
+  .tt, .tt tbody, .tt tr, .tt td { display: block; width: 100%; }
+  .tt tr { border-bottom: 1px solid var(--line); padding: 16px 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 12px; }
+  .tt tr:first-child { border-top: 1px solid var(--ink); }
+  .tt td { border: 0; padding: 0; }
+  .tt td.m { grid-column: 1 / -1; }
+  .tt td:nth-child(4) { grid-column: 1 / -1; order: 5; }
+  .tt td[data-l]::before { content: attr(data-l); display: block; font-size: 12px; font-weight: 600; color: var(--grey); }
+  .pair { width: 100%; }
+  .anat { gap: 28px; }
+  .closing { font-size: 24px; }
+  footer { margin-top: 88px; }
+}
+
+.lb { position: fixed; inset: 0; z-index: 100; background: rgba(15,17,17,.92); display: none; overflow: auto; }
+.lb.open { display: block; }
+.lb img { width: min(96vw, 2400px); margin: 64px auto 40px; border-radius: 6px; background: #fff; }
+.lb button { position: fixed; top: 14px; right: 16px; font: 600 14px var(--font); background: #fff; color: var(--ink); border: 0; border-radius: 6px; height: 34px; padding: 0 14px; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } .hb .t i, .tp .t i, .seg i { transform: none !important; } .trend .line { stroke-dashoffset: 0 !important; } }
+</style>
+</head>
+<body>
+<div class="bar" id="bar" aria-hidden="true"></div>
+<span id="top"></span>
+<button type="button" class="totop" id="totop" aria-label="Back to top">↑</button>
+<header class="top">
+  <div class="in">
+    <a class="back" href="../../index.html#work">← Back to projects</a>
+    <a class="home" href="../../index.html">Home</a>
+    <div class="where" id="where"><b>APEX</b> · Fulfillment Intelligence</div>
+    <span class="pct" id="pct">12 min read</span>
+    <span class="clock"><span>Incident clock</span><b id="clk">14:07</b><span id="clkl">shift underway</span></span>
+  </div>
+</header>
+
+<main>
+<section class="hero col" data-ch="Overview" data-clock="14:07" data-left="shift underway">
+  <p class="label">APEX · Fulfillment Intelligence · Enterprise product design</p>
+  <h1>What would you do with 42 minutes and 112 orders about to miss the truck?</h1>
+  <p class="lede text">That's the question I designed APEX around. It's a decision workspace for fulfillment managers that carries one incident from the first warning to an approved recovery, and then shows honestly whether the recovery worked.</p>
+  <div class="meta">
+    <div><span>My role</span><b>UI/UX Designer</b></div>
+    <div><span>Worked with</span><b>UX research, product, engineering</b></div>
+    <div><span>Status</span><b>High-fidelity design, connected prototype</b></div>
+    <div><span>Platform</span><b>Desktop enterprise tool</b></div>
+    <div><span>Scope</span><b>8 connected workflows</b></div>
+  </div>
+  <figure class="shot">
+    <div class="frame zoomable" data-full="img/apex-01.webp" tabindex="0" role="button" aria-label="Enlarge the operations overview"><img src="img/apex-01.webp" alt="APEX operations overview at 14:33 with EX-2048 carrier cutoff risk at the top of the priority table" width="2400" height="1500"></div>
+    <figcaption class="cap"><b>Operations overview, 14:33.</b> All eight screens share one consistent, illustrative incident dataset.</figcaption>
+  </figure>
+</section>
+
+<!-- ALL EIGHT -->
+<section class="chapter col" id="screens" data-ch="The eight screens" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">The eight screens</p>
+  <div class="text"><h2>Eight screens, one incident, start to finish.</h2><p class="lede">Each screen answers one question a manager has during the incident. Click any of them to see it full size.</p></div>
+  <div class="eight">
+    <figure data-full="img/apex-01.webp" tabindex="0" role="button" aria-label="Enlarge screen 01"><div class="frame"><img src="img/apex-01.webp" alt="Screen 01 Operations overview" width="2400" height="1500" loading="lazy"></div><figcaption><b>01 Operations overview</b><span>What needs action right now?</span></figcaption></figure>
+    <figure data-full="img/apex-02.webp" tabindex="0" role="button" aria-label="Enlarge screen 02"><div class="frame"><img src="img/apex-02.webp" alt="Screen 02 Exception queue" width="2400" height="1500" loading="lazy"></div><figcaption><b>02 Exception queue</b><span>Which incident comes first?</span></figcaption></figure>
+    <figure data-full="img/apex-03.webp" tabindex="0" role="button" aria-label="Enlarge screen 03"><div class="frame"><img src="img/apex-03.webp" alt="Screen 03 Incident detail" width="2400" height="1500" loading="lazy"></div><figcaption><b>03 Incident detail</b><span>What exactly is exposed?</span></figcaption></figure>
+    <figure data-full="img/apex-04.webp" tabindex="0" role="button" aria-label="Enlarge screen 04"><div class="frame"><img src="img/apex-04.webp" alt="Screen 04 Root-cause investigation" width="2400" height="1500" loading="lazy"></div><figcaption><b>04 Root-cause investigation</b><span>What does the evidence support?</span></figcaption></figure>
+    <figure data-full="img/apex-05.webp" tabindex="0" role="button" aria-label="Enlarge screen 05"><div class="frame"><img src="img/apex-05.webp" alt="Screen 05 Recovery decision studio" width="2400" height="1500" loading="lazy"></div><figcaption><b>05 Recovery decision studio</b><span>Which option, at what cost?</span></figcaption></figure>
+    <figure data-full="img/apex-06.webp" tabindex="0" role="button" aria-label="Enlarge screen 06"><div class="frame"><img src="img/apex-06.webp" alt="Screen 06 Recommendation details" width="2400" height="1500" loading="lazy"></div><figcaption><b>06 Recommendation details</b><span>Why this option, and what's unverified?</span></figcaption></figure>
+    <figure data-full="img/apex-07.webp" tabindex="0" role="button" aria-label="Enlarge screen 07"><div class="frame"><img src="img/apex-07.webp" alt="Screen 07 Recovery execution" width="2400" height="1500" loading="lazy"></div><figcaption><b>07 Recovery execution</b><span>Who's doing what, and is it working?</span></figcaption></figure>
+    <figure data-full="img/apex-08.webp" tabindex="0" role="button" aria-label="Enlarge screen 08"><div class="frame"><img src="img/apex-08.webp" alt="Screen 08 Fulfillment performance" width="2400" height="1500" loading="lazy"></div><figcaption><b>08 Fulfillment performance</b><span>Did it work, and what do we learn?</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section class="chapter col" id="shift" data-ch="The shift" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">The shift</p>
+  <div class="shift">
+    <div class="text">
+      <h2>Picture a normal Wednesday afternoon in Phoenix.</h2>
+      <p class="lede">Eighteen thousand orders are moving through the building. Nothing looks wrong yet.</p>
+      <p style="margin-top:16px">Then the warnings start stacking up, quietly. A backlog flag at 14:07. A staging queue that crosses its limit at 14:19. By 14:33 there's a critical exception on the board: 112 orders that may not be ready for the 15:15 carrier pickup.</p>
+      <p>The manager on shift can see that something's wrong. What they can't see, at least not in one place, is why it's happening, what they can do about it, who has to sign off, and whether it'll work in time.</p>
+      <div class="stats">
+        <div><b data-count="18420">18,420</b><span>orders monitored</span></div>
+        <div><b data-count="284">284</b><span>orders at risk</span></div>
+        <div><b data-count="37">37</b><span>critical exceptions</span></div>
+        <div><b data-count="97.8" data-dec="1" data-suffix="%">97.8%</b><span>on-time outlook, modeled</span></div>
+      </div>
+    </div>
+    <ol class="tlv" id="tlv">
+      <span class="fill" id="tlvfill"></span>
+      <li><b><span>14:07</span>Backlog warning</b><p>Outbound processing falls behind. Easy to dismiss on its own.</p></li>
+      <li><b><span>14:19</span>Staging queue over its limit</b><p>Staging runs at 3,960 orders an hour. The cutoff needs 4,500.</p></li>
+      <li><b><span>14:27</span>Cutoff risk goes critical</b><p>Two of three outbound batches are modeled to miss 15:15.</p></li>
+      <li><b><span>14:33</span>EX-2048 opens</b><p>112 orders, one owner, 42 minutes. This is where APEX takes over.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="chapter col" id="problem" data-ch="The problem" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">The problem</p>
+  <div class="text"><h2>The alert was never the hard part. Knowing the next defensible move was.</h2>
+  <p class="lede">How might we help a manager find the risk that matters most, understand what's causing it, and coordinate a recovery in time, without losing track of who decided what?</p></div>
+  <div class="rows">
+    <div class="row num"><span class="n">01</span><h3>The context is scattered.</h3><p>Answering "what do I do next" means jumping between monitoring, staffing and carrier views and re-finding the same incident in each.</p></div>
+    <div class="row num"><span class="n">02</span><h3>Alerts show symptoms, not evidence.</h3><p>You can see that risk is high, but not which signal raised it, so the first minutes go to re-deriving the diagnosis by hand.</p></div>
+    <div class="row num"><span class="n">03</span><h3>Decisions drift out of the system.</h3><p>When approvals happen in side conversations, nobody can say afterwards who approved a staffing move, or when.</p></div>
+    <div class="row num"><span class="n">04</span><h3>Forecasts get read as promises.</h3><p>If a projection is never compared with what actually happened, the team never learns which recoveries work.</p></div>
+  </div>
+  <p class="text" style="margin-top:32px">Those four hypotheses shaped the research approach, set up with UX research, product and engineering:</p>
+  <div class="methods">
+    <div><b>Stakeholder interviews</b><span>Constraints and priorities</span></div>
+    <div><b>Workflow mapping</b><span>Alert to recovery, step by step</span></div>
+    <div><b>Contextual inquiry</b><span>Decisions and tool switching on shift</span></div>
+    <div><b>Concept evaluation</b><span>Prioritization and recovery flows</span></div>
+    <div><b>Usability testing</b><span>Task success, speed, comprehension</span></div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section class="chapter col" id="people" data-ch="Who it's for" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">Who it's for</p>
+  <div class="text"><h2>Three people, one incident, three different questions.</h2></div>
+  <div class="people">
+    <div><span class="who">Owns the incident</span><h3>Operations Manager</h3><p>"When an exception threatens the cutoff, help me see the exposure, pick a response I can defend, and get it moving before the window closes."</p></div>
+    <div><span class="who">Runs it on the floor</span><h3>Outbound Shift Lead</h3><p>"Once something's approved, tell me exactly what to do, by when, and how to report whether it's working."</p></div>
+    <div><span class="who">Watches the trucks</span><h3>Carrier Coordination</h3><p>"Show me the cutoffs coming up and anything that might need a conversation with the carrier."</p></div>
+  </div>
+</section>
+
+<!-- RECORD -->
+<section class="chapter col" id="record" data-ch="One incident record" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">The structural decision</p>
+  <div class="text"><h2>Instead of eight dashboards, one incident record that travels.</h2>
+  <p class="lede">Every screen reads from and writes to the same record, so the ID, order count, deadline, owner and state come along as the manager moves. Keep scrolling and follow it.</p></div>
+  <div class="travel" id="travel">
+    <div class="stick">
+      <div class="rail8" id="rail8">
+        <span class="prog" id="rail8prog"></span>
+        <div class="st"><div class="c">01</div><b>Detect</b><span>What needs action</span></div>
+        <div class="st"><div class="c">02</div><b>Prioritize</b><span>Rank by deadline</span></div>
+        <div class="st"><div class="c">03</div><b>Understand</b><span>Batches and owner</span></div>
+        <div class="st"><div class="c">04</div><b>Diagnose</b><span>Evidence vs guesses</span></div>
+        <div class="st"><div class="c">05</div><b>Compare</b><span>Options and costs</span></div>
+        <div class="st"><div class="c">06</div><b>Explain</b><span>Review before approval</span></div>
+        <div class="st"><div class="c">07</div><b>Execute</b><span>Owners and audit</span></div>
+        <div class="st"><div class="c">08</div><b>Learn</b><span>Forecast vs outcome</span></div>
+      </div>
+      <div class="record" aria-live="polite">
+        <div class="hd"><span>Incident record</span><b>EX-2048</b></div>
+        <table><tr><th>Facility</th><th>Orders</th><th>Cutoff</th><th>Owner</th><th>Severity</th><th style="width:190px">State</th></tr>
+        <tr><td>PHX1</td><td>112</td><td>15:15 MST</td><td>M. Chen</td><td>Critical</td><td><span class="state" id="recstate">Open</span></td></tr></table>
+        <div class="ft" id="recnote"><b>Detect.</b> The record is created the moment the risk is classified critical.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section class="chapter col" id="rules" data-ch="Principles" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">Principles</p>
+  <div class="text"><h2>Five rules I came back to whenever the team disagreed.</h2></div>
+  <div class="rows">
+    <div class="rows-head row two" style="border:0;padding-bottom:0"><span>Principle</span><span>Where you can see it</span></div>
+    <div class="row two"><h3>Decision first, dashboard second.</h3><p>Every screen ends in one primary action: Investigate exception, Compare recovery options, Review recommendation. If a chart doesn't change what someone does, it's gone.<span class="scr">Screens 01–08</span></p></div>
+    <div class="row two"><h3>Show the evidence before the advice.</h3><p>Throughput, queue and schedule signals with timestamps, plus a list of what's still unverified, come before any recommendation.<span class="scr">Screens 04 and 06</span></p></div>
+    <div class="row two"><h3>Severity isn't status.</h3><p>"Critical" describes risk. "Open", "In progress" and "Outcome recorded" describe work. They never share a label or a column.<span class="scr">Screens 01, 02, 07</span></p></div>
+    <div class="row two"><h3>A forecast stays a forecast.</h3><p>"98 projected" carries its label through execution until the cutoff result is recorded.<span class="scr">Screens 05, 07, 08</span></p></div>
+    <div class="row two"><h3>People approve consequences.</h3><p>The system advises. Moving staff or holding a truck needs an explicit, logged human approval.<span class="scr">Screens 06 and 07</span></p></div>
+  </div>
+</section>
+
+<!-- WALKTHROUGH -->
+<section class="chapter col" id="walk" data-ch="Walkthrough" data-clock="14:33" data-left="42 min to cutoff">
+  <p class="label">Walkthrough</p>
+  <div class="text"><h2>Follow EX-2048 through the product.</h2><p class="lede">As you scroll, the screen follows along and frames the exact part each decision is about.</p></div>
+  <div class="walk">
+    <div class="viewer">
+      <div class="vport zoomable" id="vport" data-full="img/apex-01.webp" tabindex="0" role="button" aria-label="Enlarge the current screen">
+        <div class="vstage" id="vstage">
+          <img src="img/apex-01.webp" alt="Screen 01" class="on" width="2400" height="1500">
+          <img src="img/apex-02.webp" alt="Screen 02" width="2400" height="1500">
+          <img src="img/apex-03.webp" alt="Screen 03" width="2400" height="1500">
+          <img src="img/apex-04.webp" alt="Screen 04" width="2400" height="1500">
+          <img src="img/apex-05.webp" alt="Screen 05" width="2400" height="1500">
+          <img src="img/apex-06.webp" alt="Screen 06" width="2400" height="1500">
+          <img src="img/apex-07.webp" alt="Screen 07" width="2400" height="1500">
+          <img src="img/apex-08.webp" alt="Screen 08" width="2400" height="1500">
+          <div class="hl" id="hl"></div><div class="hl2" id="hl2"></div>
+        </div>
+      </div>
+      <div class="vmeta"><span id="vlabel"><b>01</b> Operations overview</span><span class="vdots" id="vdots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="step" data-s="1" data-r="260,259,828,446" data-clock="14:33" data-left="42 min to cutoff">
+        <span class="when">Screen 01 · 14:33</span><h3>Find the one thing that can't wait.</h3><img class="inline" src="img/apex-01.webp" data-full="img/apex-01.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>The priority table ranks by time left before the cutoff, not by when an alert fired. EX-2048 sits on top with 42 minutes.</p>
+        <p class="why"><b>Why:</b> the oldest alert is rarely the most urgent one. Minutes to cutoff is what a manager actually triages on.</p>
+      </div>
+      <div class="step" data-s="2" data-r="260,140,1312,97" data-clock="14:33" data-left="42 min to cutoff">
+        <span class="when">Screen 02 · 14:33</span><h3>Keep orders and exceptions apart.</h3><img class="inline" src="img/apex-02.webp" data-full="img/apex-02.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>The queue counts 148 open exceptions (37 critical, 64 high, 47 medium) and, in a separate tile, 284 distinct at-risk orders.</p>
+        <p class="why"><b>Why:</b> when two different totals sit side by side and happen to match, people assume they measure the same thing.</p>
+      </div>
+      <div class="step" data-s="3" data-r="260,671,844,300" data-clock="14:33" data-left="42 min to cutoff">
+        <span class="when">Screen 03 · 14:33</span><h3>Show the deadline, batch by batch.</h3><img class="inline" src="img/apex-03.webp" data-full="img/apex-03.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>The 112 orders split into batches of 46, 38 and 28. One is modeled ready 7 minutes before 15:15; the other two land 4 and 9 minutes after.</p>
+        <p class="why"><b>Why:</b> "112 at risk" is abstract. "66 orders will be late by up to 9 minutes" is something you can act on.</p>
+      </div>
+      <div class="step" data-s="4" data-r="260,218,776,300" data-clock="14:33" data-left="42 min to cutoff">
+        <span class="when">Screen 04 · 14:33</span><h3>Point at the bottleneck, carefully.</h3><img class="inline" src="img/apex-04.webp" data-full="img/apex-04.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>Pick, pack and dispatch all run above the 4,500/hr line. Staging runs at 3,960, a 540-order gap. Three explanations are rated by evidence; only one is a likely contributor.</p>
+        <p class="why"><b>Why:</b> the chart shows where things slow down, not why. A limitations panel says plainly that staff availability hasn't been checked.</p>
+      </div>
+      <div class="step" data-s="5" data-r="260,218,1312,271" data-clock="14:33" data-left="42 min to cutoff">
+        <span class="when">Screen 05 · 14:33</span><h3>Three options, side by side.</h3><img class="inline" src="img/apex-05.webp" data-full="img/apex-05.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>Reallocate staging labor protects a forecast 98 of 112. Prioritizing loading protects 85; asking the carrier to wait protects 72. Each shows cost, feasibility and time to execute.</p>
+        <p class="why"><b>Why:</b> one "Fix it" button hides the tradeoff. Every option here adds up to the same 112, so the comparison is fair.</p>
+      </div>
+      <div class="step" data-s="5" data-r="812,505,760,378" data-clock="14:33" data-left="42 min to cutoff">
+        <span class="when">Screen 05 · 14:33</span><h3>The best option comes with conditions.</h3>
+        <p>The preferred strategy is tagged "model-preferred", never "approved". Its three dependencies sit right next to the forecast: supervisor sign-off, staff actually available, and impact on other work.</p>
+        <p class="why"><b>Why:</b> a 98 means nothing if the people to do the work aren't there.</p>
+      </div>
+      <div class="step" data-s="6" data-r="1102,699,470,184" data-r2="260,899,1312,72" data-clock="14:34" data-left="41 min to cutoff">
+        <span class="when">Screen 06 · 14:34</span><h3>A deliberate speed bump.</h3><img class="inline" src="img/apex-06.webp" data-full="img/apex-06.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>Before anyone can request approval, the manager confirms three things: the forecast's assumptions, that staffing is unconfirmed, and the knock-on effects. Until then, Request approval stays locked in the bar below.</p>
+        <p class="why"><b>Why:</b> it costs a few seconds and stops a staffing change from going out on an unchecked assumption.</p>
+      </div>
+      <div class="step" data-s="7" data-r="260,233,1312,216" data-clock="14:45" data-left="30 min to cutoff">
+        <span class="when">Screen 07 · 14:45</span><h3>From approval to people on the floor.</h3><img class="inline" src="img/apex-07.webp" data-full="img/apex-07.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>Approved at 14:36, started at 14:38, staff reassigned by 14:41. Seven milestones show what's done, what's live and what's next, including a 14:55 checkpoint where escalation kicks in.</p>
+        <p class="why"><b>Why:</b> the 98 is still labeled "forecast, not actual". Nobody should read a prediction as a result while the clock is running.</p>
+      </div>
+      <div class="step" data-s="8" data-r="932,259,640,376" data-clock="16:30" data-left="outcome recorded">
+        <span class="when">Screen 08 · 16:30</span><h3>Show the miss, too.</h3><img class="inline" src="img/apex-08.webp" data-full="img/apex-08.webp" alt="" loading="lazy" tabindex="0" role="button" aria-label="Enlarge screen">
+        <p>After the cutoff, 96 orders made it and 16 didn't. The forecast said 98. The two numbers sit side by side, and the gap becomes a concrete question about checking staff earlier.</p>
+        <p class="why"><b>Why:</b> a tool that hides its own mistakes won't earn trust on an operations floor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALLS -->
+<section class="chapter col" id="calls" data-ch="Hard calls" data-clock="16:30" data-left="outcome recorded">
+  <p class="label">Hard calls</p>
+  <div class="text"><h2>Five arguments that shaped the product.</h2><p class="lede">Each had a faster, shinier option on the table.</p></div>
+  <div class="rows">
+    <div class="rows-head row three" style="border:0;padding-bottom:0"><span>The question</span><span>Considered</span><span>Chose, and why</span></div>
+    <div class="row three"><h3>How much should the system decide?</h3><p class="no">One-click "Fix now" that runs the top recommendation</p><p>A side-by-side comparison with an approval gate. Moving staff has effects the model can't see, and a manager has to be able to explain the call upward.</p></div>
+    <div class="row three"><h3>How do we show how sure we are?</h3><p class="no">A confidence percentage on every strategy</p><p>Evidence ratings and plain-language assumptions. A precise-looking number suggests a calibration nobody has validated.</p></div>
+    <div class="row three"><h3>Speed or safety, on a deadline?</h3><p class="no">Approve straight from the comparison screen</p><p>A short acknowledgment step on its own screen. A few seconds is a small price against an unsafe staffing move.</p></div>
+    <div class="row three"><h3>One status label, or two?</h3><p class="no">One pill mixing "Critical" and "In review"</p><p>Severity and workflow state, separated on every screen. It costs a column and removes a very common misreading.</p></div>
+    <div class="row three"><h3>Celebrate, or measure?</h3><p class="no">A results view that only reports orders saved</p><p>Forecast vs outcome, misses included. The 16 orders that didn't make it are as visible as the 96 that did.</p></div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="dark" id="numbers" data-ch="The numbers" data-clock="15:15" data-left="cutoff">
+  <div class="col">
+    <p class="label">The numbers</p>
+    <div class="text"><h2>One incident, and every number adds up.</h2><p class="lede">The scenario is built so every total reconciles across all eight screens. Here's the full set.</p></div>
+    <div class="ngrid">
+      <div class="cell s3"><h4>Orders monitored</h4><div class="sub">Facility, 14:33</div><div class="big" data-count="18420">18,420</div></div>
+      <div class="cell s3"><h4>At-risk orders</h4><div class="sub">Peak, 14:33</div><div class="big" data-count="284">284</div></div>
+      <div class="cell s3"><h4>Critical exceptions</h4><div class="sub">Of 148 open</div><div class="big" data-count="37">37</div></div>
+      <div class="cell s3"><h4>On-time outlook</h4><div class="sub">Modeled, not final</div><div class="big" data-count="97.8" data-dec="1">97.8<small>%</small></div></div>
+
+      <div class="cell s5 fx"><h4>Critical exceptions by category</h4><div class="sub">37 in total</div>
+        <div class="hb"><span>Carrier</span><span class="t"><i style="--w:100%"></i></span><b>14</b></div>
+        <div class="hb"><span>Inventory</span><span class="t"><i style="--w:71.4%"></i></span><b>10</b></div>
+        <div class="hb"><span>Packing</span><span class="t"><i style="--w:57.1%"></i></span><b>8</b></div>
+        <div class="hb"><span>Other</span><span class="t"><i style="--w:35.7%"></i></span><b>5</b></div>
+        <p class="note">All open: 37 critical, 64 high, 47 medium = 148</p>
+      </div>
+      <div class="cell s7 fx"><h4>EX-2048: 112 orders in three batches</h4><div class="sub">Modeled ready time vs the 15:15 cutoff</div>
+        <div class="seg"><i style="width:41.1%;background:#5F6B7A">OB-A 46</i><i style="width:33.9%;background:#C83C3C">OB-B 38</i><i style="width:25%;background:#9C2F2F">OB-C 28</i></div>
+        <div class="legendn"><span><i style="background:#5F6B7A"></i>OB-A ready 15:08, 7 min early</span><span><i style="background:#C83C3C"></i>OB-B ready 15:19, 4 min late</span><span><i style="background:#9C2F2F"></i>OB-C ready 15:24, 9 min late</span></div>
+        <div class="kv"><div><span>Orders exposed</span><b>112</b></div><div><span>Time left at 14:33</span><b>42 min</b></div><div><span>Time left at 14:45</span><b>30 min</b></div></div>
+      </div>
+
+      <div class="cell s6 fx"><h4>Throughput by stage</h4><div class="sub">Orders per hour; white line marks the 4,500 required</div>
+        <div class="tp"><span>Pick</span><span class="t"><i style="--w:97.2%"></i><u></u></span><b>4,860</b></div>
+        <div class="tp"><span>Pack</span><span class="t"><i style="--w:94.4%"></i><u></u></span><b>4,720</b></div>
+        <div class="tp"><span>Stage</span><span class="t"><i class="hot" style="--w:79.2%"></i><u></u></span><b>3,960</b></div>
+        <div class="tp"><span>Dispatch</span><span class="t"><i style="--w:93.6%"></i><u></u></span><b>4,680</b></div>
+        <p class="note">Staging gap: 4,500 − 3,960 = 540 orders an hour</p>
+      </div>
+      <div class="cell s6 fx"><h4>Three recovery strategies</h4><div class="sub">Forecast protected vs still at risk, of 112</div>
+        <div class="strat"><span>Reallocate labor<small>12 min · low cost</small></span><div class="seg"><i style="width:87.5%;background:#4D8FCC">98</i><i style="width:12.5%;background:#5F6B7A">14</i></div></div>
+        <div class="strat"><span>Prioritize loading<small>8 min · low cost</small></span><div class="seg"><i style="width:75.9%;background:#4D8FCC">85</i><i style="width:24.1%;background:#5F6B7A">27</i></div></div>
+        <div class="strat"><span>Carrier hold<small>20 min · higher cost</small></span><div class="seg"><i style="width:64.3%;background:#4D8FCC">72</i><i style="width:35.7%;background:#5F6B7A">40</i></div></div>
+      </div>
+
+      <div class="cell s7 trend fx"><h4>At-risk orders across the facility</h4><div class="sub">Five snapshots on a true time scale. Includes every PHX1 exception, not only EX-2048.</div>
+        <svg viewBox="0 0 620 214" width="100%" role="img" aria-label="At-risk orders: 96 at 14:07, 148 at 14:19, 226 at 14:27, 284 at 14:33, 188 at 15:15" style="margin-top:12px">
+          <g stroke="#37475A"><line x1="40" x2="600" y1="20" y2="20"/><line x1="40" x2="600" y1="76" y2="76"/><line x1="40" x2="600" y1="132" y2="132"/></g>
+          <line x1="40" x2="600" y1="188" y2="188" stroke="#5F6B7A"/>
+          <g fill="#95A3B1" font-size="11" font-family="Public Sans, Arial" text-anchor="end"><text x="32" y="24">300</text><text x="32" y="80">200</text><text x="32" y="136">100</text><text x="32" y="192">0</text></g>
+          <g fill="#95A3B1" font-size="11" font-family="Public Sans, Arial" text-anchor="middle"><text x="40" y="208">14:07</text><text x="138.8" y="208">14:19</text><text x="204.7" y="208">14:27</text><text x="254.1" y="208">14:33</text><text x="600" y="208" text-anchor="end">15:15</text></g>
+          <polyline class="line" id="trendline" points="40,134.2 138.8,105.1 204.7,61.4 254.1,29.0 600,82.7" fill="none" stroke="#fff" stroke-width="2.25" stroke-linejoin="round"/>
+          <g fill="#232F3E" stroke="#fff" stroke-width="2"><circle cx="40" cy="134.2" r="4"/><circle cx="138.8" cy="105.1" r="4"/><circle cx="204.7" cy="61.4" r="4"/><circle cx="254.1" cy="29" r="4"/><circle cx="600" cy="82.7" r="4"/></g>
+          <g fill="#fff" font-size="12.5" font-weight="700" font-family="Public Sans, Arial" text-anchor="middle"><text x="50" y="122">96</text><text x="138.8" y="93">148</text><text x="194" y="51">226</text><text x="282" y="28">284</text><text x="586" y="70">188</text></g>
+        </svg>
+        <p class="trend-mob">96 at 14:07 → 148 at 14:19 → 226 at 14:27 → <b>284 peak at 14:33</b> → 188 at 15:15</p>
+      </div>
+      <div class="cell s5 fx"><h4>EX-2048 outcome</h4><div class="sub">Recorded after the 15:15 cutoff</div>
+        <div class="seg"><i style="width:85.7%;background:#23794D">96 protected</i><i style="width:14.3%;background:#C83C3C">16</i></div>
+        <div class="kv"><div><span>Forecast</span><b>98</b></div><div><span>Outcome</span><b>96</b></div><div><span>Variance</span><b>−2</b></div></div>
+        <p class="note">Protected means dispatch-ready before the cutoff, not delivered. One scenario, so the variance isn't a model accuracy figure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEASURE -->
+<section class="chapter col" id="measure" data-ch="How it will be measured" data-clock="16:30" data-left="outcome recorded">
+  <p class="label">How it will be measured</p>
+  <div class="text"><h2>What success has to look like before I'd call it done.</h2>
+  <p class="lede">The design and prototype are complete. These are the targets for the next stage, scenario-based usability testing with operations practitioners. They're goals, not results.</p></div>
+  <div class="tablewrap">
+    <table class="tt">
+      <thead><tr><th>Measure</th><th>Baseline</th><th>Target</th><th>Baseline vs target</th><th>Change sought</th></tr></thead>
+      <tbody>
+        <tr><td class="m"><b>Find the critical exception</b><span>Timed from the overview</span></td><td class="v" data-l="Baseline">12 min</td><td class="v" data-l="Target">4 min</td><td><div class="pair"><div><span>Baseline</span><i style="width:100%"></i></div><div class="g"><span>Target</span><i style="width:33.3%"></i></div></div></td><td class="d" data-l="Change">−67%</td></tr>
+        <tr><td class="m"><b>Reach a recovery decision</b><span>Investigation to strategy selected</span></td><td class="v" data-l="Baseline">9 min</td><td class="v" data-l="Target">3 min</td><td><div class="pair"><div><span>Baseline</span><i style="width:100%"></i></div><div class="g"><span>Target</span><i style="width:33.3%"></i></div></div></td><td class="d" data-l="Change">−67%</td></tr>
+        <tr><td class="m"><b>Tool switches per incident</b><span>Observed navigation per task</span></td><td class="v" data-l="Baseline">7</td><td class="v" data-l="Target">2</td><td><div class="pair"><div><span>Baseline</span><i style="width:100%"></i></div><div class="g"><span>Target</span><i style="width:28.6%"></i></div></div></td><td class="d" data-l="Change">−5 switches</td></tr>
+        <tr><td class="m"><b>Task completion</b><span>Scenario tasks completed unaided</span></td><td class="v" data-l="Baseline">68%</td><td class="v" data-l="Target">90%</td><td><div class="pair"><div><span>Baseline</span><i style="width:68%"></i></div><div class="g"><span>Target</span><i style="width:90%"></i></div></div></td><td class="d" data-l="Change">+22 points</td></tr>
+        <tr><td class="m"><b>Decision accuracy</b><span>Spots unverified dependencies before approval</span></td><td class="v muted" data-l="Baseline">To set</td><td class="v muted" data-l="Target">To set</td><td class="muted" style="font-size:14px">Defined during evaluation</td><td class="d muted" data-l="Change">Track</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="stepper">
+    <div><span>Stage 1 · done</span><b>Discovery</b><p>Problem framing and workflow mapping.</p></div>
+    <div><span>Stage 2 · done</span><b>Concept validation</b><p>Prioritization and recovery concepts against the scenario.</p></div>
+    <div><span>Stage 3 · done</span><b>Design development</b><p>High-fidelity screens and component patterns.</p></div>
+    <div><span>Stage 4 · done</span><b>Prototype</b><p>Eight connected screens, full incident lifecycle.</p></div>
+    <div class="next"><span>Stage 5 · next</span><b>Evaluation</b><p>Usability testing against these targets, then iteration.</p></div>
+  </div>
+</section>
+
+<!-- SYSTEM -->
+<section class="chapter col" id="system" data-ch="Design system" data-clock="16:30" data-left="outcome recorded">
+  <p class="label">Design system</p>
+  <div class="text"><h2>Quiet screens, loud states.</h2>
+  <p class="lede">Operations screens get scanned all shift long, so the system stays neutral and lets status do the talking. These are real pieces of the product, cropped straight from the screens.</p></div>
+  <div class="anat">
+    <figure><div class="crop" data-full="img/crops/strat.webp" tabindex="0" role="button" aria-label="Enlarge strategy comparison"><img src="img/crops/strat.webp" alt="Strategy comparison table with radio selection, forecast bars, cost tags and feasibility" loading="lazy"></div><figcaption><b>Strategy comparison.</b> <span>Every row adds to 112. Cost is a tag, feasibility a short phrase, and the model's preference is a label, never a selection.</span></figcaption></figure>
+    <figure class="h"><div class="crop" data-full="img/crops/queue.webp" tabindex="0" role="button" aria-label="Enlarge queue table"><img src="img/crops/queue.webp" alt="Exception queue table rows with priority, deadline, time left, owner and severity" loading="lazy"></div><figcaption><b>Queue rows.</b> <span>Priority, deadline and time left read left to right; severity sits in its own column.</span></figcaption></figure>
+    <figure class="h"><div class="crop" data-full="img/crops/hyp.webp" tabindex="0" role="button" aria-label="Enlarge contributing factors"><img src="img/crops/hyp.webp" alt="Contributing factors with evidence assessments and status tags" loading="lazy"></div><figcaption><b>Hypothesis cards.</b> <span>Each explanation gets an evidence rating and a verdict, so a likely cause never reads as a proven one.</span></figcaption></figure>
+    <figure><div class="crop" data-full="img/crops/approve.webp" tabindex="0" role="button" aria-label="Enlarge approval readiness bar"><img src="img/crops/approve.webp" alt="Approval readiness bar with review incomplete and a disabled request approval button" loading="lazy"></div><figcaption><b>Approval readiness bar.</b> <span>The state, what's outstanding and the locked action live in one strip at the bottom of every decision screen.</span></figcaption></figure>
+    <figure><div class="crop" data-full="img/crops/ms.webp" tabindex="0" role="button" aria-label="Enlarge execution milestones"><img src="img/crops/ms.webp" alt="Execution milestone track from approval requested to cutoff assessment" loading="lazy"></div><figcaption><b>Milestone track.</b> <span>Done, live, next and pending, each with a time, so a shift lead can report progress at a glance.</span></figcaption></figure>
+  </div>
+  <div class="swatches" aria-label="Color tokens">
+    <span><i style="background:#232F3E"></i>Navigation #232F3E</span><span><i style="background:#1769AA"></i>Action #1769AA</span><span><i style="background:#FF9900"></i>Brand #FF9900</span><span><i style="background:#F2F3F5"></i>Canvas #F2F3F5</span><span><i style="background:#C83C3C"></i>Critical #C83C3C</span><span><i style="background:#B66A00"></i>Warning #B66A00</span><span><i style="background:#23794D"></i>Success #23794D</span>
+  </div>
+</section>
+
+<!-- ROLE -->
+<section class="chapter col" id="me" data-ch="My role" data-clock="16:30" data-left="outcome recorded">
+  <p class="label">My role</p>
+  <div class="text"><h2>What I owned on APEX.</h2><p class="lede">As the UI/UX designer, I led the experience end to end, working alongside UX research, product and engineering.</p></div>
+  <div class="rows">
+    <div class="row two"><h3>Experience and information architecture</h3><p>The structure of eight connected workflows around one incident record.</p></div>
+    <div class="row two"><h3>Operational data made actionable</h3><p>Throughput, queue and deadline signals turned into screens a manager can scan under pressure.</p></div>
+    <div class="row two"><h3>Triage, investigation and recovery</h3><p>From the priority table through strategy comparison to execution monitoring.</p></div>
+    <div class="row two"><h3>Component system and interaction patterns</h3><p>Status, evidence, dependency, approval and audit patterns shared by every screen.</p></div>
+    <div class="row two"><h3>Explainable recommendations</h3><p>Evidence-linked reasons, honest uncertainty, and an approval gate the model can't skip.</p></div>
+    <div class="row two"><h3>Success criteria and evaluation plan</h3><p>The measures and targets the evaluation stage will test against.</p></div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="chapter col" id="after" data-ch="After the cutoff" data-clock="16:30" data-left="outcome recorded">
+  <p class="label">After the cutoff</p>
+  <p class="closing">Predicting the risk turned out to be the easy part. The real work was making a high-stakes decision easy to inspect, from the first warning to the forecast that missed by two.</p>
+  <div class="nexts">
+    <div><h4>Put it in front of operators</h4><p>Run scenario-based sessions with operations practitioners and measure against the targets.</p></div>
+    <div><h4>Get an expert to poke holes</h4><p>Walk the workflow with someone from warehouse or logistics operations to catch assumptions that won't hold on a real floor.</p></div>
+    <div><h4>Bring staffing in earlier</h4><p>Pull labor availability into the investigation, so feasibility is known before strategies are compared.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="col">
+    <p class="label" style="margin:0">Keep reading</p>
+    <div class="more">
+      <a href="../adobe-campaign-readiness/"><span>Adobe · Enterprise</span><b>From content velocity to campaign confidence</b></a>
+      <a href="../flipkart-payments/"><span>Flipkart · Payments</span><b>When the customer doesn't know if the payment went through</b></a>
+      <a href="../adobe-firefly-case/"><span>Adobe Firefly · Creative AI</span><b>From prompting to creative control</b></a>
+    </div>
+    <nav class="endnav" aria-label="Page navigation">
+      <a href="../../index.html#work">← Back to projects</a>
+      <a href="#top" class="totop-link">↑ Back to top</a>
+      <a href="../../index.html">Back to home</a>
+    </nav>
+    <div class="fine"><span>APEX · Fulfillment Intelligence · UI/UX Designer · Ajith Alphonse</span><span>Illustrative incident data, consistent across all screens</span></div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image"><button type="button" id="lbx">Close</button><img id="lbimg" alt=""></div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bar = document.getElementById('bar'), where = document.getElementById('where'), pct = document.getElementById('pct');
+  var clk = document.getElementById('clk'), clkl = document.getElementById('clkl');
+  var chs = [].slice.call(document.querySelectorAll('[data-ch]'));
+  var clocks = [].slice.call(document.querySelectorAll('[data-clock]'));
+
+  function countUp(el) {
+    if (el._d || reduce) return; el._d = true;
+    var end = parseFloat(el.getAttribute('data-count')), dec = +(el.getAttribute('data-dec') || 0), suf = el.getAttribute('data-suffix') || '';
+    var sm = el.querySelector('small'), smh = sm ? sm.outerHTML : '', t0 = null;
+    function f(v) { return v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+    function tick(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 1000), e = 1 - Math.pow(1 - p, 3); el.innerHTML = f(end * e) + suf + smh; if (p < 1) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { if (e.target.hasAttribute('data-count')) countUp(e.target); if (e.target.classList.contains('fx')) e.target.classList.add('seen'); } }); }, { threshold: .35 });
+  document.querySelectorAll('[data-count], .fx').forEach(function (el) { io.observe(el); });
+  if (reduce) document.querySelectorAll('.fx').forEach(function (el) { el.classList.add('seen'); });
+
+  /* walkthrough */
+  var steps = [].slice.call(document.querySelectorAll('.step')), stage = document.getElementById('vstage'), imgs = stage.querySelectorAll('img');
+  var hl = document.getElementById('hl'), hl2 = document.getElementById('hl2'), vlabel = document.getElementById('vlabel'), dots = document.querySelectorAll('#vdots i'), vport = document.getElementById('vport');
+  var names = ['Operations overview','Exception queue','Incident detail','Root-cause investigation','Recovery decision studio','Recommendation details','Recovery execution','Fulfillment performance'];
+  function place(el, r) { el.style.left = (r[0] / 16) + '%'; el.style.top = (r[1] / 10) + '%'; el.style.width = (r[2] / 16) + '%'; el.style.height = (r[3] / 10) + '%'; }
+  var cur = -1;
+  function show(i) {
+    if (i === cur) return; cur = i;
+    steps.forEach(function (s, k) { s.classList.toggle('on', k === i); });
+    var s = steps[i], n = +s.getAttribute('data-s'), r = s.getAttribute('data-r').split(',').map(Number), r2a = s.getAttribute('data-r2');
+    imgs.forEach(function (im, k) { im.classList.toggle('on', k === n - 1); });
+    dots.forEach(function (d, k) { d.className = k < n - 1 ? 'on' : (k === n - 1 ? 'now' : ''); });
+    vlabel.innerHTML = '<b>0' + n + '</b> ' + names[n - 1];
+    vport.setAttribute('data-full', 'img/apex-0' + n + '.webp');
+    var box = r.slice();
+    if (r2a) { var r2 = r2a.split(',').map(Number); var x1 = Math.min(r[0], r2[0]), y1 = Math.min(r[1], r2[1]), x2 = Math.max(r[0] + r[2], r2[0] + r2[2]), y2 = Math.max(r[1] + r[3], r2[1] + r2[3]); box = [x1, y1, x2 - x1, y2 - y1]; place(hl2, r2); hl2.style.opacity = 1; } else { hl2.style.opacity = 0; }
+    var pad = 28, x = box[0] - pad, y = box[1] - pad, w = box[2] + pad * 2, h = box[3] + pad * 2;
+    var sc = Math.max(1, Math.min(1.8, Math.min(1600 / w, 1000 / h)));
+    var cx = x + w / 2, cy = y + h / 2;
+    var tx = Math.min(0, Math.max(1600 - 1600 * sc, 800 - cx * sc)), ty = Math.min(0, Math.max(1000 - 1000 * sc, 500 - cy * sc));
+    stage.style.transform = reduce ? 'none' : 'translate(' + (tx / 16) + '%,' + (ty / 10) + '%) scale(' + sc + ')';
+    place(hl, r);
+  }
+  show(0);
+
+  /* travelling record */
+  var travel = document.getElementById('travel'), sts = document.querySelectorAll('#rail8 .st'), prog = document.getElementById('rail8prog'), recstate = document.getElementById('recstate'), recnote = document.getElementById('recnote');
+  var notes = [
+    ['Open', '#EEF0F3', '#0F1111', '<b>Detect.</b> The record is created the moment the risk is classified critical.'],
+    ['Open', '#EEF0F3', '#0F1111', '<b>Prioritize.</b> It ranks first in the queue on minutes to cutoff.'],
+    ['Open', '#EEF0F3', '#0F1111', '<b>Understand.</b> Batches, timeline and owner attach to it.'],
+    ['Investigating', '#FDF3E3', '#8A5100', '<b>Diagnose.</b> Throughput evidence and three hypotheses are added.'],
+    ['Investigating', '#FDF3E3', '#8A5100', '<b>Compare.</b> Three strategy forecasts attach, all out of the same 112.'],
+    ['Review required', '#FCEDED', '#9C2F2F', '<b>Explain.</b> Approval stays locked until three acknowledgments are made.'],
+    ['In progress', '#E8F1F9', '#1769AA', '<b>Execute.</b> Approver, owner and every milestone are logged against it.'],
+    ['Outcome recorded', '#E7F4EC', '#1D6640', '<b>Learn.</b> 96 protected, 16 missed, and the gap to the 98 forecast.']
+  ];
+  var last = -1;
+  function travelUpdate() {
+    var r = travel.getBoundingClientRect(), span = r.height - window.innerHeight * .6;
+    var p = Math.max(0, Math.min(1, (-r.top + 140) / Math.max(1, span))), k = Math.min(7, Math.floor(p * 8));
+    if (k === last) return; last = k;
+    prog.style.width = (87.5 * k / 7) + '%';
+    sts.forEach(function (el, j) { el.classList.toggle('on', j < k); el.classList.toggle('now', j === k); });
+    recstate.textContent = notes[k][0]; recstate.style.background = notes[k][1]; recstate.style.color = notes[k][2]; recnote.innerHTML = notes[k][3];
+  }
+
+  var tlv = document.getElementById('tlv'), fill = document.getElementById('tlvfill'), lis = tlv.querySelectorAll('li');
+  function tlvUpdate() { var r = tlv.getBoundingClientRect(), h = Math.max(0, Math.min(r.height - 16, window.innerHeight * .62 - r.top)); fill.style.height = h + 'px'; lis.forEach(function (li) { li.classList.toggle('lit', li.offsetTop + 10 <= h + 4); }); }
+  var trend = document.getElementById('trendline');
+  function trendUpdate() { var r = trend.ownerSVGElement.getBoundingClientRect(), p = Math.max(0, Math.min(1, (window.innerHeight - r.top) / (window.innerHeight * .7))); trend.style.strokeDashoffset = reduce ? 0 : 1000 * (1 - p); }
+
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight, p = max > 0 ? window.scrollY / max : 0;
+    bar.style.width = (p * 100) + '%';
+    pct.textContent = p > .985 ? 'Finished' : Math.round(p * 100) + '% read · ' + Math.max(1, Math.ceil(12 * (1 - p))) + ' min left';
+    var probe = window.innerHeight * .4, ch = null, cl = null;
+    chs.forEach(function (c) { if (c.getBoundingClientRect().top < probe) ch = c; });
+    clocks.forEach(function (c) { if (c.getBoundingClientRect().top < probe) cl = c; });
+    if (ch) where.innerHTML = '<b>APEX</b> · ' + ch.getAttribute('data-ch');
+    if (cl) { clk.textContent = cl.getAttribute('data-clock'); clkl.textContent = cl.getAttribute('data-left'); }
+    var best = 0, bd = 1e9;
+    steps.forEach(function (s, k) { var d = Math.abs(s.getBoundingClientRect().top + s.offsetHeight * .3 - window.innerHeight * .45); if (d < bd) { bd = d; best = k; } });
+    show(best); travelUpdate(); tlvUpdate(); trendUpdate();
+  }
+  var tk = false;
+  window.addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(function () { tk = false; onScroll(); }); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  var totop = document.getElementById('totop');
+  function toTop(e) { if (e) e.preventDefault(); window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }
+  totop.addEventListener('click', toTop);
+  document.querySelectorAll('.totop-link').forEach(function (a) { a.addEventListener('click', toTop); });
+  window.addEventListener('scroll', function () { totop.classList.toggle('show', window.scrollY > window.innerHeight * 1.2); }, { passive: true });
+  onScroll();
+
+  var lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'), lastEl = null;
+  function openLB(el) { lastEl = el; lbimg.src = el.getAttribute('data-full'); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbx').focus(); }
+  function closeLB() { lb.classList.remove('open'); document.body.style.overflow = ''; if (lastEl) lastEl.focus(); }
+  document.querySelectorAll('[data-full]').forEach(function (el) {
+    el.addEventListener('click', function () { openLB(el); });
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(el); } });
+  });
+  document.getElementById('lbx').addEventListener('click', closeLB);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLB(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLB(); });
+})();
+</script>
+</body>
+</html>
