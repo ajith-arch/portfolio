@@ -1,0 +1,251 @@
+/* Adobe Campaign Readiness — showcase card with live prototype walkthrough.
+   All hover motion is transform/opacity only (no layout animation), so it stays on the GPU.
+   Static: large headline, dashboard peeking in from the right.
+   Live (hover on desktop, in view on touch): dashboard glides left, text scales down,
+   a cursor walks the real prototype with a camera that follows it. */
+
+.project-hero--showcase {
+    padding: 0;
+    overflow: hidden;
+    background: #1F1F21;
+    border-color: rgba(255, 255, 255, 0.06);
+    transform: none !important;   /* the site-wide card hover scale re-rasterises everything */
+    contain: paint;
+}
+.project-hero--showcase:hover {
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.55);
+}
+
+.sc {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 480px;
+    color: #FFFFFF;
+    text-decoration: none;
+    --sc-ease: cubic-bezier(.2, .75, .15, 1);
+    --sc-dur: .9s;
+}
+
+/* ---------- text: fixed box, scaled (never reflows) ---------- */
+.sc-text {
+    position: absolute;
+    z-index: 2;
+    left: 56px;
+    top: 50%;
+    width: calc(50% - 96px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transform-origin: 0 50%;
+    transform: translateY(-50%);
+    transition: transform var(--sc-dur) var(--sc-ease);
+    will-change: transform;
+}
+.sc-kicker { font-size: 17px; font-weight: 500; color: #A6A6AD; }
+.sc-title {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.32;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+.sc-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .32em;
+    padding: .06em .5em .1em .42em;
+    margin: 0 .06em;
+    border-radius: 999px;
+    background: rgba(250, 15, 0, 0.16);
+    color: #FF8A7E;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.sc-chip svg { width: .78em; height: .78em; flex: none; }
+.sc-meta { font-size: 14.5px; color: #8E8E96; margin-top: 4px; }
+.sc-cta { font-size: 15.5px; font-weight: 600; color: #FFFFFF; display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; }
+.sc-cta span { transition: transform .25s ease; }
+.sc:hover .sc-cta span, .sc:focus-visible .sc-cta span { transform: translateX(4px); }
+
+/* ---------- stage: fixed live geometry, slid right when static ---------- */
+.sc-stage {
+    position: absolute;
+    z-index: 1;
+    top: 48px;
+    bottom: 0;
+    left: 38%;
+    right: 0;
+    border-top-left-radius: 18px;
+    overflow: hidden;
+    background: #F4F5F7;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), -24px 0 60px -20px rgba(0, 0, 0, 0.55);
+    transform: translate3d(19.4%, 0, 0);          /* = 12% of the card, so the edge sits at 50% */
+    transition: transform var(--sc-dur) var(--sc-ease);
+    will-change: transform;
+}
+.sc-cam {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1600px;
+    height: 1000px;
+    transform-origin: 0 0;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+.sc-cam img {
+    position: absolute;
+    inset: 0;
+    width: 1600px;
+    height: 1000px;
+    max-width: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .32s ease, visibility 0s linear .32s;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.sc-cam img.is-on { opacity: 1; visibility: visible; transition: opacity .32s ease, visibility 0s; }
+.sc-cam img.is-quick, .sc-cam img.is-quick.is-on { transition-duration: .14s, 0s; }
+
+.sc-cursor {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .35s ease;
+    will-change: transform;
+}
+.sc-cursor svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.22));
+    transform-origin: 3px 3px;
+    transition: transform .14s ease;
+}
+.sc-cursor.is-press svg { transform: scale(.8); }
+.sc-tip {
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    white-space: nowrap;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #18181B;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.9), 0 6px 18px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(4px) scale(.96);
+    transition: opacity .2s ease, transform .2s ease;
+}
+.sc-cursor.is-tip .sc-tip { opacity: 1; transform: none; }
+.sc-cursor.tip-up .sc-tip { top: auto; bottom: 18px; }
+.sc-cursor.tip-left .sc-tip { left: auto; right: 14px; }
+.sc.is-live .sc-cursor { opacity: 1; }
+
+.sc-ripple {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border-radius: 50%;
+    border: 2px solid #FA0F00;
+    background: rgba(250, 15, 0, 0.12);
+    pointer-events: none;
+    opacity: 0;
+}
+.sc-ripple.is-go { animation: sc-ripple .6s ease-out; }
+@keyframes sc-ripple { 0% { opacity: .9; transform: scale(.3); } 100% { opacity: 0; transform: scale(1.6); } }
+
+/* ---------- story caption + progress ---------- */
+.sc-step {
+    position: absolute;
+    z-index: 3;
+    left: 16px;
+    top: 16px;
+    max-width: calc(100% - 32px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 7px 8px;
+    border-radius: 12px;
+    background: rgba(20, 20, 22, 0.9);
+    color: #FFFFFF;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .35s ease, transform .35s ease;
+    pointer-events: none;
+}
+.sc.is-live .sc-step { opacity: 1; transform: none; }
+.sc-step b {
+    flex: none;
+    min-width: 34px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: 7px;
+    background: #FA0F00;
+    font-size: 12px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    font-variant-numeric: tabular-nums;
+}
+.sc-step span { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .2s ease; }
+.sc-step span.is-swap { opacity: 0; }
+.sc-bar { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(0, 0, 0, 0.08); opacity: 0; transition: opacity .35s; }
+.sc-bar i { display: block; height: 100%; width: 100%; background: #FA0F00; transform-origin: 0 50%; transform: scaleX(0); will-change: transform; }
+.sc.is-live .sc-bar { opacity: 1; }
+
+/* ---------- live state: transforms only ---------- */
+.sc.is-live .sc-text { transform: translateY(-50%) scale(.68); }
+.sc.is-live .sc-stage { transform: translate3d(0, 0, 0); }
+
+/* ---------- tablet ---------- */
+@media (max-width: 1100px) {
+    .sc { height: 430px; }
+    .sc-text { left: 40px; width: calc(50% - 64px); }
+    .sc-title { font-size: 32px; }
+}
+
+/* ---------- phone: stacked, plays when in view ---------- */
+@media (max-width: 768px) {
+    .sc { height: auto; display: flex; flex-direction: column; }
+    .sc-text, .sc.is-live .sc-text {
+        position: relative;
+        left: auto; top: auto;
+        transform: none;
+        width: auto;
+        padding: 28px 24px 24px;
+    }
+    .sc-title { font-size: 26px; }
+    .sc-kicker { font-size: 14px; }
+    .sc-meta { font-size: 13px; }
+    .sc-stage, .sc.is-live .sc-stage {
+        position: relative;
+        left: auto; top: auto;
+        margin-left: 24px;
+        height: 240px;
+        border-top-left-radius: 14px;
+        transform: none;
+    }
+    .sc-tip { font-size: 12px; padding: 5px 11px; }
+    .sc-step { left: 10px; top: 10px; padding: 5px 10px 5px 6px; }
+    .sc-step span { font-size: 11.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sc, .sc * { transition: none !important; animation: none !important; }
+}
