@@ -9,13 +9,11 @@
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
     <title>Ajith Alphonse | Product Designer</title>
     <script>
-        // Apply persisted/system theme early to reduce first-paint mismatch.
+        // Site is always in light mode (dark mode removed).
         (function () {
-            var key = 'portfolio-theme';
-            var saved = localStorage.getItem(key);
-            var theme = saved || 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            window.__initialTheme = theme;
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.setAttribute('data-theme-lock', 'light');
+            window.__initialTheme = 'light';
         })();
     </script>
     <link rel="stylesheet" href="styles.css?v=bg-full-1">
@@ -50,18 +48,6 @@
         <!-- Navigation -->
         <header class="header">
             <nav class="nav">
-                <button
-                    type="button"
-                    class="theme-toggle"
-                    id="themeToggle"
-                    aria-label="Switch to dark mode"
-                    aria-pressed="false">
-                    <span class="theme-toggle__track" aria-hidden="true">
-                        <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
-                        <span class="theme-toggle__thumb"></span>
-                        <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
-                    </span>
-                </button>
                 <div class="nav-links">
                     <a href="#work" class="nav-link active">Work</a>
                     <a href="know-me.html" class="nav-link">Know Me</a>
@@ -98,7 +84,7 @@
                         <div class="hero-layout">
                             <figure class="portrait-wrapper" aria-label="Interactive portrait reveal">
                                 <img
-                                    src="./assets/image/zebra-one.webp"
+                                    src="./assets/image/color-two.webp"
                                     alt=""
                                     class="portrait portrait-anime"
                                     loading="eager"
