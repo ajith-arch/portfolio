@@ -17,6 +17,7 @@
         })();
     </script>
     <link rel="stylesheet" href="styles.css?v=bg-full-1">
+    <link rel="stylesheet" href="assets/origami/origami.css?v=5">
     <link rel="stylesheet" href="assets/adobe-cr-walkthrough/showcase.css?v=2">
     <link rel="stylesheet" href="assets/flipkart-phones/phones.css?v=2">
     <link rel="stylesheet" href="assets/amazon-apex-card/apex-card.css?v=8">
@@ -33,7 +34,7 @@
     </script>
 </head>
 <!-- EXPERIMENTAL SCROLL HERO: remove class "exp-scroll-hero" from <body> to disable (see styles.css + script.js blocks marked EXPERIMENTAL) -->
-<body class="exp-scroll-hero">
+<body class="exp-scroll-hero og-home">
     <!-- Mobile Warning Overlay -->
     <div class="mobile-warning" id="mobileWarning">
         <div class="mobile-warning-content">
@@ -72,6 +73,12 @@
                     aria-hidden="true">
                 </video>
                 <div class="hero-foreground-scroll">
+                    <div class="coordinate-grid" aria-hidden="true">
+                        <span class="corner top-left"><span class="cross"></span><span class="axis" id="axisTopLeft">0,0</span></span>
+                        <span class="corner top-right"><span class="axis" id="axisTopRight">0,0</span><span class="cross"></span></span>
+                        <span class="corner bottom-left"><span class="cross"></span><span class="axis" id="axisBottomLeft">0,0</span></span>
+                        <span class="corner bottom-right"><span class="axis" id="axisBottomRight">0,0</span><span class="cross"></span></span>
+                    </div>
                     <div class="hero-identity">
                         <h1 class="hero-identity-name">Ajith Alphonse</h1>
                         <p class="hero-identity-line">💼 Product Designer · AI, enterprise systems &amp; commerce</p>
@@ -82,25 +89,37 @@
                     </div>
                     <div class="hero-inner">
                         <div class="hero-layout">
-                            <figure class="portrait-wrapper" aria-label="Interactive portrait reveal">
-                                <img
-                                    src="./assets/image/color-two.webp"
-                                    alt=""
-                                    class="portrait portrait-anime"
-                                    loading="eager"
-                                    decoding="async"
-                                    aria-hidden="true"
-                                >
-                                <img
-                                    src="./assets/image/line-one.webp"
-                                    alt="Portrait of Ajith Alphonse"
-                                    class="portrait portrait-real"
-                                    fetchpriority="high"
-                                    loading="eager"
-                                    decoding="async"
-                                >
-                                <canvas class="portrait-canvas" aria-hidden="true"></canvas>
+                            <div class="og-stage">
+                            <!-- Origami + liquid portrait: 252 B&W shards assemble, first scroll adds 252 colour shards,
+                                 then a liquid canvas reveals B&W. Old two-image reveal retired (files kept in assets/image/). -->
+                            <figure class="portrait-wrap" id="portraitWrap" role="group" aria-label="Animated portrait of Ajith Alphonse: first black and white, then colour, with an interactive liquid reveal">
+                                <img id="basePortrait" class="static-base" src="./assets/origami/portrait-bw.webp" alt=""
+                                     width="1189" height="1323" decoding="async" fetchpriority="high" draggable="false">
+                                <svg id="shardsSvg" viewBox="0 0 1189 1323" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" overflow="visible">
+                                    <defs>
+                                        <image id="bwAsset" href="./assets/origami/portrait-bw.webp" width="1189" height="1323"/>
+                                        <image id="colorAsset" href="./assets/origami/portrait-color.webp" width="1189" height="1323"/>
+                                    </defs>
+                                    <g id="bwShards"></g>
+                                    <g id="colorShards"></g>
+                                </svg>
+                                <canvas id="liquidCanvas" class="liquid-canvas" aria-hidden="true"></canvas>
+                                <img id="colorPortrait" class="color-source" src="./assets/origami/portrait-color.webp" alt=""
+                                     width="1189" height="1323" decoding="async" fetchpriority="high" draggable="false">
                             </figure>
+                            <div class="hero-controls" aria-label="Portrait controls">
+                                <button type="button" class="og-btn og-btn-primary" id="breakButton" title="Break it apart">
+                                    <span class="og-burst" aria-hidden="true">✳</span>
+                                    <span class="sr-only" id="breakLabel">BREAK IT APART</span>
+                                </button>
+                                <button type="button" class="og-btn og-btn-secondary" id="replayButton" title="Replay intro" aria-label="Replay intro">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.5 6.5"/><path d="M3 4v7h7"/></svg>
+                                </button>
+                                <p class="og-scroll-cue" aria-hidden="true">SCROLL ↓</p>
+                            </div>
+                            </div>
+                            <p class="sr-only" id="instructions">The black and white portrait forms on load. Scroll down or swipe up to assemble its colour layer, then scroll again to see the work. Move your cursor across the portrait to reveal the black and white face underneath.</p>
+                            <p class="sr-only" id="status" role="status" aria-live="polite"></p>
                         </div>
                     </div>
                 </div>
@@ -610,7 +629,9 @@
         </footer>
     </div>
 
-    <script src="script.js?v=bg-full-1"></script>
+    <script src="script.js?v=og-2"></script>
+    <script src="assets/origami/mesh-data.js?v=1"></script>
+    <script src="assets/origami/origami.js?v=5"></script>
     <script src="assets/adobe-cr-walkthrough/showcase.js?v=2" defer></script>
     <script src="assets/flipkart-phones/phones.js?v=1" defer></script>
     <script src="assets/amazon-apex-card/apex-card.js?v=2" defer></script>

@@ -1,0 +1,164 @@
+/* Origami + liquid portrait for the home hero.
+   From "Ajith-Origami-Liquid-Homepage": 252 B&W shards assemble, first scroll
+   assembles 252 colour shards on top, then a liquid canvas reveals B&W.
+   Second scroll glides to #work while the hero fades (see origami.js).
+   The site's background video stays behind everything. */
+
+:root {
+  --og-ink: #242327;
+  --og-muted: #87827d;
+  --og-orange: #e56e48;
+  --og-lime: #c1e95a;
+}
+
+/* ---------- Hero layout: portrait stands on the bottom edge ---------- */
+body.og-home .hero-foreground-scroll { justify-content: flex-end; }
+body.og-home .hero-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;     /* column: pin to the bottom */
+  align-items: center;
+  padding: 0 28px;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+body.og-home .hero-layout { align-items: flex-end; line-height: 0; }
+/* Stage = portrait + the small buttons beside it */
+.og-stage {
+  position: relative; line-height: 0;
+  /* portrait width: about screen height minus 130px, kept clear of the name block */
+  --og-w: clamp(360px, min(calc((100svh - 130px) * .8987), calc(100vw - 700px)), 900px);
+  /* on narrower screens nudge the face right so it never covers the name block */
+  transform: translateX(max(0px, calc(520px - (100vw - var(--og-w)) / 2)));
+}
+
+/* Nav pill sits below the frame's top line on the home page */
+body.og-home .header { top: 22px; transition: top .3s ease; }
+
+/* ---------- Frame grid with live viewport coordinates ---------- */
+.coordinate-grid {
+  position: absolute;
+  inset: 34px 36px 34px;
+  z-index: 1;
+  border: 1px solid rgba(43, 42, 43, .17);
+  pointer-events: none;
+  background: linear-gradient(to right, transparent calc(50% - .5px), rgba(43, 42, 43, .065) 50%, transparent calc(50% + .5px));
+}
+.coordinate-grid::after { content: ""; position: absolute; top: 50%; height: 1px; width: 100%; background: rgba(43, 42, 43, .055); }
+.corner {
+  position: absolute; display: flex; gap: 12px; align-items: center;
+  font-size: 11px; color: var(--og-muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-weight: 600; letter-spacing: .03em; white-space: nowrap; line-height: 1;
+}
+.corner.top-left { top: -26px; left: -1px; }
+.corner.top-right { top: -26px; right: -1px; }
+.corner.bottom-left { bottom: -27px; left: -1px; }
+.corner.bottom-right { bottom: -27px; right: -1px; }
+.cross { position: relative; display: block; width: 15px; height: 15px; }
+.cross::before, .cross::after { content: ""; position: absolute; background: #85817d; }
+.cross::before { width: 1px; height: 15px; top: 0; left: 7px; }
+.cross::after { width: 15px; height: 1px; top: 7px; left: 0; }
+
+/* ---------- Portrait stack ---------- */
+.portrait-wrap {
+  position: relative; margin: 0; flex: none; line-height: 0;
+  /* height ~ screen minus 130px; width follows the 1189:1323 ratio */
+  width: var(--og-w, 600px);
+  height: auto; aspect-ratio: 1189 / 1323;
+  user-select: none; -webkit-user-select: none;
+  transform: translate3d(0, 0, 0);
+  filter: drop-shadow(0 13px 12px rgba(33, 30, 31, .055));
+  z-index: 2;
+}
+.portrait-wrap > img, .portrait-wrap > svg, .portrait-wrap > canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+}
+.portrait-wrap img { -webkit-user-drag: none; object-fit: contain; pointer-events: none; }
+.static-base { z-index: 1; opacity: 0; }
+.has-bw .static-base { opacity: 1; }
+#shardsSvg { z-index: 2; overflow: visible; pointer-events: none; transition: opacity .14s ease; }
+.liquid-canvas { z-index: 3; opacity: 0; pointer-events: none; transition: opacity .14s ease; }
+.color-source { z-index: 0; visibility: hidden; }
+.has-liquid #shardsSvg { visibility: hidden; opacity: 0; }
+.has-liquid .liquid-canvas { opacity: 1; }
+
+.svg-shard {
+  opacity: .97; transform-box: view-box;
+  transform-origin: var(--origin-x) var(--origin-y);
+  transform: translate(var(--scatter-x), var(--scatter-y)) rotate(var(--rotate)) scale(var(--scale));
+  transition: transform var(--duration, 1250ms) cubic-bezier(.16, 1, .3, 1), opacity .52s ease;
+  transition-delay: 0ms; will-change: transform, opacity;
+}
+.color-shard { opacity: 0; }
+.show-color .color-shard { opacity: 1; }
+.assemble-bw .bw-shard, .assemble-color .color-shard {
+  transform: translate(0px, 0px) rotate(0deg) scale(1);
+  transition-delay: var(--delay);
+}
+.assemble-bw .bw-shard { opacity: 1; }
+.assemble-color .color-shard { opacity: 1; }
+.has-liquid .svg-shard { will-change: auto; }
+
+/* ---------- Small buttons, stacked on the right of the portrait ---------- */
+.hero-controls {
+  position: absolute; z-index: 4;
+  left: calc(100% + 16px); bottom: 96px;
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-start;
+  line-height: 1;
+}
+.og-btn {
+  width: 44px; height: 44px; padding: 0; border: 0; border-radius: 4px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; font: inherit;
+  box-shadow: 0 6px 14px -8px rgba(20, 20, 20, .45);
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.og-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 18px -8px rgba(20, 20, 20, .5); }
+.og-btn:focus-visible { outline: 3px solid var(--og-orange); outline-offset: 3px; }
+.og-btn-primary { background: #3a3a3a; color: #fff; }
+.og-btn-primary:hover { background: #242327; }
+.og-btn-secondary { background: #2f8f3a; color: #fff; }
+.og-btn-secondary:hover { background: #267a30; }
+.og-burst { font-size: 22px; color: var(--og-lime); font-weight: 400; line-height: 1; }
+/* when scattered, the burst turns into a "put together" state */
+.og-btn-primary[aria-label="Reassemble the portrait"] .og-burst { color: #fff; }
+
+/* Scroll cue under the buttons once colour is in */
+.og-scroll-cue {
+  margin: 6px 0 0; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--og-muted);
+  opacity: 0; transition: opacity .5s ease; pointer-events: none; white-space: nowrap;
+}
+body.og-ready-to-leave .og-scroll-cue { opacity: 1; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* Lock the page in place until the colour step is done (JS removes it). */
+html.og-lock, html.og-lock body { overscroll-behavior: none; }
+body.og-home .hero { touch-action: pan-x; }
+body.og-home.og-free .hero { touch-action: auto; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 680px) {
+  .coordinate-grid { inset: 42px 22px 86px; }
+  .corner { font-size: 10px; gap: 7px; }
+  .corner.top-left, .corner.top-right { top: -30px; }
+  .corner.bottom-left, .corner.bottom-right { bottom: -31px; }
+}
+/* Phones (site's scroll-hero mode is off below 768px): name block sits above the
+   portrait in normal flow, so the portrait takes only the remaining height. */
+@media (max-width: 768px) {
+  body.og-home .hero { height: 100vh; height: 100svh; min-height: 0; }
+  body.og-home .hero-inner { min-height: 0; flex: 1 1 auto; padding: 8px 18px 0; }
+  body.og-home .hero-identity { padding-top: 96px; }
+  .og-stage { --og-w: min(calc((100svh - 280px) * .9), calc(100vw - 36px), 560px); transform: none; }
+  /* no room beside the face: buttons sit on its lower right corner */
+  .hero-controls { left: auto; right: -6px; bottom: 120px; }
+  .og-btn { width: 40px; height: 40px; }
+}
+@media (max-height: 650px) {
+  .hero-controls { bottom: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svg-shard, .og-btn, #shardsSvg, .liquid-canvas { transition: none !important; }
+}

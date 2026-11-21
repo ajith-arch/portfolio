@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     initThemeToggle();
     // Initialize components
-    initLandingReveal();
+    /* initLandingReveal(); retired: the hero now uses assets/origami/origami.js */
     initFilterButtons();
     initSmoothScroll();
     initProjectHeroVideos();
@@ -684,7 +684,10 @@ function initExpScrollHero() {
 
         var fadeRange = Math.max(h * 0.32, 260);
         var pFade = Math.min(1, Math.max(0, past / fadeRange));
-        foreground.style.opacity = String(1 - pFade);
+        // While the origami hero glides to #work it runs its own slower, time-based fade.
+        if (!document.body.classList.contains('og-gliding')) {
+            foreground.style.opacity = String(1 - pFade);
+        }
         foreground.style.transform = 'translate3d(0,' + (-10 * pFade) + 'px,0) scale(' + (1 - 0.02 * pFade) + ')';
 
         var heroBottom = heroTop + hero.offsetHeight;
