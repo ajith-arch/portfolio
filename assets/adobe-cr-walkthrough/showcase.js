@@ -48,7 +48,14 @@
   }
   function preloadAll() { Object.keys(imgs).forEach(ensure); }
   var idle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 400); };
-  if (document.readyState === 'complete') idle(preloadAll); else window.addEventListener('load', function () { idle(preloadAll); });
+  // Fetch the walkthrough frames only when the card is getting close to the screen
+  // (they are ~1.7 MB together), instead of right after the page loads.
+  if ('IntersectionObserver' in window) {
+    var near = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { near.disconnect(); idle(preloadAll); }
+    }, { rootMargin: '0px 0px 120px 0px' });
+    near.observe(root);
+  } else if (document.readyState === 'complete') idle(preloadAll); else window.addEventListener('load', function () { idle(preloadAll); });
 
   var zi = 1, current = 's0';
   function show(name, quick) {

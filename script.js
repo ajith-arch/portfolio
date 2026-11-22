@@ -24,7 +24,7 @@ function initThemeToggle() {
     var toggle = document.getElementById('themeToggle');
 
     // Preload both videos once for smoother source swaps.
-    preloadThemeVideos();
+    /* preloadThemeVideos(); retired: the site is light-only, the dark video is never shown */
 
     function getSavedTheme() {
         return localStorage.getItem(STORAGE_KEY);
@@ -85,8 +85,10 @@ function preloadThemeVideos() {
 function swapBackgroundVideo(theme) {
     var video = document.getElementById('homeBgVideo');
     if (!video) return;
+    // Loading speed: the video waits until the page has loaded (the poster frame shows meanwhile).
+    if (video.dataset.defer === '1' && !window.__bgVideoReleased) return;
 
-    var lightSrc = video.dataset.lightSrc || './assets/image/background.webm';
+    var lightSrc = video.dataset.lightSrc || './assets/image/background-v2.webm';
     var darkSrc = video.dataset.darkSrc || './assets/image/background dark.webm';
     var targetSrc = theme === 'dark' ? darkSrc : lightSrc;
     var currentSrc = video.getAttribute('src') || '';
@@ -723,3 +725,19 @@ function initFullPageVideo() {
     video.classList.add('exp-stage-video');
     document.body.classList.add('bg-video-full');
 }
+
+// ===== Load the background video after the page itself =====
+// The poster image stands in until then, so the portrait, styles and scripts
+// get the bandwidth first.
+(function () {
+    function release() {
+        var video = document.getElementById('homeBgVideo');
+        if (!video || window.__bgVideoReleased) return;
+        window.__bgVideoReleased = true;
+        swapBackgroundVideo('light');
+        var p = video.play && video.play();
+        if (p && p.catch) p.catch(function () {});
+    }
+    function later() { (window.requestIdleCallback || function (fn) { setTimeout(fn, 200); })(release, { timeout: 1500 }); }
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
+})();

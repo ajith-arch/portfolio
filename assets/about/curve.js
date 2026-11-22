@@ -16,15 +16,10 @@
   line.style.strokeDasharray = total + ' ' + total;
   line.style.strokeDashoffset = total;
 
-  // Length along the path where each stop sits (first pass close to its point).
-  var stopLen = stops.map(function (s) {
-    var x = parseFloat(s.style.getPropertyValue('--x')), y = parseFloat(s.style.getPropertyValue('--y'));
-    for (var l = 0; l <= total; l += 2) {
-      var p = line.getPointAtLength(l);
-      if (Math.abs(p.x - x) < 6 && Math.abs(p.y - y) < 6) return l;
-    }
-    return total;
-  });
+  // Where each stop sits along the path. Pre-computed (data-len) so nothing has to
+  // walk the path at load; scaled to the browser's own length measurement.
+  var scale = total / (parseFloat(line.getAttribute('data-total')) || total);
+  var stopLen = stops.map(function (s) { return parseFloat(s.getAttribute('data-len')) * scale; });
 
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
 
