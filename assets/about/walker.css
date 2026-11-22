@@ -1,0 +1,139 @@
+/* Know Me landing: Ajith walking on the spot with a dog, inspired by the
+   two26 hero video. One SVG rig; the look flips every ~1.1s
+   (line -> orange -> real colours -> pixel -> paper print) while the walk keeps going.
+   Skill chips orbit around the walker. */
+
+.wk {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    aspect-ratio: 470 / 440;
+    /* palette (overridden per look) */
+    --ink: #1c1917; --sw: 2.6px;
+    --paper: #fffaf6;
+    --skin: var(--paper); --hair: var(--paper); --beard: var(--paper);
+    --jacket: var(--paper); --jacket-far: #f3e8e0; --collar: var(--paper); --sweater: var(--paper);
+    --cuff: var(--paper); --hem: var(--paper);
+    --jeans: var(--paper); --jeans-far: #f3e8e0;
+    --shoe: var(--paper); --sole: var(--ink);
+    --dog: var(--paper); --dog-far: #f3e8e0; --dog-ear: var(--paper); --paw: var(--paper);
+    --glass: rgba(255, 255, 255, .0); --shadow: rgba(28, 25, 23, .08);
+}
+.wk__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* ---- paint ---- */
+.wk .line { stroke: var(--ink); stroke-width: var(--sw); stroke-linejoin: round; stroke-linecap: round; }
+.wk .skin { fill: var(--skin); } .wk .skin--far { fill: var(--skin); filter: brightness(.94); }
+.wk .hair { fill: var(--hair); } .wk .curl { stroke: var(--ink); }
+.wk .beard { fill: var(--beard); }
+.wk .jacket { fill: var(--jacket); } .wk .jacket--far { fill: var(--jacket-far); }
+.wk .collar { fill: var(--collar); } .wk .sweater { fill: var(--sweater); }
+.wk .cuff { fill: var(--cuff); } .wk .cuff--far { fill: var(--jacket-far); } .wk .hem { fill: var(--hem); }
+.wk .jeans { fill: var(--jeans); } .wk .jeans--far { fill: var(--jeans-far); }
+.wk .shoe { fill: var(--shoe); } .wk .sole { fill: var(--sole); }
+.wk .glass { fill: var(--glass); } .wk .frame, .wk .brow, .wk .seam, .wk .zip, .wk .lace, .wk .mouth, .wk .dog-fur { fill: none; }
+.wk .eye { fill: var(--ink); }
+.wk .dog { fill: var(--dog); } .wk .dog--far { fill: var(--dog-far); } .wk .dog-ear { fill: var(--dog-ear); }
+.wk .paw { fill: var(--paw); } .wk .nose { fill: var(--ink); } .wk .tongue { fill: #ff7a85; }
+.wk__shadow { fill: var(--shadow); }
+.wk__ground path { stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; opacity: .35; fill: none; }
+
+/* ---- looks ---- */
+.wk[data-look="line"] { --beard: #e7dcd2; --hair: #fffaf6; }
+.wk[data-look="orange"] {
+    --jacket: #ff5500; --jacket-far: #e64a00; --cuff: #ff5500; --hem: #e64a00;
+    --dog: #ff5500; --dog-far: #e64a00; --dog-ear: #e64a00;
+    --shoe: var(--ink); --sole: var(--paper);
+}
+.wk[data-look="real"], .wk[data-look="pixel"] {
+    --ink: #2b1d14; --sw: 1.8px;
+    --skin: #8d5a3b; --hair: #1f1a1a; --beard: #1f1a1a;
+    --jacket: #6e4a2c; --jacket-far: #5b3c23; --collar: #f1e8d8; --sweater: #5f636b;
+    --cuff: #5e3f25; --hem: #5e3f25;
+    --jeans: #a7c2db; --jeans-far: #8fadc8;
+    --shoe: #ece6db; --sole: #c9c0b2;
+    --dog: #dc9a45; --dog-far: #c3843a; --dog-ear: #b97632; --paw: #e9b569;
+    --glass: rgba(190, 220, 255, .28);
+}
+.wk[data-look="pixel"] .wk__scene { filter: url(#wk-pixel); }
+.wk[data-look="pixel"] .wk__ground path { stroke-dasharray: 6 6; }
+.wk[data-look="paper"] {
+    --ink: #2a1a14; --sw: 0px;
+    --skin: #f6a98c; --hair: #2a1a14; --beard: #2a1a14;
+    --jacket: #ff5500; --jacket-far: #d94600; --collar: #fff1e6; --sweater: #2a1a14;
+    --cuff: #d94600; --hem: #d94600;
+    --jeans: #ffc9b5; --jeans-far: #f3a88f;
+    --shoe: #2a1a14; --sole: #fff1e6;
+    --dog: #ff7a33; --dog-far: #e2601d; --dog-ear: #c94e12; --paw: #ffb27f;
+}
+.wk[data-look="paper"] .wk__scene { filter: url(#wk-paper); }
+.wk[data-look="paper"] .eye, .wk[data-look="paper"] .nose { fill: #2a1a14; }
+
+/* ---- motion: walk on the spot ---- */
+.wk .wk__man { transform: rotate(2.5deg); transform-origin: 160px 420px; }
+.wk { --cycle: 1.1s; }
+.wk .leg, .wk .shin, .wk .arm, .wk .fore, .wk .body, .wk .head,
+.wk .dleg, .wk .dtail, .wk .dhead, .wk .dbody { animation-duration: var(--cycle); animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+
+.wk .leg--near { animation-name: wk-thigh; }
+.wk .leg--far  { animation-name: wk-thigh; animation-delay: calc(var(--cycle) / -2); }
+.wk .leg--near .shin { animation-name: wk-shin; }
+.wk .leg--far  .shin { animation-name: wk-shin; animation-delay: calc(var(--cycle) / -2); }
+.wk .arm--near { animation-name: wk-arm; animation-delay: calc(var(--cycle) / -2); }
+.wk .arm--far  { animation-name: wk-arm; }
+.wk .fore { animation-name: wk-fore; animation-delay: inherit; }
+.wk .body { animation-name: wk-bob; animation-duration: calc(var(--cycle) / 2); }
+.wk .head { animation-name: wk-nod; animation-duration: calc(var(--cycle) / 2); }
+
+@keyframes wk-thigh { 0%, 100% { transform: rotate(-24deg); } 50% { transform: rotate(22deg); } }
+@keyframes wk-shin  { 0%, 100% { transform: rotate(4deg); } 40% { transform: rotate(6deg); } 62% { transform: rotate(42deg); } 82% { transform: rotate(16deg); } }
+@keyframes wk-arm   { 0%, 100% { transform: rotate(-20deg); } 50% { transform: rotate(22deg); } }
+@keyframes wk-fore  { 0%, 100% { transform: rotate(-26deg); } 50% { transform: rotate(-6deg); } }
+@keyframes wk-bob   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes wk-nod   { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-2.5deg); } }
+
+/* dog: trot at twice the step rate, diagonal pairs together */
+.wk .dleg { animation-duration: calc(var(--cycle) / 2); }
+.wk .dleg--fn, .wk .dleg--bf { animation-name: wk-dleg; }
+.wk .dleg--ff, .wk .dleg--bn { animation-name: wk-dleg; animation-delay: calc(var(--cycle) / -4); }
+.wk .dtail { animation-name: wk-wag; animation-duration: calc(var(--cycle) / 2.5); }
+.wk .dbody { animation-name: wk-dbob; animation-duration: calc(var(--cycle) / 4); }
+.wk .dhead { animation-name: wk-dnod; animation-duration: calc(var(--cycle) / 2); }
+@keyframes wk-dleg { 0%, 100% { transform: rotate(-26deg); } 50% { transform: rotate(24deg); } }
+@keyframes wk-wag  { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(14deg); } }
+@keyframes wk-dbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes wk-dnod { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(3deg); } }
+
+/* ground slides left, so the pair seem to move forward */
+.wk__ground { animation: wk-ground calc(var(--cycle) * 2) linear infinite; }
+@keyframes wk-ground { to { transform: translateX(-120px); } }
+
+.wk.is-paused * { animation-play-state: paused !important; }
+
+/* ---- chips orbiting the walker ---- */
+.wk__chips { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.wk__chips .kx-chip { animation: wk-orbit var(--t, 9s) ease-in-out infinite; animation-delay: var(--d, 0s); }
+@keyframes wk-orbit {
+    0%   { transform: translate(0, 0) rotate(-2deg); }
+    25%  { transform: translate(var(--ox, 14px), calc(var(--oy, 10px) * -1)) rotate(2deg); }
+    50%  { transform: translate(calc(var(--ox, 14px) * .4), var(--oy, 10px)) rotate(-1deg); }
+    75%  { transform: translate(calc(var(--ox, 14px) * -1), calc(var(--oy, 10px) * .5)) rotate(1.5deg); }
+    100% { transform: translate(0, 0) rotate(-2deg); }
+}
+
+/* small look-indicator dots under the stage */
+.wk__looks { position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%); display: flex; gap: 6px; }
+.wk__looks i { width: 6px; height: 6px; border-radius: 50%; background: rgba(28, 25, 23, .18); transition: background .2s, transform .2s; }
+.wk__looks i.on { background: #ff5500; transform: scale(1.35); }
+
+@media (prefers-reduced-motion: reduce) {
+    .wk *, .wk__chips .kx-chip { animation: none !important; }
+}
+
+/* sit the walker in the hero's photo column */
+.kx-photo-col .wk { margin-top: 10px; }
+.wk .wk__chips { inset: 0; aspect-ratio: auto; }
+@media (max-width: 600px) {
+    .wk .kx-chip { font-size: 11.5px; padding: 4px 9px 4px 4px; }
+}

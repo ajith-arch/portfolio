@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="assets/contact/contact.css?v=1">
     <link rel="stylesheet" href="assets/about/about.css?v=3">
     <link rel="stylesheet" href="assets/about/curve.css?v=3">
+    <link rel="stylesheet" href="assets/about/walker.css?v=1">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNSPYP46HC"></script>
     <script>
@@ -54,18 +55,146 @@
 
             <div class="kx-intro">
                 <div class="kx-photo-col">
-                    <figure class="kx-photo" aria-label="Portrait of Ajith Alphonse. Hover to switch the drawing style.">
-                        <img class="kx-photo__a" src="assets/image/line-one.webp" alt="Line drawing portrait of Ajith Alphonse" width="976" height="1084">
-                        <img class="kx-photo__b" src="assets/image/color-one.webp" alt="" aria-hidden="true" width="976" height="1084" loading="lazy">
-                    </figure>
-                    <ul class="kx-chips" aria-label="What I do">
-                        <li class="kx-chip" style="--x:-6%;--y:6%;--c:#3b82f6;--d:0s"><i>◎</i>Research</li>
-                        <li class="kx-chip" style="--x:66%;--y:-2%;--c:#f97316;--d:.6s"><i>▦</i>Design systems</li>
-                        <li class="kx-chip" style="--x:-12%;--y:34%;--c:#111827;--d:1.2s"><i>◧</i>UI/UX</li>
-                        <li class="kx-chip" style="--x:78%;--y:44%;--c:#eab308;--d:.3s"><i>◆</i>Strategy</li>
-                        <li class="kx-chip" style="--x:-4%;--y:78%;--c:#22c55e;--d:.9s"><i>⟲</i>Prototyping</li>
-                        <li class="kx-chip" style="--x:62%;--y:84%;--c:#ec4899;--d:1.5s"><i>✦</i>AI workflows</li>
-                    </ul>
+                    <div class="wk" data-look="line" id="kxWalker">
+                        <svg class="wk__svg" viewBox="0 0 470 440" role="img" aria-labelledby="wk-title">
+  <title id="wk-title">Illustration of Ajith Alphonse walking with a golden retriever</title>
+  <defs>
+    <!-- Pixel look: sample the drawing on a 7px grid and grow each sample into a block -->
+    <filter id="wk-pixel" filterUnits="userSpaceOnUse" x="-20" y="-20" width="510" height="480">
+      <feFlood x="3" y="3" width="1" height="1"/>
+      <feComposite width="7" height="7"/>
+      <feTile result="grid"/>
+      <feComposite in="SourceGraphic" in2="grid" operator="in"/>
+      <feMorphology operator="dilate" radius="3.5"/>
+    </filter>
+    <!-- Paper / print look: grain + slightly torn edges -->
+    <filter id="wk-paper" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.8" numOctaves="1" seed="9" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.55 .55" result="gA"/>
+      <feComposite in="gA" in2="d" operator="in" result="speck"/>
+      <feBlend in="d" in2="speck" mode="multiply"/>
+    </filter>
+  </defs>
+
+  <!-- ground shadow + moving ground dashes -->
+  <ellipse class="wk__shadow" cx="160" cy="424" rx="78" ry="7"/>
+  <ellipse class="wk__shadow" cx="350" cy="424" rx="74" ry="6"/>
+  <g class="wk__ground"><path d="M-20 430h28M40 430h14M90 430h30M160 430h12M210 430h26M270 430h16M320 430h30M390 430h14M440 430h28M500 430h16"/></g>
+
+  <g class="wk__scene">
+    <!-- ================= DOG (golden retriever), trotting ahead ================= -->
+    <g class="wk__dog">
+      <!-- far legs -->
+      <g class="dleg dleg--bf" style="transform-origin:300px 352px"><path class="dog dog--far line" d="M292 350 L308 350 L306 400 Q306 412 300 414 L292 414 Q288 404 292 396 Z"/><path class="paw line" d="M286 414 h20 q4 0 4 4 v2 h-24 z"/></g>
+      <g class="dleg dleg--ff" style="transform-origin:378px 352px"><path class="dog dog--far line" d="M370 350 L386 350 L384 402 Q384 412 378 414 L370 414 Q368 404 370 396 Z"/><path class="paw line" d="M366 414 h20 q4 0 4 4 v2 h-24 z"/></g>
+      <!-- tail -->
+      <g class="dtail" style="transform-origin:272px 330px"><path class="dog line" d="M276 330 C252 318 238 296 244 270 C250 290 262 300 280 314 C268 300 262 286 266 270 C272 292 282 306 292 318 Z"/></g>
+      <!-- body -->
+      <g class="dbody">
+        <path class="dog line" d="M272 334 C270 312 292 300 320 302 L372 300 C392 298 404 306 410 320 L414 346 C410 362 394 368 376 366 L300 368 C284 368 274 352 272 334 Z"/>
+        <path class="dog-fur line" d="M290 362 q6 10 14 6 q6 10 14 4 M344 366 q6 10 14 4 q6 8 14 2"/>
+        <!-- head -->
+        <g class="dhead" style="transform-origin:404px 312px">
+          <path class="dog line" d="M392 322 C386 300 394 276 418 272 C438 268 452 280 454 294 L470 300 C476 304 474 314 466 316 L446 320 C440 332 426 340 410 338 C400 336 394 330 392 322 Z"/>
+          <path class="nose" d="M466 298 q6 2 5 7 q-4 3 -9 0 z"/>
+          <circle class="eye" cx="436" cy="288" r="2.6"/>
+          <path class="mouth line" d="M446 320 q-6 4 -14 2" fill="none"/>
+          <path class="dog-ear line" d="M412 278 C398 280 394 298 398 318 C404 322 410 318 414 310 C418 300 420 288 412 278 Z"/>
+          <path class="tongue" d="M440 321 q2 10 8 9 q4 -2 2 -10 z"/>
+        </g>
+      </g>
+      <!-- near legs -->
+      <g class="dleg dleg--bn" style="transform-origin:292px 356px"><path class="dog line" d="M282 352 L302 352 L300 402 Q300 412 294 414 L284 414 Q280 404 282 396 Z"/><path class="paw line" d="M278 414 h22 q4 0 4 4 v2 h-26 z"/></g>
+      <g class="dleg dleg--fn" style="transform-origin:390px 356px"><path class="dog line" d="M380 350 L400 352 L398 402 Q398 412 392 414 L382 414 Q378 404 380 396 Z"/><path class="paw line" d="M376 414 h22 q4 0 4 4 v2 h-26 z"/></g>
+    </g>
+
+    <!-- ================= AJITH, walking right ================= -->
+    <g class="wk__man">
+      <!-- far arm (behind body) -->
+      <g class="arm arm--far" style="transform-origin:156px 140px">
+        <g class="fore" style="transform-origin:156px 196px">
+          <path class="jacket jacket--far line" d="M144 192 H168 L167 242 H145 Z"/>
+          <path class="cuff cuff--far line" d="M144 236 h24 v10 h-24 z"/>
+          <path class="skin skin--far line" d="M147 246 q9 -3 18 0 q4 12 -2 18 q-8 5 -14 0 q-5 -8 -2 -18 z"/>
+        </g>
+        <path class="jacket jacket--far line" d="M143 144 A13 13 0 0 1 169 144 V196 A13 13 0 0 1 143 196 Z"/>
+      </g>
+      <!-- far leg -->
+      <g class="leg leg--far" style="transform-origin:150px 250px">
+        <g class="shin" style="transform-origin:150px 320px">
+          <path class="jeans jeans--far line" d="M133 316 L167 316 L178 402 L122 402 Z"/>
+          <path class="seam line" d="M150 330 L151 398"/>
+          <path class="shoe line" d="M122 400 L172 398 Q190 400 194 410 L194 416 L120 416 Q116 408 122 400 Z"/>
+          <path class="sole line" d="M120 412 h74 v5 h-74 z"/>
+        </g>
+        <path class="jeans jeans--far line" d="M130 236 H170 V320 A20 20 0 0 1 130 320 Z"/>
+      </g>
+      <!-- near leg (behind the jacket hem) -->
+      <g class="leg leg--near" style="transform-origin:157px 252px">
+        <g class="shin" style="transform-origin:157px 322px">
+          <path class="jeans line" d="M139 318 L175 318 L187 404 L127 404 Z"/>
+          <path class="seam line" d="M157 332 L159 400"/>
+          <path class="shoe line" d="M127 402 L178 400 Q197 402 201 412 L201 418 L125 418 Q121 410 127 402 Z"/>
+          <path class="sole line" d="M125 414 h76 v5 h-76 z"/>
+          <path class="lace line" d="M165 404 l6 -4 m3 6 l6 -4"/>
+        </g>
+        <path class="jeans line" d="M137 238 H177 V322 A20 20 0 0 1 137 322 Z"/>
+      </g>
+      <!-- body (bobs) -->
+      <g class="body">
+        <!-- torso -->
+        <path class="jacket line" d="M128 140 C126 128 140 122 156 122 C176 122 190 128 190 144 L188 236 L128 236 Z"/>
+        <path class="sweater line" d="M170 124 L186 132 L182 168 L172 150 Z"/>
+        <path class="zip line" d="M180 150 L178 236" fill="none"/>
+        <path class="hem line" d="M126 230 h64 v20 h-64 z"/>
+        <path class="seam line" d="M134 236 L188 236" fill="none"/>
+        <!-- shearling collar -->
+        <path class="collar line" d="M138 128 C134 112 148 104 160 108 C172 104 186 108 188 120 C192 132 184 144 176 140 C170 132 162 128 152 130 C146 134 140 136 138 128 Z"/>
+        <!-- neck -->
+        <path class="skin line" d="M156 96 L176 96 L178 116 L156 118 Z"/>
+        <!-- head -->
+        <g class="head" style="transform-origin:166px 104px">
+          <path class="skin line" d="M140 62 C140 36 162 24 182 30 C198 34 206 48 206 62 L206 68 L214 84 C216 88 212 90 208 90 L206 98 C206 106 198 110 188 110 L170 110 C152 110 140 96 140 80 Z"/>
+          <!-- beard -->
+          <path class="beard line" d="M150 82 C154 96 162 104 172 108 C182 112 196 110 204 104 L206 96 C200 100 192 100 186 96 C180 98 174 96 172 90 C168 84 160 80 150 82 Z"/>
+          <path class="beard line" d="M188 90 q8 -4 16 0 q-4 4 -8 3 q-4 1 -8 -3 z"/>
+          <!-- ear -->
+          <path class="skin line" d="M150 66 C140 64 138 80 146 84 C150 86 154 84 154 80 Z"/>
+          <!-- glasses -->
+          <path class="glass line" d="M182 62 h22 q3 0 3 3 v12 q0 4 -4 4 h-18 q-4 0 -4 -4 v-12 q0 -3 3 -3 z"/>
+          <path class="frame line" d="M178 66 L154 68" fill="none"/>
+          <circle class="eye" cx="196" cy="70" r="2.4"/>
+          <path class="brow line" d="M186 58 q8 -4 16 -1" fill="none"/>
+          <!-- curly hair -->
+          <path class="hair line" d="M138 70 C126 64 126 46 136 40 C134 26 148 16 160 20 C166 8 186 8 192 18 C204 14 216 24 212 36 C220 40 218 52 210 54 C206 46 198 42 190 44 C180 40 168 42 162 48 C156 46 150 52 152 58 C146 58 142 62 142 70 Z"/>
+          <path class="curl line" d="M150 30 q6 -6 12 0 M172 22 q6 -6 12 0 M194 28 q6 -4 10 2 M140 48 q-2 -8 6 -10" fill="none"/>
+        </g>
+      </g>
+      <!-- near arm -->
+      <g class="arm arm--near" style="transform-origin:161px 142px">
+        <g class="fore" style="transform-origin:161px 198px">
+          <path class="jacket line" d="M147 194 H175 L174 244 H148 Z"/>
+          <path class="cuff line" d="M147 238 h28 v11 h-28 z"/>
+          <path class="skin line" d="M150 249 q10 -3 20 0 q5 13 -2 20 q-9 5 -16 0 q-5 -8 -2 -20 z"/>
+        </g>
+        <path class="jacket line" d="M146 146 A15 15 0 0 1 176 146 V198 A15 15 0 0 1 146 198 Z"/>
+        <path class="seam line" d="M150 160 q11 4 22 0"/>
+      </g>
+    </g>
+  </g>
+</svg>
+                        <ul class="wk__chips kx-chips" aria-label="What I do">
+                            <li class="kx-chip" style="--x:-8%;--y:14%;--c:#3b82f6;--d:0s;--t:9s;--ox:12px;--oy:10px"><i>◎</i>Research</li>
+                            <li class="kx-chip" style="--x:58%;--y:-4%;--c:#f97316;--d:-2s;--t:10s;--ox:-14px;--oy:8px"><i>▦</i>Design systems</li>
+                            <li class="kx-chip" style="--x:-12%;--y:44%;--c:#111827;--d:-4s;--t:8.5s;--ox:10px;--oy:-12px"><i>◧</i>UI/UX</li>
+                            <li class="kx-chip" style="--x:62%;--y:24%;--c:#eab308;--d:-1s;--t:11s;--ox:-12px;--oy:12px"><i>◆</i>Strategy</li>
+                            <li class="kx-chip" style="--x:-6%;--y:72%;--c:#22c55e;--d:-3s;--t:9.5s;--ox:14px;--oy:-8px"><i>⟲</i>Prototyping</li>
+                            <li class="kx-chip" style="--x:58%;--y:46%;--c:#ec4899;--d:-5s;--t:10.5s;--ox:-10px;--oy:-10px"><i>✦</i>AI workflows</li>
+                        </ul>
+                        <div class="wk__looks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+                    </div>
                     <div class="kx-name">
                         <h2>Ajith Alphonse</h2>
                         <p>UI/UX Designer · Salt Lake City, Utah</p>
@@ -228,5 +357,6 @@
 <script src="assets/contact/contact.js?v=1" defer></script>
 <script src="assets/about/about.js?v=1" defer></script>
 <script src="assets/about/curve.js?v=2" defer></script>
+<script src="assets/about/walker.js?v=1" defer></script>
 </body>
 </html>
