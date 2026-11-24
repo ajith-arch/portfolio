@@ -131,12 +131,54 @@ body.og-home .header { top: 22px; transition: top .3s ease; }
 /* when scattered, the burst turns into a "put together" state */
 .og-btn-primary[aria-label="Reassemble the portrait"] .og-burst { color: #fff; }
 
-/* Scroll cue under the buttons once colour is in */
-.og-scroll-cue {
-  margin: 6px 0 0; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--og-muted);
-  opacity: 0; transition: opacity .5s ease; pointer-events: none; white-space: nowrap;
+/* Tooltip labels: show on hover/focus, and peek once after the intro
+   so first-time visitors know the buttons do something. */
+.og-btn { position: relative; }
+.og-btn[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute; left: calc(100% + 10px); top: 50%;
+  transform: translate(-4px, -50%);
+  padding: 6px 10px; border-radius: 6px;
+  background: #1a1a1a; color: #fff;
+  font: 600 11px/1 var(--font-body, system-ui, sans-serif); letter-spacing: .04em;
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity .2s ease, transform .2s ease;
 }
-body.og-ready-to-leave .og-scroll-cue { opacity: 1; }
+.og-btn[data-tip]:hover::after,
+.og-btn[data-tip]:focus-visible::after,
+.hero-controls.og-peek .og-btn[data-tip]::after { opacity: 1; transform: translate(0, -50%); }
+
+/* Scroll cue under the buttons once colour is in */
+/* Scroll cue: a little mouse whose wheel blinks and rolls down.
+   Visible from the start (fades in with the intro). */
+.og-scroll-cue {
+  margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  width: 44px;
+  font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--og-muted);
+  pointer-events: none; white-space: nowrap;
+  animation: og-cue-in .6s ease .6s both;
+}
+.og-mouse {
+  position: relative; width: 22px; height: 34px; box-sizing: border-box;
+  border: 2px solid #3a3a3a; border-radius: 12px;
+}
+.og-wheel {
+  position: absolute; left: 50%; top: 6px; width: 4px; height: 7px; margin-left: -2px;
+  border-radius: 2px; background: var(--og-orange);
+  animation: og-wheel 1.4s ease-in-out infinite;
+}
+@keyframes og-wheel {
+  0% { opacity: 0; transform: translateY(-2px); }
+  25% { opacity: 1; }
+  60% { opacity: 1; transform: translateY(8px); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+@keyframes og-cue-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .og-wheel { animation: og-blink 1.6s steps(2, jump-none) infinite; }
+  .og-scroll-cue { animation: none; }
+}
+@keyframes og-blink { 50% { opacity: .2; } }
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
@@ -162,6 +204,7 @@ body.og-home.og-free .hero { touch-action: auto; }
   /* no room beside the face: buttons sit on its lower right corner */
   .hero-controls { left: auto; right: -6px; bottom: 120px; }
   .og-btn { width: 40px; height: 40px; }
+  .og-btn[data-tip]::after { left: auto; right: calc(100% + 10px); transform: translate(4px, -50%); }
 }
 @media (max-height: 650px) {
   .hero-controls { bottom: 40px; }

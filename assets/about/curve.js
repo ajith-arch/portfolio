@@ -66,25 +66,3 @@
   if (phone.addEventListener) phone.addEventListener('change', kick);
   measure(); current = target; render(current);
 })();
-
-/* Brand carousel: duplicate the cards once so the marquee loops seamlessly,
-   and set the speed from the strip's width (~60px per second). */
-(function () {
-  'use strict';
-  var track = document.querySelector('.kx-brand__track');
-  if (!track) return;
-  var originals = Array.prototype.slice.call(track.children);
-  originals.forEach(function (li) {
-    var copy = li.cloneNode(true);
-    copy.setAttribute('aria-hidden', 'true');
-    copy.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-    track.appendChild(copy);
-  });
-  function speed() {
-    var half = track.scrollWidth / 2;
-    if (half > 0) track.style.setProperty('--kx-brand-dur', Math.round(half / 60) + 's');
-  }
-  window.addEventListener('load', speed);
-  window.addEventListener('resize', speed);
-  speed();
-})();

@@ -107,7 +107,7 @@
     const canReassemble = phase === 'bw-scattered' || phase === 'color-scattered';
     breakLabel.textContent = canReassemble ? 'PUT IT TOGETHER' : 'BREAK IT APART';
     breakButton.setAttribute('aria-label', canReassemble ? 'Reassemble the portrait' : 'Scatter the portrait pieces');
-    breakButton.title = canReassemble ? 'Put it together' : 'Break it apart';
+    breakButton.dataset.tip = canReassemble ? 'Put it together' : 'Break it apart';
   }
   function cancelPhaseTimer() {clearTimeout(phaseTimer);phaseTimer=0;}
 
@@ -227,6 +227,9 @@
       await Promise.allSettled([bwImage.decode(),colorImage.decode()]);
     }
     assetsReady = true;
+    // One-time peek at the button labels once the portrait has formed.
+    const ctrls=document.querySelector('.hero-controls');
+    if (ctrls) setTimeout(()=>{ctrls.classList.add('og-peek');setTimeout(()=>ctrls.classList.remove('og-peek'),3200);},2400);
     if (prefersReducedMotion) {
       root.classList.add('has-bw','assemble-bw');
       phase='await-scroll';

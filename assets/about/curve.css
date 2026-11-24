@@ -19,7 +19,15 @@
     font-display: swap;
 }
 
-body.kx { --kx-bg: #f7eee8; }
+/* Same canvas as Home: near-white with the faint topographic lines
+   (the home video's poster frame), so both pages feel like one site.
+   The orange stays as the About page's motion colour. */
+body.kx { --kx-bg: #fafafa; }
+body.kx::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: url("../image/background-poster.webp") center / cover no-repeat;
+    opacity: .55;
+}
 
 .kx-curve {
     --cv-orange: #ff5500;
@@ -119,7 +127,7 @@ body.kx { --kx-bg: #f7eee8; }
     width: max-content; max-width: 25cqw;
     margin: 0; padding: .9cqw 1.6cqw;
     border: 1.5px solid var(--cv-orange); border-radius: 999px;
-    background: #fffaf6;
+    background: #fff;
     font-family: inherit;
     font-size: clamp(12px, 1.22cqw, 18px); line-height: 1.38; font-weight: 500;
     color: #c63f00;
@@ -166,39 +174,3 @@ body.kx { --kx-bg: #f7eee8; }
 
 .kx-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-/* ======================= Brand design carousel ======================= */
-.kx-brand { padding: clamp(40px, 6vw, 88px) 0 clamp(56px, 7vw, 100px); overflow: clip; }
-.kx-brand__label {
-    display: flex; align-items: center; gap: 10px; justify-content: center;
-    margin: 0 0 clamp(20px, 3vw, 36px);
-    font-family: 'Archivo Var', 'Arial Narrow', sans-serif; font-stretch: 68%;
-    font-size: clamp(30px, 4.4vw, 60px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
-    color: #ff5500; line-height: 1;
-}
-.kx-brand__label span { display: inline-block; animation: kx-spin 8s linear infinite; }
-.kx-brand__viewport {
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-}
-.kx-brand__track {
-    display: flex; gap: clamp(12px, 1.4vw, 20px); width: max-content;
-    list-style: none; margin: 0; padding: 8px 0;
-    animation: kx-marquee var(--kx-brand-dur, 42s) linear infinite;
-}
-.kx-brand__viewport:hover .kx-brand__track,
-.kx-brand__viewport:focus-within .kx-brand__track { animation-play-state: paused; }
-.kx-brand__track li {
-    flex: none; height: clamp(220px, 24vw, 360px);
-    border-radius: clamp(14px, 1.4vw, 22px); overflow: hidden;
-    background: #fff;
-    box-shadow: 0 20px 40px -28px rgba(60, 30, 10, .5);
-    transition: transform .45s cubic-bezier(.2, .8, .2, 1);
-}
-.kx-brand__track li:hover { transform: translateY(-6px) rotate(-1deg); }
-.kx-brand__track img { display: block; height: 100%; width: auto; }
-@keyframes kx-marquee { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) {
-    .kx-brand__track { animation: none; }
-    .kx-brand__viewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
-    .kx-brand__label span { animation: none; }
-}
